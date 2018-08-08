@@ -1,0 +1,8 @@
+start apki:
+mvn spring-boot:run
+
+testy selenium:
+mvn verify -Pe2e
+
+testy RESTY:
+mvn verify -Pit
