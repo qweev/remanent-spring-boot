@@ -85,7 +85,7 @@ Znicz biała kapliczka mała
 Znicz T334 BT Ryki
 Znicz nagrobkowy 138 KT Ryki
 Znicz Płomyk S140
-Znicz płomyk S 117
+Znicz płomyk S117
 Znicz elektryczny Ryki
 Wkład Memoria P300
 Wkład Memoria P220
@@ -145,25 +145,25 @@ Krzesełko żabka
 Łopata do piasku
 Łpoatka do piasku
 Opryskiwacz ciśnieniowy 5l
-Opryskiwacz 2l
+Opryskiwacz 2 l
 Opryskiwacz 1.5 l
 Agrowłóknina czarna
 Grill ogrodowy mały
 Grill mały
-Nawoz do roślin cebulowych 1,20 kg
+Nawoz do roślin cebulowych 1,20kg
 Nawóz do iglaków
-Saletra potasowa 2 kg
+Saletra potasowa 2kg
 Florowit do trawników 1kg
-Florowit do winorośli 1 kg
+Florowit do winorośli 1kg
 Fruktus do iglaków 1kg
-Fruktus 1 kg do borówki
-Nawóz jesienny 1 kg
-Florowit do iglaków 1 kg
+Fruktus 1kg do borówki
+Nawóz jesienny 1kg
+Florowit do iglaków 1kg
 Preparat do kompostowania 1 l
-Trawa 0.25 kg
-Trawa 0.50 kg
-Trawa sahara 0.9 kg
-Trawa z Iławy 0.5 kg
+Trawa 0.25kg
+Trawa 0.50kg
+Trawa sahara 0.9kg
+Trawa z Iławy 0.5kg
 Trawa 100g
 Nasiona rzeżucha
 Agrowłóknina zimowa
@@ -180,51 +180,51 @@ Zraszacz obrotowy
 Zraszacz
 Pistolet zraszający
 Lanca zraszająca
-Nawóz do trawników 1 kg
+Nawóz do trawników 1kg
 Nawóz do paproci 750 ml
 Doniczki torfowe
-Keramzyt 2l
-Wapno nawozowe 20 kg
-Wapno nawozowe 10 kg
-Wapno nawozowe 5 kg
-Azofoska 5 kg
-Azofoska 3 kg
-Nawóz ogrodnik 5 kg
-Ogrodnik10 kg
-Ogrodnik 2,5 kg
-Wąż ogrodowy 25 m 3/4
-Wąż ogrodowy 20 m 1/2
-Wąż 20 m 3/4
-Obornik 5l
-Obornik 10l
-Nawóz z lawędą 3 kg
-Nawóz po brązowieniu 2,5 kg
+Keramzyt 2 l
+Wapno nawozowe 20kg
+Wapno nawozowe 10kg
+Wapno nawozowe 5kg
+Azofoska 5kg
+Azofoska 3kg
+Nawóz ogrodnik 5kg
+Ogrodnik 10kg
+Ogrodnik 2,5kg
+Wąż ogrodowy 25m 3/4
+Wąż ogrodowy 20m 1/2
+Wąż 20m 3/4
+Obornik 5 l
+Obornik 10 l
+Nawóz z lawędą 3kg
+Nawóz po brązowieniu 2,5kg
 Planton nawóz saszetka
 Grysik ogrodowy
 Karnisz drewniany ścienny dł. 5m
-Karnisz drewniany podwójny ścienny dł 4,40 m
-Karnisz sufitowy PCV dł. 1,80
-Karnisz sufittowy PCV dł. 2,20
-Karnisz sufitowy dł. 2,5
+Karnisz drewniany podwójny ścienny dł 4,40m
+Karnisz sufitowy PCV dł. 1,80m
+Karnisz sufittowy PCV dł. 2,20m
+Karnisz sufitowy dł. 2,5m
 Karnisz sufitowy PCV dł. 3m
-Karnisz sufitowy PCV 3,5 m
-Karnisz ścienny podwójny metalowy dl.1,50
+Karnisz sufitowy PCV 3,5m
+Karnisz ścienny podwójny metalowy dl.1,50m
 Karnisz ścienny podwójny metalowy dł.2m
 Karnisz ścienny poj.16 dł.2,50m
 Karnisz ścienny poj.19 dł.2,50
-Karnisz ścienny poj. metalowy 16 dł.2m
-Karnisz ścienny poj. metalowy 16 dł. 1.50
-Karnisz ścienny poj. metalowy 19 dł. 1.50
+Karnisz ścienny poj. metalowy 16 dł. 2m
+Karnisz ścienny poj. metalowy 16 dł. 1.50m
+Karnisz ścienny poj. metalowy 19 dł. 1.50m
 Karnisz ścienny poj. metalowy 19 dł. 2m
-Karnisz ścienny metalowy podwójny 16 dł. 1.50
-Karnisz ścienny metalowy podwójny 19 dł.1,50
+Karnisz ścienny metalowy podwójny 16 dł. 1.50m
+Karnisz ścienny metalowy podwójny 19 dł.1,50m
 Karnisz ścienny metalowy podwójny 19 dł. 2m
-Karnisz ścienny metalowy podwójny 16 dł. 2.50
-Karnisz ścienny metalowy podwójny 19 dł. 2.50
+Karnisz ścienny metalowy podwójny 16 dł. 2.50m
+Karnisz ścienny metalowy podwójny 19 dł. 2.50m
 Karnisz ścienny metalowy podwójny 16 dł.2m
-Karnisz ścienny poj. LEON dl. 1.50
-Karnisz ścienny podwójny LEON dł. 1,50
-Karnisz ścienny podwójny LEON dł.2m
+Karnisz ścienny poj. LEON dł. 1.50m
+Karnisz ścienny podwójny LEON dł. 1,50m
+Karnisz ścienny podwójny LEON dł. 2m
 Karnisz ścienny poj.LEON dł. 2m
 Torebka prezentowa
 Etopiryna
@@ -253,7 +253,7 @@ Podkolanówki stretch
 Skarpetki lores
 Wkład do zniczy Promex R2
 Lusterko cm 18 prostokai
-Skarpetki 60 den mickrofibra
+Skarpetki 60den mickrofibra
 Wkład do zniczy Luks W4
 Lusterko prostokątne
 Wkład do zniczy Luks W11
@@ -297,23 +297,23 @@ Wkład do zniczy BIO OIL 11
 Rajstopy dziecięce zwykłe
 Wkład do zniczy Promex 7 dni
 Rajstopki żakardowe
-Wkład do zniczy Memoria p.450
+Wkład do zniczy Memoria p450
 Podkolanówki dziecięce
 Pochlaniacz zapachow
-Wkład do zniczy Memoia p 400
+Wkład do zniczy Memoia p400
 Podkalanówki dziecięce
 Pochlaniacz zapachow do lodowki magic
 Skarpetki dropsy
-Wkład do zniczy Memoria p 300
+Wkład do zniczy Memoria p300
 Wkład do zniczy Memoria p350
 Pochlaniacz zapachow do lodowek X
 Skarpetki z falbanką
-Wkład do zniczy Memoria p 500
+Wkład do zniczy Memoria p500
 Wkład do zniczy Memoria p600
 Wkład do zniczy Memoria p700
 Rajstopy jesienne
 Wkład do zniczy Luks W14
-Wkład do zniczy Memoria p 120
+Wkład do zniczy Memoria p120
 Rajstopy jesienne xl
 Filtr do wody brita
 Znicz Płomyk S123
@@ -327,17 +327,17 @@ Filtr do wody aqauphor
 Znicz S149 Płomyk
 Znicz T28 KT
 Znicz 186BT
-Znicz Płomyk S 94
+Znicz Płomyk S94
 Znicz ZP Serce 11
 Znicz kapliczka szklana
 Filtr do wody aquaphor clasik
-Znicz Zn 374
-ZniczZN 363
+Znicz ZN374
+Znicz ZN363
 Haczyk
-Filtr do woda aquaphor A 3
+Filtr do woda aquaphor A3
 Znicz kapliczka ceramiczna
-Znicz S 160
-Zcicz LW 135
+Znicz S160
+Zcicz LW135
 Filtr do wody dafi
 Hak metalowy
 Znicz ZN361
@@ -463,7 +463,7 @@ Czapka niemowlęca
 Fontanna mała
 Czapeczka niemowlęca
 Fontanna duża
-Zmywak gąbka owal A 5
+Zmywak gąbka owal A5
 Zestaw kolędowy
 Zmywak gąbka A5 ekstra
 Zestaw kolędowy
@@ -475,7 +475,7 @@ Czapka z szalikiem
 Świecznik szklany
 Świecznik szklany kwiatek
 Świecznik szklany kwiatuszek
-Zmywak gąbka a 10 grosik
+Zmywak gąbka A10 grosik
 Szalik polarowy
 Buciki dziecięce
 Świecznik szklany Camelia
@@ -483,7 +483,7 @@ Buciki niemowlęce bawełniane
 Świecznik róża
 Czyscik nasaczony mydlem york
 Buciki polarowe
-Zmywak plastikowy A 3
+Zmywak plastikowy A3
 Fartuszek do karmienia
 Świeczki zapachowe
 Zmywak do teflonu
@@ -491,7 +491,7 @@ Zmywak do teflonu
 Śliniak
 Świeca walec
 Świeca zapachowa kula
-Zmywak stalowy A 3
+Zmywak stalowy A3
 Świeca zapachowa orange kula
 Świeca kula Bispol
 Zmywak stalowy
@@ -522,7 +522,7 @@ Bokserki
 Zmywak kuchenny jan
 Olejek zapachowy
 Majtki dziecięce bambusowe
-Zmywak kuchenny profilowany A 3
+Zmywak kuchenny profilowany A3
 Świece stołowe
 Majtki dziecięce
 Gąbka do naczyn venus
@@ -530,7 +530,7 @@ Zmywak do zmywania anna
 Świece piruet
 Ścierka ostra
 Świeca piruet
-Zmywak zapas do zmywaka A 2
+Zmywak zapas do zmywaka A2
 Świece stożek
 Zmywak dozownik
 Reklamówka
@@ -550,47 +550,47 @@ Kieliszki do koniaka
 Kieliszki do koniaku 230
 Koszyczek plast team
 Kieliszki do szampana
-Kieliszki do wina białego 240 ml
+Kieliszki do wina białego 240ml
 Kieliszki do wody
-Kieliszki do wina białego 120 ml
-Kieliszki do wina czerwonego 350 ml
-Kieliszki do wódki 50 ml
-Karnisz podwójny LEON dł. 2
-Karnisz metalowy podwójny - motyw kuty dł. 2,20
-Karnisz metalowy podwójny - motyw kuty dł. 2,40
-Karnisz metalowy pojedyńczy - motyw kuty dł. 2,20
-Karnisz ścienny drewniany podwójny dl. 1,50
-Karnisz ścienny drewniany podwójny dł. 1,80
-Karnisz ścienny drewniany podwójny dl.2,0
-Karnisz ścienny drewniany podwójny dł. 4,60
-Karnisz ścienny drewniany podwójny dł.5m
-Karnisz ścienny drewniany podwójny dł.2,30
-Karnisz ścienny drewniany podwójny dł. 2,50
-Karnisz ścienny drewniany podwójny dł.2,80
-Karnisz ścienny drewniany podwójny dł. 3.60
-Karnisz ścienny drewniany podwójny dł.3,50
+Kieliszki do wina białego 120ml
+Kieliszki do wina czerwonego 350ml
+Kieliszki do wódki 50ml
+Karnisz podwójny LEON dł. 2m
+Karnisz metalowy podwójny - motyw kuty dł. 2,20m
+Karnisz metalowy podwójny - motyw kuty dł. 2,40m
+Karnisz metalowy pojedyńczy - motyw kuty dł. 2,20m
+Karnisz ścienny drewniany podwójny dl. 1,50m
+Karnisz ścienny drewniany podwójny dł. 1,80m
+Karnisz ścienny drewniany podwójny dl. 2,0m
+Karnisz ścienny drewniany podwójny dł. 4,60m
+Karnisz ścienny drewniany podwójny dł. 5m
+Karnisz ścienny drewniany podwójny dł. 2,30m
+Karnisz ścienny drewniany podwójny dł. 2,50m
+Karnisz ścienny drewniany podwójny dł. 2,80m
+Karnisz ścienny drewniany podwójny dł. 3.60m
+Karnisz ścienny drewniany podwójny dł. 3,50m
 Karnisz ścienny drewniany podwójny dł. 3m
 Karnisz ścienny drewniany podwójny dł. 3m
-Karnisz ścienny drewniany pojedyńczy dł. 1,50
-Karnisz ścienny drewniany pojedyńczy dł.1,80
-Karniszścienny drewniany pojedyńczy dł. 1,80
+Karnisz ścienny drewniany pojedyńczy dł. 1,50m
+Karnisz ścienny drewniany pojedyńczy dł.1,80m
+Karniszścienny drewniany pojedyńczy dł. 1,80m
 Karnisz ścienny drewniany pojedyńczy dł. 2m
-Karnisz ścienny drewniany pojedyńczy dł. 2,30
-Karnisz ścienny drewniany pojedyńczy dł.2,50
-Karnisz sufitowy drewniany podwójny dł.2,50
-Karnisz sufitowy drewniany podwójny dł. 2,20
-Karnisz sufitowy drewniany podwójny dł. 1.80
-Zazdroska biała dł. 40
-Zazdroska kolor dł. 40
-Zazdroska biała 60
-Zazdroska kolor dł. 60
-Zazdroska biała dł. 80
-Zazdroska kolor dł. 80
-Zazdroska biała dł. 100
-Zazdroska kolor dł. 100
-Zazdroska metalowa dł.40 - 60
-Zazdroska metalowa dł. 60 - 80
-Zazdroska metalowa dł. 80 - 100
+Karnisz ścienny drewniany pojedyńczy dł. 2,30m
+Karnisz ścienny drewniany pojedyńczy dł. 2,50m
+Karnisz sufitowy drewniany podwójny dł. 2,50m
+Karnisz sufitowy drewniany podwójny dł. 2,20m
+Karnisz sufitowy drewniany podwójny dł. 1.80m
+Zazdroska biała dł. 40cm
+Zazdroska kolor dł. 40cm
+Zazdroska biała 60cm
+Zazdroska kolor dł. 60cm
+Zazdroska biała dł. 80cm
+Zazdroska kolor dł. 80cm
+Zazdroska biała dł. 100cm
+Zazdroska kolor dł. 100cm
+Zazdroska metalowa dł. 40-60cm
+Zazdroska metalowa dł. 60-80cm
+Zazdroska metalowa dł. 80-100cm
 Listwa ozdobna do karnisza PCV
 Wieszak drewniany
 Wieszak na klucze
@@ -618,19 +618,19 @@ Naczynie żarodporne 5.8 l
 Rurka do wina plastikowa
 Skarpetki
 Rurka do wina szklana
-Szklanki żarodporne 0.25
+Szklanki żarodporne 0.25 l
 Szklanki żarodporne 0.4 l
-Szklanki kolorowe A 3
-Szklanki kolorowe A 6
+Szklanki kolorowe A3
+Szklanki kolorowe A6
 Flakon
-Kieliszki do likieru 28 ml
+Kieliszki do likieru 28ml
 Szklanki karad
 Świeczki cyferki urodzinowe
 Skarpetki bambusowe
-Kieliszki do likieru 50 ml
+Kieliszki do likieru 50ml
 Kieliszek do wina
 Gromnica
-Szklanki do wody 190 ml
+Szklanki do wody 190ml
 Gromnica mała
 Szklanki diamont wysoka
 Szklanka złoty pasek
@@ -642,20 +642,20 @@ Kubek bezbarwny
 Skrzynka balustradowa - fala 30
 Literatka grecki wzor
 Płyn do naczyń Ludwik 5L mięta-cytryna
-Skrzynka balkonowa - lamela 80
-Szklanka adora 190 ml
+Skrzynka balkonowa - lamela 80cm
+Szklanka adora 190ml
 Pudełko kartonowe
 Aro płyn do mycia naczyń 5L
-Szklanka galata 285 ml
+Szklanka galata 285ml
 Lucek płyn do naczyń 5L
-Skrzynka balkonowa terakota - 60
+Skrzynka balkonowa terakota - 60cm
 Szkanka diamont niska
 Giguś płyn do mycia naczyń 5L cytryna-mięta-balsam
-Skrzynka balkonowa 40
+Skrzynka balkonowa 40cm
 Stopki bambusowe
-Kpl.szkanek A 3 405
+Kpl.szkanek A3 405
 Morning Fresh 900ml
-Konewka 2l
+Konewka 2L
 Morning Fresh 900ml zapas
 Korek do butli
 Skarpetka młodzieżowa
@@ -663,14 +663,14 @@ Stojak na kwiaty
 Spodek szklany
 Skarpetka
 Gold Cytrus płyn do naczyń 500ml
-Osłonka ceramiczna 30
+Osłonka ceramiczna 30cm
 Balsam do mycia naczyń Biały Jeleń
 Wieszak na kwiaty
 Pojemnik na cytryny
 Czyścik do naczyń York
 Osłonka ceramiczna
 Korkociąg
-Osłonka ceramiczna 22
+Osłonka ceramiczna 22cm
 Żel do mycia naczyń Biały Jeleń 1L
 Kapsel do butli
 Balsam do mycia naczyń Biały Jeleń 1L
@@ -678,10 +678,10 @@ Korek gumowy 1
 Aro płyn do mycia naczyń 1L
 Skarbonka metalowa duża
 Skarbonka metalowa mała
-Doniczka pl. łódka 36
+Doniczka pl. łódka 36cm
 Korek gumowy 2
 Korek gumowy 3
-Osłonka ceramiczna 16
+Osłonka ceramiczna 16cm
 Fairy płyn do naczyń 1,35L
 Podest dla dzieci
 Korek gumowy 4
@@ -700,7 +700,7 @@ Korek z korka grzybek
 Krzesełko dziecięce małe
 Skarpetki bambo
 Płyn do naczyń Pur 450ml
-Osłonka szklana prymulka 11,5
+Osłonka szklana prymulka 11,5cm
 Uszczeka do sokownika
 Aro płyn do mycia naczyń 500ml
 Zabawka ciężarówka
@@ -745,7 +745,7 @@ Zabawka samochód wywrotka
 Kieliszki grecki wzór
 Zabawka samochód ciężarowy
 Kieliszki z humorem
-Kieliszek 50 ml
+Kieliszek 50ml
 Skarpety młodzierzowe
 Doniczka - lamela
 Skarpetki frotki dziecięce
@@ -792,7 +792,7 @@ Krem do rąk Biały Jeleń
 Piłka do siatkówki Jet5
 Krem przeciwzmarszczkowy Uroda
 Piłka dziecięca
-Podstawka pod skrzynkę balkonową 80
+Podstawka pod skrzynkę balkonową 80cm
 Krem Nivea 50ml
 Kieliszek zlota spirala
 Krem Dove 75ml
@@ -801,11 +801,11 @@ Hulahop
 Kieliszki zloty pasek
 Krem Nivea Soft 100ml
 Krem Nivea Men
-Podstawka pod skrzynkę balkonową 60
-Kieliszek 30 ml
+Podstawka pod skrzynkę balkonową 60cm
+Kieliszek 30ml
 Krem Nivea Soft 200ml
 Zabawka popychajka
-Kieliszek 25 ml
+Kieliszek 25ml
 Zabawka kask policyjny
 Krem Kozie Mleko Ziaja
 Zabawka wózek dziecięcy
@@ -817,7 +817,7 @@ Pianka odświeżająca do stóp
 Skarpety bambusowe
 Płyn oczyszczający micelarny do demakijażu 200ml
 Grzechotka baby
-Doniczka terakota - kwadrat 45 -45 -360
+Doniczka terakota - kwadrat 45x45x360
 Grzechotka
 Ludiwk płyn nabłyszczający do zmywarek 750ml
 Grzechotka
@@ -825,7 +825,7 @@ Pasta do prania Komfort
 Zabawka zestaw kuchenny
 Pasta BHP do mycia rąk Floren
 Zabawka zestaw lekarski
-Podstawka pod doniczkę kwadrat 34-34-36
+Podstawka pod doniczkę kwadrat 34x34x36
 Zestaw zabawek do kąpieli
 Zestaw do zabawy
 Zestaw piłek do tenisa
@@ -835,12 +835,12 @@ Pasta Sama 250g
 Pasta Sam
 Środek do udrażniania rur Melt
 Literatka gładka
-Podstawka pod doniczkę kwadrat 27-27-38
+Podstawka pod doniczkę kwadrat 27x27x38
 Kret granulki do rur 500g
 Soda kaustyczna preparat do rur
 Kret granulki do rur 250g
 Podkolamówki bawełniane
-Podstawka pod doniczkę kwadrat 22-22-30
+Podstawka pod doniczkę kwadrat 22x22x30
 Kret do udrażniania rur żel 1kg
 Szklanka gładka
 Yplon odkamieniacz do pralek
@@ -848,7 +848,7 @@ Zabawka zastaw narzędzi
 Oro proszek do odkamieniania AGD
 Zabawka zestaw mebli
 Calgon do pralek proszek
-Doniczka finezja 30-30
+Doniczka finezja 30x30
 Zabawka torebka dziecięca
 Skarpety bezuciskowe
 Doniczka - miska gazon 5
@@ -910,35 +910,35 @@ Fornit krem do czyszczenia mebli
 Koszyk plastikowy Domino
 Finish nabłyszczacz 400ml
 Oro środek do mycia zmywarki 250ml
-Podstawka biała 19
+Podstawka biała 19cm
 Skarpety dziecięce
 Odświeżacz do zmywarek General Fresh
-Podstawka biała 17
+Podstawka biała 17cm
 Stopki
 Pronto spray do mebli
 Czepek kąpielowy
 Zabawka piłkarzyki
-Podstawka biała 15
+Podstawka biała 15cm
 Pronto spray
 Czepek kąpielowy
-Podstawka biała 14
+Podstawka biała 14cm
 Koszyk Curver
 Czepek kąpielowy lateksowy
 Masa plastyczna zestaw dentysta
 Pronto spray z woskiem pszczelim
 Farby dla dzieci
-Podstawka biała 12
+Podstawka biała 12cm
 Zestaw mini sklep
 Sidolux do mebli spray
 Czepek kąpielowy z materialu
 Sidolux spray płyn do mebli
-Podstawka biała 10
+Podstawka biała 10cm
 Masa plastyczna owoce dla dzieci
 Kret do rur granulki 1kg
 Zabawka zestaw farma
 Proszek do czyszczenia Dosia
 Zabawka straż pożarna Dromader
-Podstawka pod doniczkę cegła 27
+Podstawka pod doniczkę cegła 27cm
 Zabawka do kąpieli
 Zabawka piramida
 Ajax proszek do czyszczenia 450g
@@ -953,28 +953,28 @@ Izo proszek do czyszczenia 500g
 Zestaw klocków 200szt.
 Zestaw klocków 100szt.
 Oro proszek do czyszczenia WC 1kg
-Podstawka pod doniczkę cegła 22
+Podstawka pod doniczkę cegła 22cm
 Zabawka domek z kotkiem
 Zabawka straż pożarna mała Dromader
 Zabawka samochód do składania
-Podstawka pod doniczkę cegła 19 - 20
+Podstawka pod doniczkę cegła 19x20cm
 Proszek do zmywarek General Fresh
 Zabawka piłeczka
 Zabawka laleczka
 Wybielacz do firan podwójny
 Maskotka małpka
-Podstawka pod doniczkę cegła 15
+Podstawka pod doniczkę cegła 15cm
 Maskotka miś różowy
 Maskotka miś z kokardą
-Podstawka pod doniczkę cegła 14
+Podstawka pod doniczkę cegła 14cm
 Maskotka miś uczeń
 Koc mikrofibra 150x200
-Podstawka pod doniczkę cegła 12
+Podstawka pod doniczkę cegła 12cm
 Wezyr szampon do dywanów
-Podstawka pod doniczkę brązowa 30
+Podstawka pod doniczkę brązowa 30cm
 Maskotka miś kudłaty
 Wybielacz do firan rożek
-Podstawka pod doniczkę brązowa 26
+Podstawka pod doniczkę brązowa 26cm
 Maskotka piesek
 Dywanlux
 Krochmal w proszku
@@ -982,32 +982,32 @@ Maskotka żaba
 Ania płyn antyelektrostatyczny
 Skarpetki Frotte
 Maskotka tygrys grający
-Podstawka pod doniczkę brązowa 23
+Podstawka pod doniczkę brązowa 23cm
 Ultramaryna
 Maskotka niedźwiadek
 Maskotka króliczek
 Elitt Kamix płyn do prasowania
-Podstawka pod doniczkę brązowa 20
+Podstawka pod doniczkę brązowa 20cm
 Skarpety Frotte
 Zestaw kosmetyków z kosmetyczką
 Odkamieniacz kamyk
 Aro płyn do szyb zapas 500ml
-Podstawka pod doniczkę 19
+Podstawka pod doniczkę 19cm
 Aro płyn do mycia szyb spray 500ml
 Okamieniacz kamix
 Vanish Gold do dywanów
 Skarpety wełniane
 Motyl skrzydła dla dzieci
 Płaszcz przeciwdeszczowy dziecięcy
-Podstawka pod doniczkę brązowa 17
+Podstawka pod doniczkę brązowa 17cm
 Płaszcz przeciwdeszczowy duży
-Podstawka pod doniczkę brązowa 14
+Podstawka pod doniczkę brązowa 14cm
 Vanish Gold proszek do czyszczenia dywanów
 Płaszcz przeciwdeszczowy uniwersalny
 Podkolanówki narciarskie
-Doniczka rattan 21
+Doniczka rattan 21cm
 Ponczo przeciwdeszczowe
-Doniczka rattan 17
+Doniczka rattan 17cm
 Pampers 6
 Peleryna przeciwdeszczowa dziececa
 Pampers pielucho-majtki 6
@@ -1038,7 +1038,7 @@ Płaszcz przeciwdeszczowy dziececy M DO L
 Pampers 1 szt 43
 Sidolux zapas 500ml
 Happy 3
-Plaszcz przeciwdeszczowy 116
+Plaszcz przeciwdeszczowy 116cm
 Happy 4+
 Sidolux płyn do szyb spray
 Happy 4
@@ -1054,16 +1054,16 @@ Clin płyn do szyb zapas jabłkowy 500ml
 Poopeys 4 maxi
 Happy 5 szt 42
 Clin płyn do szyb zapas cytrynowy 500ml
-Płaszcz przeciwdeszczowy 140
+Płaszcz przeciwdeszczowy 140cm
 Waciki kosmetyczne bella
 Wkładki higieniczne bella
-Płaszcz przeciwdeszczowy 148
+Płaszcz przeciwdeszczowy 148cn
 Clin płyn do szyb jabłkowy spray 500ml
-Płaszcz przeciwdeszczowy 156
+Płaszcz przeciwdeszczowy 156cm
 Clin płyn do szyb spray cytrynowy 500ml
 Doniczka z podstawką AGA 16
 Cleanic patyczki higieniczne zapas 160szt
-Doniczka z podstawką 14
+Doniczka z podstawką 14cm
 Patyczki do uszu Spiderman
 Patyczki do uszu dla niemowląt Cleanic
 Patyczki do uszu Cotton
@@ -1076,62 +1076,62 @@ Johnsons Baby zasypka
 Płaszcz przeciwdeszczowy zielony
 Bambino oiliwka dla dzieci 150ml
 Szampon Bambi dla dzieci 150ml
-Doniczka z podstawką werdenia 16
+Doniczka z podstawką werdenia 16cm
 Johnsons Baby szampon 200ml
 Bambino szampon 400ml
 Piżama męska
-Doniczka z podstawką werdrnia 18
+Doniczka z podstawką werdrnia 18cm
 Szampon dla dzieci Bobini 400ml
 Komplet przeciwdeszczowy
-Doniczka bez podstawki werdenia 18
+Doniczka bez podstawki werdenia 18cm
 Smoczek Nuk 0-6m
-Donicza bez podstawki werdenia 16
+Donicza bez podstawki werdenia 16cm
 Smoczek Nuk 6-18m
 Komplet przeciwdeszczowy moro
 Nuk szczoteczka + grzebien zestwa
-Doniczka bez podstawki werdenia 14
+Doniczka bez podstawki werdenia 14cm
 Nuk butelka
-Doniczka pasek 22
+Doniczka pasek 22cm
 Winomierz
 Alkoholomierz
-Doniczka pasek 19
+Doniczka pasek 19cm
 Koszyk K-3
-Doniczka pasek 17
+Doniczka pasek 17cm
 Korkociąg dzwigniowy
 Cleanic chusteczki do higieny intymnej
-Doniczka pasek 13
+Doniczka pasek 13cm
 Zabawka gra w statki
 Otwieracz do puszek
 Cleanic chusteczki odświeżające perfumowane
-Doniczka pasek 11
+Doniczka pasek 11cm
 Zabawka traktor mały
 Piżama męska
-Doniczka gotyk 17
+Doniczka gotyk 17cm
 Bobini chusteczki nawilżające
-Doniczka gatyk 14
+Doniczka gatyk 14cm
 Krajarka do wstążek
 Bobini chusteczki nawilżające sensitive
 Wyciskacz do czosnku
-Doniczka gotyk 12
+Doniczka gotyk 12cm
 Lula chusteczki nawilżające dla niemowląt
 Zabawka samochód wojskowy
 Wyciskacz do czosnku aluminiowy
-Doniczka terra 45
+Doniczka terra 45cm
 Pampers chusteczki nawilżające dla niemowląt
 Wyciskacz do czosnku metalowy
 Pampers chusteczki nawilżające sensitive
-Doniczka finezja 25 - 25
+Doniczka finezja 25x25cm
 Nivea Baby chusteczki nawilżające dla niemowląt
 Dziadek do orzechów
-Doniczka terra 35
+Doniczka terra 35cm
 Linteo chusteczki nawilżające dla niemowląt
 Otwieracz do kapsli
-Doniczka terra 25
+Doniczka terra 25cm
 Maskotka miś w koszulce
 Otwieracz do kapsli z magnesem
 Maskotka miś z kokardką
 Podkoszulka długi rękaw
-Doniczka terra 17
+Doniczka terra 17cm
 Obieraczka do jarzyn nierdzewna
 Kret granulki saszetka 50g
 Fotelik dziecięcy
@@ -1141,10 +1141,10 @@ Odmrażacz do szyb DE-iCER
 Obieraczka do jarzyn ODELO
 Plecak panterka
 Odmrażacz do szyb Phenix
-Doniczka palmówka 30
+Doniczka palmówka 30cm
 Zabawka zestaw do nurkowania
 Zabawka konewka
-Doniczka palmówka 35
+Doniczka palmówka 35cm
 Zabawka zestaw foremek
 Cleanlux Lakma zmywacz
 Zabawka cymbałki mini
@@ -1254,21 +1254,21 @@ Szachy szkolne
 Gra szkółka ruchu drogowego
 Vanish Gold odplamiacz 470g
 Gra monopoly
-Pościel satyna160/200
+Pościel satyna 160/200
 Płyn na mszyce
 Zabawka karabin
 Vanish Oxy Action w płynie 1L kolor
 Zabawka kask strażacki
 Zabawka nakręcana
-Pościel dziecięca160/200
+Pościel dziecięca 160/200
 Filiżanki do kawy luminarc
-Biohumus ECO 1,25l
+Biohumus ECO 1,25L
 Vanish Oxy Action w płynie 1L do białych
 Vanish Oxy Action w płynie 1L do białych
 Pałeczki nawozowe storczyk
 Zabawka piłka kolorowa
 Wybielacz Clever 750g proszek
-Komplet pościeli dziecięcej160/200
+Komplet pościeli dziecięcej 160/200
 Substral osmocote
 Dr Reiner
 Kpl.szkła 12 czes.zl.galązka
@@ -1280,30 +1280,30 @@ Komplet pościeli HELLO KITTY
 Zabawka zestaw lokomotywa z wagonami
 Wirek wybielacz kolor 1L
 Ace kolor 1L
-Humwit - Eko 0,5l
+Humwit - Eko 0,5L
 Karafka miara
-Biohumus 1l
+Biohumus 1L
 Butelka 2 winogronol
 Perlux kapsułki do czarnego
 Perlux kapsułki do białego
 Agrecol - nawóz do fikusów
 Perlux kapsułki Baby
-Butelka 0.75l winogrono
-Komplet pościeli mikrofibra160/200
+Butelka 0.75L winogrono
+Komplet pościeli mikrofibra 160/200
 Kapsułki E do prania
 Nawóz uniwersalny - planta 0,55kg
 Otwieracz do konserw zwykły
 Kapsułki Vizir do prania
-Komplet pościeli satyna160/200
+Komplet pościeli satyna 160/200
 Kosz
 Minutnik garnek
 Kapsułki Persil do prania
-Pościel3D
+Pościel 3D
 Minutnik kuchenny
 Nawóz w płynie do kwitnących - zielony dom
 Mlynek do kawy ręczny drewniany
 Pościel 200/220
-Pościel KORA160/200
+Pościel KORA 160/200
 Młynek do pierzu
 Nawóz w płynie do storczyka - zielony dom
 Kapsułki Ariel do białego
@@ -1313,14 +1313,14 @@ Persil żel do prania
 Piłka do ćwiczeń
 Mgiełka do paproci - zielony dom
 Piersiówka polska
-Pościel160/200
+Pościel 160/200
 Vizir płyn do prania
 Mgiełka do storczyka - zielony dom
 Zapalarka do gazu
 Lovela mleczko do prania do białego 1.5L
 Lovela mleczko do prania kolor 1.504L
 Zapalarka do gazu ola
-Nawóz substral dom - balkon 0,5l
+Nawóz substral dom - balkon 0,5L
 Perwoll do prania 1L kolor
 Florovit 0,25kg
 Zabawka samochód na baterie
@@ -1347,7 +1347,7 @@ Pościel 180/200 bawełna
 Zabawka wodna
 Pościel KORA 180/200
 Portfel skórzany 02
-Prześcieradło frotowe bez gumy150/200
+Prześcieradło frotowe bez gumy 150/200
 Zabawka zestaw do piachu
 Portfel skórzany 10-09
 Zabawka łopatka
@@ -1356,7 +1356,7 @@ Woolite do prania 1L Perła
 Portfel skórzany 20-13
 Woolite do prania 1L Perła kolor
 Gra pchełki
-Pościel200/220
+Pościel 200/220
 Woolite do prania 1L ciemny kolor i czarny
 Biohumus do kwitnących 750ml
 Portfel skórzany 31-09
@@ -1397,7 +1397,7 @@ Paclan ściereczki wyłapujące kolor
 K2R ściereczki wyłapujące kolor
 Planta do pelargonii 1,1kg
 Clever odplamiacz 60g
-Widelczyki do ciasta A 6
+Widelczyki do ciasta A6
 Satin odplamiacz płyn 100ml
 Planta do kwitnących 1,1kg
 Satin wybielacz 100ml
@@ -1417,7 +1417,7 @@ Modelina
 Vanish saszetka w płynie Oxy Action
 Owadum - mszyce
 Kreda szkolna
-Sztućce Hoffner A 24
+Sztućce Hoffner A24
 Vanish saszetka Gold
 Wkład do lodówki turystycznej
 Wirek płyn do prania czarnych tkanin 4L
@@ -1427,11 +1427,11 @@ Piłeczki do tenisa stołowego
 Persil żel do prania 4,38L
 Planton - proszek
 Lotki do badbingtona
-Sztućce Saragossa A 24
+Sztućce Saragossa A24
 Spiro żel do prania White 3L
 Lotki do badbingtona szt 12
 Emil płyn do płukania 4L
-Sztućce rave A 24
+Sztućce rave A24
 Lotka do badbingtona
 Pościel flanelowa 200/220
 Zestaw łyżeczek do kawy sydney
@@ -1442,14 +1442,14 @@ Opaska świecąca
 Sztucce w walizce RONNER
 Narzuta 170x205
 Lenor płyn do płukania 1,38L
-Noże TORINO A 3
-Przescieradło zgumką JERSEJ200/220
+Noże TORINO A3
+Przescieradło zgumką JERSEJ 200/220
 Ramka na zdjęcia
 Lenor 930ml
 PRZEŚCIERADŁO Z GUMKĄ200/220
-Noże NATALIA A 3
+Noże NATALIA A3
 PRZESCIERADŁO frotte 200/220
-Widelec TORINO A 3
+Widelec TORINO A3
 Prześcieradło Frotte 200/220
 Pałeczki nawozowe 0
 Lenor 780ml
@@ -1457,61 +1457,61 @@ Lenor 780ml perfumowany
 Prześcieradło JERSEJ 180/200
 Obrazek święty
 Silan płyn do płukania perfumowany 1L
-Przescieradło FROTTA180/200
+Przescieradło FROTTA 180/200
 Pałeczki nawozowe G
 Silan płyn do płukania 900ml
 Zestaw do szycia
 Pałeczki agrecol do zielonych
 Silan 1L
 Silan 1L perfumowany
-Łyżeczka TORINO A 6
+Łyżeczka TORINO A6
 Clever płyn do płukania 1L
 Ukorzeniacz do zielonych
 Silan płyn do płukania 750ml koncentrat
 Prześcieradło Frotta 160/200
 Silan płyn do płukania koncentrat 1,5L
-Łyżka TORINO A 3
+Łyżka TORINO A3
 Wirek koncentrat do płukania 1L
 Koszulka
 Dzidziuś płyn do płukania 750ml
 Sofin płyn do płukania 1,5L
-Łyżka NATALIA A 3
+Łyżka NATALIA A3
 Biały Jeleń koncentrat do płukania 1L
 E płyn do płukania 500ml
 E płyn do płukania 1L
-Worki na śmieci wiązane Ravi 18l.
-Widelce NATALIA A 3
-Worki na śmieci Grosik 20l.
+Worki na śmieci wiązane Ravi 18L
+Widelce NATALIA A3
+Worki na śmieci Grosik 20L
 Aro koncentrat do płukania 2L
-Worki na śmieci łazienkowe Grosik 12l.
+Worki na śmieci łazienkowe Grosik 12L
 Przescieradło z gumką 140/200 Frotte
 E płyn do płukania 1.8L
-Worki na śmieci Cluo 35l.
+Worki na śmieci Cluo 35L
 E płyn do płukania 2L
 Przescieradło z gumką JERSEJ 140/200
-Worki na śmieci Mati 35l.
-Łyżeczka NATALIA A 6
-Prześcieradło z gumką 140/200JERSEJ
+Worki na śmieci Mati 35L
+Łyżeczka NATALIA A6
+Prześcieradło z gumką 140/200 JERSEJ
 Cluo płyn do płukania 4L
 Aro płyn do płukania 4L
-Worki na śmieci Ravi z taśmą 60l.
-PRZESCIERADŁO Z GUMKĄ100/200 jersej
+Worki na śmieci Ravi z taśmą 60L
+PRZESCIERADŁO Z GUMKĄ 100/200 jersej
 Dywan viva 120x170
-Worki na śmieci z taśmą York 60l.
-Worki na śmieci z taśmą York 35l.
-Łyżka BOSTON A 3
-PRZEŚCIERADŁO Z GUMKĄ120/200 frotta
-Widelec BOSTON A 3
-Worki na śmieci Anna Zaradna 35l.
+Worki na śmieci z taśmą York 60L
+Worki na śmieci z taśmą York 35L
+Łyżka BOSTON A3
+PRZEŚCIERADŁO Z GUMKĄ 120/200 frotta
+Widelec BOSTON A3
+Worki na śmieci Anna Zaradna 35L
 Dywan Diamond 120x180
 Prześcieradło z gumką 90/200 JERSEJ
-Worki na śmieci Cluo 60l.
+Worki na śmieci Cluo 60L
 Gąsior 20L
 Papier śniadaniowy arkusz
 Prześcieradło z gumką 90/200 Frotte
-Worki na śmieci York 60l.
+Worki na śmieci York 60L
 Gąsior 25L
-Worki na śmieci Anna Zaradna 60l.
+Worki na śmieci Anna Zaradna 60L
 Papier śniadaniowy rolka
 Gąsior 34L
 Gąsior 54L
@@ -1519,21 +1519,21 @@ Papier śniadaniowy ANNA
 Dywan Luna 120x170
 Prześcieradło KORA 220/200
 Torebki śniadaniowe ANNA
-Worki na śmieci Anna Zaradna 120l.
+Worki na śmieci Anna Zaradna 120L
 Prześcieradło Flanela 160/200
-Worki na śmieci Cluo 120l.
+Worki na śmieci Cluo 120L
 Torebki do pieczenia ANNA
-Worki na papier 120l.
+Worki na papier 120L
 Pasta do zębów Sensodyne odbudowa i ochrona 75ml
 Torebki do pieczenia JAN
-Worki na szkło 120l.
+Worki na szkło 120L
 Pasta do zębów Parodontax
 Pasta do zębów Sensodyne Whitening 75ml
 Dywan Diamond 130x180
 Pasta do zębów Sensodyne Classic 75ml
-Worki na śmieci 160l.
+Worki na śmieci 160L
 Pasta do zębów Colgate Total 100ml
-Worki na śmieci 240l.
+Worki na śmieci 240L
 Pasta do zębów Colodent super świeżość
 Dywan Myscic 120x170
 Pasta do zębów Colodent super biel
@@ -1573,11 +1573,11 @@ Dywan Swing 140x200
 Ara pasta do zamszu i nubuku brąz
 Torebki na mrożonki ANNA
 Ara pasta do zamszu i nubuku czarna
-Torebki z suwakiem 2,5 l ravi
+Torebki z suwakiem 2,5L ravi
 Pasta do butów Buwi w płynie bezbarwna
 Pasta do butów Buwi w płynie czarna
 Pasta do butów Buwi w płynie brązowa
-Torebki z suwakiem 3,5 l ravi
+Torebki z suwakiem 3,5L ravi
 Pasta do butów Kiwi w płynie czarna
 Dywan Alfa 150x210
 Pasta do butów Kiwi w płynie brązowa
@@ -1586,7 +1586,7 @@ Torebki z suwakiem JAN
 Pościel satyna 160/200
 Wkładki do butów lateksowe
 Pasta do butów Show w płynie z gąbką brązowa
-Papier śniadaniowy 30 m
+Papier śniadaniowy 30m
 Pościel bawełniana 160/200
 Pasta do butów Ara czarna
 Wkładki do butów ze skóry
@@ -1595,9 +1595,9 @@ Wkładki do butów samoprzylepne lateksowe
 Pasta do butów Buwi czarna
 Pasta do butów Buwi brązowa
 Wkładki do butów z korka
-Serwetka papierowa ozdobna 30
+Serwetka papierowa ozdobna 30cm
 Pasta do butów Kiwi brązowa
-Serwetka papierowa ozdobna 36
+Serwetka papierowa ozdobna 36cm
 Wkładki do butów filcowe
 Cyrpys chusteczki do butów
 Wkładki do butów termoizolacyjne
@@ -1659,14 +1659,14 @@ Odżywka do włosów Pantene Pro V
 Kokarda ozdobna
 Ręcznik ROSA 70/140
 Odżywka do włosów Nivea
-Sznurówki 80 cm
+Sznurówki 80cm
 Dywan Figaro 80x150
 Ręcznik GRENO 70/140
 Odżywka do włosów Joanna Naturia
 Ręcznik FIORA 70/140
 Szampon do włosów Elseve 400ml
-Sznurówki 70 cm
-Ręcznik GRENO70/140
+Sznurówki 70cm
+Ręcznik GRENO 70/140
 Dywan Lila mix 80x150
 Kokardka ozdobna różyczki
 Płukanka do włosów Cameleo
@@ -1690,7 +1690,7 @@ Dyywan Rapsody 80x150
 Szampon do włosów Pantene Pro V 400ml
 Sznurówki 1,2m
 Dywan Matrix 80x150
-Wstążka dekoracyjna 20 m
+Wstążka dekoracyjna 20m
 Szampon do włosów Pantene Pro 250ml
 Szampon Schauma 400ml
 Dywan Mystic 80x150
@@ -1739,7 +1739,7 @@ Szampon Biały Jeleń
 Wąż do wina
 Ręcznik 50/90
 Klej kropelka
-Ręcznik50/90 NINEL
+Ręcznik 50/90 NINEL
 Szampon Avea 300ml czarna rzepa
 Klej kropelka żel
 Ręcznik KANWA 50/100
@@ -1769,15 +1769,15 @@ Reklamówka foliowa 5kg
 Recznik PAULO 50/90
 Reklamówka foliowa 8kg
 Ręcznik EMMA 50/100
-Achem płyn do kąpili 1l
+Achem płyn do kąpieli 1L
 Ręcznik SKANDI 50/100
 Nóż fiskas kuchenny
 Poduszka na taboret
 Poduszka na taboret
-Nóż fiskas szefa kuchni 20
+Nóż fiskas szefa kuchni 20cm
 Płyn do kąpieli Biały Jeleń
-Nóż fiskas szefa kuchni 16
-Apart - płyn do kąpieli 1,5l
+Nóż fiskas szefa kuchni 16cm
+Apart - płyn do kąpieli 1,5L
 Recznik 50/100 FRAZA
 Ręcznik 50/90 DORACE
 RĘCZNIK VACANZ 50/90
@@ -1806,15 +1806,15 @@ Poszewka JASIEK flanelka 40/40
 Plandeka 4x5m
 Plandeka 3x3m
 Komplet talerzy irys
-Drabinka do kwiatów bambusowa 70 cm
+Drabinka do kwiatów bambusowa 70cm
 Poszewka JASIEK kora
 Proszek Ariel do białego 300g
 Proszek Ariel do koloru 300g
-Drabinka do kwiatów bambusowa 60 cm
+Drabinka do kwiatów bambusowa 60cm
 Filizanka ze spodkiem i talerzem
-Drabinka do kwiatów bambusowa 40
+Drabinka do kwiatów bambusowa 40cm
 Proszek Dosia 300g do białego
-Drabinka do kwiatów bambusowa 35 cm
+Drabinka do kwiatów bambusowa 35cm
 Dosia Kolor 300g
 Proszek E kolor 300g
 Drabinka do kwiatów plastikowa
@@ -1845,36 +1845,36 @@ Proszek Dzidziuś kolor 1.5kg
 Proszek Dzidziuś do bieli 1.5kg
 Pielucha tetra kolor
 Proszek Dzidziuś kolor 3kg
-Kubek A 2
+Kubek A2
 Proszek Lovela do białego 1.8kg
-Kij bambusowy 90 cm
+Kij bambusowy 90cm
 Pielucha flanela
 Proszek Lovela kolor 1.625kg
 Światła choinkowe 100 wew 7m
 Kpl. filiżanek ze spodkiem
-Światła choinkowe 100 szt
+Światła choinkowe 100szt
 Pielucha tetra biała
 Lampka nocna
 Kpl filiżanek bialy paw
-Kij bambusowy 1,50
-Kij bambusowy 1,80
+Kij bambusowy 1,50m
+Kij bambusowy 1,80m
 Kpl. dwóch filiżanek
 Świecznik mosiężny
 Lampa naftowa
-Kij bambusowy 2,0
+Kij bambusowy 2,0m
 Świecznik świecący
 Jelonek świecący
 Pudełko tekturowe
-Kij bambusowy 2,40
-Kpl.filiżanek 6+ 6
+Kij bambusowy 2,40m
+Kpl.filiżanek 6+6
 Lampa ledowa
-Kpl.filiżanek 6+ 6 lisa
-Drabinka bambusowa 1,80
-Kpl.filizanek 6+ 6 kolo
-Drabinka bambusowa 2,10
-Palik kokosowy 30
+Kpl.filiżanek 6+6 lisa
+Drabinka bambusowa 1,80m
+Kpl.filizanek 6+6 kolo
+Drabinka bambusowa 2,10m
+Palik kokosowy 30cm
 Filiżanka imbryk
-Kubek zaparzacz 300 ml
+Kubek zaparzacz 300ml
 Mini roleta 35
 Mini roleta 38
 Mini roleta 43
@@ -1999,7 +1999,7 @@ Wsyp 40/40
 Cukiernica luminarc
 Pucharek do lodów
 Wsypa z lamówką 40/40
-Ludwik płyn do kabin prysznicowych spray750ml
+Ludwik płyn do kabin prysznicowych spray 750ml
 Bulionówka
 Bulionówka prymus
 Bulionówka bezbarwna
@@ -2108,7 +2108,7 @@ Cif cream original 780g
 Nasiona - kobea
 Cif cream z mikrokryształkami herbal 780g
 Cif z wybielaczem 750ml
-Talerz głęboki trianon4
+Talerz głęboki trianon 4
 Nasiona - szałwia
 Cif cream lemon 780g
 Talerz deserowy trianon
@@ -2230,11 +2230,11 @@ Duck do WC 750ml morski
 Duck do WC 750ml mięta
 Woda po goleniu bond
 Duck do WC 750ml citrus
-Agrowłóknia zimowa 3,2x5
+Agrowłóknia zimowa 3,2x5m
 Wybielacz Palemka 1L
 Płyn po goleniu wars
 Piżamka dziecięca
-Agrowłoknina zimowa 1,6x10
+Agrowłoknina zimowa 1,6x10m
 Cillit Bang WC Power Cleaner 750ml kamień rdza
 Balsam po goleniu arko
 Cillit Bang WC Power Cleaner 750ml trudne zabrudz
@@ -2371,11 +2371,11 @@ Aro płyn uniwersalny 1L
 Filc duży A4
 Podkładki filcowe średnie
 Dywanik łazienkowy
-Paski do drzwi 80
-Paski do drzwi 90
-Paski do drzwi 100
+Paski do drzwi 80cm
+Paski do drzwi 90cm
+Paski do drzwi 100cm
 Koszulka gimnastyczna
-Paski do drzwi 120
+Paski do drzwi 120cm
 Koszulka gimnastyczna sylwia kolbuszowa
 Koszulka z orzełkiem
 Podkładki filcowe
@@ -2543,43 +2543,43 @@ Otwieracz z flagą
 Odświeżacz pow. Free spray
 Airwick odśw. pow. spray
 Glade Brise odśw. pow.
-Glade Brise odśw. pow.4,
+Glade Brise odśw. pow.4
 Kaftanik niemowlęcy
-Keramzyt 5l
-Kora 50l kolor
+Keramzyt 5L
+Kora 50L kolor
 Szczotka do szorowania Bentom
 Szrober szczotka do szorowania
 Szczotka S
 Szczotka do czyszczenia ubrań z rączką
 Ziemia uniwersalna 20l
 Podkoszulka sławko
-Ziemia do palm i kaktusów 5l
+Ziemia do palm i kaktusów 5L
 Szczotka do butów Sanel mazak
-Ziemia do juk dracen paproci 5l
+Ziemia do juk dracen paproci 5L
 Koszulka ramka
-Ziemia do storczyka 5l
+Ziemia do storczyka 5L
 Koszuka dziewczęca
 Ramka dziewczeca
 Ramka dziewczęca
 Grzałka do piekarnika
-Torf 5l
-Torf 20l
-Torf 60l
+Torf 5L
+Torf 20L
+Torf 60L
 Chusteczki męskie
-Ziemia do wysiewu i pikowania 20l
-Ziemia z nawozem 10l
-Ziemia z nawozem 20l
-Ziemia do pelargoni 20l
-Podłoże do róż 20l
+Ziemia do wysiewu i pikowania 20L
+Ziemia z nawozem 10L
+Ziemia z nawozem 20L
+Ziemia do pelargoni 20L
+Podłoże do róż 20L
 Żabka do karnisza
 Gumka recepturka
 Złączka do karnisza 19mm
-Ziemia do azalii 50l
+Ziemia do azalii 50L
 Złączka do karnisza 16mm
-Ziemia do borówek 70l
-Ziemia do iglaków 20l
+Ziemia do borówek 70L
+Ziemia do iglaków 20L
 Łącznik 3-torowy do karnisza
-Kora sosnowa 60l
+Kora sosnowa 60L
 Odżywka agrecol
 Rajstopt gabriella
 Septonic microbeck do szamb
@@ -2702,7 +2702,7 @@ Koc z mikrofibry 160x200
 Mata łazienkowa 69x35cm
 Pędzel płaski 50
 Mata łazienkowa 54x54cm
-Kocyk dziecięcy 80x110
+Kocyk dziecięcy 80x110cm
 Mata pod prysznic
 Mata łazienkowa 35x70cm
 Pędzel płaski 63
@@ -2732,8 +2732,8 @@ Kaszkiet dziewczęcy
 Happy sztuka 4
 Happy sztuka 6
 Przedłużacz 1,5 m 4-gniazda z wyłącznikiem
-Przedłużacz 5m 4 -gniazda
-Przedłużacz 3m - 3 gniazda
+Przedłużacz 5m 4-gniazda
+Przedłużacz 3m 3-gniazda
 Żel pod prysznic marvel
 Przedłużacz 1,5m 3-gniazda
 Żel po prysznic STR8
@@ -2926,7 +2926,7 @@ Torba zwykła
 Pizama damska
 Chusteczki Regina pudełko
 Chusteczki Apsik pudełko
-Rozpuszczalnik uniwersalny 0,5l
+Rozpuszczalnik uniwersalny 0,5L
 Torba skajowa
 Chusteczki Velet balsam 6+2
 Chusteczki Regina folia rumiankowe
@@ -2994,7 +2994,7 @@ Papier Mola Sensitive rumianek-kokos
 Sukieneczka wełniana
 Papier Regina rumiankowy
 Papier Regina 12 rolek
-Papier Mola 10+2
+Papier Mola 10+2 rolek
 Torba z kółkami w opakowaniu
 Szpachla gipsowa 5kg
 Papier Almusso 16 rolek
@@ -3026,7 +3026,7 @@ Koszula męska biała
 Foreczki foliowe 20x25 100szt
 Woreczki foliowe 25x30
 Woreczki foliowe 30x40 szt50
-Aro folia luminiowa 150m x 29cm
+Aro folia luminiowa
 Torba plecak
 Narękawnik
 Torba walizka
@@ -3072,7 +3072,7 @@ Uchwyt na ręcznik papierowy klausberg
 Pokost lniany 1L
 Uchwyt na ręcznik papierowy na ssawkę
 Lakierobejca 400ml
-Naczynie żaroodporne 8,6l
+Naczynie żaroodporne 8,6L
 Emalia chlorokauczuk biały 900ml
 Gęsiarka 36cm
 Gęsiarka 40cm
@@ -3084,48 +3084,48 @@ Emalia chlorokauczukowa czarna 900ml
 Emalia wodorozcięczalna 0,75L
 Emalia akrylowa 800ml biała
 Emalia akrylowa biała 400ml
-Czajnik melody 2l
-Czajnik 2,7l nierdzewny vito
+Czajnik melody 2L
+Czajnik 2,7L nierdzewny vito
 Emalia podłogowa 1L orzech średni
 Czajnik odelo 3l
 Emalia podłogowa 1L orzech jasny
 Emalia emolak biała 0,8L
-Czajnik 2,5l florina z pokrywą
+Czajnik 2,5L florina z pokrywą
 Dekoral emalia biała 0,9L
-Czajnik 2,5l różyczki
+Czajnik 2,5L różyczki
 Dekoral emalia zielono żółta
-Czajnik 2,8l james
-Czajnik nierdzewny w kropki 3l
+Czajnik 2,8L james
+Czajnik nierdzewny w kropki 3L
 Supermal emalia zielony miętowy
-Czajnik kinghoff 2,5l
+Czajnik kinghoff 2,5L
 Supermal emalia czerwona
-Czajnik nierdzewny 3l
+Czajnik nierdzewny 3L
 Supermal emalia zielona
 Czajnik florina
-Czajnik 2l olen
+Czajnik 2L olen
 Folia płynna
 Supermal emalia popiel
-Czajnik artmet 3l
+Czajnik artmet 3L
 Supermal emalia czarna
-Czajnik domotti 1,3l
-Czajnik stalowy odello 1,5l
+Czajnik domotti 1,3L
+Czajnik stalowy odello 1,5L
 Supermal emalia brązowa
 Supermal emalia brąz czekoladowy
 Supermal emalia machoń
 Supermal emalia orzech jasny
-Czajnik klausberg 2,8l
+Czajnik klausberg 2,8L
 Supermal emalia orzech średni
 Supermal emalia biała
 Supermal emalia kość słoniowa
-Czajnik fegruson 3l
-Czajnik nierdzewny 2,5l daily
+Czajnik fegruson 3L
+Czajnik nierdzewny 2,5L daily
 Półmaska filtrująca
 Klej wikol 1kg
 Wapno malarskie 1,3kg
 Klej do drewna Soudal
 Klej do butów 14g
 Klej rękodzieło
-Czajnik artmet 3l z pokrywą
+Czajnik artmet 3L z pokrywą
 Klej ośmiorniczka
 Klej biurowy
 Klej Wikol 45g
@@ -3319,13 +3319,13 @@ Dzbanek luminarc imperator
 Dzbanek carat luminarc
 Dzbanek fire
 Dzbanek karat
-Dzbanek żaroodporny simak 1l
-Dzbanek żaroodporny 1,4l
-Dzbanek simak 0,65l
+Dzbanek żaroodporny simak 1L
+Dzbanek żaroodporny 1,4L
+Dzbanek simak 0,65L
 Dzbanek do zaparzania
 Dzbanek żaroodporny
-Dzbanek żaroodporny ewa 1,5l
-Dzbanek żaroodporny maja 2,1l
+Dzbanek żaroodporny ewa 1,5L
+Dzbanek żaroodporny maja 2,1L
 Uchwyt do pokrywki
 Folia aluminiowa Aro 100x 29
 Łopatka silikonowa
@@ -3367,7 +3367,7 @@ Foremka aluminiowa płaska
 Pończochy aleksandra
 Mata stołowa dekoracyjna paski
 Pończochy lores
-Emulsja fasadowa 1l śnieżka
+Emulsja fasadowa 1L śnieżka
 Foremka do maszynki do ciastek nr.10
 Foremka do maszynki do ciastek nr.8
 Foremka do maszynki do ciastek nr.5
@@ -3379,7 +3379,7 @@ Deska pod ciasto
 Szpachla Putz 1,5kg
 Deska pod ciasto sklejka
 Forma do gotowania babki
-Drewnochron 5l
+Drewnochron 5L
 Chochla stalowa
 Rękawice robocze niebieskie Rtela
 Odrdzewiacz - fosol
@@ -3428,7 +3428,7 @@ Rękawice gumowe krótkie czerwone
 Podstawka owal na stół
 Rajstopy lores 8den
 Kula drewniana do ucierania
-Śnieżka -emulsja kolor 2,5l
+Śnieżka emulsja kolor 2,5L
 Tłuczek do ziemniaków drewniany
 Tłuczek drewniany okuwany
 Rękawice ogrodnicze Ravi
@@ -3439,7 +3439,7 @@ Podkładka korkowa prostokąt 4szt
 Wałek do ciasta obrotowy
 Wałek do ciasta stały
 Rękawice gumowe żółte
-Śnieżka -emulsja kolor 5l
+Śnieżka emulsja kolor 5L
 Łyżka warszawska duża
 Łyżka szwedzka 18
 Mata dekoracyjna
@@ -3453,7 +3453,7 @@ Rękawice bawełniane białe
 Łyżka nr.14
 Mata dekoracyjna okrągła
 Łyżka szwedzka nr.12
-Dekoral emulsja kolor 4l
+Dekoral emulsja kolor 4L
 Łyżka nr.10
 Wiadro delta
 Rękawice kwasoodporne
@@ -3461,14 +3461,14 @@ Rajstopy medica line
 Montewka drewniana
 Pędzel do ciasta
 Rękawice robocze Dragon
-Dekoral -emulsja jedna warstwa kolor 2,5l
+Dekoral emulsja jedna warstwa kolor 2,5L
 Rajstopy total slim
 Szumówka plastikowa
 Łyżka ażurkowa plastikowa
-Senseo -emulsja kolor 5l
+Senseo emulsja kolor 5L
 Łyżka cedzakowa siatkowa
 Serwetka plastikowa
-Senseo -emulsja kolor 2,5l
+Senseo emulsja kolor 2,5L
 Łyżka cedzakowa siatkowa 9cm
 Obrus dekoracyjny 130x150
 Rękawice robocze siwe Consorte
@@ -3483,44 +3483,44 @@ Obrus cerata 120x140
 Rajstopt mddica
 Ubijaczka
 Rajstopy lores bikini
-Bianco -emulsja elewacyjna 10l
+Bianco emulsja elewacyjna 10L
 Rajstopy fantastiko
 Woreczki HDPE 1000szt 26x35
 Rajstopy laykra xxL
 Ubijaczka do piany
 Woreczki HDPE 1000szt 22x32
-Jedynka -emulsja wewnętrzna 5l
+Jedynka emulsja wewnętrzna 5L
 Woreczki HDPE 1000szt 22x26
 Trzepaczka mała
 Rękawice lateksowe 23%
 Rajstopy lores 8den
-Jedynka - emulsja wewnętrzna 3l
+Jedynka emulsja wewnętrzna 3L
 Rajstopy laykra 15den
-Cieszynka -emulsja wewnętrzna 5l
+Cieszynka -emulsja wewnętrzna 5L
 Płyn Ferry 5L mięta-cytryna
 Rajstopy gatta laykra
 Koszulka męska polo
-Cieszynka -emulsja wewnętrzna 3l
-Śnieżka -ultra biel wewnętrzna 5l
-Śnieżka -ultra biel wewnętrzna 10l
-Malfarb -emulsja fasadowa 3l
+Cieszynka emulsja wewnętrzna 3L
+Śnieżka ultra biel wewnętrzna 5L
+Śnieżka ultra biel wewnętrzna 10L
+Malfarb emulsja fasadowa 3L
 Rękawice winylowe 8%
 Rękawice skórkowe męskie
 Rękawice skórkowe damskie
 Rękawice winylowe 23%
-Malfarb -emulsja fasadowa 5l
+Malfarb emulsja fasadowa 5L
 Patelnia magnat fi 30
 Patelnia magnat fi 26
-Dekoral -emulsja do łazienki,kuchni 3l
+Dekoral emulsja do łazienki,kuchni 3L
 Patelnia magnat fi 24
 Rękawice męskie sports
 Patelnia teflon fi 24
 Patelnia do jajek
 Rękawice męskie pikowane
-Dekoral -emulsja wewnętrzna 5l
+Dekoral emulsja wewnętrzna 5L
 Patelnia magnat fi 28
 Patelnia grill granita z pokrywą
-Dekoral -emulsja wewnętrzna 3l
+Dekoral emulsja wewnętrzna 3L
 Patelnia ceramik fi 26
 Patelnia ceramik fi 24
 Rękawice męskie polarowe
@@ -3541,8 +3541,8 @@ Trutka na myszy Murin 500g
 Gold Cytrus balsam do naczyń
 Rękawice magic
 Trutka na myszy Mice kiler 100g
-Trutka na myszy 250 g
-Trutka na myszy Murin 250 g
+Trutka na myszy 250g
+Trutka na myszy Murin 250g
 Rękawice wełniane
 Trutka na myszy w saszetkach Murin
 Woreczki śniadaniowe 150szt
@@ -3550,7 +3550,7 @@ Dzbanek z zaparzaczem 1350ml
 Toxan płyn 200 ml
 Woreczki foliowe 50szt 30x40
 Woreczki foliowe 100szt 20x30
-Trutka na myszy Murin 1 kg
+Trutka na myszy Murin 1kg
 Rękawice polarowe
 Rękawice dzieciece
 Linka stalowa do bielizny
@@ -3572,13 +3572,13 @@ Wyciskacz do owoców
 Sadpal 50g
 Garnek na parę 2-częściowy
 Rękawice z jednym palcem ortalianowe
-Garnek nierdzewny z pokrywą 4l
+Garnek nierdzewny z pokrywą 4L
 Garnek nierdzewny oliver
 Rekawice dziecięce z jednym palcem
 Garnek nierdzewny argento
 Praska do ziemniaków
 Garnek fusion fi 24
-Garnek emalia + pokrywa dukat 26cm
+Garnek emalia+pokrywa dukat 26cm
 Garnek nierdzewny odelo
 Pasta do zębów Blend a Med
 Garnek emalia z pokrywą grzyby
@@ -3607,10 +3607,10 @@ Papier toaletowy szary Mirpol 10 rolek
 Papier toaletowy Serwus 8 rolek
 0kulary przeciwsłoneczne
 Dres polarowy
-Słoik 1,7l
+Słoik 1,7L
 Papier toaletowy Soft&Easy 8 rolek
 Papier familijny Mola 8 rolek
-Słoik 0,9l
+Słoik 0,9L
 Proszek E kolor 4,5kg
 Proszek Bryza kolor 6kg
 Dres dziecięcy
@@ -3658,15 +3658,15 @@ Proszek Bonux 3w1 Active Fresh 1,5kg
 Proszek Dosia kolor lawenda 1,5kg
 Proszek Dosia do białego 1,5kg
 Dresik polarkowy
-Woreczki na mrożonki Ravi 3 l
+Woreczki na mrożonki Ravi 3L
 Proszek Biały Jeleń do białego 1,5kg
-Woreczki na mrożonki Ravi 2 l
+Woreczki na mrożonki Ravi 2L
 Dresik zkamizelką
 WIelodonica
-Folia aluminiowa Perfekcyjna 10 m
-Folia aluminiowa Super Maja 10 m
+Folia aluminiowa Perfekcyjna 10m
+Folia aluminiowa Super Maja 10m
 Pojemnik jednorazowy na ciasto zamykany 140x140x72
-Folia aluminiowa z tloczeniem Stella 20 m
+Folia aluminiowa z tloczeniem Stella 20m
 Pojemnik jednorazowy 245x180x65
 Folia aluminiowa Polpak 20m
 Pojemnik jednorazowy 214x134x92
@@ -3679,7 +3679,7 @@ Bluza dziecięca
 Golf bawełniany
 Kij drewniany
 Miotła ryżowa
-Mop zewnętrzny - szoryjący
+Mop zewnętrzny - szorujący
 Mop uniwersalny płaski
 Kubek emalia fi 16 z pokrywką
 Podpaski Bella Normal
@@ -3688,18 +3688,18 @@ Kubek emalia z dziubkiem fi 12
 Kubek emalia kalka fi 12
 Kubek emalia dekor fi 10
 Kamizelka męska
-Kubek emalia 0,7l
+Kubek emalia 0,7L
 Kubek emalia z dziubkiem fi 10
-Kubek emalia 0.9l dukat
+Kubek emalia 0.9L dukat
 Kubek nierdzewny fi 10
 Koszula polo męska
-Kubek nierdzewny 0,5l
+Kubek nierdzewny 0,5L
 Sweter męski polo
 Mop vileda ultra max
 Sweter męski
-Obroża owadobójcza bezzapachowa 75
+Obroża owadobójcza bezzapachowa 75cm
 Krzyżak na palnik
-Obroża owadobójcza bezzapachowa 60
+Obroża owadobójcza bezzapachowa 60cm
 Mop płaski York
 Kubek przesiewacz
 Garnek do gotowania mleka nierdzewny
@@ -3729,11 +3729,11 @@ Garnek emalia rondel z trzonkiem fi 14
 Spodnie welurowe
 Garnek emalia rodel z trzonkiem dukat fi 18
 Szlafrok męski
-Garnek emalia rondel nierdzewny vikos 2,7l
+Garnek emalia rondel nierdzewny vikos 2,7L
 Podpaski Bella Normal Maxi
-Garnek emalia rondel nierdzewny vikos 2l
+Garnek emalia rondel nierdzewny vikos 2L
 Ścierka do podłogi biała - kuchcik
-Garnek emalia rondel nierdzewny vikos 0,8l
+Garnek emalia rondel nierdzewny vikos 0,8L
 Podpaski Nova Maxi
 Taśma do firan
 Wkładki higieniczne Panty classic
@@ -3761,7 +3761,7 @@ Cedzak plastikowy z uchwytem
 Cedzak emalia fi 22
 Szlafrok damski
 Gąbka samochodowa
-Cedzak plastikowy 7l
+Cedzak plastikowy 7L
 Druszlak nierdzewny
 Druszlak stalowy
 Ściereczki Presto
@@ -3784,7 +3784,7 @@ Gipiura
 Sciereczki pachnące domowe
 Zmywaki gąbczaste
 Zmywaki kuchenne szorstkie 3 szt
-Garnek nierdzewny fi 26 odelo 8,2l
+Garnek nierdzewny fi 26 odelo 8,2L
 Zmywak szorstki
 Ludwik płyn do drewna 1L
 Garnek emalia fi 20 pleszew
@@ -3821,10 +3821,10 @@ Aro karma dla kota 2kg tuńczyk,drób,wołowina łosoś
 Sztućce na wieszaku kuchenne
 Kij teleskopowy
 Teo karma dla kota po sterylizacji 1,5kg
-Termos obiadowy 1,4l
+Termos obiadowy 1,4L
 Teo karma dla psów 3kg
 Kij rozporowy
-Termos obiadowy 3l
+Termos obiadowy 3L
 Komplet pzyprawników
 Kij platinum
 Serwetnik plastikowy
@@ -3879,13 +3879,13 @@ Podstawka do jajek kwiatek
 Kubek
 Kubek łazienkowy porcelitowy
 Kubek łazienkowy bez ucha
-Kubek łazienkowy benton 0,25l
+Kubek łazienkowy benton 0,25L
 Kubek łazienkowy plastin
 Getry damskie
 Tasiemka
 Deska kuchenna lamela duża
 Szczotka vileda
-Deska kuchenna szklana łowicki wzrór
+Deska kuchenna szklana łowicki wzór
 Deska kuchenna plastikowa splash
 Deska kuchenna plastikowa splash średnia
 Mop vileda
@@ -3942,18 +3942,18 @@ Wkładki higieniczne Naturella
 Podstawka pod suszarkę
 Podstawka pod suszarkę ander
 Bluzka dziewczeca z cekinami
-Podstawka pod suszarkę 0,7
+Podstawka pod suszarkę 0,7m
 Wieszak ubraniowy kpl.
-Podstawka pod suszarkę 40
+Podstawka pod suszarkę 40cm
 Bluzka dziewczęca z cekinami
-Podstawka pod suszarkę 50
+Podstawka pod suszarkę 50cm
 Podstawka pod suszarkę bezbarwna
-Podstawka pod suszarkę twarda 50
+Podstawka pod suszarkę twarda 50cm
 Wieszak ubraniowy metalowy silikowany
 Podstawka pod suszarkę szeroka
-Suszarka do naczyń 80
+Suszarka do naczyń 80cm
 Bluzka dziewczęca z cekinami waszka
-Suszarka do naczyń 60
+Suszarka do naczyń 60cm
 Sitko do mąki
 Sitko nierdzewne fi 200
 Wieszak ubraniowy flokowany
@@ -3995,14 +3995,14 @@ Mydlo w płynie Biały Jeleń
 Termos plastikowy 1l
 Termos plastikowy holiday
 Bluzka dziewczeca biała
-Termos plastikowy 0,68l
-Termos plastikowy 0,45l
-Termos plastikowy 0,25l
-Termos nierdzewny galicja 1l
-Termos nierdzewny 1l florina
-Termos nierdzewny 0,75l florina
-Termos nierdzewny 0,5l
-Termos nierdzewny 0,35l
+Termos plastikowy 0,68L
+Termos plastikowy 0,45L
+Termos plastikowy 0,25L
+Termos nierdzewny galicja 1L
+Termos nierdzewny 1L florina
+Termos nierdzewny 0,75L florina
+Termos nierdzewny 0,5L
+Termos nierdzewny 0,35L
 Opaska polarowa
 Waga kuchenna 3kg
 Waga kuchenna 5kg kelly
@@ -4014,13 +4014,13 @@ Noże w bloku gerlach
 Stojak na noże
 Rajstopki dzecięce dominica
 Skrzynka na wino
-Rajstopki dziecięce do re mi
+Rajstopki dziecięce do-re-mi
 Zestaw pojemników na półce
 Rajstopki iga
 Nakłuwacz do mięsa
 Rajstopki patrycja
-Kamionka pojemnik 6,2l
-Kamionka pojemnik 5l
+Kamionka pojemnik 6,2L
+Kamionka pojemnik 5L
 Papier Mola 9+3
 Frytkownica
 Miska prostokątna
@@ -4150,25 +4150,25 @@ Gumka frotka
 Chlebak metalowy malowany mały
 Chlebak metalowy malowany duży
 Chlebak nierdzewny duży
-Pojemnik kwadratowy 0,6l
-Pojemnik 0,9l kwadratowy
+Pojemnik kwadratowy 0,6L
+Pojemnik 0,9L kwadratowy
 Pojemnik porcelanowy na ryż
 Pojemnik szklany na mąkę
 Solniczka ścienna lipiecki
 Solniczka plecionka
-Pojemnik z miarką 1l
+Pojemnik z miarką 1L
 Gumka do włosów
-Pojemnik z miarką 0,5l
-Pojemnik z miarką 0,25l
+Pojemnik z miarką 0,5L
+Pojemnik z miarką 0,25L
 Cukierniczka nierdzewna
 Mlecznik szklany 200ml
 Maselnica nierdzewna
 Cukiernica porcelitowa
 Gumka do włosów
 Guma szeroka
-Pojemnik shtokholm 0,8l
-Pojemnik shtokholm 1,8l
-Pojemnik shtokholm 0,6l
+Pojemnik shtokholm 0,8L
+Pojemnik shtokholm 1,8L
+Pojemnik shtokholm 0,6L
 Silikonowy dekorator do ciasta
 Pojemnik puszka kwadrat
 Tartka nierdzewna 4-boczna
@@ -4210,8 +4210,8 @@ Szatkownica duża trzynożowa
 Pojemnik na przyprawy
 Pojemnik okrągły z pokrywą 750ml
 Guma 7 wąska
-Pojemnik na art. sypkie 1,7l
-Pojemnik na art. sypkie 2,4l
+Pojemnik na art. sypkie 1,7L
+Pojemnik na art. sypkie 2,4L
 Pojemnik sniadaniowy
 Kamizelka do pływania
 Materac do pływania Bestway
@@ -4222,14 +4222,14 @@ Pojemnik do żywności 580ml
 Pojemnik do żywności 1600ml
 Pojemnik do żywności 1350ml
 Pojemnik do żywności 880ml
-Basen Bestway fi122x25
-Pojemnik do żywności brank 0,75l
+Basen Bestway fi 122x25
+Pojemnik do żywności brank 0,75L
 Basen Bestway fi183x38
 Koszyk na spinacze
 Koszyk ze spinaczami
 Menażka plastikowa
 Ponton
-Dzbanek 2l brzozów
+Dzbanek 2L brzozów
 Piłka wodna
 Suszarka na naczynia odelo
 Materac
@@ -4316,16 +4316,16 @@ Pojemnik do żywności 1150ml ravi
 Pojemnik na jajka
 Pojemnik składany silikonowy ambition
 Pojemnik składany silikonowy ambition 18x16
-Pojemnik 0,46l
-Pojemnik 0,9l
+Pojemnik 0,46L
+Pojemnik 0,9L
 Pojemnik śniadaniowy lunch
 Pojemnik plastim 800ml
-Pojemnik curver 04l
-Pojemnik curver 0,8l
-Pojemnik curver 1,2l
-Pojemnik curver 2l
-Pojemnik curver 3l
-Pojemnik curver 4l
+Pojemnik curver 04L
+Pojemnik curver 0,8L
+Pojemnik curver 1,2L
+Pojemnik curver 2L
+Pojemnik curver 3L
+Pojemnik curver 4L
 Pojemnik do ucierania galicja
 Pojemnik do ucierania plastim
 Podstawka pod garnek metalowa
@@ -4338,82 +4338,82 @@ Pojemnik wiaderko wiszszące
 Suszarka do naczyń plastikowa pojedyńcza
 Podkładka okrągła na ciasto duża
 Podkładka okrągła na ciasto mała
-Kosz 60l plastim
+Kosz 60L plastim
 Kosz na bieliznę filo 55l
-Kosz na bieliznę 50,7l arianna
+Kosz na bieliznę 50,7L arianna
 Kosz na bieliznę narożny plastim
 Kosz na bieliznę branq
-Kosz na bieliznę curver 60l
-Kosz na bieliznę keeeper 60l
-Kosz na śmieci oscar 7l
-Kosz na śmieci curver 9l
+Kosz na bieliznę curver 60L
+Kosz na bieliznę keeeper 60L
+Kosz na śmieci oscar 7L
+Kosz na śmieci curver 9L
 Koszyk okrągły ażurkowy
-Kosz na śmieci fancy 6,5l
-Kosz na śmieci 5l
-Kosz na śmieci 10l
+Kosz na śmieci fancy 6,5L
+Kosz na śmieci 5L
+Kosz na śmieci 10L
 Pojemnik na detergent
 Kosz na śmieci z pedałem
-Kosz na śmieci flip 25l
-Kosz na śmieci benton clip 12l
-Kosz na śmieci benton clip 26l
+Kosz na śmieci flip 25L
+Kosz na śmieci benton clip 12L
+Kosz na śmieci benton clip 26L
 Kosz na śmieci keeeper razmus
 Kosz składany OKT
 Pojemnik plastim margerit
 Pojemnik star wars
 Pojemnik plastim na buty
-Pojemnik plastim 48l
-Pojemnik plastim 29l
-Pojemnik plastim 29l mleczny
+Pojemnik plastim 48L
+Pojemnik plastim 29L
+Pojemnik plastim 29L mleczny
 Pojemnik 595x395x169 plastim
 Piekarnik pojedyńczy
 Piekarnik podwójny
 Krajalnica do tortu
 Miska dwukolorowa
-Miska dwukolorowa 1,4l
-Miska dwukolorowa estel 0,5l
-Miska dwukolorowa estel 1l
+Miska dwukolorowa 1,4L
+Miska dwukolorowa estel 0,5L
+Miska dwukolorowa estel 1L
 Pojemnik do rozmrażania
 Wiadro toaleta
 Wiadro kapuśniak
 Wiadro ścięte
 Wyciskacz do mopa
-Wiadro budowlane 20l
-Wiadro budowlane 12l
-Wiadro budowlane 12l z wylewką
-Wiadro budowlane 3l
+Wiadro budowlane 20L
+Wiadro budowlane 12L
+Wiadro budowlane 12L z wylewką
+Wiadro budowlane 3L
 Wiadro emalia 28cm
-Wiadro nierdzewne 14l
+Wiadro nierdzewne 14L
 Grzebień komplet
-Wiadro nierdzewne 11l
-Wiadro nierdzewne 8l
+Wiadro nierdzewne 11L
+Wiadro nierdzewne 8L
 Wsuwki
-Wiadro plastikowe curver 12l
-Wiadro plastikowe curver 16l
-Wiadro plastikowe delta 10l
+Wiadro plastikowe curver 12L
+Wiadro plastikowe curver 16L
+Wiadro plastikowe delta 10L
 Komplet kuchenny
-Wiadro plastikowe branq z wylewką 5l
-Wiadro plastikowe 5l z pokrywą lipieckie
-Wiadro plastikowe 15l z pokrywą lipieckie
-Wiadro plastikowe curver z pokrywą 16l
-Wiadro plastikowe delta 15l
-Wiadro plastikowe delta 12l
-Wiadro plastikowe delta 6l
-Wiadro plastikowe 12l lipieckie z pokrywą
+Wiadro plastikowe branq z wylewką 5L
+Wiadro plastikowe 5L z pokrywą lipieckie
+Wiadro plastikowe 15L z pokrywą lipieckie
+Wiadro plastikowe curver z pokrywą 16L
+Wiadro plastikowe delta 15L
+Wiadro plastikowe delta 12L
+Wiadro plastikowe delta 6L
+Wiadro plastikowe 12L lipieckie z pokrywą
 Wiadro plastikowe ogrodowe
 Wiadro ocynowane 28cm
 Wiadro ocynowane 30cm
 Wiadro ocynowane 32cm
-Wiadro z pokrywą plastim 10l
-Wiadro z pokrywą białe 10l
-Wiadro białe z pokrywą 33l
+Wiadro z pokrywą plastim 10L
+Wiadro z pokrywą białe 10L
+Wiadro białe z pokrywą 33L
 Ścierka kuchenna
 Wyciskacz do mopa konex
-Wiadro malarskie 12l prostokątne
-Beczka 60l
-Beczka 20l
-Beczka 30l
+Wiadro malarskie 12L prostokątne
+Beczka 60L
+Beczka 20L
+Beczka 30L
 Grabie do siana
-Wiadro budowlane 16l
+Wiadro budowlane 16L
 Wiadro konex mop
 Wiadro + wyciskacz skonar
 Wiadro mop stały wyciskacz
@@ -4434,8 +4434,8 @@ Szufelka + zmiotka ravi
 Szufelka + zmiotka
 Lustro gotyk
 Lustro okrągłe
-Miska prostokątna 8l
-Miska prostokątna 11l
+Miska prostokątna 8L
+Miska prostokątna 11L
 Suszarka ścienna 60cm
 Mata do suszenia naczyń
 Suszarka ścienna 80cm
@@ -4449,16 +4449,16 @@ Szafka czterodrzwiowa
 Lustro podświetlane
 Dywanik Reno 50x80
 Dywanik Portland 50x80
-Miska branq 25l
-Miska branq 15l
-Miska branq 10l
-Miska branq owalna 25l
-Miska OKT 60l
-Miska OKT owalna 40l
+Miska branq 25L
+Miska branq 15L
+Miska branq 10L
+Miska branq owalna 25L
+Miska OKT 60L
+Miska OKT owalna 40L
 dywanik Niagara 50x80
 Dywanik Las vegas 50x80
 Dywanik Kansas 50x80
-Miska owalna OKT 25l
+Miska owalna OKT 25L
 Dywanik Niagara 60X135
 Nakładka na sedes
 Kratka do zlewu warmel
@@ -4468,23 +4468,23 @@ Kratka do zlewu
 Karma dla kotów Teo 400g
 Karma dla kotów dorosłych Aro
 Kość dla psa
-Miska lamela 15l
+Miska lamela 15L
 Karma puszka dla psa 1250g
-Miska lamela 10l
+Miska lamela 10L
 Karma dla kota Teo 415g
-Miska lamela 20l
-Miska lamela 30l
+Miska lamela 20L
+Miska lamela 30L
 Żwirek Reno dla kota
-Miska 2l z wylewką
+Miska 2L z wylewką
 Miska kwadrat OKT
-Miska kuchenna 12,5l
-Miska kuchenna 8l
-Miska kuchenna 5,7l
-Miska kuchenna 3,5l
-Miska kuchenna 1,9l
-Miska kuchenna 1,1l
-Miska kuchenna 0,6l
-Miska benton 13,5l
+Miska kuchenna 12,5L
+Miska kuchenna 8L
+Miska kuchenna 5,7L
+Miska kuchenna 3,5L
+Miska kuchenna 1,9L
+Miska kuchenna 1,1L
+Miska kuchenna 0,6L
+Miska benton 13,5L
 Miska emalia 45cm
 Miska emalia 36cm
 Miska emalia 28cm
@@ -4515,17 +4515,17 @@ Mosbito plastry na komary
 Pojemnik na proszek z pokrywą
 Bros na komary dla dzieci
 Pojemnik na proszek z pokrywą transparentny
-Draker 10.2
+Draker 10.2L
 Bros maść ogrodnicza
 Uchwyt do ręcznika benton
 Bros gaśnica na osy
 Kosz tantarelli z rączkami
 Bros na owady biegające
-Kosz bieliźniany biodrowy 40l
+Kosz bieliźniany biodrowy 40L
 Bros muchospray
 Miska z uchwytami ażurkowa rotho
 Pochodnia
-Kosz na bieliznę 50l
+Kosz na bieliznę 50L
 Bros lep na muchy
 Kosz curver M bez pokrywy
 Krople pchełka
@@ -4561,9 +4561,9 @@ Koszyk ażurkowy kwiatek DC66
 Koszyk ażurkowy okrągły
 Koszyk ażurkowy fruit basket
 Pojemnik z pokrywą box L ratanowy
-Pojemnik z pokrywą curver box 11l
+Pojemnik z pokrywą curver box 11L
 Koszyczek violet maxi z pokrywą kateks
-Pojemnik ażurkowy curver 4,5l z pokrywą
+Pojemnik ażurkowy curver 4,5L z pokrywą
 Pojemnik ażurkowy curver z pokrywą ratanowy
 Koszyczek DC621 ażurkowy z uchwytem
 Koszyczek ratanowy chomik
@@ -4650,9 +4650,9 @@ Zapas do mopa gumowego
 Zapas do mopa
 Zapas do mopa ever
 Zapas do mopa lux
-siatka p. owadom do okna 150x180
+Siatka p. owadom do okna 150x180
 Zapas do mopa super lux
-Siztka p. owadom do okna 130x150
+Siatka p. owadom do okna 130x150
 Wkład do szafy zapachowy
 Dziecięca nocna lampka led
 Sitko do zlewu plastikowe
@@ -4689,7 +4689,7 @@ Stroj kąpielowy
 Strój kąpielowy dziecięcy
 Firanka makarony 250/290
 Makarony 160/290
-Lambrekin 5 m.
+Lambrekin 5m
 Lambrekin ozdobny 380/175
 Rajstopy bawełniane 128-134
 Komplet zasłon
@@ -4742,7 +4742,7 @@ Szczotka wc platinum
 Szczotka wc zapas
 Przepychacz
 Rajstopy bawełniane 116-122
-Firanka wy.2,50
+Firanka wys. 2,50m
 Przepychacz
 Uniwersalny filtr węglowy do okapów 57x47
 Pokrowiec na ubranie 60x150
@@ -4755,12 +4755,12 @@ Rajstopy bawełniane 68-74
 Zasłona do prysznica poilestrowa 1,8x1,8m
 Zasłona do prysznica peva 1,8x1,8m
 Ravi platinum zmiotka z szufelką mała
-Firanka wy. 2,50
+Firanka wys. 2,50m
 Łyżka do butów 65cm
 Zasłona do prysznica feniks
 Łyżka do butów metalowa długa
 Łyżka do butów średnia
-rajstopy mikrofibra 68
+Rajstopy mikrofibra 68
 Łyżka do butów plastikowa 30cm
 Zasłona do prysznica peva
 Zestaw akcesoriów do grill 3szt
@@ -4772,14 +4772,13 @@ Pudło prożniowe 100x80x32
 Filtr do okapu 53x57
 Rajstopy bawełniane 92-98
 Organizer do szafy 45x100x15
-Firanka wys. 2,50
+Firanka wys. 2,50m
 Kartka okolicznościowa
 Kartka okolicznościowa
-Kartka pamiątka chrztu św
+Kartka pamiątka chrztu św.
 Obrus żakardowy 150x300
 Kosz Plafor
 Obrus żakardowy 150x350
-Fieanka wys.2,50
 Podpaski Bella
 Obrus żakardowy 140x250
 Obrus żakardowy owal 140x250
@@ -4787,7 +4786,6 @@ Kartka ślubna
 Aro podpaski normal plus
 Podpaski Naturalla classic night
 Obrus żakardowy 100x150
-Firanka wys.2,50
 Podpaski Naturella ultra normal
 Obrus żakardowy 150x100
 Obrus żakardowy 100x150
@@ -4911,7 +4909,6 @@ Bieżnik plamoodporny 75x75
 Bieżnik haftowany 40x90
 Parasolka gama
 Firanka zazdrostka 40 cm
-Firanki wys.2,50
 Parasolka f-95
 Bieżnik gipiura 60x120
 Bieżnik gipiura 40x85
@@ -4923,7 +4920,7 @@ Obrus 90x160
 Parasolka d-68
 Obrus 80x140
 Obrus owal 110x160
-Firanka zazdrostka 45 cm Haft
+Firanka zazdrostka 45 cm haft
 Obrus gipiura owal 130x170
 Obrus 110x160
 Obrus 110x160 owal
@@ -4956,8 +4953,7 @@ Obrus plamoodporny 155x220
 Bieżnik haftowany 90x40
 Obrus plamoodporny 90x155 kolorowy
 Obrus plamoodporny 140x180 kolorowy
-Obrus plamoodporny 130x160 kolor
-Firanka wys.2,7019
+Obrus plamoodporny 130x160 kolorowy
 Obrus plamoodporny 140x200 kolorowy
 Obrus plamoodporny 150x300 kolorowy
 Obrus plamoodporny 140x220 kolorowy
@@ -4970,10 +4966,10 @@ Obrus plamoodporny 135x230 owal
 Obrus plamoodporny 140x240
 Obrus plamoodporny 155x200
 Obrus plamoodporny 130x150
-Firanka wys.2,70
+Firanka wys. 2,70m
 Obrus plamoodporny 130x155
 Obrus plamoodporny 120x160
-Firanka zazdrostka 40 cm Haft
+Firanka zazdrostka 40 cm haft
 Obrus plamoodporny 140x280
 Obrus plamoodporny 155x260
 Obrus plamoodporny 90x155
@@ -4983,52 +4979,51 @@ Obrus plamoodporny 155x300
 Obrus plamoodporny 140x180
 Obrus plamoodporny 110x155
 Obrus plamoodporny 155x320
-Firanka wys.2,60
+Firanka wys. 2,60m
 Obrus plamoodporny 155x180
 Obrus plamoodporny 100x155
-Firana zazdrostka 40 cm
+Firana zazdrostka 40cm
 Materiał zasłonowy
-Firana zazdrostka 50 cm
-Firanka wys.2m
-Firana zazdrostka kolorowa 40 cm
-Firanka woal wys.195
-Firanka wys.1,80
-Firanka gazówka wys.2,50
-Firanka gazowka wys.2,50
-Firana zazdrostka jabłuszka 40 cm
-Firanka wys.18
-Firanka zazdrostka 50 cm
-Firanka zazdrostka 40 cm haft
-Firanka wys.1,60
-Firanka 180
-Firanka zazdrostka sowy 40 cm
-Firana zazdrostka 70 cm
-Firanka 100
-Firana zazdrostka kolorowa 45 cm
-Firana zazdrostka 40 cm brokat
-Firanka wys.1,75
-Firana zazdrostka 40 cm fala
-Firana zazdrostka 50 cm Haft
+Firana zazdrostka 50cm
+Firanka wys. 2m
+Firana zazdrostka kolorowa 40cm
+Firanka owal wys. 195cm
+Firanka wys. 1,8m
+Firanka gazówka wys. 2,50m
+Firana zazdrostka jabłuszka 40cm
+Firanka wys. 1,8m
+Firanka zazdrostka 50cm
+Firanka zazdrostka 40cm haft
+Firanka wys. 1,60m
+Firanka 180cm
+Firanka zazdrostka sowy 40cm
+Firana zazdrostka 70cm
+Firanka 100cm
+Firana zazdrostka kolorowa 45cm
+Firana zazdrostka 40cm brokat
+Firanka wys. 1,75m
+Firana zazdrostka 40cm fala
+Firana zazdrostka 50cm haft
 Firanka 120
 Firanka 140
 Firanka 80
-Firanka zazdrostka 40 cm czajniki
+Firanka zazdrostka 40cm czajniki
 Firanka 45
 Firanka 90
 Firanka 130
-Firana zazdrostka dziana Haft
+Firana zazdrostka dziana haft
 Firanka 150
-Firanka zazdrostka 70 cm błyszcząca
-Firana zazdrostka 60 cm jabłuszka
-Firana zazdrostka 80 cm
-Firanka zazdrostka 60 cm
+Firanka zazdrostka 70cm błyszcząca
+Firana zazdrostka 60cm jabłuszka
+Firana zazdrostka 80cm
+Firanka zazdrostka 60cm
 Firanka 110
-Firana zazdrostka 75 cm woal
-Firanka wys.1,10
+Firana zazdrostka 75cm owal
+Firanka wys. 1,1m
 Firanka zazdrostka 60 cm sowy
 Firanka 70cm
-Firanka wys.0,70
+Firanka wys. 0,70m
 Firanka 65
-Firanka wys.0,60
+Firanka wys. 0,60m
 Firanka 70
-Firanka zazdrostka woal kawa
+Firanka zazdrostka owal kawa
