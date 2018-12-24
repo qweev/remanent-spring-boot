@@ -8,13 +8,17 @@
   <script src="resources\jq\jquery.min.js"></script>
   <script src="resources\js\bootstrap.min.js"></script>
   
-      <script src="resources\custom\block.js"></script>
+   <script src="resources\custom\block.js"></script>
+
+	<script src="resources\custom\podpowiadacz.js"></script>
+	<script src="resources\custom\slownikDodajTowar.js"></script>
   <script src="resources\custom\wspolneFunkcje.js"></script>
   <script src="resources\custom\dodajPozycje.js"></script>
   <script src="resources\custom\szukajPozycji.js"></script>
   <script src="resources\custom\zmienPozycje.js"></script>
   <script src="resources\custom\usunPozycje.js"></script>
- <script src="resources\custom\slownikDodajTowar.js"></script>
+ 
+ 
   
   
  <style>
@@ -43,7 +47,12 @@ color: green;
     <li><a data-toggle="tab" href="#zmien">Zmień</a></li>
     <li><a data-toggle="tab" href="#szukaj">Szukaj</a></li>
     <li><a data-toggle="tab" href="#usun">Usuń</a></li>
+	<span style="margin-left:30px;">
+		<input id="podpowiadaczCheckbox" type="checkbox" value="" checked style="margin-right:3px;margin-top:15px" >
+		<span id="podpowiadaczText">podpowiadacz aktywny</span></input>
+	</span>
   </ul>
+  
 
 
 
@@ -54,8 +63,12 @@ color: green;
       <p></p>
 	  <div class="row">
 	   <div class="col-sm-8 form-group">
-			<label for="towar">Nazwa towaru:</label>
+			<label for="towar">Nazwa towaru:</label>			
+			
 			<input type="text" class="form-control" id="towar" placeholder="- tu wpisz nazwę towaru, max 50 znaków -">
+			<select class="form-control" multiple style="height:170px"  id="podpowiadaczLista">
+      </select>
+			
 			<p ><b id="slownikWynik"></b></p>
 		</div>
 		<div class="col-sm-2 form-group" >	

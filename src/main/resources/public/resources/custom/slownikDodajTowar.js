@@ -2,9 +2,19 @@
 
     var globalnaListaSlow = [];
 
-    $("#towar").focusout(function(){
-		$("#modalZapisDialog").removeClass("czerwonyText");
-    	$("#modalZapisDialog").html("");
+	
+			
+		$.blockUI({ 
+					css: { 
+						border: 'none', 
+						padding: '15px', 
+						backgroundColor: '#000', 
+						'-webkit-border-radius': '10px', 
+						'-moz-border-radius': '10px', 
+						opacity: .5, 
+						color: '#fff' 
+					}
+    			});
 		
         $.ajax({
             type:    "GET",
@@ -17,7 +27,7 @@
             success: function(slownikPlik) {
 				globalnaListaSlow = slownikPlik.split("\n");
 				//console.log("success  "+ globalnaListaSlow[4037]);
-				$(this).sprawdzPisownie(globalnaListaSlow);
+				//$(this).sprawdzPisownie(globalnaListaSlow);
             },
 
             error: function(jqXHR, exception) {
@@ -29,6 +39,13 @@
 			}		
 
         });
+	
+	
+	
+    $("#towar").focusout(function(){
+		$("#modalZapisDialog").removeClass("czerwonyText");
+    	$("#modalZapisDialog").html("");
+		$(this).sprawdzPisownie(globalnaListaSlow);
 
     })
 
