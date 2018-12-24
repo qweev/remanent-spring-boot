@@ -3,15 +3,12 @@ package aniela.remanent.E2E_web_UI_Tab_DodajTowar;
 
 import aniela.FireFoxConfiguration;
 import aniela.remanent.Application;
-import aniela.remanent.DodajTowar_UI_TabComponents.PoleIlosc;
 import aniela.remanent.DodajTowar_UI_TabComponents.PoleJednostka;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.WebDriver;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;

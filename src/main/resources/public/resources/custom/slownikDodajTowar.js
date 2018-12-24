@@ -3,7 +3,7 @@
     var globalnaListaSlow = [];
 
 	
-			
+		/*	
 		$.blockUI({ 
 					css: { 
 						border: 'none', 
@@ -15,6 +15,7 @@
 						color: '#fff' 
 					}
     			});
+				*/
 		
         $.ajax({
             type:    "GET",

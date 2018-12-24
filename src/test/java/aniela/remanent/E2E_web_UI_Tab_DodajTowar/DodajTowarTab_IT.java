@@ -5,7 +5,6 @@ import aniela.FireFoxConfiguration;
 import aniela.remanent.DodajTowar_UI_TabComponents.PoleIlosc;
 import aniela.remanent.Application;
 import aniela.remanent.DodajTowar_UI_TabComponents.*;
-import org.junit.After;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -13,7 +12,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -65,6 +63,7 @@ public class DodajTowarTab_IT {
     @Before
     public void setUp(){
         driver.get("http://localhost:8080/index.html");
+
     }
 
     @Test

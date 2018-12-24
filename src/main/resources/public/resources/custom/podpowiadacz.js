@@ -8,7 +8,7 @@ $(document).ready(function(){
 	var globalnaListaSlow = [];
 	var uniqueItems = [];
 	
-	
+	/*
 	    	$.blockUI({ 
 					css: { 
 						border: 'none', 
@@ -21,7 +21,7 @@ $(document).ready(function(){
 					}
 					
     			});
-				
+		*/		
 	 
 	     $.ajax({
             type:    "GET",
@@ -39,8 +39,8 @@ $(document).ready(function(){
 				//console.log("wypisz slowa uniq" + uniqueItems.length);
 				//console.log("podpowiadacz zaladowany");
 				
-				var t2 = new Date().getTime();
-				var delta = t2-t1;
+				//var t2 = new Date().getTime();
+				//var delta = t2-t1;
 				//console.log("t delta == "+ delta);
             },
 

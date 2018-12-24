@@ -157,7 +157,7 @@ Florowit do trawników 1kg
 Florowit do winorośli 1 kg
 Fruktus do iglaków 1kg
 Fruktus 1 kg do borówki
-Nawóz jwsienny 1 kg
+Nawóz jesienny 1 kg
 Florowit do iglaków 1 kg
 Preparat do kompostowania 1 l
 Trawa 0.25 kg
@@ -1300,7 +1300,6 @@ Minutnik garnek
 Kapsułki Persil do prania
 Pościel3D
 Minutnik kuchenny
-POŚCIEL160/200
 Nawóz w płynie do kwitnących - zielony dom
 Mlynek do kawy ręczny drewniany
 Pościel 200/220
