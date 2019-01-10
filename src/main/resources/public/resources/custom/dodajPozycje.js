@@ -24,7 +24,7 @@ $(document).ready(function(){
 	var validacjaDodajCenaB = "NOK";
 	var validacjaDodajCenaN = "NOK";
 	var validacjaDodajIlosc = "NOK";
-	
+	var validacjaUzytkownik = "NOK";
 	
 	$("#towar").focusout(function() {
 			if ( $("#towar").val().length > 51 | $("#towar").val().trim().length == 0 | $("#towar").val().trim() == $("#towar").val().trim().toUpperCase() ) {
@@ -79,6 +79,18 @@ $(document).ready(function(){
 			validacjaDodajIlosc = "OK";
 			}
 	});
+	
+	$("#uzytkownik").focusout(function() {
+
+		if ( $("#uzytkownik").val().trim().length == 0 | $("#uzytkownik").val().trim() == $("#uzytkownik").val().trim().toUpperCase() ) {
+			$("#uzytkownik").addClass("czerwony");
+			validacjaUzytkownik = "NOK";
+		}
+		else {
+			$("#uzytkownik").removeClass("czerwony");
+			validacjaUzytkownik = "OK";
+			}
+	});
 
 	$("#jednostka").focusout(function() {
 //		// dopiero po clicku zmienia wartosc !! dodac jakis  inny event ? houver out ?
@@ -92,7 +104,7 @@ $(document).ready(function(){
     	var numerPozycjiDoHistori = 0;
     	$("#modalZapisDialog").removeClass("czerwonyText");
 //    	$('#modalZapisDialog').removeClass("zielonyText");
-    	if(validacjaDodajTowar == "NOK" | validacjaDodajCenaB == "NOK" | validacjaDodajCenaN == "NOK" | validacjaDodajIlosc == "NOK" ){
+    	if(validacjaDodajTowar == "NOK" | validacjaDodajCenaB == "NOK" | validacjaDodajCenaN == "NOK" | validacjaDodajIlosc == "NOK" | validacjaUzytkownik == "NOK" ){
     		var info ="!!! Niepoprawny wpis w jednym z pol !!!" + "<br/>"+ "wpisz jeszcze raz ...";
     		$("#modalZapisDialog").addClass("czerwonyText").html(info);	
     		$("#zapisDialog").modal("show");
@@ -108,6 +120,9 @@ $(document).ready(function(){
     		}
     		if (validacjaDodajIlosc == "NOK") {
     			$("#ilosc").addClass("czerwony");
+    		}
+			if (validacjaUzytkownik == "NOK") {
+    			$("#uzytkownik").addClass("czerwony");
     		}
 
     		return 0;
@@ -258,7 +273,7 @@ $(document).ready(function(){
 	 
 	 $('#zamknijDialogZapisz').click(function(){
 		$("#towar").focus();
-		console.log("focus na towar !!!!");
+	
 	});
 });
 $(document).ajaxStop($.unblockUI); 
