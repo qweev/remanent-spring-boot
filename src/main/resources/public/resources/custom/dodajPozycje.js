@@ -164,7 +164,7 @@ $(document).ready(function(){
 		cenaN = $(this).konwertujDoLiczby(cenaN);
 		ilosc = $(this).konwertujDoLiczby(ilosc);
 		
-		var pola = '{"cenaNetto":"'+cenaN+'","cenaBrutto":"'+cenaB+'","nazwaTowaru":"'+towar+'","jednostka":"'+jednostka+'","ilosc":"'+ilosc+'","uzytkownik":"'+uzytkownik+'"}';
+		var pola = '{"cena_netto":"'+cenaN+'","cena_brutto":"'+cenaB+'","nazwa_towaru":"'+towar+'","jednostka":"'+jednostka+'","ilosc":"'+ilosc+'","uzytkownik":"'+uzytkownik+'"}';
 		return pola;
 	}
    
@@ -235,7 +235,7 @@ $(document).ready(function(){
 	 			"<td>"+$("#jednostka").text()+"</td>"+
 	 			"<td>"+$("#ilosc").val().trim()+"</td></tr>"
 	 		);
-	 	$(this).wyszyscPola();
+	 	$(this).wyszyscPolaPoUdanymWpisieDoBazy();
          }
 	
 	 $.fn.wyszyscPola = function() { 
@@ -245,6 +245,15 @@ $(document).ready(function(){
 		$("#ilosc").val('');
 		//$("#jednostka").text('- wybierz - ');	
 		$("#jednostka").text('szt.');
+      }
+	  
+	 $.fn.wyszyscPolaPoUdanymWpisieDoBazy = function() { 
+        $("#towar").val('');
+		$("#cenaB").val('');
+		$("#cenaN").val('');
+		$("#ilosc").val('');
+		//$("#jednostka").text('- wybierz - ');	
+		//$("#jednostka").text('szt.');
       }
 	 
 	 $('#zamknijDialogZapisz').click(function(){
