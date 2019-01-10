@@ -39,6 +39,7 @@ $(document).ready(function(){
 			$("#modalUsunDialog").addClass("czerwonyText");
 			$("#modalUsunDialog").html("Zły numer pozycji, wpisz jeszcze raz !");
 			$("#usunDialog").modal("show");
+			setTimeout(function () {$('#zamknijDialogUsun').focus();}, 300);
 		}
 		else {
 //			$("#modalUsunDialog").addClass("zielonyText");
@@ -92,6 +93,7 @@ $(document).ready(function(){
 				            $(this).czyscTabeleUsun();
 				            $("#usunDialog").modal("show");
 							$(this).aktualizujHistoriePoUsun();
+							setTimeout(function () {$('#zamknijDialogUsun').focus();}, 300);
 		            	}
 		            	else {
 		            		console.log("Usunięto pozycję o złym numerze");
@@ -99,6 +101,7 @@ $(document).ready(function(){
 		            		$("#modalUsunDialog").html("Usunięto pozycję o złym numerze. Numer wysłany to: " + numerDoUsunieciaZBazy +
 		            				" Numer usunięty to: "+response);
 		            		$("#usunDialog").modal("show");
+							setTimeout(function () {$('#zamknijDialogUsun').focus();}, 300);
 		            	}
 		            
 		            
@@ -108,6 +111,7 @@ $(document).ready(function(){
 		            $("#modalUsunDialog").addClass("czerwonyText");
 					$("#modalUsunDialog").html(msg);
 					$("#usunDialog").modal("show");
+					setTimeout(function () {$('#zamknijDialogUsun').focus();}, 300);
 		        	},
 		    	});
 		   
@@ -151,6 +155,7 @@ $(document).ready(function(){
 	            $("#modalUsunDialog").addClass("czerwonyText");
 				$("#modalUsunDialog").html(msg);
 				$("#usunDialog").modal("show");
+				setTimeout(function () {$('#zamknijDialogUsun').focus();}, 300);
 	        	},
 	    	});
 	    }
@@ -163,6 +168,7 @@ $(document).ready(function(){
 	            $("#modalUsunDialog").html("Nie ma takiej pozycji w bazie");
 	            numerDoUsuniecia = $("#brakPozycjiDoUsuniecia").html("<b>Nie ma takiej pozycji w bazie</b>");
 	            $("#usunDialog").modal("show");
+				setTimeout(function () {$('#zamknijDialogUsun').focus();}, 300);
 	    	}
 	    	else {
 	            numerDoUsunieciaZBazy = $("#wpiszNumerPozycjiDoUsuniecia").val();
@@ -204,6 +210,10 @@ $(document).ready(function(){
 	    $.fn.czyscTabeleUsun = function (){
 	    	$('#tabelkaUsun').html("");
 	    }
+		
+	$('#zamknijDialogUsun').click(function(){
+		$("#wpiszNumerPozycjiDoUsuniecia").focus();
+	});
 	
 });
 $(document).ajaxStop($.unblockUI); 

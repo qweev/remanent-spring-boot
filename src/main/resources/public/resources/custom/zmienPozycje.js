@@ -99,6 +99,7 @@ $(document).ready(function(){
 			$("#wpiszNumerPozycji").addClass("czerwony");
 			$("#pobierzPozycjePoNumerzePrzycisk").addClass("czerwony");
 			$("#zmienDialog").modal("show");
+			setTimeout(function () {$('#zamknijDialogZmien').focus();}, 300);
 			validacjaNumerPozycji = "NOK";
 			return 0;
 		}
@@ -116,6 +117,7 @@ $(document).ready(function(){
     		$("#modalZmienDialog").addClass("czerwonyText");
     		var info ="!!! Niepoprawny wpis w jednym z pol !!!" + "<br/>"+ "wpisz jeszcze raz ...";
     		$("#modalZmienDialog").html(info);	
+			setTimeout(function () {$('#zamknijDialogZmien').focus();}, 300);
     		if (validacjaZmienTowar == "NOK") {
     			$("#zmienTowar").addClass("czerwony");
     		}
@@ -133,6 +135,7 @@ $(document).ready(function(){
     	if(($("#zmienTowar").val().trim().length == 0) | ($("#zmienCenaB").val().trim().length == 0) | ($("#zmienCenaN").val().trim().length == 0) | ($("#zmienIlosc").val().trim().length == 0) | ($("#zmienIlosc").val() <= 0)  ){
     		var info ="!!! Niepoprawny wpis w jednym z pol !!!" + "<br/>"+ "wpisz jeszcze raz ...";
     		$("#modalZmienDialog").addClass("czerwonyText").html(info);
+			setTimeout(function () {$('#zamknijDialogZmien').focus();}, 300);
     		if ($("#zmienTowar").val().trim().length == 0) {
     			$("#zmienTowar").addClass("czerwony");
     		}
@@ -191,11 +194,13 @@ $(document).ready(function(){
             	$("#zmienDialog").modal("show");
             	$("#ukryte").removeClass("in");
 				$(this).aktualizujHistoriePoZmien();
+				setTimeout(function () {$('#zamknijDialogZmien').focus();}, 500);	
             }
             else {
             	$("#modalZmienDialog").addClass("czerwonyText");
             	$("#modalZmienDialog").html("Otrzymany numer pozycji jest inny od wysłanego !");
-            	$("#zmienDialog").modal("show");
+            	$("#zmienDialogZmien").modal("show");
+				setTimeout(function () {$('#zamknijDialogZmien').focus();}, 500);
             }
             
         },
@@ -204,6 +209,7 @@ $(document).ready(function(){
             var msg = $(this).getErrorMessage(jqXHR, exception);
 			$("#modalZmienDialog").html(msg);
 			$("#zmienDialog").modal("show");
+			setTimeout(function () {$('#zamknijDialogZmien').focus();}, 1000);
         	},
     	});
 		
@@ -239,6 +245,7 @@ $(document).ready(function(){
             	$("#modalZmienDialog").html("Brak pozycji o takim numerze !");
             	$("#ukryte").removeClass("in");
             	$("#zmienDialog").modal("show");
+				setTimeout(function () {$('#zamknijDialogZmien').focus();}, 500);
             }
             else {
             	$(this).wyswietlPozycjeDoZmiany(response);
@@ -251,6 +258,7 @@ $(document).ready(function(){
             var msg = $(this).getErrorMessage(jqXHR, exception);
 			$("#modalZmienDialog").html(msg);
 			$("#zmienDialog").modal("show");
+			setTimeout(function () {$('#zamknijDialogZmien').focus();}, 500);
         	},
     	});
     }	
@@ -307,5 +315,8 @@ $(document).ready(function(){
 		return pola;
 	}
 	
+	$('#zamknijDialogZmien').click(function(){
+		$("#wpiszNumerPozycji").focus();
+	});
 });
 $(document).ajaxStop($.unblockUI); 

@@ -96,6 +96,7 @@ $(document).ready(function(){
     		var info ="!!! Niepoprawny wpis w jednym z pol !!!" + "<br/>"+ "wpisz jeszcze raz ...";
     		$("#modalZapisDialog").addClass("czerwonyText").html(info);	
     		$("#zapisDialog").modal("show");
+			setTimeout(function () {$('#zamknijDialogZapisz').focus();}, 300);
     		if (validacjaDodajTowar == "NOK") {
     			$("#towar").addClass("czerwony");
     		}
@@ -115,6 +116,7 @@ $(document).ready(function(){
     		var info ="!!! Niepoprawny wpis w jednym z pol !!!" + "<br/>"+ "wpisz jeszcze raz ...";
     		$("#modalZapisDialog").addClass("czerwonyText").html(info);
     		$("#zapisDialog").modal("show");
+			setTimeout(function () {$('#zamknijDialogZapisz').focus();}, 300);
     		if ($("#towar").val().trim().length == 0) {
     			$("#towar").addClass("czerwony");
     		}
@@ -209,6 +211,7 @@ $(document).ready(function(){
             $("#modalZapisDialog").addClass("czerwonyText");
 			$("#modalZapisDialog").html(msg);
 			$('#zapisDialog').modal("show");
+			setTimeout(function () {$('#zamknijDialogZapisz').focus();}, 1000);
         	},
     	});
     }
@@ -244,5 +247,9 @@ $(document).ready(function(){
 		$("#jednostka").text('szt.');
       }
 	 
+	 $('#zamknijDialogZapisz').click(function(){
+		$("#towar").focus();
+		console.log("focus na towar !!!!");
+	});
 });
 $(document).ajaxStop($.unblockUI); 

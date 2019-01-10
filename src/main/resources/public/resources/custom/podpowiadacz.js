@@ -230,6 +230,8 @@ $(document).ready(function(){
 		var doTowar = $("#podpowiadaczLista option:selected" ).text();
 		$("#towar").val(doTowar);
 		$("#podpowiadaczLista").hide();
+		$("#slownikWynik").hide();
+		$("#towar").focus();
 	
 	});
 	

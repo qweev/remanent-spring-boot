@@ -34,6 +34,7 @@ $(document).ready(function(){
 				$("#modalSzukajDialog").addClass("czerwonyText");
 				$("#modalSzukajDialog").html("nic nie wpisane do szukania");
 				$("#szukajDialog").modal("show");
+				setTimeout(function () {$('#zamknijDialogSzukaj').focus();}, 300);
 			}
 			else {
 				$("#szukajPozycji").removeClass("czerwony");
@@ -83,6 +84,7 @@ $(document).ready(function(){
 			$("#modalSzukajDialog").addClass("czerwonyText");
 			$("#modalSzukajDialog").html("puste wszystkie pola w szukaniu zaawansowanym !");
 			$("#szukajDialog").modal("show");
+			setTimeout(function () {$('#zamknijDialogSzukaj').focus();}, 300);
 			
 		}
 	});
@@ -217,6 +219,7 @@ $(document).ready(function(){
 		    $("#modalSzukajDialog").addClass("czerwonyText");
 			$("#modalSzukajDialog").html("walidajca zaawansowane szukanie");
 			$("#szukajDialog").modal("show");
+			setTimeout(function () {$('#zamknijDialogSzukaj').focus();}, 300);
 		}
 		else {
 			$(this).wyslijZaaSzukanieJSON(opcje);
@@ -354,6 +357,7 @@ $(document).ready(function(){
             $("#modalSzukajDialog").addClass("czerwonyText");
 			$("#modalSzukajDialog").html(msg);
 			$("#szukajDialog").modal("show");
+			setTimeout(function () {$('#zamknijDialogSzukaj').focus();}, 1000);
         	},
     	});
 		
@@ -397,6 +401,7 @@ $(document).ready(function(){
             $("#modalSzukajDialog").addClass("czerwonyText");
 			$("#modalSzukajDialog").html(msg);
 			$("#szukajDialog").modal("show");
+			setTimeout(function () {$('#zamknijDialogSzukaj').focus();}, 500);
         	},
     	});
     }
@@ -407,6 +412,7 @@ $(document).ready(function(){
     			$("#modalSzukajDialog").html("Nie ma takiej pozycji w bazie");
     			$("#brakWynikow").html("<b>Nie ma takiej pozycji w bazie</b>");
     			$("#szukajDialog").modal("show");
+				setTimeout(function () {$('#zamknijDialogSzukaj').focus();}, 500);
     	}
     	
     	else {
@@ -455,6 +461,9 @@ $(document).ready(function(){
 		$("#zaaIloscPole").removeClass("czerwony");	
 	}
 	
+	$('#zamknijDialogSzukaj').click(function(){
+		$("#szukajPozycji").focus();
+	});
     
 });
 $(document).ajaxStop($.unblockUI); 
