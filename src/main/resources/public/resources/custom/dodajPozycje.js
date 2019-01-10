@@ -81,7 +81,6 @@ $(document).ready(function(){
 	});
 	
 	$("#uzytkownik").focusout(function() {
-
 		if ( $("#uzytkownik").val().trim().length == 0 | $("#uzytkownik").val().trim() == $("#uzytkownik").val().trim().toUpperCase() ) {
 			$("#uzytkownik").addClass("czerwony");
 			validacjaUzytkownik = "NOK";
@@ -149,6 +148,19 @@ $(document).ready(function(){
 //    		}
     		return 0;
     	}
+		 //console.log("ostatni czek");
+		 
+		var cenaBLiczba = $(this).konwertujDoLiczby($("#cenaB").val().trim());
+		var cenaNLiczba = $(this).konwertujDoLiczby($("#cenaN").val().trim());
+		
+	//console.log("ceny " +cenaBLiczba + "   " + cenaNLiczba);	
+		if ( ( cenaBLiczba <= cenaNLiczba ) ){
+			$("#cenaB").addClass("czerwony");
+			$("#cenaN").addClass("czerwony");
+			//console.log("zle ceny");
+		return 0;
+		}
+		
     	else {
     		$(this).wyslijDodajJSON();
     	}
