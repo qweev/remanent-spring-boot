@@ -25,7 +25,7 @@ $(document).ready(function(){
 	 
 	     $.ajax({
             type:    "GET",
-			url:     "/resources/custom/pozycje_rem.txt",
+			url:     "resources/custom/pozycje_rem.txt",
             // TO JEST BARZO WAZNE, inaczej nie dziala !!!
             xhrFields: {
 			withCredentials: true
@@ -85,7 +85,7 @@ $(document).ready(function(){
 		
 		    $.ajax({
             type:    "GET",
-			url:     "/resources/custom/pozycje_rem.txt",
+			url:     "resources/custom/pozycje_rem.txt",
             // TO JEST BARZO WAZNE, inaczej nie dziala !!!
             xhrFields: {
 			withCredentials: true
@@ -159,7 +159,10 @@ $(document).ready(function(){
 						break;		
 					}					
 						//console.log("trafiony");
+					if(uniqueItems[i].trim().length > 8){
 						wyniki.push(uniqueItems[i]);
+					}
+						//wyniki.push(uniqueItems[i]);
 						//console.log("wynik " + wyniki.length);
 						//console.log("wynik caly = " + wyniki);
 				}
@@ -222,7 +225,16 @@ $(document).ready(function(){
 			}
 			
 		});
-    
+		
+    $("#podpowiadaczLista").dblclick(function(){
+		var doTowar = $("#podpowiadaczLista option:selected" ).text();
+		$("#towar").val(doTowar);
+		$("#podpowiadaczLista").hide();
+	
+	});
+	
+	
+	
 	$("#towar").keyup(function(e){
 		if (e.keyCode == 40) { // w dol
 		  $("#podpowiadaczLista").focus();  

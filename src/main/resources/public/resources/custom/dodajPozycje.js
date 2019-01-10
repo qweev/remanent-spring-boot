@@ -162,7 +162,7 @@ $(document).ready(function(){
 		cenaN = $(this).konwertujDoLiczby(cenaN);
 		ilosc = $(this).konwertujDoLiczby(ilosc);
 		
-		var pola = '{"cena_netto":"'+cenaN+'","cena_brutto":"'+cenaB+'","nazwa_towaru":"'+towar+'","jednostka":"'+jednostka+'","ilosc":"'+ilosc+'","uzytkownik":"'+uzytkownik+'"}';
+		var pola = '{"cenaNetto":"'+cenaN+'","cenaBrutto":"'+cenaB+'","nazwaTowaru":"'+towar+'","jednostka":"'+jednostka+'","ilosc":"'+ilosc+'","uzytkownik":"'+uzytkownik+'"}';
 		return pola;
 	}
    
@@ -198,6 +198,8 @@ $(document).ready(function(){
             numerPozycjiBazyDoHistori = response;
             $(this).dodajWpisDoHistori(numerPozycjiBazyDoHistori);
 //        	$('#modalZapislDialog').html("Pozycja wyslana do zapisu na baze danych ");
+			$("#towar").focus();
+			$("#slownikWynik").css("color","").text("");
         },
         error: function (jqXHR, exception) {
         	console.log("a jednak");
