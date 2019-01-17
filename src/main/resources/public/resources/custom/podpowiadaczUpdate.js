@@ -58,12 +58,27 @@
 	function delta(wzor, nowePozycje){
 	
 	
-		console.log("delta");
-		var suma = wzor.concat(nowePozycje);
-		listaDelta = Array.from(new Set(suma));		
+		console.log("delta nnnn");
+		/*var suma = wzor.concat(nowePozycje);
+		listaDelta = Array.from(new Set(suma));	// set nie dziala ?
 		console.log("koniec == " + listaDelta);
 		var sorted = listaDelta.sort();
+		*/
 		
+		for(var i=0; i < wzor.length; i++){
+		//console.log("for i " + wzor[i].trim() );
+				for(var y=0; y < nowePozycje.length; y++){
+				//console.log("for y " + nowePozycje[y].trim() );
+					if(nowePozycje[y].trim() == wzor[i].trim() ){
+					console.log("hit" +nowePozycje[y]);
+						nowePozycje.splice(y,1);
+						
+					}
+				}
+		}
+		
+		var suma = wzor.concat(nowePozycje);
+		var sorted = suma.sort();
 		var druk = "";
 		for (var z=0; z < sorted.length ; z++){
 			druk = druk + "</br>" + sorted[z];
