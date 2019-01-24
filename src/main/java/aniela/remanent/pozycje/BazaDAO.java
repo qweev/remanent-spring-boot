@@ -3,7 +3,6 @@ package aniela.remanent.pozycje;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
-import org.hibernate.Transaction;
 import aniela.remanent.pozycje.bazaDanych.PozycjaBazy;
 import aniela.remanent.pozycje.helperyZapytanDoBazy.expression.evaluator.ExpressionEvaluator;
 import aniela.remanent.raport.raportBrutto.PozycjaDoRaportuBrutto;
