@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.List;
 
 
 @Service
@@ -18,7 +19,7 @@ public class Raport {
     private static double iloscPozycjiOstatniaStrona;
     private double iloscPozycji;
     private double iloscStron;
-    private ArrayList<PozycjaDoRaportu> pozycje;
+    private List<PozycjaDoRaportu> pozycje;
 
     private BazaDAO baza;
     public int numerWiersza = 0; // 0 = pierwszy wiersz
@@ -32,7 +33,7 @@ public class Raport {
         this.baza = baza;
 
         iloscPozycji = this.baza.obliczIloscPozycji();
-        pozycje = (ArrayList<PozycjaDoRaportu>) this.baza.przygotujPozycjeDoRaportu();
+        pozycje = this.baza.przygotujPozycjeDoRaportu();
         obliczIloscStron();
         obliczIloscPozycjiNaOstatniejStronie();
 
@@ -98,6 +99,7 @@ public class Raport {
 
     private void generujPierwszaStrone() {
 
+        ///czemu to sie printuje tyle razy?
         System.out.println("++++++++++++++  1----------------- numerPozycji" + numerPozycji);
         System.out.println("++++++++++++++ 1----------------- numerPozycji" + numerPozycji);
         System.out.println("++++++++++++++ 1----------------- numerPozycji" + numerPozycji);

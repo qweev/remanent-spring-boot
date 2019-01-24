@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class RaportBrutto {
@@ -18,7 +18,7 @@ public class RaportBrutto {
     private static double iloscPozycjiOstatniaStrona;
     private double iloscPozycji;
     private double iloscStron;
-    private ArrayList<PozycjaDoRaportuBrutto> pozycje;
+    private List<PozycjaDoRaportuBrutto> pozycje;
 
 
     private BazaDAO baza;
@@ -32,7 +32,7 @@ public class RaportBrutto {
     public RaportBrutto(BazaDAO baza) {
         this.baza = baza;
         iloscPozycji = this.baza.obliczIloscPozycji();
-        pozycje = (ArrayList<PozycjaDoRaportuBrutto>) baza.przygotujPozycjeDoRaportuBrutto();
+        pozycje = baza.przygotujPozycjeDoRaportuBrutto();
         obliczIloscStron();
         obliczIloscPozycjiNaOstatniejStronie();
     }
