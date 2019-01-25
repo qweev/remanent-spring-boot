@@ -13,7 +13,7 @@ import java.util.List;
 
 @Service
 public class RaportBrutto {
-    final static Logger logger = Logger.getLogger(Raport.class);
+    final static Logger LOG = Logger.getLogger(Raport.class);
     private static final int iloscPozycjiNaStronie = 55;
     private static double iloscPozycjiOstatniaStrona;
     private double iloscPozycji;
@@ -46,21 +46,21 @@ public class RaportBrutto {
         this.skoroszyt = new SkoroszytBrutto();
 
         generujPierwszaStrone();
-        logger.info("pierwsza strona zrobiona");
+        LOG.info("pierwsza strona zrobiona");
 
         for (int i = 2; i < (iloscStron); i++) {
             generujSrodkoweStrony();
-            logger.info("strona " + i + " zrobiona");
+            LOG.info("strona " + i + " zrobiona");
         }
 
         generujOstatniaStrone();
-        logger.info("ostatnia strona zrobiona");
+        LOG.info("ostatnia strona zrobiona");
 
 
         try {
-            logger.info("tworze plik, sciezka " + sciezka);
+            LOG.info("tworze plik, sciezka " + sciezka);
             utworzPlikExcela(sciezka, skoroszyt);
-            logger.info("remanent zrobiony");
+            LOG.info("remanent zrobiony");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -149,7 +149,7 @@ public class RaportBrutto {
 
     public void obliczIloscStron() {
         iloscStron = Math.ceil((iloscPozycji / iloscPozycjiNaStronie));
-        logger.info("ilosc stron: " + iloscStron);
+        LOG.info("ilosc stron: " + iloscStron);
     }
 
 
