@@ -8,18 +8,17 @@ import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
 import java.util.List;
 
 
 @Service
-public class Raport {
-    final static Logger logger = Logger.getLogger(Raport.class);
+public class RaportNetto {
+    final static Logger logger = Logger.getLogger(RaportNetto.class);
     private static final int iloscPozycjiNaStronie = 55;
     private static double iloscPozycjiOstatniaStrona;
     private double iloscPozycji;
     private double iloscStron;
-    private List<PozycjaDoRaportu> pozycje;
+    private List<PozycjaDoRaportuNetto> pozycje;
 
     private BazaDAO baza;
     public int numerWiersza = 0; // 0 = pierwszy wiersz
@@ -29,11 +28,11 @@ public class Raport {
 
 
     @Autowired
-    public Raport(BazaDAO baza) {
+    public RaportNetto(BazaDAO baza) {
         this.baza = baza;
 
         iloscPozycji = this.baza.obliczIloscPozycji();
-        pozycje = this.baza.przygotujPozycjeDoRaportu();
+        pozycje = this.baza.przygotujPozycjeDoRaportuNetto();
         obliczIloscStron();
         obliczIloscPozycjiNaOstatniejStronie();
 

@@ -6,11 +6,23 @@ public final class ReportFileResolver {
 
     }
 
-    public static String resolveFilePath(String fileName) {
-        String OS = System.getProperty("os.name").toLowerCase();
-        String commonFileName = fileName + ".xlsx";
-        return OS.indexOf("win") >= 0 ? "C:\\" + commonFileName : commonFileName;
+    private static String OS = System.getProperty("os.name").toLowerCase();
+
+    public static String resolveFilePathForExcel(String fileName) {
+        String commonFileNameWithExtension = fileName + ".xlsx";
+        return resolveFullFileName(commonFileNameWithExtension);
     }
+
+    public static String resolveFilePathForPdf(String fileName) {
+        String commonFileNameWithExtension = fileName + ".pdf";
+        return resolveFullFileName(commonFileNameWithExtension);
+    }
+
+    private static String resolveFullFileName(String commonFileNameWithExtnesion) {
+        return OS.startsWith("win") ? "C:\\" + commonFileNameWithExtnesion : commonFileNameWithExtnesion;
+    }
+
+
 
 
 }

@@ -1,6 +1,6 @@
 package aniela.remanent.raport.abstraction;
 
-public abstract class PositionAbstract {
+public abstract class PositionAbstract implements PositionInterface {
     
     protected int pozyzjaWRaporcie;
     protected String nazwaTowaru;

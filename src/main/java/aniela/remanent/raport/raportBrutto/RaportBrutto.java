@@ -1,7 +1,7 @@
 package aniela.remanent.raport.raportBrutto;
 
 import aniela.remanent.pozycje.BazaDAO;
-import aniela.remanent.raport.raportDoDruku.Raport;
+import aniela.remanent.raport.raportDoDruku.RaportNetto;
 import aniela.remanent.raport.stronyExcela.SkoroszytBrutto;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import java.util.List;
 
 @Service
 public class RaportBrutto {
-    final static Logger LOG = Logger.getLogger(Raport.class);
+    private final static Logger LOG = Logger.getLogger(RaportNetto.class);
     private static final int iloscPozycjiNaStronie = 55;
     private static double iloscPozycjiOstatniaStrona;
     private double iloscPozycji;

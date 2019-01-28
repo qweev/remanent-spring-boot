@@ -6,11 +6,11 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 
 
-public class PozycjaDoRaportu extends PositionAbstract {
+public class PozycjaDoRaportuNetto extends PositionAbstract {
 
     private double sumaNetto;
 
-    public PozycjaDoRaportu() {
+    public PozycjaDoRaportuNetto() {
     }
 
     @Override

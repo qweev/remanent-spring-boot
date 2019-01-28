@@ -19,7 +19,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {FireFoxConfiguration.class})
 @SpringBootTest(classes = Application.class)
-public class Raport_REST_IT {
+public class Raport_Netto_REST_IT {
 
     @Test
     public void poprawneLogowanie(){
@@ -30,7 +30,7 @@ public class Raport_REST_IT {
         ResponseEntity<String> response = restRequest(urlLogowanie,null, HttpMethod.GET, MediaType.TEXT_PLAIN, String.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals("OK", response.getBody().toString());
+        assertEquals("OK", response.getBody());
 
     }
 
@@ -43,7 +43,7 @@ public class Raport_REST_IT {
         ResponseEntity<String> response = restRequest(urlLogowanie,null, HttpMethod.GET, MediaType.TEXT_PLAIN, String.class);
 
         assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
-        assertEquals("NOK", response.getBody().toString());
+        assertEquals("NOK", response.getBody());
     }
 
     @Test
@@ -55,7 +55,7 @@ public class Raport_REST_IT {
         ResponseEntity<String> response = restRequest(urlLogowanie,null, HttpMethod.GET, MediaType.TEXT_PLAIN, String.class);
 
         assertEquals(HttpStatus.UNAUTHORIZED, response.getStatusCode());
-        assertEquals("NOK", response.getBody().toString());
+        assertEquals("NOK", response.getBody());
     }
 
 

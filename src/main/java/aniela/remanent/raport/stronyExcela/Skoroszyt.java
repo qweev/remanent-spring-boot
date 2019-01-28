@@ -1,9 +1,6 @@
 package aniela.remanent.raport.stronyExcela;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-
-
+import aniela.remanent.raport.raportDoDruku.PozycjaDoRaportuNetto;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
@@ -11,10 +8,9 @@ import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import aniela.remanent.raport.raportDoDruku.PozycjaDoRaportu;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.Calendar;
 
 
 public class Skoroszyt {
@@ -136,7 +132,7 @@ public class Skoroszyt {
 	}
 
 
-	public void utworzPierwszyWierszTabeli(int numerWiersza, int numerPozycji, PozycjaDoRaportu pozycja) {
+	public void utworzPierwszyWierszTabeli(int numerWiersza, int numerPozycji, PozycjaDoRaportuNetto pozycja) {
 		CellStyle stylDoPrawej = ramkaGoraLewaPrawa;
 		CellStyle stylSrodkuj = ramkaGoraLewaPrawaWysrodkowanyTekst;
 		CellStyle stylWaluta = walutaRamkaGoraLewaPrawaTekstDoPrawej;
@@ -144,7 +140,7 @@ public class Skoroszyt {
 	}
 
 
-	private void wpiszPozycjeDoWiersza(int numerWiersza, int numerPozycji, PozycjaDoRaportu pozycja, CellStyle doPrawej, CellStyle srodkuj, CellStyle waluta ) {
+	private void wpiszPozycjeDoWiersza(int numerWiersza, int numerPozycji, PozycjaDoRaportuNetto pozycja, CellStyle doPrawej, CellStyle srodkuj, CellStyle waluta) {
 		Row row = arkusz.createRow(numerWiersza);	
 		row.setHeightInPoints(wysokoscWiersza);
 		Cell cell;
@@ -181,7 +177,7 @@ public class Skoroszyt {
 	}
 
 
-	public void utworzWierszTabeli(int numerWiersza, int numerPozycji, PozycjaDoRaportu pozycja) {
+	public void utworzWierszTabeli(int numerWiersza, int numerPozycji, PozycjaDoRaportuNetto pozycja) {
 		CellStyle stylDoPrawej = ramkaLewaPrawa;
 		CellStyle stylSrodkuj = ramkaLewaPrawaWysrodkowanyTekst;
 		CellStyle stylWaluta = walutaRamkaLewaPrawaTekstDoPrawej;
@@ -189,7 +185,7 @@ public class Skoroszyt {
 	}
 
 
-	public void utworzOstatniWierszTabeli(int numerWiersza, int numerPozycji, PozycjaDoRaportu pozycja) {
+	public void utworzOstatniWierszTabeli(int numerWiersza, int numerPozycji, PozycjaDoRaportuNetto pozycja) {
 		CellStyle stylDoPrawej = ramkaDolLewaPrawa;
 		CellStyle stylSrodkuj = ramkaDolLewaPrawaWysrodkowanyTekst;
 		CellStyle stylWaluta = walutaRamkaDolLewaPrawaTekstDoPrawej;
