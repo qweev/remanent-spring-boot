@@ -20,8 +20,40 @@ public abstract class ReportPdf implements ReportPdfApi {
 
     @Override
     public String generateReport(List<PozycjaDoRaportuNetto> positions) {
-
-
+        initializeReport();
+        generateHeader();
+        generateFirstPage();
+        generateInternalPages();
+        generateLastPage();
+        generateSummary();
         return null;
     }
+
+    private void initializeReport() {
+
+    }
+
+    private void generateHeader() {
+    }
+
+    private void generateFirstPage() {
+    }
+
+    private void generateInternalPages() {
+
+
+    }
+
+    private void generateInternalPage() {
+    }
+
+    private void generateLastPage() {
+    }
+
+    private void generateSummary() {
+    }
+
+
+
+
 }
