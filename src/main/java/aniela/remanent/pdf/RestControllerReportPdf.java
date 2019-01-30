@@ -32,7 +32,11 @@ public class RestControllerReportPdf {
     @GetMapping("/remanent/rest/raport/pdf/netto/{sciezka}")
     public ResponseEntity utworzPlikRemanentNetto(@PathVariable("sciezka") String sciezka) {
         String fullSciezka = ReportFileResolver.resolveFilePathForPdf(sciezka);
-        reportPdfNetto.generateReport(reportPdfNetto.getPostionsNetto(), fullSciezka);
+        try {
+            reportPdfNetto.generateReport(reportPdfNetto.getPostionsNetto(), fullSciezka);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.GONE).body(String.format("Report generation has thrown error %s", e.getMessage()));
+        }
         return ResponseEntity.status(HttpStatus.GONE).body("Netto still not implemented");
     }
 }

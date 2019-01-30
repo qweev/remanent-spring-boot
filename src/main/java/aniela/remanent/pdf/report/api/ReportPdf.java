@@ -38,12 +38,18 @@ public abstract class ReportPdf implements ReportPdfApi {
         generateInternalPages();
         generateLastPage();
         generateSummary();
+        closeDocument();
         return null;
     }
 
-    private void initializeReport(String filePath) throws FileNotFoundException, DocumentException {
+    private void closeDocument() {
+        document.close();
+    }
+
+    private void initializeReport(String fullFilePath) throws FileNotFoundException, DocumentException {
         document = new Document();
-        PdfWriter.getInstance(document, new FileOutputStream(filePath));
+        PdfWriter.getInstance(document, new FileOutputStream(fullFilePath));
+        document.open();
     }
 
     private void generateHeader() throws DocumentException {
