@@ -10,8 +10,8 @@ public interface ReportPdfApi {
 
     List<PozycjaDoRaportuNetto> getPostionsNetto();
 
-    //TODO use interface in future
-    String generateReport(List<PozycjaDoRaportuNetto> positions);
+    //TODO use interface in future to get generic positions
+    String generateReport(List<PozycjaDoRaportuNetto> positions, String filePath) throws Exception;
 
 
 }

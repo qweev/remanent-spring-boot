@@ -12,9 +12,6 @@ import java.util.List;
 @Service
 public class ReportPdfNetto extends ReportPdf {
 
-
-    private BazaDAO bazaRaport;
-
     @Autowired
     public ReportPdfNetto(BazaDAO bazaRaport) {
         this.bazaRaport = bazaRaport;
