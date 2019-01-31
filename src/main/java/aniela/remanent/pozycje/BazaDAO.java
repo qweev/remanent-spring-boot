@@ -28,6 +28,46 @@ public class BazaDAO {
     @PersistenceContext
     private EntityManager entityManager;
 
+
+    public PozycjaBazy dodajIloscDoPozycjiDoBazy(int numerPozycji, double ilosc) {
+        String hqlUpdatePozycja = "UPDATE PozycjaBazy AS P SET P.ilosc = :ilosc WHERE P.id = :numerPozycji";
+        List<PozycjaBazy> pozycje = new ArrayList<>();
+        List<PozycjaBazy> pozycjeOut = new ArrayList<>();
+        PozycjaBazy pozycjaBazyIn;
+        Session sesja = entityManager.unwrap(Session.class);
+        LOGGER.info("dodaj do pozycji");
+
+        try {
+
+            pozycje = sesja.createQuery("FROM PozycjaBazy AS P WHERE P.id = :numerPozycji ")
+                    .setParameter("numerPozycji",numerPozycji).list();
+
+            pozycjaBazyIn = pozycje.get(0);
+            System.out.println("ilosc z weba == " + ilosc);
+            double zmianaIlosci = pozycjaBazyIn.getIlosc() + ilosc;
+            System.out.println("zmianaKoncowa == "+zmianaIlosci);
+
+            int wynik = sesja.createQuery(hqlUpdatePozycja).
+                      setParameter("ilosc", zmianaIlosci).setParameter("numerPozycji", numerPozycji).executeUpdate();
+            System.out.println(wynik);
+
+            pozycje = sesja.createQuery("FROM PozycjaBazy AS P WHERE P.id = :numerPozycji ")
+                    .setParameter("numerPozycji",numerPozycji).list();
+
+        } catch (HibernateException e) {
+            LOGGER.info("exception in HIBERNATE " + e);
+            e.printStackTrace();
+        } finally {
+            sesja.close();
+        }
+
+        LOGGER.info("pobrano pozycji: " + pozycje.size());
+        return pozycje.get(0);
+
+    }
+
+
+
     public List<PozycjaBazy> advancedSearch(String nazwaTowaru,
                                             String uzytkownik,
                                             double cenaNetto,

@@ -18,6 +18,20 @@ public class PozycjeREST {
     @Autowired
     private BazaDAO baza;
 
+    @PostMapping(path="/remanent/rest/pozycje/dodajIloscDoPozycji/{numerPozycji}/{ilosc}",
+            produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+        public ResponseEntity dodajIloscDoPozycji(@PathVariable("numerPozycji") int numerPozycji,
+                                                  @PathVariable("ilosc") double ilosc) {
+        LOG.info("dodawanie ilosci do pozycji");
+
+        PozycjaBazy pozycja = baza.dodajIloscDoPozycjiDoBazy(numerPozycji, ilosc );
+
+        pozycja.setIlosc(pozycja.getIlosc()+ilosc);
+        System.out.println("do weba idzie : " + pozycja.getIlosc());
+        return ResponseEntity.status(HttpStatus.OK).body(pozycja);
+
+    }
+
     @PostMapping(path="/remanent/rest/pozycje/dodaj",
             consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity dodajPozycje(@RequestBody PozycjaBazy pozycja) {
