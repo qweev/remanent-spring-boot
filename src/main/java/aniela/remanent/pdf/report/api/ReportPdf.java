@@ -9,16 +9,20 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public abstract class ReportPdf implements ReportPdfApi {
 
 
-    private static Font catFont = new Font(Font.FontFamily.TIMES_ROMAN, 18,
+    private static Font headerFont = new Font(Font.FontFamily.TIMES_ROMAN, 11,
             Font.BOLD);
     protected BazaDAO bazaRaport;
     private Document document;
-
 
 
     public ReportPdf() {
@@ -32,6 +36,7 @@ public abstract class ReportPdf implements ReportPdfApi {
 
     @Override
     public String generateReport(List<PozycjaDoRaportuNetto> positions, String filePath) throws Exception {
+        removeExisingReport(filePath);
         initializeReport(filePath);
         generateHeader();
         generateFirstPage();
@@ -42,8 +47,11 @@ public abstract class ReportPdf implements ReportPdfApi {
         return null;
     }
 
-    private void closeDocument() {
-        document.close();
+    private void removeExisingReport(String filePath) throws IOException {
+        Path path = Paths.get(filePath);
+        if (path.toFile().exists()) {
+            Files.delete(path);
+        }
     }
 
     private void initializeReport(String fullFilePath) throws FileNotFoundException, DocumentException {
@@ -53,12 +61,11 @@ public abstract class ReportPdf implements ReportPdfApi {
     }
 
     private void generateHeader() throws DocumentException {
-        Paragraph preface = new Paragraph();
-        // We add one empty line
-        addEmptyLine(preface, 1);
-        // Lets write a big header
-        preface.add(new Paragraph("Title of the document", catFont));
-        document.add(preface);
+        Paragraph paragraph = new Paragraph();
+        paragraph.setAlignment(Element.ALIGN_MIDDLE);
+        paragraph.add(new Paragraph("Spis z natury na dzien 31.12." + (LocalDateTime.now().getYear() - 1), headerFont));
+        addEmptyLine(paragraph, 1);
+        document.add(paragraph);
     }
 
     private void generateFirstPage() throws DocumentException {
@@ -68,6 +75,7 @@ public abstract class ReportPdf implements ReportPdfApi {
         PdfPCell pdfCellJm = getPdfCell("j. m.");
         PdfPCell pdfCellIlosc = getPdfCell("Ilość");
         PdfPCell pdfCellCenaNetto = getPdfCell("Cena netto");
+
         PdfPCell wartoścNetto = getPdfCell("Wartość netto");
         table.addCell(pdfCellLp);
         table.addCell(pdfCellLpNazwaTowaru);
@@ -100,6 +108,10 @@ public abstract class ReportPdf implements ReportPdfApi {
     private void generateSummary() {
     }
 
+    private void closeDocument() {
+        document.close();
+    }
+
 
     private void addEmptyLine(Paragraph paragraph, int number) {
         for (int i = 0; i < number; i++) {
@@ -112,8 +124,6 @@ public abstract class ReportPdf implements ReportPdfApi {
         pdfCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         return pdfCell;
     }
-
-
 
 
 }
