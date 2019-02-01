@@ -61,9 +61,8 @@ public abstract class ReportPdf implements ReportPdfApi {
     }
 
     private void generateHeader() throws DocumentException {
-        Paragraph paragraph = new Paragraph();
-        paragraph.setAlignment(Element.ALIGN_MIDDLE);
-        paragraph.add(new Paragraph("Spis z natury na dzien 31.12." + (LocalDateTime.now().getYear() - 1), headerFont));
+        Paragraph paragraph = new Paragraph("Spis z natury na dzien 31.12." + (LocalDateTime.now().getYear() - 1), headerFont);
+        paragraph.setAlignment(Element.ALIGN_CENTER);
         addEmptyLine(paragraph, 1);
         document.add(paragraph);
     }
