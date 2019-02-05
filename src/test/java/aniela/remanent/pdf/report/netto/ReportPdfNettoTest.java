@@ -4,6 +4,8 @@ import aniela.remanent.pozycje.BazaDAO;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.EnabledOnOs;
+import org.junit.jupiter.api.condition.OS;
 import org.mockito.Mockito;
 
 public class ReportPdfNettoTest {
@@ -24,8 +26,17 @@ public class ReportPdfNettoTest {
         reportPdfNettoTestedObj = new ReportPdfNetto(bazaDAO);
     }
 
+
+    @EnabledOnOs(OS.WINDOWS)
     @Test
-    public void generateReport() throws Exception {
+    public void generateReportWindows() throws Exception {
+        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), "C:\\development\\raportBrutto.pdf");
+    }
+
+
+    @EnabledOnOs(OS.LINUX)
+    @Test
+    public void generateReportLinux() throws Exception {
         reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), "C:\\development\\raportBrutto.pdf");
     }
 }
