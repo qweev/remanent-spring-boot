@@ -20,7 +20,7 @@ public class ReportPdfNettoTest {
     @BeforeEach
     public void setupBeforeEach() {
         bazaDAO = Mockito.mock(BazaDAO.class);
-        Mockito.when(bazaDAO.przygotujPozycjeDoRaportuNetto()).thenReturn(PozycjeReportNettoFactory.generateListOfPozycjaDoRaportuNetto(34));
+        Mockito.when(bazaDAO.przygotujPozycjeDoRaportuNetto()).thenReturn(PozycjeReportNettoFactory.generateListOfPozycjaDoRaportuNetto(189));
         reportPdfNettoTestedObj = new ReportPdfNetto(bazaDAO);
     }
 

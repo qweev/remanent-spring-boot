@@ -19,7 +19,7 @@ import java.util.List;
 public abstract class ReportPdf implements ReportPdfApi {
 
 
-    private static Font headerFont = new Font(Font.FontFamily.TIMES_ROMAN, 11,
+    private static final Font FONT = new Font(Font.FontFamily.TIMES_ROMAN, 10,
             Font.BOLD);
     protected BazaDAO bazaRaport;
     private Document document;
@@ -61,7 +61,7 @@ public abstract class ReportPdf implements ReportPdfApi {
     }
 
     private void generateHeader() throws DocumentException {
-        Paragraph paragraph = new Paragraph("Spis z natury na dzien 31.12." + (LocalDateTime.now().getYear() - 1), headerFont);
+        Paragraph paragraph = new Paragraph("Spis z natury na dzien 31.12." + (LocalDateTime.now().getYear() - 1), FONT);
         paragraph.setAlignment(Element.ALIGN_CENTER);
         addEmptyLine(paragraph, 1);
         document.add(paragraph);
@@ -79,12 +79,15 @@ public abstract class ReportPdf implements ReportPdfApi {
         table.addCell(pdfCellLp);
         table.addCell(pdfCellLpNazwaTowaru);
         table.addCell(pdfCellIlosc);
-        table.addCell(pdfCellLp);
+        table.addCell(pdfCellJm);
         table.addCell(pdfCellCenaNetto);
         table.addCell(wartoścNetto);
         table.setHeaderRows(1);
 
-        for (int x = 0; x < 13; x++) {
+
+        List<PozycjaDoRaportuNetto> positions = bazaRaport.przygotujPozycjeDoRaportuNetto();
+
+        for (int x = 0; x < positions.size(); x++) {
             table.addCell(String.valueOf(x));
         }
 
