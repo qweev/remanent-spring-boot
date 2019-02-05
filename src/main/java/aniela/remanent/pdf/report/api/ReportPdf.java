@@ -23,8 +23,12 @@ import java.util.Queue;
 public abstract class ReportPdf implements ReportPdfApi {
 
 
-    private static final Font FONT = new Font(Font.FontFamily.TIMES_ROMAN, 10,
+    private static final Font FONT_HEADER = new Font(Font.FontFamily.TIMES_ROMAN, 10,
             Font.BOLD);
+
+    private static final Font FONT_VALUE = new Font(Font.FontFamily.TIMES_ROMAN, 10,
+            Font.NORMAL);
+
     protected BazaDAO bazaRaport;
     private Document document;
 
@@ -43,9 +47,7 @@ public abstract class ReportPdf implements ReportPdfApi {
     @Override
     public String generateReport(List<PozycjaDoRaportuNetto> positions, String filePath) throws Exception {
         removeExisingReport(filePath);
-
         runReportGenerator();
-
         initializeReportPdf(filePath);
         generateHeader();
         generateFirstPage();
@@ -68,9 +70,7 @@ public abstract class ReportPdf implements ReportPdfApi {
         reportGenerator = new ReportGenerator(bazaRaport.przygotujPozycjeDoRaportuNetto());
         reportPages = new LinkedList<>();
         reportPages.addAll(reportGenerator.generatePages());
-
     }
-
 
     private void initializeReportPdf(String fullFilePath) throws FileNotFoundException, DocumentException {
         document = new Document();
@@ -79,7 +79,7 @@ public abstract class ReportPdf implements ReportPdfApi {
     }
 
     private void generateHeader() throws DocumentException {
-        Paragraph paragraph = new Paragraph("Spis z natury na dzien 31.12." + (LocalDateTime.now().getYear() - 1), FONT);
+        Paragraph paragraph = new Paragraph("Spis z natury na dzien 31.12." + (LocalDateTime.now().getYear() - 1), FONT_HEADER);
         paragraph.setAlignment(Element.ALIGN_CENTER);
         addEmptyLine(paragraph, 1);
         document.add(paragraph);
@@ -87,30 +87,30 @@ public abstract class ReportPdf implements ReportPdfApi {
 
     private void generateFirstPage() throws DocumentException {
         PdfPTable table = new PdfPTable(6);
-        PdfPCell pdfCellLp = getPdfCell("LP");
-        PdfPCell pdfCellLpNazwaTowaru = getPdfCell("Nazwa towaru");
-        PdfPCell pdfCellJm = getPdfCell("j. m.");
-        PdfPCell pdfCellIlosc = getPdfCell("Ilość");
-        PdfPCell pdfCellCenaNetto = getPdfCell("Cena netto");
 
-        PdfPCell wartoścNetto = getPdfCell("Wartość netto");
-        table.addCell(pdfCellLp);
-        table.addCell(pdfCellLpNazwaTowaru);
-        table.addCell(pdfCellIlosc);
-        table.addCell(pdfCellJm);
-        table.addCell(pdfCellCenaNetto);
-        table.addCell(wartoścNetto);
+        PdfPCell pdfCellHeaderLp = getPdfCellHeader("LP");
+        PdfPCell pdfCellHeaderNazwaTowaru = getPdfCellHeader("Nazwa towaru");
+        PdfPCell pdfCellHeaderJm = getPdfCellHeader("j. m.");
+        PdfPCell pdfCellHeaderIlosc = getPdfCellHeader("Ilość");
+        PdfPCell pdfCellHeaderCenaNetto = getPdfCellHeader("Cena netto");
+        PdfPCell pdfCellHeaderwartoścNetto = getPdfCellHeader("Wartość netto");
+        table.addCell(pdfCellHeaderLp);
+        table.addCell(pdfCellHeaderNazwaTowaru);
+        table.addCell(pdfCellHeaderIlosc);
+        table.addCell(pdfCellHeaderJm);
+        table.addCell(pdfCellHeaderCenaNetto);
+        table.addCell(pdfCellHeaderwartoścNetto);
         table.setHeaderRows(1);
 
         ReportPage page1 = reportPages.poll();
 
         page1.positions.forEach(element -> {
-            table.addCell(String.valueOf(element.getPozyzjaWRaporcie()));
-            table.addCell(element.getNazwaTowaru());
-            table.addCell(element.getJednostka());
-            table.addCell(String.valueOf(element.getIlosc()));
-            table.addCell(String.valueOf(element.getCenaNetto()));
-            table.addCell(String.valueOf(element.getSumaNetto()));
+            table.addCell(getPdfCell(String.valueOf(element.getPozyzjaWRaporcie())));
+            table.addCell(getPdfCellNazwaTowaru(element.getNazwaTowaru()));
+            table.addCell(getPdfCell(element.getJednostka()));
+            table.addCell(getPdfCell(String.valueOf(element.getIlosc())));
+            table.addCell(getPdfCell(String.valueOf(element.getCenaNetto())));
+            table.addCell(getPdfCell(String.valueOf(element.getSumaNetto())));
         });
 
         document.add(table);
@@ -141,9 +141,21 @@ public abstract class ReportPdf implements ReportPdfApi {
         }
     }
 
-    private PdfPCell getPdfCell(String columnName) {
-        PdfPCell pdfCell = new PdfPCell(new Phrase(columnName));
+    private PdfPCell getPdfCellHeader(String columnName) {
+        PdfPCell pdfCell = new PdfPCell(new Phrase(columnName, FONT_HEADER));
         pdfCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        return pdfCell;
+    }
+
+    private PdfPCell getPdfCell(String value) {
+        PdfPCell pdfCell = new PdfPCell(new Phrase(value, FONT_VALUE));
+        pdfCell.setHorizontalAlignment(Element.ALIGN_CENTER);
+        return pdfCell;
+    }
+
+    private PdfPCell getPdfCellNazwaTowaru(String value) {
+        PdfPCell pdfCell = new PdfPCell(new Phrase(value, FONT_VALUE));
+        pdfCell.setHorizontalAlignment(Element.ALIGN_LEFT);
         return pdfCell;
     }
 
