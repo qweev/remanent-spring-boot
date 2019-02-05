@@ -11,31 +11,25 @@ public final class ReportGenerator {
 
     private static final int POSITIONS_MAX_PER_PAGE = 55;
     private int pagesToGenerate = 0;
-    private Queue postions = new LinkedList();
-    //private List<PozycjaDoRaportuNetto> postions;
-
+    private Queue<PozycjaDoRaportuNetto> postions = new LinkedList<>();
     public ReportGenerator(List<PozycjaDoRaportuNetto> postionsList) {
         this.postions.addAll(postionsList);
     }
 
-    public void countNumberOfPages() {
-        pagesToGenerate = postions.size() / POSITIONS_MAX_PER_PAGE;
-    }
-
     public List<ReportPage> generatePages() {
+
+        pagesToGenerate = postions.size() / POSITIONS_MAX_PER_PAGE + 1;
+        List<ReportPage> reportPages = new ArrayList<>();
         for (int pageNumber = 1; pageNumber <= pagesToGenerate; pageNumber++) {
-
+            ReportPage reportPage = new ReportPage(pageNumber);
             for (int positionNumber = 1; positionNumber <= POSITIONS_MAX_PER_PAGE; positionNumber++) {
-
+                PozycjaDoRaportuNetto position = postions.peek();
+                if (position != null) {
+                    reportPage.addPosition(postions.poll());
+                }
             }
-
-
+            reportPages.add(reportPage);
         }
-
-
-        return new ArrayList<>();
-
+        return reportPages;
     }
-
-
 }

@@ -1,5 +1,7 @@
 package aniela.remanent.pdf.report.api;
 
+import aniela.remanent.pdf.report.ReportGenerator;
+import aniela.remanent.pdf.report.ReportPage;
 import aniela.remanent.pozycje.BazaDAO;
 import aniela.remanent.raport.raportDoDruku.PozycjaDoRaportuNetto;
 import com.itextpdf.text.*;
@@ -14,7 +16,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public abstract class ReportPdf implements ReportPdfApi {
 
@@ -24,6 +28,8 @@ public abstract class ReportPdf implements ReportPdfApi {
     protected BazaDAO bazaRaport;
     private Document document;
 
+    private ReportGenerator reportGenerator;
+    private Queue<ReportPage> reportPages;
 
     public ReportPdf() {
     }
@@ -37,13 +43,17 @@ public abstract class ReportPdf implements ReportPdfApi {
     @Override
     public String generateReport(List<PozycjaDoRaportuNetto> positions, String filePath) throws Exception {
         removeExisingReport(filePath);
-        initializeReport(filePath);
+
+        runReportGenerator();
+
+        initializeReportPdf(filePath);
         generateHeader();
         generateFirstPage();
         generateInternalPages();
         generateLastPage();
         generateSummary();
         closeDocument();
+
         return null;
     }
 
@@ -54,7 +64,15 @@ public abstract class ReportPdf implements ReportPdfApi {
         }
     }
 
-    private void initializeReport(String fullFilePath) throws FileNotFoundException, DocumentException {
+    private void runReportGenerator() {
+        reportGenerator = new ReportGenerator(bazaRaport.przygotujPozycjeDoRaportuNetto());
+        reportPages = new LinkedList<>();
+        reportPages.addAll(reportGenerator.generatePages());
+
+    }
+
+
+    private void initializeReportPdf(String fullFilePath) throws FileNotFoundException, DocumentException {
         document = new Document();
         PdfWriter.getInstance(document, new FileOutputStream(fullFilePath));
         document.open();
@@ -84,16 +102,18 @@ public abstract class ReportPdf implements ReportPdfApi {
         table.addCell(wartoścNetto);
         table.setHeaderRows(1);
 
+        ReportPage page1 = reportPages.poll();
 
-        List<PozycjaDoRaportuNetto> positions = bazaRaport.przygotujPozycjeDoRaportuNetto();
-
-        for (int x = 0; x < positions.size(); x++) {
-            table.addCell(String.valueOf(x));
-        }
-
+        page1.positions.forEach(element -> {
+            table.addCell(String.valueOf(element.getPozyzjaWRaporcie()));
+            table.addCell(element.getNazwaTowaru());
+            table.addCell(element.getJednostka());
+            table.addCell(String.valueOf(element.getIlosc()));
+            table.addCell(String.valueOf(element.getCenaNetto()));
+            table.addCell(String.valueOf(element.getSumaNetto()));
+        });
 
         document.add(table);
-
     }
 
     private void generateInternalPages() {
