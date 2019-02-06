@@ -55,7 +55,6 @@ public abstract class ReportPdf implements ReportPdfApi {
         generateLastPage();
         generateSummary();
         closeDocument();
-
         return null;
     }
 
@@ -87,7 +86,7 @@ public abstract class ReportPdf implements ReportPdfApi {
 
     private void generateFirstPage() throws DocumentException {
         PdfPTable table = new PdfPTable(6);
-
+        table.setTotalWidth(new float[]{10f, 80f, 10f, 10f, 10f, 10f});
         PdfPCell pdfCellHeaderLp = getPdfCellHeader("LP");
         PdfPCell pdfCellHeaderNazwaTowaru = getPdfCellHeader("Nazwa towaru");
         PdfPCell pdfCellHeaderJm = getPdfCellHeader("j. m.");
@@ -96,12 +95,11 @@ public abstract class ReportPdf implements ReportPdfApi {
         PdfPCell pdfCellHeaderwartoścNetto = getPdfCellHeader("Wartość netto");
         table.addCell(pdfCellHeaderLp);
         table.addCell(pdfCellHeaderNazwaTowaru);
-        table.addCell(pdfCellHeaderIlosc);
         table.addCell(pdfCellHeaderJm);
+        table.addCell(pdfCellHeaderIlosc);
         table.addCell(pdfCellHeaderCenaNetto);
         table.addCell(pdfCellHeaderwartoścNetto);
         table.setHeaderRows(1);
-
         ReportPage page1 = reportPages.poll();
 
         page1.positions.forEach(element -> {

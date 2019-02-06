@@ -1,22 +1,30 @@
 package aniela.remanent.pdf.report.netto;
 
 import aniela.remanent.pozycje.BazaDAO;
+import org.apache.log4j.Logger;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.condition.EnabledOnOs;
-import org.junit.jupiter.api.condition.OS;
 import org.mockito.Mockito;
+
+import java.io.File;
 
 public class ReportPdfNettoTest {
 
     private ReportPdfNetto reportPdfNettoTestedObj;
-
     private BazaDAO bazaDAO;
+
+    private final static Logger LOGGER = Logger.getLogger(ReportPdfNettoTest.class);
+    private static String filePath;
+    private static String filePathSeparator;
+    private static String reportName = "Raport.pdf";
+    private static String reportPathString;
 
     @BeforeAll
     public static void setupBeforeAll() {
-
+        filePath = System.getProperty("user.home");
+        filePathSeparator = File.separator;
+        reportPathString = new StringBuilder().append(filePath).append(filePathSeparator).append(reportName).toString();
     }
 
     @BeforeEach
@@ -26,17 +34,9 @@ public class ReportPdfNettoTest {
         reportPdfNettoTestedObj = new ReportPdfNetto(bazaDAO);
     }
 
-
-    @EnabledOnOs(OS.WINDOWS)
     @Test
     public void generateReportWindows() throws Exception {
-        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), "C:\\development\\raportBrutto.pdf");
-    }
-
-
-    @EnabledOnOs(OS.LINUX)
-    @Test
-    public void generateReportLinux() throws Exception {
-        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), "C:\\development\\raportBrutto.pdf");
+        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportPathString);
+        LOGGER.info(String.format("Report written to %s ", reportPathString));
     }
 }
