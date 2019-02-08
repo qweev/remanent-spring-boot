@@ -5,6 +5,7 @@ import aniela.remanent.pdf.report.ReportPage;
 import aniela.remanent.pozycje.BazaDAO;
 import aniela.remanent.raport.raportDoDruku.PozycjaDoRaportuNetto;
 import com.itextpdf.text.*;
+import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -12,6 +13,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -23,11 +25,11 @@ import java.util.Queue;
 public abstract class ReportPdf implements ReportPdfApi {
 
 
-    private static final Font FONT_HEADER = new Font(Font.FontFamily.TIMES_ROMAN, 10,
-            Font.BOLD);
 
-    private static final Font FONT_VALUE = new Font(Font.FontFamily.TIMES_ROMAN, 10,
-            Font.NORMAL);
+
+
+    private final Font FONT_HEADER;
+    private final Font FONT_VALUE ;
 
     protected BazaDAO bazaRaport;
     private Document document;
@@ -36,6 +38,20 @@ public abstract class ReportPdf implements ReportPdfApi {
     private Queue<ReportPage> reportPages;
 
     public ReportPdf() {
+        BaseFont baseFont = null;
+        try {
+            baseFont = BaseFont.createFont(BaseFont.TIMES_ROMAN, BaseFont.WINANSI, BaseFont.EMBEDDED);
+
+
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        FONT_HEADER = new Font(baseFont, 10, Font.BOLD);
+        FONT_VALUE = new Font(baseFont, 10, Font.NORMAL);
+        //Font cellFont = new Font(base, 12, Font.NORMAL);
+
     }
 
 
@@ -78,7 +94,7 @@ public abstract class ReportPdf implements ReportPdfApi {
     }
 
     private void generateHeader() throws DocumentException {
-        Paragraph paragraph = new Paragraph("Spis z natury na dzien 31.12." + (LocalDateTime.now().getYear() - 1), FONT_HEADER);
+        Paragraph paragraph = new Paragraph("Spis z natury na dzień 31.12." + (LocalDateTime.now().getYear() - 1), FONT_HEADER);
         paragraph.setAlignment(Element.ALIGN_CENTER);
         addEmptyLine(paragraph, 1);
         document.add(paragraph);
@@ -87,10 +103,14 @@ public abstract class ReportPdf implements ReportPdfApi {
     private void generateFirstPage() throws DocumentException {
         PdfPTable table = new PdfPTable(6);
         table.setTotalWidth(new float[]{10f, 80f, 10f, 10f, 10f, 10f});
+
         PdfPCell pdfCellHeaderLp = getPdfCellHeader("LP");
         PdfPCell pdfCellHeaderNazwaTowaru = getPdfCellHeader("Nazwa towaru");
         PdfPCell pdfCellHeaderJm = getPdfCellHeader("j. m.");
-        PdfPCell pdfCellHeaderIlosc = getPdfCellHeader("Ilość");
+
+
+
+        PdfPCell pdfCellHeaderIlosc = getPdfCellHeader(toUtf8("Ilość"));
         PdfPCell pdfCellHeaderCenaNetto = getPdfCellHeader("Cena netto");
         PdfPCell pdfCellHeaderwartoścNetto = getPdfCellHeader("Wartość netto");
         table.addCell(pdfCellHeaderLp);
@@ -155,6 +175,22 @@ public abstract class ReportPdf implements ReportPdfApi {
         PdfPCell pdfCell = new PdfPCell(new Phrase(value, FONT_VALUE));
         pdfCell.setHorizontalAlignment(Element.ALIGN_LEFT);
         return pdfCell;
+    }
+
+
+
+    private String toUtf8(String input){
+
+        byte ptext[] = input.getBytes();
+        try {
+            String value = new String(ptext, "UTF-8");
+            return value;
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
+        throw new RuntimeException("Encoding to UTF doesnot work");
+
     }
 
 
