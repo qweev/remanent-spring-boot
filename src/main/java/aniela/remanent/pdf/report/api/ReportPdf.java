@@ -91,7 +91,8 @@ public abstract class ReportPdf implements ReportPdfApi {
 
     private void generateFirstPage() throws DocumentException {
         PdfPTable table = new PdfPTable(6);
-        table.setTotalWidth(new float[]{10f, 80f, 10f, 10f, 10f, 10f});
+        table.setWidthPercentage(100f);
+        table.setTotalWidth(new float[]{10f, 80f, 7f, 10f, 14f, 17f});
 
         PdfPCell pdfCellHeaderLp = getPdfCellHeader("LP");
         PdfPCell pdfCellHeaderNazwaTowaru = getPdfCellHeader("Nazwa towaru");

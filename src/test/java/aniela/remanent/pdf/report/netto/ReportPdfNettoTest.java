@@ -35,7 +35,7 @@ public class ReportPdfNettoTest {
     }
 
     @Test
-    public void generateReportWindows() throws Exception {
+    public void generateReport() throws Exception {
         reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportPathString);
         LOGGER.info(String.format("Report written to %s ", reportPathString));
     }
