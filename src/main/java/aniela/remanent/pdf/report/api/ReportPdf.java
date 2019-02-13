@@ -13,7 +13,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -23,10 +23,6 @@ import java.util.List;
 import java.util.Queue;
 
 public abstract class ReportPdf implements ReportPdfApi {
-
-
-
-
 
     private final Font FONT_HEADER;
     private final Font FONT_VALUE ;
@@ -40,7 +36,7 @@ public abstract class ReportPdf implements ReportPdfApi {
     public ReportPdf() {
         BaseFont baseFont = null;
         try {
-            baseFont = BaseFont.createFont(BaseFont.TIMES_ROMAN, BaseFont.WINANSI, BaseFont.EMBEDDED);
+            baseFont = BaseFont.createFont("arial.ttf", BaseFont.CP1250, BaseFont.EMBEDDED);
 
 
         } catch (DocumentException e) {
@@ -181,13 +177,9 @@ public abstract class ReportPdf implements ReportPdfApi {
 
     private String toUtf8(String input){
 
-        byte ptext[] = input.getBytes();
-        try {
-            String value = new String(ptext, "UTF-8");
-            return value;
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
+        byte[] ptext = input.getBytes();
+        String value = new String(ptext, StandardCharsets.UTF_8);
+        return value;
 
         throw new RuntimeException("Encoding to UTF doesnot work");
 
