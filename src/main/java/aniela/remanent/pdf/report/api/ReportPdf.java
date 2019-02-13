@@ -13,7 +13,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -25,7 +24,7 @@ import java.util.Queue;
 public abstract class ReportPdf implements ReportPdfApi {
 
     private final Font FONT_HEADER;
-    private final Font FONT_VALUE ;
+    private final Font FONT_VALUE;
 
     protected BazaDAO bazaRaport;
     private Document document;
@@ -37,17 +36,11 @@ public abstract class ReportPdf implements ReportPdfApi {
         BaseFont baseFont = null;
         try {
             baseFont = BaseFont.createFont("arial.ttf", BaseFont.CP1250, BaseFont.EMBEDDED);
-
-
-        } catch (DocumentException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (DocumentException | IOException e) {
             e.printStackTrace();
         }
         FONT_HEADER = new Font(baseFont, 10, Font.BOLD);
         FONT_VALUE = new Font(baseFont, 10, Font.NORMAL);
-        //Font cellFont = new Font(base, 12, Font.NORMAL);
-
     }
 
 
@@ -105,8 +98,7 @@ public abstract class ReportPdf implements ReportPdfApi {
         PdfPCell pdfCellHeaderJm = getPdfCellHeader("j. m.");
 
 
-
-        PdfPCell pdfCellHeaderIlosc = getPdfCellHeader(toUtf8("Ilość"));
+        PdfPCell pdfCellHeaderIlosc = getPdfCellHeader("Ilość");
         PdfPCell pdfCellHeaderCenaNetto = getPdfCellHeader("Cena netto");
         PdfPCell pdfCellHeaderwartoścNetto = getPdfCellHeader("Wartość netto");
         table.addCell(pdfCellHeaderLp);
@@ -171,18 +163,6 @@ public abstract class ReportPdf implements ReportPdfApi {
         PdfPCell pdfCell = new PdfPCell(new Phrase(value, FONT_VALUE));
         pdfCell.setHorizontalAlignment(Element.ALIGN_LEFT);
         return pdfCell;
-    }
-
-
-
-    private String toUtf8(String input){
-
-        byte[] ptext = input.getBytes();
-        String value = new String(ptext, StandardCharsets.UTF_8);
-        return value;
-
-        throw new RuntimeException("Encoding to UTF doesnot work");
-
     }
 
 

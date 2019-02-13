@@ -14,7 +14,7 @@ public final class PozycjeReportNettoFactory {
     public static PozycjaDoRaportuNetto createPozycjaDoRaportuNetto(int number) {
         PozycjaDoRaportuNetto pozycjaDoRaportuNetto = new PozycjaDoRaportuNetto();
         pozycjaDoRaportuNetto.setPozycjaWRaporcie(number);
-        pozycjaDoRaportuNetto.setNazwaTowaru("Jakis towar");
+        pozycjaDoRaportuNetto.setNazwaTowaru("JakiśćTowarŻŹŹćźóęąĄĘÓłŁślóÓjvvńóóęttTWYÓóÓPRWTWAIUYT");
         pozycjaDoRaportuNetto.setIlosc(3);
         pozycjaDoRaportuNetto.setCenaNetto(3.11);
         pozycjaDoRaportuNetto.setJednostka("szt");
