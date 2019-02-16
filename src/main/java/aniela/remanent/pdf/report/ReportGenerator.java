@@ -9,7 +9,7 @@ import java.util.Queue;
 
 public final class ReportGenerator {
 
-    private static final int POSITIONS_MAX_PER_PAGE = 25;
+    private static final int POSITIONS_MAX_PER_PAGE = 54;
     private int pagesToGenerate = 0;
     private Queue<PozycjaDoRaportuNetto> postions = new LinkedList<>();
     public ReportGenerator(List<PozycjaDoRaportuNetto> postionsList) {
@@ -28,6 +28,7 @@ public final class ReportGenerator {
                     reportPage.addPosition(postions.poll());
                 }
             }
+            reportPage.sumPositions();
             reportPages.add(reportPage);
         }
         return reportPages;

@@ -90,48 +90,19 @@ public abstract class ReportPdf implements ReportPdfApi {
     }
 
     private void generateFirstPage() throws DocumentException {
-        PdfPTable table = new PdfPTable(6);
-        table.setWidthPercentage(100f);
-        table.setTotalWidth(new float[]{10f, 80f, 7f, 10f, 14f, 17f});
-
-        PdfPCell pdfCellHeaderLp = getPdfCellHeader("LP");
-        PdfPCell pdfCellHeaderNazwaTowaru = getPdfCellHeader("Nazwa towaru");
-        PdfPCell pdfCellHeaderJm = getPdfCellHeader("j. m.");
-
-
-        PdfPCell pdfCellHeaderIlosc = getPdfCellHeader("Ilość");
-        PdfPCell pdfCellHeaderCenaNetto = getPdfCellHeader("Cena netto");
-        PdfPCell pdfCellHeaderwartoścNetto = getPdfCellHeader("Wartość netto");
-        table.addCell(pdfCellHeaderLp);
-        table.addCell(pdfCellHeaderNazwaTowaru);
-        table.addCell(pdfCellHeaderJm);
-        table.addCell(pdfCellHeaderIlosc);
-        table.addCell(pdfCellHeaderCenaNetto);
-        table.addCell(pdfCellHeaderwartoścNetto);
-        table.setHeaderRows(1);
+        PdfPTable table = getPageTable();
         ReportPage page1 = reportPages.poll();
-
-        page1.positions.forEach(element -> {
-            table.addCell(getPdfCell(String.valueOf(element.getPozyzjaWRaporcie())));
-            table.addCell(getPdfCellNazwaTowaru(element.getNazwaTowaru()));
-            table.addCell(getPdfCell(element.getJednostka()));
-            table.addCell(getPdfCell(String.valueOf(element.getIlosc())));
-            table.addCell(getPdfCell(String.valueOf(element.getCenaNetto())));
-            table.addCell(getPdfCell(String.valueOf(element.getSumaNetto())));
-        });
-        table.addCell(getEmptyPdfCell());
-        table.addCell(getEmptyPdfCell());
-        table.addCell(getEmptyPdfCell());
-        table.addCell(getEmptyPdfCell());
-        table.addCell(getEmptyPdfCell());
-        table.addCell(getPdfCell(String.valueOf(page1.getSumOfPositions())));
-
+        fillPageWithPostions(table, page1);
         document.add(table);
     }
 
-    private void generateInternalPages() {
-
-
+    private void generateInternalPages() throws DocumentException {
+        while (reportPages.peek() != null) {
+            PdfPTable table = getPageTable();
+            ReportPage reportPage = reportPages.poll();
+            fillPageWithPostions(table, reportPage);
+            document.add(table);
+        }
     }
 
     private void generateInternalPage() {
@@ -178,6 +149,43 @@ public abstract class ReportPdf implements ReportPdfApi {
         return pdfCell;
     }
 
+    private PdfPTable getPageTable() throws DocumentException {
+        PdfPTable table = new PdfPTable(6);
+        table.setWidthPercentage(100f);
+        table.setTotalWidth(new float[]{10f, 80f, 7f, 10f, 14f, 17f});
 
+        PdfPCell pdfCellHeaderLp = getPdfCellHeader("LP");
+        PdfPCell pdfCellHeaderNazwaTowaru = getPdfCellHeader("Nazwa towaru");
+        PdfPCell pdfCellHeaderJm = getPdfCellHeader("j. m.");
+
+        PdfPCell pdfCellHeaderIlosc = getPdfCellHeader("Ilość");
+        PdfPCell pdfCellHeaderCenaNetto = getPdfCellHeader("Cena netto");
+        PdfPCell pdfCellHeaderwartoścNetto = getPdfCellHeader("Wartość netto");
+        table.addCell(pdfCellHeaderLp);
+        table.addCell(pdfCellHeaderNazwaTowaru);
+        table.addCell(pdfCellHeaderJm);
+        table.addCell(pdfCellHeaderIlosc);
+        table.addCell(pdfCellHeaderCenaNetto);
+        table.addCell(pdfCellHeaderwartoścNetto);
+        table.setHeaderRows(1);
+        return table;
+    }
+
+    private void fillPageWithPostions(PdfPTable table, ReportPage reportPage) {
+        reportPage.positions.forEach(element -> {
+            table.addCell(getPdfCell(String.valueOf(element.getPozyzjaWRaporcie())));
+            table.addCell(getPdfCellNazwaTowaru(element.getNazwaTowaru()));
+            table.addCell(getPdfCell(element.getJednostka()));
+            table.addCell(getPdfCell(String.valueOf(element.getIlosc())));
+            table.addCell(getPdfCell(String.valueOf(element.getCenaNetto())));
+            table.addCell(getPdfCell(String.valueOf(element.getSumaNetto())));
+        });
+        table.addCell(getEmptyPdfCell());
+        table.addCell(getEmptyPdfCell());
+        table.addCell(getEmptyPdfCell());
+        table.addCell(getEmptyPdfCell());
+        table.addCell(getEmptyPdfCell());
+        table.addCell(getPdfCell(String.valueOf(reportPage.getSumOfPositions())));
+    }
 
 }

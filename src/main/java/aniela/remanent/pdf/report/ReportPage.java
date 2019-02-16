@@ -12,6 +12,8 @@ public final class ReportPage {
     public final int pageNumber;
     public final List<PozycjaDoRaportuNetto> positions;
 
+    private BigDecimal sumOfPositions;
+
     public ReportPage(int pageNumber) {
         this.pageNumber = pageNumber;
         positions = new ArrayList<>();
@@ -21,14 +23,17 @@ public final class ReportPage {
         positions.add(position);
     }
 
-    public double getSumOfPositions() {
+    public void sumPositions() {
         BigDecimal result = new BigDecimal(0);
         for (PozycjaDoRaportuNetto position : positions) {
             double sumaNetto = position.getSumaNetto();
             BigDecimal sumaNettoAsBigDecimal = BigDecimal.valueOf(sumaNetto);
             result = result.add(sumaNettoAsBigDecimal);
         }
-        result.setScale(2, RoundingMode.HALF_UP);
-        return result.doubleValue();
+        sumOfPositions = result.setScale(2, RoundingMode.HALF_UP);
+    }
+
+    public double getSumOfPositions() {
+        return sumOfPositions.doubleValue();
     }
 }
