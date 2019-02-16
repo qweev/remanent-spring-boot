@@ -39,8 +39,8 @@ public abstract class ReportPdf implements ReportPdfApi {
         } catch (DocumentException | IOException e) {
             e.printStackTrace();
         }
-        FONT_HEADER = new Font(baseFont, 10, Font.BOLD);
-        FONT_VALUE = new Font(baseFont, 10, Font.NORMAL);
+        FONT_HEADER = new Font(baseFont, 9, Font.BOLD);
+        FONT_VALUE = new Font(baseFont, 9, Font.NORMAL);
     }
 
 
@@ -119,6 +119,12 @@ public abstract class ReportPdf implements ReportPdfApi {
             table.addCell(getPdfCell(String.valueOf(element.getCenaNetto())));
             table.addCell(getPdfCell(String.valueOf(element.getSumaNetto())));
         });
+        table.addCell(getEmptyPdfCell());
+        table.addCell(getEmptyPdfCell());
+        table.addCell(getEmptyPdfCell());
+        table.addCell(getEmptyPdfCell());
+        table.addCell(getEmptyPdfCell());
+        table.addCell(getPdfCell(String.valueOf(page1.getSumOfPositions())));
 
         document.add(table);
     }
@@ -165,6 +171,13 @@ public abstract class ReportPdf implements ReportPdfApi {
         pdfCell.setHorizontalAlignment(Element.ALIGN_LEFT);
         return pdfCell;
     }
+
+    private PdfPCell getEmptyPdfCell() {
+        PdfPCell pdfCell = new PdfPCell(new Phrase("", FONT_VALUE));
+        pdfCell.setBorderWidth(0f);
+        return pdfCell;
+    }
+
 
 
 }

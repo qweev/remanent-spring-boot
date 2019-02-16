@@ -17,18 +17,17 @@ public final class ReportPage {
         positions = new ArrayList<>();
     }
 
-
     public void addPosition(PozycjaDoRaportuNetto position) {
         positions.add(position);
     }
 
     public double getSumOfPositions() {
         BigDecimal result = new BigDecimal(0);
-        positions.forEach(position -> {
-                    result.add(new BigDecimal(position.getSumaNetto()));
-                }
-        );
-
+        for (PozycjaDoRaportuNetto position : positions) {
+            double sumaNetto = position.getSumaNetto();
+            BigDecimal sumaNettoAsBigDecimal = BigDecimal.valueOf(sumaNetto);
+            result = result.add(sumaNettoAsBigDecimal);
+        }
         result.setScale(2, RoundingMode.HALF_UP);
         return result.doubleValue();
     }
