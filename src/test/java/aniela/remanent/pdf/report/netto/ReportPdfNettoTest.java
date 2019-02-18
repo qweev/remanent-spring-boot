@@ -13,12 +13,12 @@ public class ReportPdfNettoTest {
 
     private ReportPdfNetto reportPdfNettoTestedObj;
     private BazaDAO bazaDAO;
-
     private final static Logger LOGGER = Logger.getLogger(ReportPdfNettoTest.class);
     private static String filePath;
     private static String filePathSeparator;
     private static String reportName = "Raport.pdf";
     private static String reportPathString;
+    private static int NUMBER_OF_POSITIONS_TO_GENERATE = 182;
 
     @BeforeAll
     public static void setupBeforeAll() {
@@ -30,7 +30,8 @@ public class ReportPdfNettoTest {
     @BeforeEach
     public void setupBeforeEach() {
         bazaDAO = Mockito.mock(BazaDAO.class);
-        Mockito.when(bazaDAO.przygotujPozycjeDoRaportuNetto()).thenReturn(PozycjeReportNettoFactory.generateListOfPozycjaDoRaportuNetto(189));
+        Mockito.when(bazaDAO.przygotujPozycjeDoRaportuNetto()).thenReturn(PozycjeReportNettoFactory.generateListOfPozycjaDoRaportuNetto(NUMBER_OF_POSITIONS_TO_GENERATE));
+        Mockito.when(bazaDAO.obliczIloscPozycji()).thenReturn(NUMBER_OF_POSITIONS_TO_GENERATE);
         reportPdfNettoTestedObj = new ReportPdfNetto(bazaDAO);
     }
 

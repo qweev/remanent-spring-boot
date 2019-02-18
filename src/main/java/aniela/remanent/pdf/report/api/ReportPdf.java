@@ -2,6 +2,7 @@ package aniela.remanent.pdf.report.api;
 
 import aniela.remanent.pdf.report.ReportGenerator;
 import aniela.remanent.pdf.report.ReportPage;
+import aniela.remanent.pdf.summary.SummaryGenerator;
 import aniela.remanent.pozycje.BazaDAO;
 import aniela.remanent.raport.raportDoDruku.PozycjaDoRaportuNetto;
 import com.itextpdf.text.*;
@@ -17,20 +18,22 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
 public abstract class ReportPdf implements ReportPdfApi {
 
+    private static final String POLISH_CURRENCY = "zł";
     private final Font FONT_HEADER;
     private final Font FONT_VALUE;
-
-    protected BazaDAO bazaRaport;
     private Document document;
-
     private ReportGenerator reportGenerator;
+    private SummaryGenerator summaryGenerator;
     private Queue<ReportPage> reportPages;
+    private List<ReportPage> reportPagesForSummary = new ArrayList<>();
+    protected BazaDAO bazaRaport;
 
     public ReportPdf() {
         BaseFont baseFont = null;
@@ -57,11 +60,12 @@ public abstract class ReportPdf implements ReportPdfApi {
         generateHeader();
         generateFirstPage();
         generateInternalPages();
-        generateLastPage();
+        generateEnding();
         generateSummary();
         closeDocument();
         return null;
     }
+
 
     private void removeExisingReport(String filePath) throws IOException {
         Path path = Paths.get(filePath);
@@ -94,25 +98,35 @@ public abstract class ReportPdf implements ReportPdfApi {
         ReportPage page1 = reportPages.poll();
         fillPageWithPostions(table, page1);
         document.add(table);
+        reportPagesForSummary.add(page1);
     }
 
     private void generateInternalPages() throws DocumentException {
         while (reportPages.peek() != null) {
+            document.newPage();
             PdfPTable table = getPageTable();
             ReportPage reportPage = reportPages.poll();
             fillPageWithPostions(table, reportPage);
             document.add(table);
+            reportPagesForSummary.add(reportPage);
         }
     }
 
-    private void generateInternalPage() {
+    private void generateEnding() throws DocumentException {
+        Paragraph paragraph = new Paragraph(String.format("Spis ukonczono na pozycji nr %d ", bazaRaport.obliczIloscPozycji()));
+        paragraph.setAlignment(Element.ALIGN_CENTER);
+        addEmptyLine(paragraph, 1);
+        document.add(paragraph);
     }
 
-    private void generateLastPage() {
+    private void generateSummary() throws DocumentException {
+        document.newPage();
+        PdfPTable tableSumamry = getPageTableForSummary();
+        summaryGenerator = new SummaryGenerator();
+        fillTableWithReportPageNumberAndSum(tableSumamry, reportPagesForSummary, summaryGenerator.getTotalSum(reportPagesForSummary));
+        document.add(tableSumamry);
     }
 
-    private void generateSummary() {
-    }
 
     private void closeDocument() {
         document.close();
@@ -177,15 +191,40 @@ public abstract class ReportPdf implements ReportPdfApi {
             table.addCell(getPdfCellNazwaTowaru(element.getNazwaTowaru()));
             table.addCell(getPdfCell(element.getJednostka()));
             table.addCell(getPdfCell(String.valueOf(element.getIlosc())));
-            table.addCell(getPdfCell(String.valueOf(element.getCenaNetto())));
-            table.addCell(getPdfCell(String.valueOf(element.getSumaNetto())));
+            table.addCell(getPdfCell(element.getCenaNetto() + POLISH_CURRENCY));
+            table.addCell(getPdfCell(element.getSumaNetto() + POLISH_CURRENCY));
         });
         table.addCell(getEmptyPdfCell());
         table.addCell(getEmptyPdfCell());
         table.addCell(getEmptyPdfCell());
         table.addCell(getEmptyPdfCell());
         table.addCell(getEmptyPdfCell());
-        table.addCell(getPdfCell(String.valueOf(reportPage.getSumOfPositions())));
+        table.addCell(getPdfCell(reportPage.getSumOfPositions() + POLISH_CURRENCY));
     }
+
+    private PdfPTable getPageTableForSummary() throws DocumentException {
+        PdfPTable table = new PdfPTable(2);
+        table.setWidthPercentage(20f);
+        table.setTotalWidth(new float[]{10f, 10f});
+
+        PdfPCell pdfCellPageNumber = getPdfCellHeader("Strona");
+        PdfPCell pdfCellPageValue = getPdfCellHeader("Wartosc");
+
+        table.addCell(pdfCellPageNumber);
+        table.addCell(pdfCellPageValue);
+        table.setHeaderRows(1);
+        return table;
+    }
+
+    private void fillTableWithReportPageNumberAndSum(PdfPTable table, List<ReportPage> reportPages, double totalSum) {
+        reportPages.forEach(reportPage -> {
+            table.addCell(getPdfCell(String.valueOf(reportPage.pageNumber)));
+            table.addCell(String.valueOf(reportPage.getSumOfPositions()));
+        });
+
+        table.addCell(getEmptyPdfCell());
+        table.addCell(getPdfCell(totalSum + POLISH_CURRENCY));
+    }
+
 
 }

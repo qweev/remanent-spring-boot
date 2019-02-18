@@ -17,7 +17,6 @@ public final class ReportGenerator {
     }
 
     public List<ReportPage> generatePages() {
-
         pagesToGenerate = postions.size() / POSITIONS_MAX_PER_PAGE + 1;
         List<ReportPage> reportPages = new ArrayList<>();
         for (int pageNumber = 1; pageNumber <= pagesToGenerate; pageNumber++) {
