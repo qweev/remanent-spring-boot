@@ -46,7 +46,6 @@ public abstract class ReportPdf implements ReportPdfApi {
         FONT_VALUE = new Font(baseFont, 9, Font.NORMAL);
     }
 
-
     @Override
     public int countPostions() {
         return bazaRaport.obliczIloscPozycji();
@@ -65,7 +64,6 @@ public abstract class ReportPdf implements ReportPdfApi {
         closeDocument();
         return null;
     }
-
 
     private void removeExisingReport(String filePath) throws IOException {
         Path path = Paths.get(filePath);
@@ -127,11 +125,9 @@ public abstract class ReportPdf implements ReportPdfApi {
         document.add(tableSumamry);
     }
 
-
     private void closeDocument() {
         document.close();
     }
-
 
     private void addEmptyLine(Paragraph paragraph, int number) {
         for (int i = 0; i < number; i++) {
@@ -206,10 +202,8 @@ public abstract class ReportPdf implements ReportPdfApi {
         PdfPTable table = new PdfPTable(2);
         table.setWidthPercentage(20f);
         table.setTotalWidth(new float[]{10f, 10f});
-
         PdfPCell pdfCellPageNumber = getPdfCellHeader("Strona");
-        PdfPCell pdfCellPageValue = getPdfCellHeader("Wartosc");
-
+        PdfPCell pdfCellPageValue = getPdfCellHeader("Wartość");
         table.addCell(pdfCellPageNumber);
         table.addCell(pdfCellPageValue);
         table.setHeaderRows(1);
@@ -225,6 +219,4 @@ public abstract class ReportPdf implements ReportPdfApi {
         table.addCell(getEmptyPdfCell());
         table.addCell(getPdfCell(totalSum + POLISH_CURRENCY));
     }
-
-
 }
