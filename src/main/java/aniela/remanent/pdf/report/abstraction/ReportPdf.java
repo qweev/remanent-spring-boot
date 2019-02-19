@@ -1,7 +1,8 @@
-package aniela.remanent.pdf.report.api;
+package aniela.remanent.pdf.report.abstraction;
 
 import aniela.remanent.pdf.report.ReportGenerator;
 import aniela.remanent.pdf.report.ReportPage;
+import aniela.remanent.pdf.report.api.ReportPdfApi;
 import aniela.remanent.pdf.summary.SummaryGenerator;
 import aniela.remanent.pozycje.BazaDAO;
 import aniela.remanent.raport.raportDoDruku.PozycjaDoRaportuNetto;
@@ -47,11 +48,6 @@ public abstract class ReportPdf implements ReportPdfApi {
     }
 
     @Override
-    public int countPostions() {
-        return bazaRaport.obliczIloscPozycji();
-    }
-
-    @Override
     public String generateReport(List<PozycjaDoRaportuNetto> positions, String filePath) throws Exception {
         removeExisingReport(filePath);
         runReportGenerator();
@@ -80,7 +76,9 @@ public abstract class ReportPdf implements ReportPdfApi {
 
     private void initializeReportPdf(String fullFilePath) throws FileNotFoundException, DocumentException {
         document = new Document();
-        PdfWriter.getInstance(document, new FileOutputStream(fullFilePath));
+        PdfWriter pdfWriter = PdfWriter.getInstance(document, new FileOutputStream(fullFilePath));
+        PageNumerator pageNumerator = new PageNumerator();
+        pdfWriter.setPageEvent(pageNumerator);
         document.open();
     }
 

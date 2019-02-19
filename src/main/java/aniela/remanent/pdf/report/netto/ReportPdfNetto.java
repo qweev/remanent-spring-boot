@@ -1,7 +1,7 @@
 package aniela.remanent.pdf.report.netto;
 
 
-import aniela.remanent.pdf.report.api.ReportPdf;
+import aniela.remanent.pdf.report.abstraction.ReportPdf;
 import aniela.remanent.pozycje.BazaDAO;
 import aniela.remanent.raport.raportDoDruku.PozycjaDoRaportuNetto;
 import org.springframework.beans.factory.annotation.Autowired;

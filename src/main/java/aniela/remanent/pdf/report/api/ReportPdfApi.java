@@ -6,8 +6,6 @@ import java.util.List;
 
 public interface ReportPdfApi {
 
-    int countPostions();
-
     List<PozycjaDoRaportuNetto> getPostionsNetto();
 
     //TODO use interface in future to get generic positions

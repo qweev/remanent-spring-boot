@@ -1,7 +1,7 @@
 package aniela.remanent.pdf.report.brutto;
 
 
-import aniela.remanent.pdf.report.api.ReportPdf;
+import aniela.remanent.pdf.report.abstraction.ReportPdf;
 import aniela.remanent.raport.raportDoDruku.PozycjaDoRaportuNetto;
 import org.springframework.stereotype.Service;
 
