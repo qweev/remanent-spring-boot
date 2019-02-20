@@ -1,20 +1,55 @@
 package aniela.remanent.pdf.report.netto;
 
 import aniela.remanent.raport.raportDoDruku.PozycjaDoRaportuNetto;
-
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ThreadLocalRandom;
+import java.util.stream.IntStream;
 
 public final class PozycjeReportNettoFactory {
 
-    private PozycjeReportNettoFactory() {
+    private static String LONG_UNIT_NAME = "JakiśćTowarŻŹŹćźóęąĄĘÓłŁślóÓjvvńóóęttTWYÓóÓPRWTWAIU";
 
+    private Map<Integer, Integer> amountMapping = new HashMap<>();
+    private Map<Integer, Double> nettoMapping;
+    private Map<Integer, String> unitMapping;
+    private Map<Integer, String> positionNames;
+
+    public PozycjeReportNettoFactory() {
+        IntStream.range(1, 9).forEach(value -> {
+            amountMapping.putIfAbsent(value, value);
+        });
+        nettoMapping = fillNetto();
+        unitMapping = fillUnits();
+        positionNames = getPositions();
     }
 
-    public static PozycjaDoRaportuNetto createPozycjaDoRaportuNetto(int number) {
+
+    public List<PozycjaDoRaportuNetto> generateListOfPozycjaDoRaportuNettoContentSame(int amountToCreate) {
+        List<PozycjaDoRaportuNetto> positions = new ArrayList<>(amountToCreate);
+        IntStream.range(1, amountToCreate).forEach(value -> {
+            positions.add(createPozycjaDoRaportuNetto(value));
+        });
+        return positions;
+    }
+
+    public List<PozycjaDoRaportuNetto> generateListOfPozycjaDoRaportuNettoContentRandom(int amountToCreate) {
+        List<PozycjaDoRaportuNetto> positions = new ArrayList<>(amountToCreate);
+        IntStream.range(1, amountToCreate).forEach(value -> {
+            positions.add(createPozycjaDoRaportuNettoRandom(value));
+        });
+        return positions;
+    }
+
+
+    private PozycjaDoRaportuNetto createPozycjaDoRaportuNetto(int number) {
         PozycjaDoRaportuNetto pozycjaDoRaportuNetto = new PozycjaDoRaportuNetto();
         pozycjaDoRaportuNetto.setPozycjaWRaporcie(number);
-        pozycjaDoRaportuNetto.setNazwaTowaru("JakiśćTowarŻŹŹćźóęąĄĘÓłŁślóÓjvvńóóęttTWYÓóÓPRWTWAIU");
+        pozycjaDoRaportuNetto.setNazwaTowaru(LONG_UNIT_NAME);
         pozycjaDoRaportuNetto.setIlosc(3);
         pozycjaDoRaportuNetto.setCenaNetto(3.11);
         pozycjaDoRaportuNetto.setJednostka("szt");
@@ -22,12 +57,45 @@ public final class PozycjeReportNettoFactory {
         return pozycjaDoRaportuNetto;
     }
 
-    public static List<PozycjaDoRaportuNetto> generateListOfPozycjaDoRaportuNetto(int amountToCreate) {
 
-        List<PozycjaDoRaportuNetto> positions = new ArrayList<>(amountToCreate);
-        for (int pointer = 1; pointer <= amountToCreate; pointer++) {
-            positions.add(createPozycjaDoRaportuNetto(pointer));
-        }
+    private PozycjaDoRaportuNetto createPozycjaDoRaportuNettoRandom(int number) {
+        PozycjaDoRaportuNetto pozycjaDoRaportuNetto = new PozycjaDoRaportuNetto();
+        pozycjaDoRaportuNetto.setPozycjaWRaporcie(number);
+        ;
+        pozycjaDoRaportuNetto.setNazwaTowaru(positionNames.getOrDefault(ThreadLocalRandom.current().nextInt(1,4),"Wartosc domyslna dla nazwy"));
+        pozycjaDoRaportuNetto.setIlosc(amountMapping.getOrDefault(ThreadLocalRandom.current().nextInt(1,9),99));
+        pozycjaDoRaportuNetto.setCenaNetto(nettoMapping.getOrDefault(ThreadLocalRandom.current().nextInt(1,9),2.55d));
+        pozycjaDoRaportuNetto.setJednostka(unitMapping.getOrDefault(ThreadLocalRandom.current().nextInt(1,4),"XXX"));
+        pozycjaDoRaportuNetto.setSumaNetto(pozycjaDoRaportuNetto.getCenaNetto(), pozycjaDoRaportuNetto.getIlosc());
+        return pozycjaDoRaportuNetto;
+    }
+
+
+    private Map<Integer, String> fillUnits() {
+        Map<Integer, String> units = new HashMap<>();
+        units.put(1, "szt");
+        units.put(2, "kpl");
+        units.put(3, "mb");
+        return units;
+    }
+
+    private Map<Integer, Double> fillNetto() {
+        Map<Integer, Double> mapping = new HashMap<>();
+        IntStream.range(1, 9).forEach(value -> {
+            double doubleRandom = BigDecimal.valueOf(ThreadLocalRandom.current().nextDouble(1, 245)).setScale(2,
+                RoundingMode.HALF_UP)
+                .doubleValue();
+            mapping.putIfAbsent(value, doubleRandom);
+        });
+        return mapping;
+    }
+
+    private Map<Integer, String> getPositions() {
+        Map<Integer, String> positions = new HashMap<>();
+        positions.put(1, LONG_UNIT_NAME);
+        positions.put(2, "cos dluzszego");
+        positions.put(3, "Znakow to tu bedzie jakies 29");
         return positions;
     }
+
 }

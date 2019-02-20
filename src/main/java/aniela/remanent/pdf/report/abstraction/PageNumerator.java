@@ -22,11 +22,11 @@ public class PageNumerator  extends PdfPageEventHelper {
 
         int numberOfGeneratedPages = reportGenerator.getNumberOfGeneratedPages();
         int currentPageNumber = writer.getCurrentPageNumber();
-        String pageNumber = numberOfGeneratedPages == currentPageNumber ?  String.format("Strona %s", String.valueOf(currentPageNumber)) : "";
+        String pageNumber = ( currentPageNumber <= numberOfGeneratedPages ?  String.format("Strona %s", String.valueOf(currentPageNumber)) : "");
         try {
             Rectangle pageSize = document.getPageSize();
             //ColumnText.showTextAligned(writer.getDirectContent(), Element.ALIGN_CENTER, new Phrase("Title"), pageSize.getLeft(275), pageSize.getTop(30), 0);
-            ColumnText.showTextAligned(writer.getDirectContent(), Element.ALIGN_RIGHT, new Phrase(),
+            ColumnText.showTextAligned(writer.getDirectContent(), Element.ALIGN_RIGHT, new Phrase(pageNumber),
                 pageSize.getRight(30), pageSize.getTop(30), 0);
 
         } catch (Exception e) {
