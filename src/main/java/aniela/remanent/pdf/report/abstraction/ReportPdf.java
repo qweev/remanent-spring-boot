@@ -211,7 +211,7 @@ public abstract class ReportPdf implements ReportPdfApi {
     private void fillTableWithReportPageNumberAndSum(PdfPTable table, List<ReportPage> reportPages, double totalSum) {
         reportPages.forEach(reportPage -> {
             table.addCell(getPdfCell(String.valueOf(reportPage.pageNumber)));
-            table.addCell(String.valueOf(reportPage.getSumOfPositions()));
+            table.addCell(getPdfCell(String.valueOf(reportPage.getSumOfPositions())));
         });
 
         table.addCell(getEmptyPdfCell());
