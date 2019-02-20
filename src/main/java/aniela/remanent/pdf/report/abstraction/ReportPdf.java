@@ -77,7 +77,7 @@ public abstract class ReportPdf implements ReportPdfApi {
     private void initializeReportPdf(String fullFilePath) throws FileNotFoundException, DocumentException {
         document = new Document();
         PdfWriter pdfWriter = PdfWriter.getInstance(document, new FileOutputStream(fullFilePath));
-        PageNumerator pageNumerator = new PageNumerator();
+        PageNumerator pageNumerator = new PageNumerator(reportGenerator);
         pdfWriter.setPageEvent(pageNumerator);
         document.open();
     }

@@ -1,7 +1,6 @@
 package aniela.remanent.pdf.report;
 
 import aniela.remanent.raport.raportDoDruku.PozycjaDoRaportuNetto;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,6 +11,7 @@ public final class ReportGenerator {
     private static final int POSITIONS_MAX_PER_PAGE = 54;
     private int pagesToGenerate = 0;
     private Queue<PozycjaDoRaportuNetto> postions = new LinkedList<>();
+
     public ReportGenerator(List<PozycjaDoRaportuNetto> postionsList) {
         this.postions.addAll(postionsList);
     }
@@ -32,4 +32,9 @@ public final class ReportGenerator {
         }
         return reportPages;
     }
+
+    public int getNumberOfGeneratedPages() {
+        return pagesToGenerate;
+    }
+
 }
