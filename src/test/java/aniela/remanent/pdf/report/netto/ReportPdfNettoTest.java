@@ -64,7 +64,7 @@ public class ReportPdfNettoTest {
     @Test
     public void generateReportRandomValues() throws Exception {
         Mockito.when(bazaDAO.przygotujPozycjeDoRaportuNetto())
-            .thenReturn(pozycjeReportNettoFactory.generateListOfPozycjaDoRaportuNettoContentRandom(10));
+            .thenReturn(pozycjeReportNettoFactory.generateListOfPozycjaDoRaportuNettoContentRandom(20));
         Mockito.when(bazaDAO.obliczIloscPozycji()).thenReturn(NUMBER_OF_POSITIONS_TO_GENERATE);
         reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportPathRandom);
         LOGGER.info(String.format("Report written to %s ", reportPathRandom));
@@ -73,7 +73,7 @@ public class ReportPdfNettoTest {
     @Test
     public void generateReportMixedValues() throws Exception {
         Mockito.when(bazaDAO.przygotujPozycjeDoRaportuNetto())
-            .thenReturn(pozycjeReportNettoFactory.generateListOfPozycjaDoRaportuNettoContentMixed(10));
+            .thenReturn(pozycjeReportNettoFactory.generateListOfPozycjaDoRaportuNettoContentMixed(20));
         Mockito.when(bazaDAO.obliczIloscPozycji()).thenReturn(NUMBER_OF_POSITIONS_TO_GENERATE);
         reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportNameRandomMixed);
         LOGGER.info(String.format("Report written to %s ", reportNameRandomMixed));
