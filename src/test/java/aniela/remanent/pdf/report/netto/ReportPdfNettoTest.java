@@ -19,9 +19,11 @@ public class ReportPdfNettoTest {
     private static String reportName = "Raport.pdf";
     private static String reportName10000 = "Raport10000.pdf";
     private static String reportNameRandom = "RaportRandom.pdf";
+    private static String reportNameRandomMixed = "RaportMixed.pdf";
     private static String reportPath;
     private static String reportPath10000;
     private static String reportPathRandom;
+    private static String reportPathMixed;
     private static int NUMBER_OF_POSITIONS_TO_GENERATE = 182;
 
     @BeforeAll
@@ -30,6 +32,7 @@ public class ReportPdfNettoTest {
         reportPath = new StringBuilder().append(filePath).append(filePathSeparator).append(reportName).toString();
         reportPath10000 = new StringBuilder().append(filePath).append(filePathSeparator).append(reportName10000).toString();
         reportPathRandom = new StringBuilder().append(filePath).append(filePathSeparator).append(reportNameRandom).toString();
+        reportNameRandomMixed = new StringBuilder().append(filePath).append(filePathSeparator).append(reportNameRandomMixed).toString();
     }
 
     @BeforeEach
@@ -61,10 +64,19 @@ public class ReportPdfNettoTest {
     @Test
     public void generateReportRandomValues() throws Exception {
         Mockito.when(bazaDAO.przygotujPozycjeDoRaportuNetto())
-            .thenReturn(pozycjeReportNettoFactory.generateListOfPozycjaDoRaportuNettoContentRandom(NUMBER_OF_POSITIONS_TO_GENERATE));
+            .thenReturn(pozycjeReportNettoFactory.generateListOfPozycjaDoRaportuNettoContentRandom(10));
         Mockito.when(bazaDAO.obliczIloscPozycji()).thenReturn(NUMBER_OF_POSITIONS_TO_GENERATE);
         reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportPathRandom);
         LOGGER.info(String.format("Report written to %s ", reportPathRandom));
+    }
+
+    @Test
+    public void generateReportMixedValues() throws Exception {
+        Mockito.when(bazaDAO.przygotujPozycjeDoRaportuNetto())
+            .thenReturn(pozycjeReportNettoFactory.generateListOfPozycjaDoRaportuNettoContentMixed(10));
+        Mockito.when(bazaDAO.obliczIloscPozycji()).thenReturn(NUMBER_OF_POSITIONS_TO_GENERATE);
+        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportNameRandomMixed);
+        LOGGER.info(String.format("Report written to %s ", reportNameRandomMixed));
     }
 
 }

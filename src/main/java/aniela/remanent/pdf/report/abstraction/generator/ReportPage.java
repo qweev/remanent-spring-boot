@@ -1,4 +1,4 @@
-package aniela.remanent.pdf.report;
+package aniela.remanent.pdf.report.abstraction.generator;
 
 import aniela.remanent.raport.raportDoDruku.PozycjaDoRaportuNetto;
 

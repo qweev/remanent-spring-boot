@@ -45,12 +45,26 @@ public final class PozycjeReportNettoFactory {
         return positions;
     }
 
+    public List<PozycjaDoRaportuNetto> generateListOfPozycjaDoRaportuNettoContentMixed(int amountToCreate) {
+        List<PozycjaDoRaportuNetto> positions = new ArrayList<>(amountToCreate);
+        IntStream.range(1, amountToCreate).forEach(value -> {
+
+            if(value%2 == 0)
+                positions.add(createPozycjaDoRaportuNettoRandom(value));
+            else
+                positions.add(createPozycjaDoRaportuNetto(value));
+        });
+        return positions;
+    }
+
+
+
 
     private PozycjaDoRaportuNetto createPozycjaDoRaportuNetto(int number) {
         PozycjaDoRaportuNetto pozycjaDoRaportuNetto = new PozycjaDoRaportuNetto();
         pozycjaDoRaportuNetto.setPozycjaWRaporcie(number);
         pozycjaDoRaportuNetto.setNazwaTowaru(LONG_UNIT_NAME);
-        pozycjaDoRaportuNetto.setIlosc(3);
+        pozycjaDoRaportuNetto.setIlosc(4);
         pozycjaDoRaportuNetto.setCenaNetto(3.11);
         pozycjaDoRaportuNetto.setJednostka("szt");
         pozycjaDoRaportuNetto.setSumaNetto(pozycjaDoRaportuNetto.getCenaNetto(), pozycjaDoRaportuNetto.getIlosc());
@@ -61,10 +75,9 @@ public final class PozycjeReportNettoFactory {
     private PozycjaDoRaportuNetto createPozycjaDoRaportuNettoRandom(int number) {
         PozycjaDoRaportuNetto pozycjaDoRaportuNetto = new PozycjaDoRaportuNetto();
         pozycjaDoRaportuNetto.setPozycjaWRaporcie(number);
-        ;
         pozycjaDoRaportuNetto.setNazwaTowaru(positionNames.getOrDefault(ThreadLocalRandom.current().nextInt(1,4),"Wartosc domyslna dla nazwy"));
-        pozycjaDoRaportuNetto.setIlosc(amountMapping.getOrDefault(ThreadLocalRandom.current().nextInt(1,9),99));
-        pozycjaDoRaportuNetto.setCenaNetto(nettoMapping.getOrDefault(ThreadLocalRandom.current().nextInt(1,9),2.55d));
+        pozycjaDoRaportuNetto.setIlosc(generatePseudoDouble());
+        pozycjaDoRaportuNetto.setCenaNetto(generatePseudoDouble());
         pozycjaDoRaportuNetto.setJednostka(unitMapping.getOrDefault(ThreadLocalRandom.current().nextInt(1,4),"XXX"));
         pozycjaDoRaportuNetto.setSumaNetto(pozycjaDoRaportuNetto.getCenaNetto(), pozycjaDoRaportuNetto.getIlosc());
         return pozycjaDoRaportuNetto;
@@ -98,4 +111,8 @@ public final class PozycjeReportNettoFactory {
         return positions;
     }
 
+    public double generatePseudoDouble(){
+        double  result = Math.random() + ThreadLocalRandom.current().nextDouble(1,9);
+        return  BigDecimal.valueOf(result).setScale(2,RoundingMode.HALF_UP).doubleValue();
+    }
 }

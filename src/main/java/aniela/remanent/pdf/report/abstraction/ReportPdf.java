@@ -1,7 +1,7 @@
 package aniela.remanent.pdf.report.abstraction;
 
-import aniela.remanent.pdf.report.ReportGenerator;
-import aniela.remanent.pdf.report.ReportPage;
+import aniela.remanent.pdf.report.abstraction.generator.ReportGenerator;
+import aniela.remanent.pdf.report.abstraction.generator.ReportPage;
 import aniela.remanent.pdf.report.api.ReportPdfApi;
 import aniela.remanent.pdf.summary.SummaryGenerator;
 import aniela.remanent.pozycje.BazaDAO;
@@ -15,6 +15,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -184,7 +185,7 @@ public abstract class ReportPdf implements ReportPdfApi {
             table.addCell(getPdfCell(String.valueOf(element.getPozyzjaWRaporcie())));
             table.addCell(getPdfCellNazwaTowaru(element.getNazwaTowaru()));
             table.addCell(getPdfCell(element.getJednostka()));
-            table.addCell(getPdfCell(String.valueOf(element.getIlosc())));
+            table.addCell(getPdfCell(AmountExtractor.extractAmount(element.getIlosc())));
             table.addCell(getPdfCell(element.getCenaNetto() + POLISH_CURRENCY));
             table.addCell(getPdfCell(element.getSumaNetto() + POLISH_CURRENCY));
         });
@@ -217,4 +218,8 @@ public abstract class ReportPdf implements ReportPdfApi {
         table.addCell(getEmptyPdfCell());
         table.addCell(getPdfCell(totalSum + POLISH_CURRENCY));
     }
+
+
+
+
 }
