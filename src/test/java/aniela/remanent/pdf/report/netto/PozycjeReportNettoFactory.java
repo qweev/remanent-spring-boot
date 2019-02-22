@@ -64,7 +64,7 @@ public final class PozycjeReportNettoFactory {
         PozycjaDoRaportuNetto pozycjaDoRaportuNetto = new PozycjaDoRaportuNetto();
         pozycjaDoRaportuNetto.setPozycjaWRaporcie(number);
         pozycjaDoRaportuNetto.setNazwaTowaru(LONG_UNIT_NAME);
-        pozycjaDoRaportuNetto.setIlosc(4);
+        pozycjaDoRaportuNetto.setIlosc(ThreadLocalRandom.current().nextInt(1,4));
         pozycjaDoRaportuNetto.setCenaNetto(3.11);
         pozycjaDoRaportuNetto.setJednostka("szt");
         pozycjaDoRaportuNetto.setSumaNetto(pozycjaDoRaportuNetto.getCenaNetto(), pozycjaDoRaportuNetto.getIlosc());
