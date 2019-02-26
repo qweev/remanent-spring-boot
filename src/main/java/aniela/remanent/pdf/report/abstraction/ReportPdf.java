@@ -15,6 +15,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -32,20 +33,19 @@ public abstract class ReportPdf implements ReportPdfApi {
     private static final int NUMBER_OF_HEADER_ROWS = 1;
     private final Font FONT_HEADER;
     private final Font FONT_VALUE;
+    protected BazaDAO bazaRaport;
     private Document document;
     private ReportGenerator reportGenerator;
     private SummaryGenerator summaryGenerator;
     private Queue<ReportPage> reportPages;
     private List<ReportPage> reportPagesForSummary = new ArrayList<>();
 
-    protected BazaDAO bazaRaport;
-
     public ReportPdf() {
         BaseFont baseFont = null;
         try {
             baseFont = BaseFont.createFont("arial.ttf", BaseFont.CP1250, BaseFont.EMBEDDED);
         } catch (DocumentException | IOException e) {
-            e.printStackTrace();
+            // e.printStackTrace();
         }
         FONT_HEADER = new Font(baseFont, 9, Font.BOLD);
         FONT_VALUE = new Font(baseFont, 9, Font.NORMAL);
@@ -188,7 +188,7 @@ public abstract class ReportPdf implements ReportPdfApi {
             table.addCell(getPdfCell(String.valueOf(element.getPozyzjaWRaporcie())));
             table.addCell(getPdfCellNazwaTowaru(element.getNazwaTowaru()));
             table.addCell(getPdfCell(element.getJednostka()));
-            table.addCell(getPdfCell(AmountFormatter.extractAmount(element.getIlosc())));
+            table.addCell(getPdfCell(AmountFormatter.formatAmount(element.getIlosc())));
             table.addCell(getPdfCell(element.getCenaNetto() + POLISH_CURRENCY));
             table.addCell(getPdfCell(element.getSumaNetto() + POLISH_CURRENCY));
         });
@@ -223,6 +223,29 @@ public abstract class ReportPdf implements ReportPdfApi {
     }
 
 
+    private final static class AmountFormatter {
+
+        private AmountFormatter() {
+        }
+
+        public static String formatAmount(double amount) {
+            // System.out.println("====================");
+            // System.out.println("Amount: " + amount);
+            BigDecimal bigDecimal = new BigDecimal(amount);
+            int intValue = bigDecimal.intValue();
+            BigDecimal delimiter = bigDecimal.subtract(new BigDecimal(intValue));
+            // System.out.println("Double Number: " + bigDecimal.toPlainString());
+            // System.out.println("Integer Part: " + intValue);
+            // System.out.println("Delimiter Part: " + delimiter.toPlainString());
+            if (delimiter.equals(BigDecimal.valueOf(0))) {
+                //   System.out.println("Zwracam Inta");
+                return String.valueOf(intValue);
+            } else {
+                //  System.out.println("Zwracam calosc");
+                return String.valueOf(amount);
+            }
+        }
+    }
 
 
 }
