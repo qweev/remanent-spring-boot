@@ -30,7 +30,7 @@ public abstract class ReportPdf implements ReportPdfApi {
     private static final String POLISH_CURRENCY = "zł";
     private static final int NUMBER_OF_COLUMNS_IN_REPORT = 6;
     private static final int NUMBER_OF_COLUMNS_IN_SUMMARY = 2;
-    private static final int NUMBER_OF_HEADER_ROWS = 1;
+    private static final int NUMBER_OF_HEADER_ROWS_AND_EMPTY_LINES = 1;
     private final Font FONT_HEADER;
     private final Font FONT_VALUE;
     protected BazaDAO bazaRaport;
@@ -115,7 +115,7 @@ public abstract class ReportPdf implements ReportPdfApi {
     private void generateEnding() throws DocumentException {
         Paragraph paragraph = new Paragraph(String.format("Spis ukonczono na pozycji nr %d ", bazaRaport.obliczIloscPozycji()));
         paragraph.setAlignment(Element.ALIGN_CENTER);
-        addEmptyLine(paragraph, 1);
+        addEmptyLine(paragraph, NUMBER_OF_HEADER_ROWS_AND_EMPTY_LINES);
         document.add(paragraph);
     }
 
@@ -179,7 +179,7 @@ public abstract class ReportPdf implements ReportPdfApi {
         table.addCell(pdfCellHeaderIlosc);
         table.addCell(pdfCellHeaderCenaNetto);
         table.addCell(pdfCellHeaderwartoścNetto);
-        table.setHeaderRows(NUMBER_OF_HEADER_ROWS);
+        table.setHeaderRows(NUMBER_OF_HEADER_ROWS_AND_EMPTY_LINES);
         return table;
     }
 
