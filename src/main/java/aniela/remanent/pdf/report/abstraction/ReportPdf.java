@@ -15,7 +15,6 @@ import com.itextpdf.text.pdf.PdfWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -28,6 +27,9 @@ import java.util.Queue;
 public abstract class ReportPdf implements ReportPdfApi {
 
     private static final String POLISH_CURRENCY = "zł";
+    private static final int NUMBER_OF_COLUMNS_IN_REPORT = 6;
+    private static final int NUMBER_OF_COLUMNS_IN_SUMMARY = 2;
+    private static final int NUMBER_OF_HEADER_ROWS = 1;
     private final Font FONT_HEADER;
     private final Font FONT_VALUE;
     private Document document;
@@ -35,6 +37,7 @@ public abstract class ReportPdf implements ReportPdfApi {
     private SummaryGenerator summaryGenerator;
     private Queue<ReportPage> reportPages;
     private List<ReportPage> reportPagesForSummary = new ArrayList<>();
+
     protected BazaDAO bazaRaport;
 
     public ReportPdf() {
@@ -59,7 +62,7 @@ public abstract class ReportPdf implements ReportPdfApi {
         generateEnding();
         generateSummary();
         closeDocument();
-        return null;
+        return "Document created - this to be seet with wojti?";
     }
 
     private void removeExisingReport(String filePath) throws IOException {
@@ -159,7 +162,7 @@ public abstract class ReportPdf implements ReportPdfApi {
     }
 
     private PdfPTable getPageTable() throws DocumentException {
-        PdfPTable table = new PdfPTable(6);
+        PdfPTable table = new PdfPTable(NUMBER_OF_COLUMNS_IN_REPORT);
         table.setWidthPercentage(100f);
         table.setTotalWidth(new float[]{10f, 80f, 7f, 10f, 14f, 17f});
 
@@ -176,7 +179,7 @@ public abstract class ReportPdf implements ReportPdfApi {
         table.addCell(pdfCellHeaderIlosc);
         table.addCell(pdfCellHeaderCenaNetto);
         table.addCell(pdfCellHeaderwartoścNetto);
-        table.setHeaderRows(1);
+        table.setHeaderRows(NUMBER_OF_HEADER_ROWS);
         return table;
     }
 
@@ -185,7 +188,7 @@ public abstract class ReportPdf implements ReportPdfApi {
             table.addCell(getPdfCell(String.valueOf(element.getPozyzjaWRaporcie())));
             table.addCell(getPdfCellNazwaTowaru(element.getNazwaTowaru()));
             table.addCell(getPdfCell(element.getJednostka()));
-            table.addCell(getPdfCell(AmountExtractor.extractAmount(element.getIlosc())));
+            table.addCell(getPdfCell(AmountFormatter.extractAmount(element.getIlosc())));
             table.addCell(getPdfCell(element.getCenaNetto() + POLISH_CURRENCY));
             table.addCell(getPdfCell(element.getSumaNetto() + POLISH_CURRENCY));
         });
@@ -198,7 +201,7 @@ public abstract class ReportPdf implements ReportPdfApi {
     }
 
     private PdfPTable getPageTableForSummary() throws DocumentException {
-        PdfPTable table = new PdfPTable(2);
+        PdfPTable table = new PdfPTable(NUMBER_OF_COLUMNS_IN_SUMMARY);
         table.setWidthPercentage(20f);
         table.setTotalWidth(new float[]{10f, 10f});
         PdfPCell pdfCellPageNumber = getPdfCellHeader("Strona");

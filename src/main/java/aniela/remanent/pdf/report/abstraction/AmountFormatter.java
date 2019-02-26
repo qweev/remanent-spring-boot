@@ -2,9 +2,9 @@ package aniela.remanent.pdf.report.abstraction;
 
 import java.math.BigDecimal;
 
-public final class AmountExtractor {
+public final class AmountFormatter {
 
-    private AmountExtractor() {
+    private AmountFormatter() {
     }
 
     public static String extractAmount(double amount) {
