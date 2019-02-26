@@ -96,7 +96,7 @@ public abstract class ReportPdf implements ReportPdfApi {
     private void generateFirstPage() throws DocumentException {
         PdfPTable table = getPageTable();
         ReportPage page1 = reportPages.poll();
-        fillPageWithPostions(table, page1);
+        fillPageWithPositions(table, page1);
         document.add(table);
         reportPagesForSummary.add(page1);
     }
@@ -106,7 +106,7 @@ public abstract class ReportPdf implements ReportPdfApi {
             document.newPage();
             PdfPTable table = getPageTable();
             ReportPage reportPage = reportPages.poll();
-            fillPageWithPostions(table, reportPage);
+            fillPageWithPositions(table, reportPage);
             document.add(table);
             reportPagesForSummary.add(reportPage);
         }
@@ -183,7 +183,7 @@ public abstract class ReportPdf implements ReportPdfApi {
         return table;
     }
 
-    private void fillPageWithPostions(PdfPTable table, ReportPage reportPage) {
+    private void fillPageWithPositions(PdfPTable table, ReportPage reportPage) {
         reportPage.positions.forEach(element -> {
             table.addCell(getPdfCell(String.valueOf(element.getPozyzjaWRaporcie())));
             table.addCell(getPdfCellNazwaTowaru(element.getNazwaTowaru()));
