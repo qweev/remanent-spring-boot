@@ -2,12 +2,12 @@ package aniela.remanent.E2E_web_UI_Raport;
 
 import aniela.FireFoxConfiguration;
 import aniela.remanent.Application;
-import aniela.remanent.Raport_Generuj_Plik_UI_Cmpoments.*;
 import aniela.remanent.Raport_Logowanie_UI_Components.PoleHasloLogowanie;
 import aniela.remanent.Raport_Logowanie_UI_Components.PoleUzytkownikLogowanie;
 import aniela.remanent.Raport_Logowanie_UI_Components.PrzyciskZaloguj;
+import aniela.remanent.Raport_Statystyki_UI_Components.PrzyciskGenerujStatystyki;
+import aniela.remanent.Raport_Statystyki_UI_Components.TabelkaStatystyki;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
@@ -25,11 +25,10 @@ import static org.junit.Assert.assertEquals;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {FireFoxConfiguration.class})
 @SpringBootTest(classes = Application.class)
-public class RaportPlikBruttoDruk_IT {
+public class RaportNettoStatystyki_IT {
 
     @Autowired
     private WebDriver driver;
-
     @Autowired
     private PoleUzytkownikLogowanie poleUzytkownik;
     @Autowired
@@ -37,31 +36,26 @@ public class RaportPlikBruttoDruk_IT {
     @Autowired
     private PrzyciskZaloguj przyciskZaloguj;
     @Autowired
-    private PoleRemanentBrutto poleRemanentBrutto;
+    private PrzyciskGenerujStatystyki przyciskGenerujStatystyki;
     @Autowired
-    private PrzyciskGenerujPlikRaportBrutto przyciskGenerujPlikRaportBrutto;
-    @Autowired
-    private ModalExcelBrutto modalExcelBrutto;
+    private TabelkaStatystyki tabelkaStatystyki;
 
 
     @Before
     public void setUp(){
         driver.get("http://localhost:8080/raporty.html");
         zaloguj();
+        czekajNaZnikniecieBlockUI();
     }
 
     @Test
-    public void generujRaportBrutto(){
-        String plikZapisany = "plik zapisany";
+    public void generowanieStatystyk(){
+        int liczbaPozycjiWTabeliStatystyk = 1;
 
-        czekajNaZnikniecieBlockUI();
-        przyciskGenerujPlikRaportBrutto.kliknij();
-        czekajNaZnikniecieBlockUI();
-        czekajNaModalDialog();
+        przyciskGenerujStatystyki.kliknij();
 
-        assertEquals(true,  modalExcelBrutto.pobierzText().contains(plikZapisany));
+        assertEquals(liczbaPozycjiWTabeliStatystyk, tabelkaStatystyki.liczbaWidocznychWierszy());
     }
-
 
 
     private void zaloguj() {
@@ -73,17 +67,10 @@ public class RaportPlikBruttoDruk_IT {
         przyciskZaloguj.kliknij();
     }
 
-
     private void czekajNaZnikniecieBlockUI(){
         WebElement blockUI = driver.findElement(By.className("blockUI"));
         WebDriverWait czekaj = new WebDriverWait(driver, 20, 2000);
         czekaj.until(ExpectedConditions.stalenessOf(blockUI));
     }
-
-    private void czekajNaModalDialog(){
-        WebDriverWait czekaj = new WebDriverWait(driver, 20, 2000);
-        czekaj.until(ExpectedConditions.visibilityOf(modalExcelBrutto.pobierzWebElement()));
-    }
-
 
 }

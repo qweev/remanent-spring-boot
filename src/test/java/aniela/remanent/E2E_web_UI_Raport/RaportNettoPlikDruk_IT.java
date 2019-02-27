@@ -9,7 +9,6 @@ import aniela.remanent.Raport_Logowanie_UI_Components.PoleHasloLogowanie;
 import aniela.remanent.Raport_Logowanie_UI_Components.PoleUzytkownikLogowanie;
 import aniela.remanent.Raport_Logowanie_UI_Components.PrzyciskZaloguj;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
@@ -27,7 +26,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {FireFoxConfiguration.class})
 @SpringBootTest(classes = Application.class)
-public class RaportPlikDruk_IT {
+public class RaportNettoPlikDruk_IT {
 
     @Autowired
     private WebDriver driver;

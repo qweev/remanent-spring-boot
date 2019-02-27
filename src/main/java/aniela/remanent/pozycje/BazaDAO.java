@@ -1,13 +1,12 @@
 package aniela.remanent.pozycje;
 
-import org.apache.log4j.Logger;
-import org.hibernate.HibernateException;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
 import aniela.remanent.pozycje.bazaDanych.PozycjaBazy;
 import aniela.remanent.pozycje.helperyZapytanDoBazy.expression.evaluator.ExpressionEvaluator;
 import aniela.remanent.raport.raportBrutto.PozycjaDoRaportuBrutto;
-import aniela.remanent.raport.raportDoDruku.PozycjaDoRaportu;
+import aniela.remanent.raport.raportDoDruku.PozycjaDoRaportuNetto;
+import org.apache.log4j.Logger;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -234,8 +233,8 @@ public class BazaDAO {
     }
 
 
-    public List<PozycjaDoRaportu> przygotujPozycjeDoRaportu() {
-        List<PozycjaDoRaportu> pozycjeRaportu = new ArrayList<>();
+    public List<PozycjaDoRaportuNetto> przygotujPozycjeDoRaportuNetto() {
+        List<PozycjaDoRaportuNetto> pozycjeRaportu = new ArrayList<>();
         Session sesja = entityManager.unwrap(Session.class);
 
         try {
@@ -243,7 +242,7 @@ public class BazaDAO {
 
             //TODO froeach
             for (PozycjaBazy pozycjaBazy : pozycjeBazy) {
-                PozycjaDoRaportu pozycjaRaport = new PozycjaDoRaportu();
+                PozycjaDoRaportuNetto pozycjaRaport = new PozycjaDoRaportuNetto();
                 pozycjaRaport.setCenaNetto(pozycjaBazy.getCena_netto());
                 pozycjaRaport.setIlosc(pozycjaBazy.getIlosc());
                 pozycjaRaport.setJednostka(pozycjaBazy.getJednostka());
