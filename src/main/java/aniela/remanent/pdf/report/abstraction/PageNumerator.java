@@ -30,7 +30,8 @@ public class PageNumerator  extends PdfPageEventHelper {
                 pageSize.getRight(30), pageSize.getTop(30), 0);
 
         } catch (Exception e) {
-            e.printStackTrace();
+            // e.printStackTrace();
+            //TODO logging
         }
     }
 

@@ -46,6 +46,7 @@ public abstract class ReportPdf implements ReportPdfApi {
             baseFont = BaseFont.createFont("arial.ttf", BaseFont.CP1250, BaseFont.EMBEDDED);
         } catch (DocumentException | IOException e) {
             // e.printStackTrace();
+            //TODO add logging
         }
         FONT_HEADER = new Font(baseFont, 9, Font.BOLD);
         FONT_VALUE = new Font(baseFont, 9, Font.NORMAL);
@@ -63,6 +64,7 @@ public abstract class ReportPdf implements ReportPdfApi {
         generateSummary();
         closeDocument();
         return "Document created - this to be seet with wojti?";
+        //TODO zrobic jak w Excelu
     }
 
     private void removeExisingReport(String filePath) throws IOException {
@@ -73,12 +75,14 @@ public abstract class ReportPdf implements ReportPdfApi {
     }
 
     private void runReportGenerator() {
+        //TODO przeniesc do konstruktora
         reportGenerator = new ReportGenerator(bazaRaport.przygotujPozycjeDoRaportuNetto());
         reportPages = new LinkedList<>();
         reportPages.addAll(reportGenerator.generatePages());
     }
 
     private void initializeReportPdf(String fullFilePath) throws FileNotFoundException, DocumentException {
+        //TODO do konstruktora
         document = new Document();
         PdfWriter pdfWriter = PdfWriter.getInstance(document, new FileOutputStream(fullFilePath));
         PageNumerator pageNumerator = new PageNumerator(reportGenerator);
@@ -113,7 +117,7 @@ public abstract class ReportPdf implements ReportPdfApi {
     }
 
     private void generateEnding() throws DocumentException {
-        Paragraph paragraph = new Paragraph(String.format("Spis ukonczono na pozycji nr %d ", bazaRaport.obliczIloscPozycji()));
+        Paragraph paragraph = new Paragraph(String.format("Spis ukończono na pozycji nr %d ", bazaRaport.obliczIloscPozycji()));
         paragraph.setAlignment(Element.ALIGN_CENTER);
         addEmptyLine(paragraph, NUMBER_OF_HEADER_ROWS_AND_EMPTY_LINES);
         document.add(paragraph);
@@ -173,6 +177,8 @@ public abstract class ReportPdf implements ReportPdfApi {
         PdfPCell pdfCellHeaderIlosc = getPdfCellHeader("Ilość");
         PdfPCell pdfCellHeaderCenaNetto = getPdfCellHeader("Cena netto");
         PdfPCell pdfCellHeaderwartoścNetto = getPdfCellHeader("Wartość netto");
+        //TODO dodac to listy i foreach
+
         table.addCell(pdfCellHeaderLp);
         table.addCell(pdfCellHeaderNazwaTowaru);
         table.addCell(pdfCellHeaderJm);
@@ -189,9 +195,10 @@ public abstract class ReportPdf implements ReportPdfApi {
             table.addCell(getPdfCellNazwaTowaru(element.getNazwaTowaru()));
             table.addCell(getPdfCell(element.getJednostka()));
             table.addCell(getPdfCell(AmountFormatter.formatAmount(element.getIlosc())));
-            table.addCell(getPdfCell(element.getCenaNetto() + POLISH_CURRENCY));
-            table.addCell(getPdfCell(element.getSumaNetto() + POLISH_CURRENCY));
+            table.addCell(getPdfCell(element.getCenaNetto() + " " + POLISH_CURRENCY));
+            table.addCell(getPdfCell(element.getSumaNetto() + " " + POLISH_CURRENCY));
         });
+        //TODO owalic forkiem
         table.addCell(getEmptyPdfCell());
         table.addCell(getEmptyPdfCell());
         table.addCell(getEmptyPdfCell());

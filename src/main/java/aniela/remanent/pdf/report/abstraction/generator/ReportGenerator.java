@@ -1,6 +1,7 @@
 package aniela.remanent.pdf.report.abstraction.generator;
 
 import aniela.remanent.raport.raportDoDruku.PozycjaDoRaportuNetto;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -16,6 +17,7 @@ public final class ReportGenerator {
         this.postions.addAll(postionsList);
     }
 
+    //TODO lista do metoday a w ctrct tylko kreacja kolejki
     public List<ReportPage> generatePages() {
         pagesToGenerate = postions.size() / POSITIONS_MAX_PER_PAGE + 1;
         List<ReportPage> reportPages = new ArrayList<>();

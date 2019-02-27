@@ -1,6 +1,7 @@
 package aniela.remanent.pdf.report.netto;
 
 import aniela.remanent.raport.raportDoDruku.PozycjaDoRaportuNetto;
+
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
@@ -86,9 +87,10 @@ public final class PozycjeReportNettoFactory {
 
     private Map<Integer, String> fillUnits() {
         Map<Integer, String> units = new HashMap<>();
-        units.put(1, "szt");
-        units.put(2, "kpl");
-        units.put(3, "mb");
+        units.put(1, "szt.");
+        units.put(2, "kpl.");
+        units.put(3, "mb.");
+        units.put(3, "op.");
         return units;
     }
 
