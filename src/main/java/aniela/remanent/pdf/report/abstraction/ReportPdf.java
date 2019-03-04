@@ -61,20 +61,25 @@ public abstract class ReportPdf implements ReportPdfApi {
     }
 
     @Override
-    public String generateReport(List<PozycjaDoRaportuNetto> positions, String filePath) throws Exception {
-        removeExisingReport(filePath);
+    public String generateReport(List<PozycjaDoRaportuNetto> positions, String filePath) {
         runReportGenerator();
-        initializeReportPdf(filePath);
-        generateHeader();
-        generateFirstPage();
-        generateInternalPages();
-        generateEnding();
-        generateSummary();
-        closeDocument();
+        try {
+            removeExistingReport(filePath);
+            initializeReportPdf(filePath);
+            generateHeader();
+            generateFirstPage();
+            generateInternalPages();
+            generateEnding();
+            generateSummary();
+            closeDocument();
+        } catch (DocumentException | IOException e) {
+            LOG.warn("Cannot create PDF report: ", e);
+            return "Report cannot be created as PDF: ";
+        }
         return "OK";
     }
 
-    private void removeExisingReport(String filePath) throws IOException {
+    private void removeExistingReport(String filePath) throws IOException {
         Path path = Paths.get(filePath);
         if (path.toFile().exists()) {
             Files.delete(path);
@@ -87,7 +92,6 @@ public abstract class ReportPdf implements ReportPdfApi {
     }
 
     private void initializeReportPdf(String fullFilePath) throws FileNotFoundException, DocumentException {
-        //TODO do konstruktora
         document = new Document();
         PdfWriter pdfWriter = PdfWriter.getInstance(document, new FileOutputStream(fullFilePath));
         PageNumerator pageNumerator = new PageNumerator(reportGenerator);
@@ -174,20 +178,17 @@ public abstract class ReportPdf implements ReportPdfApi {
         PdfPTable table = new PdfPTable(NUMBER_OF_COLUMNS_IN_REPORT);
         table.setWidthPercentage(100f);
         table.setTotalWidth(new float[]{10f, 80f, 7f, 10f, 14f, 17f});
+        List<PdfPCell> tableHeaders = new ArrayList<>();
+        tableHeaders.add(getPdfCellHeader("LP"));
+        tableHeaders.add(getPdfCellHeader("Nazwa towaru"));
+        tableHeaders.add(getPdfCellHeader("j. m."));
+        tableHeaders.add(getPdfCellHeader("Ilość"));
+        tableHeaders.add(getPdfCellHeader("Cena netto"));
+        tableHeaders.add(getPdfCellHeader("Wartość netto"));
 
-        PdfPCell pdfCellHeaderLp = getPdfCellHeader("LP");
-        PdfPCell pdfCellHeaderNazwaTowaru = getPdfCellHeader("Nazwa towaru");
-        PdfPCell pdfCellHeaderJm = getPdfCellHeader("j. m.");
-        PdfPCell pdfCellHeaderIlosc = getPdfCellHeader("Ilość");
-        PdfPCell pdfCellHeaderCenaNetto = getPdfCellHeader("Cena netto");
-        PdfPCell pdfCellHeaderwartoścNetto = getPdfCellHeader("Wartość netto");
-
-        table.addCell(pdfCellHeaderLp);
-        table.addCell(pdfCellHeaderNazwaTowaru);
-        table.addCell(pdfCellHeaderJm);
-        table.addCell(pdfCellHeaderIlosc);
-        table.addCell(pdfCellHeaderCenaNetto);
-        table.addCell(pdfCellHeaderwartoścNetto);
+        tableHeaders.forEach(pdfPCell -> {
+            table.addCell(pdfPCell);
+        });
         table.setHeaderRows(NUMBER_OF_HEADER_ROWS_AND_EMPTY_LINES);
         return table;
     }
@@ -231,7 +232,6 @@ public abstract class ReportPdf implements ReportPdfApi {
             table.addCell(getEmptyPdfCell());
         }
     }
-
 
     private final static class AmountFormatter {
 
