@@ -9,21 +9,20 @@ import java.util.List;
 
 public final class ReportPage {
 
+    private BigDecimal sumOfPositions;
     public final int pageNumber;
     public final List<PozycjaDoRaportuNetto> positions;
 
-    private BigDecimal sumOfPositions;
-
-    public ReportPage(int pageNumber) {
+    ReportPage(int pageNumber) {
         this.pageNumber = pageNumber;
         positions = new ArrayList<>();
     }
 
-    public void addPosition(PozycjaDoRaportuNetto position) {
+    void addPosition(PozycjaDoRaportuNetto position) {
         positions.add(position);
     }
 
-    public void sumPositions() {
+    void sumPositions() {
         BigDecimal result = new BigDecimal(0);
         for (PozycjaDoRaportuNetto position : positions) {
             double sumaNetto = position.getSumaNetto();
