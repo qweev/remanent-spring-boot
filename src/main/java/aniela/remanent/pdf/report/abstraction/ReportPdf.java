@@ -29,6 +29,7 @@ import java.util.Queue;
 public abstract class ReportPdf implements ReportPdfApi {
 
     private static final String POLISH_CURRENCY = "zł";
+    private static final String SPACE_STRING = " ";
     private static final int NUMBER_OF_COLUMNS_IN_REPORT = 6;
     private static final int NUMBER_OF_COLUMNS_IN_SUMMARY = 2;
     private static final int NUMBER_OF_EMPTY_LINES = 1;
@@ -145,7 +146,7 @@ public abstract class ReportPdf implements ReportPdfApi {
 
     private void addEmptyLine(Paragraph paragraph, int number) {
         for (int i = 0; i < number; i++) {
-            paragraph.add(new Paragraph(" "));
+            paragraph.add(new Paragraph(SPACE_STRING));
         }
     }
 
@@ -198,11 +199,11 @@ public abstract class ReportPdf implements ReportPdfApi {
             table.addCell(getPdfCellNazwaTowaru(element.getNazwaTowaru()));
             table.addCell(getPdfCell(element.getJednostka()));
             table.addCell(getPdfCell(AmountFormatter.formatAmount(element.getIlosc())));
-            table.addCell(getPdfCell(element.getCenaNetto() + " " + POLISH_CURRENCY));
-            table.addCell(getPdfCell(element.getSumaNetto() + " " + POLISH_CURRENCY));
+            table.addCell(getPdfCell(element.getCenaNetto() + SPACE_STRING + POLISH_CURRENCY));
+            table.addCell(getPdfCell(element.getSumaNetto() + SPACE_STRING + POLISH_CURRENCY));
         });
         addEmptyCell(table, NUMBER_OF_EMPTY_CELLS_FOR_PAGE_SUM);
-        table.addCell(getPdfCell(reportPage.getSumOfPositions() + POLISH_CURRENCY));
+        table.addCell(getPdfCell(reportPage.getSumOfPositions() + " " + POLISH_CURRENCY));
     }
 
     private PdfPTable getPageTableForSummary() throws DocumentException {
@@ -223,7 +224,7 @@ public abstract class ReportPdf implements ReportPdfApi {
             table.addCell(getPdfCell(String.valueOf(reportPage.getSumOfPositions())));
         });
         table.addCell(getEmptyPdfCell());
-        table.addCell(getPdfCell(totalSum + POLISH_CURRENCY));
+        table.addCell(getPdfCell(totalSum + SPACE_STRING + POLISH_CURRENCY));
     }
 
     private void addEmptyCell(PdfPTable table, int numberOfEmptyCells) {
