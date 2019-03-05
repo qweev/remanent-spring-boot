@@ -45,7 +45,6 @@ public abstract class ReportPdf implements ReportPdfApi {
     private Queue<ReportPage> reportPages;
     private List<ReportPage> reportPagesForSummary;
 
-
     public ReportPdf() {
         BaseFont baseFont = null;
         try {
@@ -126,7 +125,7 @@ public abstract class ReportPdf implements ReportPdfApi {
     }
 
     private void generateEnding() throws DocumentException {
-        Paragraph paragraph = new Paragraph(String.format("Spis ukończono na pozycji nr %d ", bazaRaport.obliczIloscPozycji()));
+        Paragraph paragraph = new Paragraph(String.format("Spis ukończono na pozycji nr %d ", bazaRaport.obliczIloscPozycji()), FONT_VALUE);
         paragraph.setAlignment(Element.ALIGN_CENTER);
         addEmptyLine(paragraph, NUMBER_OF_HEADER_ROWS_AND_EMPTY_LINES);
         document.add(paragraph);
