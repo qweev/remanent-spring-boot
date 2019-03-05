@@ -94,5 +94,4 @@ public class ReportPdfNettoTest {
         reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportPathEmpty);
         LOGGER.info(String.format("Report written to %s ", reportPathEmpty));
     }
-
 }
