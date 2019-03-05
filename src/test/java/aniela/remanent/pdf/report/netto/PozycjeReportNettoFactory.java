@@ -19,6 +19,7 @@ public final class PozycjeReportNettoFactory {
     private Map<Integer, Double> nettoMapping;
     private Map<Integer, String> unitMapping;
     private Map<Integer, String> positionNames;
+    int positionNumberShifter = 1;
 
     public PozycjeReportNettoFactory() {
         IntStream.range(1, 9).forEach(value -> {
@@ -29,10 +30,9 @@ public final class PozycjeReportNettoFactory {
         positionNames = getPositions();
     }
 
-
     public List<PozycjaDoRaportuNetto> generateListOfPozycjaDoRaportuNettoContentSame(int amountToCreate) {
         List<PozycjaDoRaportuNetto> positions = new ArrayList<>(amountToCreate);
-        IntStream.range(1, amountToCreate).forEach(value -> {
+        getNumberOfPositionsAsIntStream(amountToCreate).forEach(value -> {
             positions.add(createPozycjaDoRaportuNetto(value));
         });
         return positions;
@@ -40,7 +40,7 @@ public final class PozycjeReportNettoFactory {
 
     public List<PozycjaDoRaportuNetto> generateListOfPozycjaDoRaportuNettoContentRandom(int amountToCreate) {
         List<PozycjaDoRaportuNetto> positions = new ArrayList<>(amountToCreate);
-        IntStream.range(1, amountToCreate).forEach(value -> {
+        getNumberOfPositionsAsIntStream(amountToCreate).forEach(value -> {
             positions.add(createPozycjaDoRaportuNettoRandom(value));
         });
         return positions;
@@ -48,8 +48,7 @@ public final class PozycjeReportNettoFactory {
 
     public List<PozycjaDoRaportuNetto> generateListOfPozycjaDoRaportuNettoContentMixed(int amountToCreate) {
         List<PozycjaDoRaportuNetto> positions = new ArrayList<>(amountToCreate);
-        IntStream.range(1, amountToCreate).forEach(value -> {
-
+        getNumberOfPositionsAsIntStream(amountToCreate).forEach(value -> {
             if(value%2 == 0)
                 positions.add(createPozycjaDoRaportuNettoRandom(value));
             else
@@ -57,9 +56,6 @@ public final class PozycjeReportNettoFactory {
         });
         return positions;
     }
-
-
-
 
     private PozycjaDoRaportuNetto createPozycjaDoRaportuNetto(int number) {
         PozycjaDoRaportuNetto pozycjaDoRaportuNetto = new PozycjaDoRaportuNetto();
@@ -117,4 +113,9 @@ public final class PozycjeReportNettoFactory {
         double  result = Math.random() + ThreadLocalRandom.current().nextDouble(1,9);
         return  BigDecimal.valueOf(result).setScale(2,RoundingMode.HALF_UP).doubleValue();
     }
+
+    private IntStream getNumberOfPositionsAsIntStream(int amountToCreate) {
+        return IntStream.range(positionNumberShifter, amountToCreate + positionNumberShifter);
+    }
+
 }
