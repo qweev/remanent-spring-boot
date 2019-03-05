@@ -8,12 +8,14 @@ import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.ColumnText;
 import com.itextpdf.text.pdf.PdfPageEventHelper;
 import com.itextpdf.text.pdf.PdfWriter;
+import org.apache.log4j.Logger;
 
 public class PageNumerator  extends PdfPageEventHelper {
 
+    private final static Logger LOG = Logger.getLogger(PageNumerator.class);
     private ReportGenerator reportGenerator;
 
-    public PageNumerator(ReportGenerator reportGenerator){
+    PageNumerator(ReportGenerator reportGenerator) {
         this.reportGenerator = reportGenerator;
     }
 
@@ -25,13 +27,11 @@ public class PageNumerator  extends PdfPageEventHelper {
         String pageNumber = ( currentPageNumber <= numberOfGeneratedPages ?  String.format("Strona %s", String.valueOf(currentPageNumber)) : "");
         try {
             Rectangle pageSize = document.getPageSize();
-            //ColumnText.showTextAligned(writer.getDirectContent(), Element.ALIGN_CENTER, new Phrase("Title"), pageSize.getLeft(275), pageSize.getTop(30), 0);
             ColumnText.showTextAligned(writer.getDirectContent(), Element.ALIGN_RIGHT, new Phrase(pageNumber),
                 pageSize.getRight(30), pageSize.getTop(30), 0);
 
         } catch (Exception e) {
-            // e.printStackTrace();
-            //TODO logging
+            LOG.warn("Cannot add page number to page: ", e);
         }
     }
 

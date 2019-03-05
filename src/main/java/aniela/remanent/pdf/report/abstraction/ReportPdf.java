@@ -11,6 +11,7 @@ import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import org.apache.log4j.Logger;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -28,9 +29,14 @@ import java.util.Queue;
 public abstract class ReportPdf implements ReportPdfApi {
 
     private static final String POLISH_CURRENCY = "zł";
+    private static final String SPACE_STRING = " ";
     private static final int NUMBER_OF_COLUMNS_IN_REPORT = 6;
     private static final int NUMBER_OF_COLUMNS_IN_SUMMARY = 2;
+    private static final int NUMBER_OF_EMPTY_LINES = 1;
+    private static final int NUMBER_OF_EMPTY_CELLS_FOR_PAGE_SUM = 5;
+    private static final int FONT_HEIGHT = 9;
     private static final int NUMBER_OF_HEADER_ROWS_AND_EMPTY_LINES = 1;
+    private final static Logger LOG = Logger.getLogger(ReportPdf.class);
     private final Font FONT_HEADER;
     private final Font FONT_VALUE;
     protected BazaDAO bazaRaport;
@@ -38,36 +44,42 @@ public abstract class ReportPdf implements ReportPdfApi {
     private ReportGenerator reportGenerator;
     private SummaryGenerator summaryGenerator;
     private Queue<ReportPage> reportPages;
-    private List<ReportPage> reportPagesForSummary = new ArrayList<>();
+    private List<ReportPage> reportPagesForSummary;
 
     public ReportPdf() {
         BaseFont baseFont = null;
         try {
             baseFont = BaseFont.createFont("arial.ttf", BaseFont.CP1250, BaseFont.EMBEDDED);
         } catch (DocumentException | IOException e) {
-            // e.printStackTrace();
-            //TODO add logging
+            LOG.warn("Cannot create base font", e);
         }
-        FONT_HEADER = new Font(baseFont, 9, Font.BOLD);
-        FONT_VALUE = new Font(baseFont, 9, Font.NORMAL);
+        FONT_HEADER = new Font(baseFont, FONT_HEIGHT, Font.BOLD);
+        FONT_VALUE = new Font(baseFont, FONT_HEIGHT, Font.NORMAL);
+        reportPages = new LinkedList<>();
+        reportPagesForSummary = new ArrayList<>();
+        reportGenerator = new ReportGenerator();
     }
 
     @Override
-    public String generateReport(List<PozycjaDoRaportuNetto> positions, String filePath) throws Exception {
-        removeExisingReport(filePath);
+    public String generateReport(List<PozycjaDoRaportuNetto> positions, String filePath) {
         runReportGenerator();
-        initializeReportPdf(filePath);
-        generateHeader();
-        generateFirstPage();
-        generateInternalPages();
-        generateEnding();
-        generateSummary();
-        closeDocument();
-        return "Document created - this to be seet with wojti?";
-        //TODO zrobic jak w Excelu
+        try {
+            removeExistingReport(filePath);
+            initializeReportPdf(filePath);
+            generateHeader();
+            generateFirstPage();
+            generateInternalPages();
+            generateEnding();
+            generateSummary();
+            closeDocument();
+        } catch (DocumentException | IOException e) {
+            LOG.warn("Cannot create PDF report: ", e);
+            return "Report cannot be created as PDF: ";
+        }
+        return "OK";
     }
 
-    private void removeExisingReport(String filePath) throws IOException {
+    private void removeExistingReport(String filePath) throws IOException {
         Path path = Paths.get(filePath);
         if (path.toFile().exists()) {
             Files.delete(path);
@@ -75,14 +87,11 @@ public abstract class ReportPdf implements ReportPdfApi {
     }
 
     private void runReportGenerator() {
-        //TODO przeniesc do konstruktora
-        reportGenerator = new ReportGenerator(bazaRaport.przygotujPozycjeDoRaportuNetto());
-        reportPages = new LinkedList<>();
-        reportPages.addAll(reportGenerator.generatePages());
+        reportPages.clear();
+        reportPages.addAll(reportGenerator.generatePages(bazaRaport.przygotujPozycjeDoRaportuNetto()));
     }
 
     private void initializeReportPdf(String fullFilePath) throws FileNotFoundException, DocumentException {
-        //TODO do konstruktora
         document = new Document();
         PdfWriter pdfWriter = PdfWriter.getInstance(document, new FileOutputStream(fullFilePath));
         PageNumerator pageNumerator = new PageNumerator(reportGenerator);
@@ -93,7 +102,7 @@ public abstract class ReportPdf implements ReportPdfApi {
     private void generateHeader() throws DocumentException {
         Paragraph paragraph = new Paragraph("Spis z natury na dzień 31.12." + (LocalDateTime.now().getYear() - 1), FONT_HEADER);
         paragraph.setAlignment(Element.ALIGN_CENTER);
-        addEmptyLine(paragraph, 1);
+        addEmptyLine(paragraph, NUMBER_OF_EMPTY_LINES);
         document.add(paragraph);
     }
 
@@ -117,7 +126,7 @@ public abstract class ReportPdf implements ReportPdfApi {
     }
 
     private void generateEnding() throws DocumentException {
-        Paragraph paragraph = new Paragraph(String.format("Spis ukończono na pozycji nr %d ", bazaRaport.obliczIloscPozycji()));
+        Paragraph paragraph = new Paragraph(String.format("Spis ukończono na pozycji nr %d ", bazaRaport.obliczIloscPozycji()), FONT_VALUE);
         paragraph.setAlignment(Element.ALIGN_CENTER);
         addEmptyLine(paragraph, NUMBER_OF_HEADER_ROWS_AND_EMPTY_LINES);
         document.add(paragraph);
@@ -137,7 +146,7 @@ public abstract class ReportPdf implements ReportPdfApi {
 
     private void addEmptyLine(Paragraph paragraph, int number) {
         for (int i = 0; i < number; i++) {
-            paragraph.add(new Paragraph(" "));
+            paragraph.add(new Paragraph(SPACE_STRING));
         }
     }
 
@@ -169,22 +178,17 @@ public abstract class ReportPdf implements ReportPdfApi {
         PdfPTable table = new PdfPTable(NUMBER_OF_COLUMNS_IN_REPORT);
         table.setWidthPercentage(100f);
         table.setTotalWidth(new float[]{10f, 80f, 7f, 10f, 14f, 17f});
+        List<PdfPCell> tableHeaders = new ArrayList<>();
+        tableHeaders.add(getPdfCellHeader("LP"));
+        tableHeaders.add(getPdfCellHeader("Nazwa towaru"));
+        tableHeaders.add(getPdfCellHeader("j. m."));
+        tableHeaders.add(getPdfCellHeader("Ilość"));
+        tableHeaders.add(getPdfCellHeader("Cena netto"));
+        tableHeaders.add(getPdfCellHeader("Wartość netto"));
 
-        PdfPCell pdfCellHeaderLp = getPdfCellHeader("LP");
-        PdfPCell pdfCellHeaderNazwaTowaru = getPdfCellHeader("Nazwa towaru");
-        PdfPCell pdfCellHeaderJm = getPdfCellHeader("j. m.");
-
-        PdfPCell pdfCellHeaderIlosc = getPdfCellHeader("Ilość");
-        PdfPCell pdfCellHeaderCenaNetto = getPdfCellHeader("Cena netto");
-        PdfPCell pdfCellHeaderwartoścNetto = getPdfCellHeader("Wartość netto");
-        //TODO dodac to listy i foreach
-
-        table.addCell(pdfCellHeaderLp);
-        table.addCell(pdfCellHeaderNazwaTowaru);
-        table.addCell(pdfCellHeaderJm);
-        table.addCell(pdfCellHeaderIlosc);
-        table.addCell(pdfCellHeaderCenaNetto);
-        table.addCell(pdfCellHeaderwartoścNetto);
+        tableHeaders.forEach(pdfPCell -> {
+            table.addCell(pdfPCell);
+        });
         table.setHeaderRows(NUMBER_OF_HEADER_ROWS_AND_EMPTY_LINES);
         return table;
     }
@@ -195,16 +199,11 @@ public abstract class ReportPdf implements ReportPdfApi {
             table.addCell(getPdfCellNazwaTowaru(element.getNazwaTowaru()));
             table.addCell(getPdfCell(element.getJednostka()));
             table.addCell(getPdfCell(AmountFormatter.formatAmount(element.getIlosc())));
-            table.addCell(getPdfCell(element.getCenaNetto() + " " + POLISH_CURRENCY));
-            table.addCell(getPdfCell(element.getSumaNetto() + " " + POLISH_CURRENCY));
+            table.addCell(getPdfCell(element.getCenaNetto() + SPACE_STRING + POLISH_CURRENCY));
+            table.addCell(getPdfCell(element.getSumaNetto() + SPACE_STRING + POLISH_CURRENCY));
         });
-        //TODO owalic forkiem
-        table.addCell(getEmptyPdfCell());
-        table.addCell(getEmptyPdfCell());
-        table.addCell(getEmptyPdfCell());
-        table.addCell(getEmptyPdfCell());
-        table.addCell(getEmptyPdfCell());
-        table.addCell(getPdfCell(reportPage.getSumOfPositions() + POLISH_CURRENCY));
+        addEmptyCell(table, NUMBER_OF_EMPTY_CELLS_FOR_PAGE_SUM);
+        table.addCell(getPdfCell(reportPage.getSumOfPositions() + " " + POLISH_CURRENCY));
     }
 
     private PdfPTable getPageTableForSummary() throws DocumentException {
@@ -222,20 +221,24 @@ public abstract class ReportPdf implements ReportPdfApi {
     private void fillTableWithReportPageNumberAndSum(PdfPTable table, List<ReportPage> reportPages, double totalSum) {
         reportPages.forEach(reportPage -> {
             table.addCell(getPdfCell(String.valueOf(reportPage.pageNumber)));
-            table.addCell(getPdfCell(String.valueOf(reportPage.getSumOfPositions())));
+            table.addCell(getPdfCell(reportPage.getSumOfPositions() + SPACE_STRING + POLISH_CURRENCY));
         });
-
         table.addCell(getEmptyPdfCell());
-        table.addCell(getPdfCell(totalSum + POLISH_CURRENCY));
+        table.addCell(getPdfCell(totalSum + SPACE_STRING + POLISH_CURRENCY));
     }
 
+    private void addEmptyCell(PdfPTable table, int numberOfEmptyCells) {
+        for (int counter = 1; counter <= numberOfEmptyCells; counter++) {
+            table.addCell(getEmptyPdfCell());
+        }
+    }
 
     private final static class AmountFormatter {
 
         private AmountFormatter() {
         }
 
-        public static String formatAmount(double amount) {
+        static String formatAmount(double amount) {
             BigDecimal bigDecimal = new BigDecimal(amount);
             int intValue = bigDecimal.intValue();
             BigDecimal delimiter = bigDecimal.subtract(new BigDecimal(intValue));

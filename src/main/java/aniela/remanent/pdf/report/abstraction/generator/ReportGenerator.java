@@ -11,14 +11,15 @@ public final class ReportGenerator {
 
     private static final int POSITIONS_MAX_PER_PAGE = 54;
     private int pagesToGenerate = 0;
-    private Queue<PozycjaDoRaportuNetto> postions = new LinkedList<>();
+    private Queue<PozycjaDoRaportuNetto> postions;
 
-    public ReportGenerator(List<PozycjaDoRaportuNetto> postionsList) {
-        this.postions.addAll(postionsList);
+    public ReportGenerator() {
+        postions = new LinkedList<>();
     }
 
-    //TODO lista do metoday a w ctrct tylko kreacja kolejki
-    public List<ReportPage> generatePages() {
+    public List<ReportPage> generatePages(List<PozycjaDoRaportuNetto> postionsList) {
+        postions.clear();
+        this.postions.addAll(postionsList);
         pagesToGenerate = postions.size() / POSITIONS_MAX_PER_PAGE + 1;
         List<ReportPage> reportPages = new ArrayList<>();
         for (int pageNumber = 1; pageNumber <= pagesToGenerate; pageNumber++) {
