@@ -6,6 +6,7 @@ import aniela.remanent.pdf.report.api.ReportPdfApi;
 import aniela.remanent.pdf.summary.SummaryGenerator;
 import aniela.remanent.pozycje.BazaDAO;
 import aniela.remanent.raport.raportDoDruku.PozycjaDoRaportuNetto;
+import aniela.remanent.type.ReportType;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
@@ -45,8 +46,11 @@ public abstract class ReportPdf implements ReportPdfApi {
     private SummaryGenerator summaryGenerator;
     private Queue<ReportPage> reportPages;
     private List<ReportPage> reportPagesForSummary;
+    private final ReportType reportType;
 
-    public ReportPdf() {
+
+    public ReportPdf(ReportType reportType) {
+        this.reportType = reportType;
         BaseFont baseFont = null;
         try {
             baseFont = BaseFont.createFont("arial.ttf", BaseFont.CP1250, BaseFont.EMBEDDED);
