@@ -1,4 +1,4 @@
-package aniela.remanent.pdf.report.netto;
+package aniela.remanent.pdf.report;
 
 import aniela.remanent.position.abstraction.PositionInterface;
 import aniela.remanent.position.netto.PozycjaDoRaportuNetto;
@@ -12,7 +12,7 @@ import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.IntStream;
 
-public final class PozycjeReportNettoFactory {
+public final class PozycjeReportFactory {
 
     private static String LONG_UNIT_NAME = "JakiśćTowarŻŹŹćźóęąĄĘÓłŁślóÓjvvńóóęttTWYÓóÓPRWTWAIU";
 
@@ -21,7 +21,7 @@ public final class PozycjeReportNettoFactory {
     private Map<Integer, String> positionNames;
     int positionNumberShifter = 1;
 
-    public PozycjeReportNettoFactory() {
+    public PozycjeReportFactory() {
         IntStream.range(1, 9).forEach(value -> {
             amountMapping.putIfAbsent(value, value);
         });
