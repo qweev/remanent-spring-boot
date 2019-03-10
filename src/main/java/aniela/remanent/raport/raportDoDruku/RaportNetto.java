@@ -1,5 +1,6 @@
 package aniela.remanent.raport.raportDoDruku;
 
+import aniela.remanent.position.netto.PozycjaDoRaportuNetto;
 import aniela.remanent.pozycje.BazaDAO;
 import aniela.remanent.raport.stronyExcela.Skoroszyt;
 import org.apache.log4j.Logger;

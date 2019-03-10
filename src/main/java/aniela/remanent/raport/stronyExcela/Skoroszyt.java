@@ -1,6 +1,6 @@
 package aniela.remanent.raport.stronyExcela;
 
-import aniela.remanent.raport.raportDoDruku.PozycjaDoRaportuNetto;
+import aniela.remanent.position.netto.PozycjaDoRaportuNetto;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;

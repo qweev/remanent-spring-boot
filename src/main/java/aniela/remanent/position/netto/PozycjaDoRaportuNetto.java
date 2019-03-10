@@ -1,6 +1,6 @@
-package aniela.remanent.raport.raportDoDruku;
+package aniela.remanent.position.netto;
 
-import aniela.remanent.raport.abstraction.PositionAbstract;
+import aniela.remanent.position.abstraction.PositionAbstract;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

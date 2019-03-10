@@ -33,7 +33,7 @@ public class RestControllerReportPdf {
     public ResponseEntity utworzPlikRemanentNetto(@PathVariable("sciezka") String sciezka) {
         String fullSciezka = ReportFileResolver.resolveFilePathForPdf(sciezka);
         try {
-            reportPdfNetto.generateReport(reportPdfNetto.getPostionsNetto(), fullSciezka);
+            reportPdfNetto.generateReport(reportPdfNetto.getPostions(), fullSciezka);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.GONE).body(String.format("Report generation has thrown error %s", e.getMessage()));
         }

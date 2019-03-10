@@ -1,5 +1,6 @@
 package aniela.remanent.raport.raportBrutto;
 
+import aniela.remanent.position.brutto.PozycjaDoRaportuBrutto;
 import aniela.remanent.pozycje.BazaDAO;
 import aniela.remanent.raport.raportDoDruku.RaportNetto;
 import aniela.remanent.raport.stronyExcela.SkoroszytBrutto;

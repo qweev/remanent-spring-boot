@@ -1,9 +1,9 @@
 package aniela.remanent.pozycje;
 
+import aniela.remanent.position.brutto.PozycjaDoRaportuBrutto;
+import aniela.remanent.position.netto.PozycjaDoRaportuNetto;
 import aniela.remanent.pozycje.bazaDanych.PozycjaBazy;
 import aniela.remanent.pozycje.helperyZapytanDoBazy.expression.evaluator.ExpressionEvaluator;
-import aniela.remanent.raport.raportBrutto.PozycjaDoRaportuBrutto;
-import aniela.remanent.raport.raportDoDruku.PozycjaDoRaportuNetto;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;

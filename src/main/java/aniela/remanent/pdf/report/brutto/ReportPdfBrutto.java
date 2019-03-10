@@ -2,8 +2,8 @@ package aniela.remanent.pdf.report.brutto;
 
 
 import aniela.remanent.pdf.report.abstraction.ReportPdf;
+import aniela.remanent.position.netto.PozycjaDoRaportuNetto;
 import aniela.remanent.pozycje.BazaDAO;
-import aniela.remanent.raport.raportDoDruku.PozycjaDoRaportuNetto;
 import aniela.remanent.type.ReportType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +22,7 @@ public class ReportPdfBrutto extends ReportPdf {
 
 
     @Override
-    public List<PozycjaDoRaportuNetto> getPostionsNetto() {
+    public List<PozycjaDoRaportuNetto> getPostions() {
         return null;
     }
 }

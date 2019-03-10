@@ -1,6 +1,6 @@
 package aniela.remanent.pdf.report.abstraction.generator;
 
-import aniela.remanent.raport.raportDoDruku.PozycjaDoRaportuNetto;
+import aniela.remanent.position.netto.PozycjaDoRaportuNetto;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

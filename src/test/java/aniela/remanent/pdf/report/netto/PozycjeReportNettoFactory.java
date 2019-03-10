@@ -1,6 +1,6 @@
 package aniela.remanent.pdf.report.netto;
 
-import aniela.remanent.raport.raportDoDruku.PozycjaDoRaportuNetto;
+import aniela.remanent.position.netto.PozycjaDoRaportuNetto;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

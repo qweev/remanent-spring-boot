@@ -1,7 +1,7 @@
-package aniela.remanent.raport.raportBrutto;
+package aniela.remanent.position.brutto;
 
 
-import aniela.remanent.raport.abstraction.PositionAbstract;
+import aniela.remanent.position.abstraction.PositionAbstract;
 
 public class PozycjaDoRaportuBrutto extends PositionAbstract {
 

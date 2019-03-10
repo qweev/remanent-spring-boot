@@ -1,4 +1,4 @@
-package aniela.remanent.raport.abstraction;
+package aniela.remanent.position.abstraction;
 
 public interface PositionInterface {
 
