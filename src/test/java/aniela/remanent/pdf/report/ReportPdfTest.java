@@ -1,5 +1,7 @@
 package aniela.remanent.pdf.report;
 
+import aniela.remanent.pdf.report.abstraction.ReportPdf;
+import aniela.remanent.pdf.report.brutto.ReportPdfBrutto;
 import aniela.remanent.pdf.report.netto.ReportPdfNetto;
 import aniela.remanent.pozycje.BazaDAO;
 import org.apache.log4j.Logger;
@@ -13,7 +15,8 @@ import java.io.File;
 public class ReportPdfTest {
 
     private final static Logger LOGGER = Logger.getLogger(ReportPdfTest.class);
-    private ReportPdfNetto reportPdfNettoTestedObj;
+    private ReportPdf reportPdfNettoTestedObj;
+    private ReportPdf reportPdfBruttoTestedObj;
     private BazaDAO bazaDAO;
     private static String reportBruttoName = "RaportBrutto.pdf";
     private static String filePath;
@@ -63,7 +66,10 @@ public class ReportPdfTest {
         pozycjeReportFactory = new PozycjeReportFactory();
         bazaDAO = Mockito.mock(BazaDAO.class);
         reportPdfNettoTestedObj = new ReportPdfNetto(bazaDAO);
+        reportPdfBruttoTestedObj = new ReportPdfBrutto(bazaDAO);
     }
+
+    //netto tests
 
     @Test
     public void generateReportNetto() {
@@ -118,7 +124,7 @@ public class ReportPdfTest {
         Mockito.when(bazaDAO.przygotujPozycjeDoRaportuNetto())
                 .thenReturn(pozycjeReportFactory.generateListOfPozycjaDoRaportuNettoContentSame(NUMBER_OF_POSITIONS_TO_GENERATE));
         Mockito.when(bazaDAO.obliczIloscPozycji()).thenReturn(NUMBER_OF_POSITIONS_TO_GENERATE);
-        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportBruttoPath);
+        reportPdfBruttoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportBruttoPath);
         LOGGER.info(String.format("Report written to %s ", reportBruttoPath));
     }
 
@@ -127,7 +133,7 @@ public class ReportPdfTest {
         Mockito.when(bazaDAO.przygotujPozycjeDoRaportuNetto())
                 .thenReturn(pozycjeReportFactory.generateListOfPozycjaDoRaportuNettoContentSame(NUMBER_OF_POSITIONS_TO_GENERATE_10_K));
         Mockito.when(bazaDAO.obliczIloscPozycji()).thenReturn(NUMBER_OF_POSITIONS_TO_GENERATE_10_K);
-        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportBruttoPath10000);
+        reportPdfBruttoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportBruttoPath10000);
         LOGGER.info(String.format("Report written to %s ", reportBruttoPath10000));
     }
 
@@ -137,7 +143,7 @@ public class ReportPdfTest {
         Mockito.when(bazaDAO.przygotujPozycjeDoRaportuNetto())
                 .thenReturn(pozycjeReportFactory.generateListOfPozycjaDoRaportuNettoContentRandom(NUMBER_OF_POSITIONS_TO_GENERATE_20));
         Mockito.when(bazaDAO.obliczIloscPozycji()).thenReturn(NUMBER_OF_POSITIONS_TO_GENERATE_20);
-        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportBruttoPathRandom);
+        reportPdfBruttoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportBruttoPathRandom);
         LOGGER.info(String.format("Report written to %s ", reportBruttoPathRandom));
     }
 
@@ -146,7 +152,7 @@ public class ReportPdfTest {
         Mockito.when(bazaDAO.przygotujPozycjeDoRaportuNetto())
                 .thenReturn(pozycjeReportFactory.generateListOfPozycjaDoRaportuNettoContentMixed(NUMBER_OF_POSITIONS_TO_GENERATE_20));
         Mockito.when(bazaDAO.obliczIloscPozycji()).thenReturn(NUMBER_OF_POSITIONS_TO_GENERATE_20);
-        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportBruttoPathRandomMixed);
+        reportPdfBruttoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportBruttoPathRandomMixed);
         LOGGER.info(String.format("Report written to %s ", reportBruttoPathRandomMixed));
     }
 
@@ -155,7 +161,7 @@ public class ReportPdfTest {
         Mockito.when(bazaDAO.przygotujPozycjeDoRaportuNetto())
                 .thenReturn(pozycjeReportFactory.generateListOfPozycjaDoRaportuNettoContentMixed(NUMBER_OF_POSITIONS_TO_GENERATE_0));
         Mockito.when(bazaDAO.obliczIloscPozycji()).thenReturn(NUMBER_OF_POSITIONS_TO_GENERATE_0);
-        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportBruttoPathEmpty);
+        reportPdfBruttoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportBruttoPathEmpty);
         LOGGER.info(String.format("Report written to %s ", reportBruttoPathEmpty));
     }
 
