@@ -1,6 +1,6 @@
 package aniela.remanent.raport.raportBrutto;
 
-import aniela.remanent.position.brutto.PozycjaDoRaportuBrutto;
+import aniela.remanent.position.abstraction.PositionInterface;
 import aniela.remanent.pozycje.BazaDAO;
 import aniela.remanent.raport.raportDoDruku.RaportNetto;
 import aniela.remanent.raport.stronyExcela.SkoroszytBrutto;
@@ -19,7 +19,7 @@ public class RaportBrutto {
     private static double iloscPozycjiOstatniaStrona;
     private double iloscPozycji;
     private double iloscStron;
-    private List<PozycjaDoRaportuBrutto> pozycje;
+    private List<PositionInterface> pozycje;
 
 
     private BazaDAO baza;

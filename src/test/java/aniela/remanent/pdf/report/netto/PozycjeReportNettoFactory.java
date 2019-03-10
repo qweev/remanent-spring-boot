@@ -1,5 +1,6 @@
 package aniela.remanent.pdf.report.netto;
 
+import aniela.remanent.position.abstraction.PositionInterface;
 import aniela.remanent.position.netto.PozycjaDoRaportuNetto;
 
 import java.math.BigDecimal;
@@ -16,7 +17,6 @@ public final class PozycjeReportNettoFactory {
     private static String LONG_UNIT_NAME = "JakiśćTowarŻŹŹćźóęąĄĘÓłŁślóÓjvvńóóęttTWYÓóÓPRWTWAIU";
 
     private Map<Integer, Integer> amountMapping = new HashMap<>();
-    private Map<Integer, Double> nettoMapping;
     private Map<Integer, String> unitMapping;
     private Map<Integer, String> positionNames;
     int positionNumberShifter = 1;
@@ -25,58 +25,60 @@ public final class PozycjeReportNettoFactory {
         IntStream.range(1, 9).forEach(value -> {
             amountMapping.putIfAbsent(value, value);
         });
-        nettoMapping = fillNetto();
         unitMapping = fillUnits();
         positionNames = getPositions();
     }
 
-    public List<PozycjaDoRaportuNetto> generateListOfPozycjaDoRaportuNettoContentSame(int amountToCreate) {
-        List<PozycjaDoRaportuNetto> positions = new ArrayList<>(amountToCreate);
+    public List<PositionInterface> generateListOfPozycjaDoRaportuNettoContentSame(int amountToCreate) {
+        List<PositionInterface> positions = new ArrayList<>(amountToCreate);
         getNumberOfPositionsAsIntStream(amountToCreate).forEach(value -> {
-            positions.add(createPozycjaDoRaportuNetto(value));
+            positions.add(createPozycjaDoRaportu(value));
         });
         return positions;
     }
 
-    public List<PozycjaDoRaportuNetto> generateListOfPozycjaDoRaportuNettoContentRandom(int amountToCreate) {
-        List<PozycjaDoRaportuNetto> positions = new ArrayList<>(amountToCreate);
+    public List<PositionInterface> generateListOfPozycjaDoRaportuNettoContentRandom(int amountToCreate) {
+        List<PositionInterface> positions = new ArrayList<>(amountToCreate);
         getNumberOfPositionsAsIntStream(amountToCreate).forEach(value -> {
-            positions.add(createPozycjaDoRaportuNettoRandom(value));
+            positions.add(createPozycjaDoRaportuRandom(value));
         });
         return positions;
     }
 
-    public List<PozycjaDoRaportuNetto> generateListOfPozycjaDoRaportuNettoContentMixed(int amountToCreate) {
-        List<PozycjaDoRaportuNetto> positions = new ArrayList<>(amountToCreate);
+    public List<PositionInterface> generateListOfPozycjaDoRaportuNettoContentMixed(int amountToCreate) {
+        List<PositionInterface> positions = new ArrayList<>(amountToCreate);
         getNumberOfPositionsAsIntStream(amountToCreate).forEach(value -> {
             if(value%2 == 0)
-                positions.add(createPozycjaDoRaportuNettoRandom(value));
+                positions.add(createPozycjaDoRaportuRandom(value));
             else
-                positions.add(createPozycjaDoRaportuNetto(value));
+                positions.add(createPozycjaDoRaportu(value));
         });
         return positions;
     }
 
-    private PozycjaDoRaportuNetto createPozycjaDoRaportuNetto(int number) {
+    private PozycjaDoRaportuNetto createPozycjaDoRaportu(int number) {
         PozycjaDoRaportuNetto pozycjaDoRaportuNetto = new PozycjaDoRaportuNetto();
         pozycjaDoRaportuNetto.setPozycjaWRaporcie(number);
         pozycjaDoRaportuNetto.setNazwaTowaru(LONG_UNIT_NAME);
         pozycjaDoRaportuNetto.setIlosc(ThreadLocalRandom.current().nextInt(1,20));
         pozycjaDoRaportuNetto.setCenaNetto(3.11);
+        pozycjaDoRaportuNetto.setCenaBrutto(4.11);
         pozycjaDoRaportuNetto.setJednostka("szt");
-        pozycjaDoRaportuNetto.setSumaNetto(pozycjaDoRaportuNetto.getCenaNetto(), pozycjaDoRaportuNetto.getIlosc());
+        pozycjaDoRaportuNetto.setSuma(pozycjaDoRaportuNetto.getCenaNetto(), pozycjaDoRaportuNetto.getIlosc());
         return pozycjaDoRaportuNetto;
     }
 
 
-    private PozycjaDoRaportuNetto createPozycjaDoRaportuNettoRandom(int number) {
+    private PozycjaDoRaportuNetto createPozycjaDoRaportuRandom(int number) {
         PozycjaDoRaportuNetto pozycjaDoRaportuNetto = new PozycjaDoRaportuNetto();
         pozycjaDoRaportuNetto.setPozycjaWRaporcie(number);
         pozycjaDoRaportuNetto.setNazwaTowaru(positionNames.getOrDefault(ThreadLocalRandom.current().nextInt(1,4),"Wartosc domyslna dla nazwy"));
         pozycjaDoRaportuNetto.setIlosc(generatePseudoDouble());
-        pozycjaDoRaportuNetto.setCenaNetto(generatePseudoDouble());
+        double value = generatePseudoDouble();
+        pozycjaDoRaportuNetto.setCenaNetto(value);
+        pozycjaDoRaportuNetto.setCenaNetto(value + 1);
         pozycjaDoRaportuNetto.setJednostka(unitMapping.getOrDefault(ThreadLocalRandom.current().nextInt(1,4),"XXX"));
-        pozycjaDoRaportuNetto.setSumaNetto(pozycjaDoRaportuNetto.getCenaNetto(), pozycjaDoRaportuNetto.getIlosc());
+        pozycjaDoRaportuNetto.setSuma(pozycjaDoRaportuNetto.getCenaNetto(), pozycjaDoRaportuNetto.getIlosc());
         return pozycjaDoRaportuNetto;
     }
 

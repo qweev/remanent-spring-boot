@@ -1,5 +1,6 @@
 package aniela.remanent.pozycje;
 
+import aniela.remanent.position.abstraction.PositionInterface;
 import aniela.remanent.position.brutto.PozycjaDoRaportuBrutto;
 import aniela.remanent.position.netto.PozycjaDoRaportuNetto;
 import aniela.remanent.pozycje.bazaDanych.PozycjaBazy;
@@ -233,8 +234,8 @@ public class BazaDAO {
     }
 
 
-    public List<PozycjaDoRaportuNetto> przygotujPozycjeDoRaportuNetto() {
-        List<PozycjaDoRaportuNetto> pozycjeRaportu = new ArrayList<>();
+    public List<PositionInterface> przygotujPozycjeDoRaportuNetto() {
+        List<PositionInterface> pozycjeRaportu = new ArrayList<>();
         Session sesja = entityManager.unwrap(Session.class);
 
         try {
@@ -248,7 +249,7 @@ public class BazaDAO {
                 pozycjaRaport.setJednostka(pozycjaBazy.getJednostka());
                 pozycjaRaport.setNazwaTowaru(pozycjaBazy.getNazwa_towaru());
                 pozycjaRaport.setPozycjaWRaporcie(pozycjaBazy.getId());
-                pozycjaRaport.setSumaNetto(pozycjaBazy.getCena_netto(), pozycjaBazy.getIlosc());
+                pozycjaRaport.setSuma(pozycjaBazy.getCena_netto(), pozycjaBazy.getIlosc());
                 pozycjeRaportu.add(pozycjaRaport);
             }
         } catch (Throwable ex) {
@@ -263,8 +264,8 @@ public class BazaDAO {
     }
 
 
-    public List<PozycjaDoRaportuBrutto> przygotujPozycjeDoRaportuBrutto() {
-        List<PozycjaDoRaportuBrutto> pozycjeRaportu = new ArrayList<>();
+    public List<PositionInterface> przygotujPozycjeDoRaportuBrutto() {
+        List<PositionInterface> pozycjeRaportu = new ArrayList<>();
         List<PozycjaBazy> pozycjeBazy = new ArrayList<>();
         Session sesja = entityManager.unwrap(Session.class);
 
@@ -279,6 +280,7 @@ public class BazaDAO {
                 pozycjaRaport.setNazwaTowaru(pozycjaBazy.getNazwa_towaru());
                 pozycjaRaport.setPozycjaWRaporcie(pozycjaBazy.getId());
                 pozycjaRaport.setCenaBrutto(pozycjaBazy.getCena_brutto());
+                pozycjaRaport.setSuma(pozycjaBazy.getCena_brutto(), pozycjaBazy.getIlosc());
                 pozycjeRaportu.add(pozycjaRaport);
             }
         } catch (Throwable ex) {

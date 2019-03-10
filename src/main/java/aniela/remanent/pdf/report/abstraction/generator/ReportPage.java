@@ -1,6 +1,6 @@
 package aniela.remanent.pdf.report.abstraction.generator;
 
-import aniela.remanent.position.netto.PozycjaDoRaportuNetto;
+import aniela.remanent.position.abstraction.PositionInterface;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -11,21 +11,21 @@ public final class ReportPage {
 
     private BigDecimal sumOfPositions;
     public final int pageNumber;
-    public final List<PozycjaDoRaportuNetto> positions;
+    public final List<PositionInterface> positions;
 
     ReportPage(int pageNumber) {
         this.pageNumber = pageNumber;
         positions = new ArrayList<>();
     }
 
-    void addPosition(PozycjaDoRaportuNetto position) {
+    void addPosition(PositionInterface position) {
         positions.add(position);
     }
 
     void sumPositions() {
         BigDecimal result = new BigDecimal(0);
-        for (PozycjaDoRaportuNetto position : positions) {
-            double sumaNetto = position.getSumaNetto();
+        for (PositionInterface position : positions) {
+            double sumaNetto = position.getSuma();
             BigDecimal sumaNettoAsBigDecimal = BigDecimal.valueOf(sumaNetto);
             result = result.add(sumaNettoAsBigDecimal);
         }

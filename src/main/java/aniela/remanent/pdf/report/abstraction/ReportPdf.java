@@ -4,7 +4,7 @@ import aniela.remanent.pdf.report.abstraction.generator.ReportGenerator;
 import aniela.remanent.pdf.report.abstraction.generator.ReportPage;
 import aniela.remanent.pdf.report.api.ReportPdfApi;
 import aniela.remanent.pdf.summary.SummaryGenerator;
-import aniela.remanent.position.netto.PozycjaDoRaportuNetto;
+import aniela.remanent.position.abstraction.PositionInterface;
 import aniela.remanent.pozycje.BazaDAO;
 import aniela.remanent.type.ReportType;
 import com.itextpdf.text.*;
@@ -65,7 +65,7 @@ public abstract class ReportPdf implements ReportPdfApi {
     }
 
     @Override
-    public String generateReport(List<PozycjaDoRaportuNetto> positions, String filePath) {
+    public String generateReport(List<PositionInterface> positions, String filePath) {
         runReportGenerator();
         try {
             removeExistingReport(filePath);
@@ -187,8 +187,8 @@ public abstract class ReportPdf implements ReportPdfApi {
         tableHeaders.add(getPdfCellHeader("Nazwa towaru"));
         tableHeaders.add(getPdfCellHeader("j. m."));
         tableHeaders.add(getPdfCellHeader("Ilość"));
-        tableHeaders.add(getPdfCellHeader("Cena netto"));
-        tableHeaders.add(getPdfCellHeader("Wartość netto"));
+        tableHeaders.add(getPdfCellHeader(cellPriceHeaderValue()));
+        tableHeaders.add(getPdfCellHeader(cellSumHeaderValue()));
 
         tableHeaders.forEach(pdfPCell -> {
             table.addCell(pdfPCell);
@@ -203,8 +203,8 @@ public abstract class ReportPdf implements ReportPdfApi {
             table.addCell(getPdfCellNazwaTowaru(element.getNazwaTowaru()));
             table.addCell(getPdfCell(element.getJednostka()));
             table.addCell(getPdfCell(AmountFormatter.formatAmount(element.getIlosc())));
-            table.addCell(getPdfCell(element.getCenaNetto() + SPACE_STRING + POLISH_CURRENCY));
-            table.addCell(getPdfCell(element.getSumaNetto() + SPACE_STRING + POLISH_CURRENCY));
+            table.addCell(getPdfCell(element.getPrice(element, reportType) + SPACE_STRING + POLISH_CURRENCY));
+            table.addCell(getPdfCell(element.getSuma() + SPACE_STRING + POLISH_CURRENCY));
         });
         addEmptyCell(table, NUMBER_OF_EMPTY_CELLS_FOR_PAGE_SUM);
         table.addCell(getPdfCell(reportPage.getSumOfPositions() + " " + POLISH_CURRENCY));
@@ -253,4 +253,32 @@ public abstract class ReportPdf implements ReportPdfApi {
             }
         }
     }
+
+    private String cellPriceHeaderValue() {
+        String returnValue = null;
+        switch (reportType) {
+            case NETTO:
+                returnValue = "Cena netto";
+                break;
+            case BRUTTO:
+                returnValue = "Cena brutto";
+                break;
+        }
+        return returnValue;
+    }
+
+    private String cellSumHeaderValue() {
+        String returnValue = null;
+        switch (reportType) {
+            case NETTO:
+                returnValue = "Wartość netto";
+                break;
+            case BRUTTO:
+                returnValue = "Wartość brutto";
+                break;
+        }
+        return returnValue;
+    }
+
+
 }

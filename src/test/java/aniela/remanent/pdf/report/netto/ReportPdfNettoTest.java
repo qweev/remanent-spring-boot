@@ -17,16 +17,16 @@ public class ReportPdfNettoTest {
     private PozycjeReportNettoFactory pozycjeReportNettoFactory;
     private static String filePath;
     private static String filePathSeparator = File.separator;
-    private static String reportName = "Raport.pdf";
-    private static String reportName10000 = "Raport10000.pdf";
-    private static String reportNameRandom = "RaportRandom.pdf";
-    private static String reportNameRandomMixed = "RaportMixed.pdf";
-    private static String reportNameEmpty = "Empty.pdf";
-    private static String reportPath;
-    private static String reportPath10000;
-    private static String reportPathRandom;
-    private static String reportPathRandomMixed;
-    private static String reportPathEmpty;
+    private static String reportNettoName = "RaportNetto.pdf";
+    private static String reportNettoName10000 = "RaportNetto10000.pdf";
+    private static String reportNettoNameRandom = "RaportNettoRandom.pdf";
+    private static String reportNettoNameRandomMixed = "RaportNettoMixed.pdf";
+    private static String reportNettoNameEmpty = "RaportNettoEmpty.pdf";
+    private static String reportNettoPath;
+    private static String reportNettoPath10000;
+    private static String reportNettoPathRandom;
+    private static String reportNettoPathRandomMixed;
+    private static String reportNettoPathEmpty;
     private static int NUMBER_OF_POSITIONS_TO_GENERATE = 182;
     private static int NUMBER_OF_POSITIONS_TO_GENERATE_10_K = 10000;
     private static int NUMBER_OF_POSITIONS_TO_GENERATE_20 = 20;
@@ -35,11 +35,11 @@ public class ReportPdfNettoTest {
     @BeforeAll
     public static void setupBeforeAll() {
         filePath = System.getProperty("user.home");
-        reportPath = new StringBuilder().append(filePath).append(filePathSeparator).append(reportName).toString();
-        reportPath10000 = new StringBuilder().append(filePath).append(filePathSeparator).append(reportName10000).toString();
-        reportPathRandom = new StringBuilder().append(filePath).append(filePathSeparator).append(reportNameRandom).toString();
-        reportPathRandomMixed = new StringBuilder().append(filePath).append(filePathSeparator).append(reportNameRandomMixed).toString();
-        reportPathEmpty = new StringBuilder().append(filePath).append(filePathSeparator).append(reportNameEmpty).toString();
+        reportNettoPath = new StringBuilder().append(filePath).append(filePathSeparator).append(reportNettoName).toString();
+        reportNettoPath10000 = new StringBuilder().append(filePath).append(filePathSeparator).append(reportNettoName10000).toString();
+        reportNettoPathRandom = new StringBuilder().append(filePath).append(filePathSeparator).append(reportNettoNameRandom).toString();
+        reportNettoPathRandomMixed = new StringBuilder().append(filePath).append(filePathSeparator).append(reportNettoNameRandomMixed).toString();
+        reportNettoPathEmpty = new StringBuilder().append(filePath).append(filePathSeparator).append(reportNettoNameEmpty).toString();
     }
 
     @BeforeEach
@@ -54,8 +54,8 @@ public class ReportPdfNettoTest {
         Mockito.when(bazaDAO.przygotujPozycjeDoRaportuNetto())
                 .thenReturn(pozycjeReportNettoFactory.generateListOfPozycjaDoRaportuNettoContentSame(NUMBER_OF_POSITIONS_TO_GENERATE));
         Mockito.when(bazaDAO.obliczIloscPozycji()).thenReturn(NUMBER_OF_POSITIONS_TO_GENERATE);
-        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportPath);
-        LOGGER.info(String.format("Report written to %s ", reportPath));
+        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportNettoPath);
+        LOGGER.info(String.format("Report written to %s ", reportNettoPath));
     }
 
     @Test
@@ -63,8 +63,8 @@ public class ReportPdfNettoTest {
         Mockito.when(bazaDAO.przygotujPozycjeDoRaportuNetto())
                 .thenReturn(pozycjeReportNettoFactory.generateListOfPozycjaDoRaportuNettoContentSame(NUMBER_OF_POSITIONS_TO_GENERATE_10_K));
         Mockito.when(bazaDAO.obliczIloscPozycji()).thenReturn(NUMBER_OF_POSITIONS_TO_GENERATE_10_K);
-        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportPath10000);
-        LOGGER.info(String.format("Report written to %s ", reportPath10000));
+        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportNettoPath10000);
+        LOGGER.info(String.format("Report written to %s ", reportNettoPath10000));
     }
 
 
@@ -73,8 +73,8 @@ public class ReportPdfNettoTest {
         Mockito.when(bazaDAO.przygotujPozycjeDoRaportuNetto())
                 .thenReturn(pozycjeReportNettoFactory.generateListOfPozycjaDoRaportuNettoContentRandom(NUMBER_OF_POSITIONS_TO_GENERATE_20));
         Mockito.when(bazaDAO.obliczIloscPozycji()).thenReturn(NUMBER_OF_POSITIONS_TO_GENERATE_20);
-        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportPathRandom);
-        LOGGER.info(String.format("Report written to %s ", reportPathRandom));
+        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportNettoPathRandom);
+        LOGGER.info(String.format("Report written to %s ", reportNettoPathRandom));
     }
 
     @Test
@@ -82,8 +82,8 @@ public class ReportPdfNettoTest {
         Mockito.when(bazaDAO.przygotujPozycjeDoRaportuNetto())
                 .thenReturn(pozycjeReportNettoFactory.generateListOfPozycjaDoRaportuNettoContentMixed(NUMBER_OF_POSITIONS_TO_GENERATE_20));
         Mockito.when(bazaDAO.obliczIloscPozycji()).thenReturn(NUMBER_OF_POSITIONS_TO_GENERATE_20);
-        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportPathRandomMixed);
-        LOGGER.info(String.format("Report written to %s ", reportPathRandomMixed));
+        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportNettoPathRandomMixed);
+        LOGGER.info(String.format("Report written to %s ", reportNettoPathRandomMixed));
     }
 
     @Test
@@ -91,7 +91,7 @@ public class ReportPdfNettoTest {
         Mockito.when(bazaDAO.przygotujPozycjeDoRaportuNetto())
                 .thenReturn(pozycjeReportNettoFactory.generateListOfPozycjaDoRaportuNettoContentMixed(NUMBER_OF_POSITIONS_TO_GENERATE_0));
         Mockito.when(bazaDAO.obliczIloscPozycji()).thenReturn(NUMBER_OF_POSITIONS_TO_GENERATE_0);
-        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportPathEmpty);
-        LOGGER.info(String.format("Report written to %s ", reportPathEmpty));
+        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportNettoPathEmpty);
+        LOGGER.info(String.format("Report written to %s ", reportNettoPathEmpty));
     }
 }
