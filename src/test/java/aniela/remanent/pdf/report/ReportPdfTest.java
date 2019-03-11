@@ -4,6 +4,7 @@ import aniela.remanent.pdf.report.abstraction.ReportPdf;
 import aniela.remanent.pdf.report.brutto.ReportPdfBrutto;
 import aniela.remanent.pdf.report.netto.ReportPdfNetto;
 import aniela.remanent.pozycje.BazaDAO;
+import aniela.remanent.raport.ReportFileResolver;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,20 +22,20 @@ public class ReportPdfTest {
     private static String reportBruttoName = "RaportBrutto.pdf";
     private static String filePath;
     private static String filePathSeparator = File.separator;
-    private static String reportNettoName = "RaportNetto.pdf";
-    private static String reportNettoName10000 = "RaportNetto10000.pdf";
-    private static String reportNettoNameRandom = "RaportNettoRandom.pdf";
-    private static String reportNettoNameRandomMixed = "RaportNettoMixed.pdf";
-    private static String reportNettoNameEmpty = "RaportNettoEmpty.pdf";
+    private static String reportNettoName = "RaportNetto";
+    private static String reportNettoName10000 = "RaportNetto10000";
+    private static String reportNettoNameRandom = "RaportNettoRandom";
+    private static String reportNettoNameRandomMixed = "RaportNettoMixed";
+    private static String reportNettoNameEmpty = "RaportNettoEmpty";
     private static String reportNettoPath;
     private static String reportNettoPath10000;
     private static String reportNettoPathRandom;
     private static String reportNettoPathRandomMixed;
     private static String reportNettoPathEmpty;
-    private static String reportBruttoName10000 = "RaportBrutto10000.pdf";
-    private static String reportBruttoNameRandom = "RaportBruttoRandom.pdf";
-    private static String reportBruttoNameRandomMixed = "RaportBruttoMixed.pdf";
-    private static String reportBruttoNameEmpty = "RaportBruttoEmpty.pdf";
+    private static String reportBruttoName10000 = "RaportBrutto10000";
+    private static String reportBruttoNameRandom = "RaportBruttoRandom";
+    private static String reportBruttoNameRandomMixed = "RaportBruttoMixed";
+    private static String reportBruttoNameEmpty = "RaportBruttoEmpty";
     private static String reportBruttoPath;
     private static String reportBruttoPath10000;
     private static String reportBruttoPathRandom;
@@ -49,16 +50,16 @@ public class ReportPdfTest {
     @BeforeAll
     public static void setupBeforeAll() {
         filePath = System.getProperty("user.home");
-        reportNettoPath = new StringBuilder().append(filePath).append(filePathSeparator).append(reportNettoName).toString();
-        reportNettoPath10000 = new StringBuilder().append(filePath).append(filePathSeparator).append(reportNettoName10000).toString();
-        reportNettoPathRandom = new StringBuilder().append(filePath).append(filePathSeparator).append(reportNettoNameRandom).toString();
-        reportNettoPathRandomMixed = new StringBuilder().append(filePath).append(filePathSeparator).append(reportNettoNameRandomMixed).toString();
-        reportNettoPathEmpty = new StringBuilder().append(filePath).append(filePathSeparator).append(reportNettoNameEmpty).toString();
-        reportBruttoPath = new StringBuilder().append(filePath).append(filePathSeparator).append(reportBruttoName).toString();
-        reportBruttoPath10000 = new StringBuilder().append(filePath).append(filePathSeparator).append(reportBruttoName10000).toString();
-        reportBruttoPathRandom = new StringBuilder().append(filePath).append(filePathSeparator).append(reportBruttoNameRandom).toString();
-        reportBruttoPathRandomMixed = new StringBuilder().append(filePath).append(filePathSeparator).append(reportBruttoNameRandomMixed).toString();
-        reportBruttoPathEmpty = new StringBuilder().append(filePath).append(filePathSeparator).append(reportBruttoNameEmpty).toString();
+        reportNettoPath = ReportFileResolver.resolveFilePathForPdf(reportNettoName);
+        reportNettoPath10000 = ReportFileResolver.resolveFilePathForPdf(reportNettoName10000);
+        reportNettoPathRandom = ReportFileResolver.resolveFilePathForPdf(reportNettoNameRandom);
+        reportNettoPathRandomMixed = ReportFileResolver.resolveFilePathForPdf(reportNettoNameRandomMixed);
+        reportNettoPathEmpty = ReportFileResolver.resolveFilePathForPdf(reportNettoNameEmpty);
+        reportBruttoPath = ReportFileResolver.resolveFilePathForPdf(reportBruttoName);
+        reportBruttoPath10000 = ReportFileResolver.resolveFilePathForPdf(reportBruttoName10000);
+        reportBruttoPathRandom = ReportFileResolver.resolveFilePathForPdf(reportBruttoNameRandom);
+        reportBruttoPathRandomMixed = ReportFileResolver.resolveFilePathForPdf(reportBruttoNameRandomMixed);
+        reportBruttoPathEmpty = ReportFileResolver.resolveFilePathForPdf(reportBruttoNameEmpty);
     }
 
     @BeforeEach
