@@ -4,12 +4,14 @@ package aniela.remanent.IT_REST_Pozycje;
 import aniela.FireFoxConfiguration;
 import aniela.remanent.Application;
 import aniela.remanent.pozycje.bazaDanych.PozycjaBazy;
+import aniela.remanent.util.HostAndPortResolver;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.test.context.ContextConfiguration;
@@ -21,14 +23,16 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {FireFoxConfiguration.class})
-@SpringBootTest(classes = Application.class)
+@SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class Pozycje_REST_IT {
 
+    @LocalServerPort
+    int port;
 
     @Test
     public void dodajPozycje() throws JSONException {
         String jsonPozycja = pozycjaJSON(null, "towar restowy","30.2","40.4","restowy","szt." ,"40.9");
-        String urlDodajPozycje = "http://localhost:8081/remanent/rest/pozycje/dodaj";
+        String urlDodajPozycje = HostAndPortResolver.determineHostAndPort(port) + "/remanent/rest/pozycje/dodaj";
         ResponseEntity<String>  response = restRequest(urlDodajPozycje, jsonPozycja,
                 HttpMethod.POST, MediaType.APPLICATION_JSON_UTF8, String.class);
 
@@ -41,8 +45,8 @@ public class Pozycje_REST_IT {
     @Test
     public void zmienPozycje() throws JSONException {
         String jsonPozycjaDoZmiany = pozycjaJSON("5", "towar zmieniony","50.2","50.4","restowy","szt." ,"50.9");
-        String urlZmienPozycje = "http://localhost:8080/remanent/rest/pozycje/zmien/wyslijDoZmiany";
-        String urlPobierzZmienionaPozycje = "http://localhost:8080/remanent/rest/pozycje/usun/szukaj/5";
+        String urlZmienPozycje = HostAndPortResolver.determineHostAndPort(port) + "/remanent/rest/pozycje/zmien/wyslijDoZmiany";
+        String urlPobierzZmienionaPozycje = HostAndPortResolver.determineHostAndPort(port) + "/remanent/rest/pozycje/usun/szukaj/5";
 
 
         restRequest(urlZmienPozycje, jsonPozycjaDoZmiany,
@@ -65,7 +69,7 @@ public class Pozycje_REST_IT {
     @Test
     public void szukajPozycjiPoNazwieTowaru(){
         String doWyszukania = "szukaj pozycji";
-        String url = "http://localhost:8080/remanent/rest/pozycje/szukaj/"+ doWyszukania + "/nazwa";
+        String url = HostAndPortResolver.determineHostAndPort(port) + "/remanent/rest/pozycje/szukaj/" + doWyszukania + "/nazwa";
         HttpHeaders headers = new HttpHeaders();
         TestRestTemplate restTemplate = new TestRestTemplate();
 
@@ -91,7 +95,7 @@ public class Pozycje_REST_IT {
     @Test
     public void szukajNieistniejacejPozycji() {
         String nieistniejącaPozycja = "szukaj pozycji_co_nie_istnieje";
-        String url = "http://localhost:8080/remanent/rest/pozycje/szukaj/"+ nieistniejącaPozycja + "/nazwa";
+        String url = HostAndPortResolver.determineHostAndPort(port) + "/remanent/rest/pozycje/szukaj/" + nieistniejącaPozycja + "/nazwa";
         HttpHeaders headers = new HttpHeaders();
         TestRestTemplate restTemplate = new TestRestTemplate();
 
@@ -108,7 +112,7 @@ public class Pozycje_REST_IT {
     @Test
     public void szukajPozycjiPoUzytkowniku(){
         String doWyszukania = "user 1";
-        String url = "http://localhost:8080/remanent/rest/pozycje/szukaj/"+ doWyszukania + "/uzytkownik";
+        String url = HostAndPortResolver.determineHostAndPort(port) + "/remanent/rest/pozycje/szukaj/" + doWyszukania + "/uzytkownik";
         HttpHeaders headers = new HttpHeaders();
         TestRestTemplate restTemplate = new TestRestTemplate();
 
@@ -134,7 +138,7 @@ public class Pozycje_REST_IT {
     @Test
     public void pobierzPozycjeDoZmiany() {
     String numerPozycjiDoZmiany = "2";
-    String url = "http://localhost:8080/remanent/rest/pozycje/zmien/pobierzDoZmien/"+numerPozycjiDoZmiany;
+        String url = HostAndPortResolver.determineHostAndPort(port) + "/remanent/rest/pozycje/zmien/pobierzDoZmien/" + numerPozycjiDoZmiany;
 
     ResponseEntity<PozycjaBazy> response = restRequest(url, null, HttpMethod.GET, MediaType.TEXT_PLAIN, PozycjaBazy.class);
 
@@ -147,7 +151,7 @@ public class Pozycje_REST_IT {
     @Test
     public void pobierzNieistniejace() {
         String numerPozycjiDoZmiany = "9999";
-        String url = "http://localhost:8080/remanent/rest/pozycje/zmien/pobierzDoZmien/"+numerPozycjiDoZmiany;
+        String url = HostAndPortResolver.determineHostAndPort(port) + "/remanent/rest/pozycje/zmien/pobierzDoZmien/" + numerPozycjiDoZmiany;
 
         ResponseEntity<PozycjaBazy> response = restRequest(url, null, HttpMethod.GET, MediaType.TEXT_PLAIN, PozycjaBazy.class);
 
@@ -158,7 +162,7 @@ public class Pozycje_REST_IT {
 
     @Test
     public void pobierzPozycjeDoUsuniecia() {
-        String url = "http://localhost:8080/remanent/rest/pozycje/usun/szukaj/3";
+        String url = HostAndPortResolver.determineHostAndPort(port) + "/remanent/rest/pozycje/usun/szukaj/3";
 
         ResponseEntity<PozycjaBazy> response = restRequest(url, null, HttpMethod.GET, MediaType.TEXT_PLAIN, PozycjaBazy.class);
 
@@ -169,7 +173,7 @@ public class Pozycje_REST_IT {
 
     @Test
     public void pobierzNieistniejacaPozycjeDoUsuniecia() {
-        String url = "http://localhost:8080/remanent/rest/pozycje/usun/szukaj/9999";
+        String url = HostAndPortResolver.determineHostAndPort(port) + "/remanent/rest/pozycje/usun/szukaj/9999";
 
         ResponseEntity<PozycjaBazy> response = restRequest(url, null, HttpMethod.GET, MediaType.TEXT_PLAIN, PozycjaBazy.class);
         assertEquals(HttpStatus.GONE, response.getStatusCode() );
@@ -178,7 +182,7 @@ public class Pozycje_REST_IT {
 
     @Test
     public void usunPozycje() {
-        String url = "http://localhost:8080/remanent/rest/pozycje/usun/9";
+        String url = HostAndPortResolver.determineHostAndPort(port) + "/remanent/rest/pozycje/usun/9";
 
         ResponseEntity<String> response = restRequest(url, null, HttpMethod.GET, MediaType.TEXT_PLAIN, String.class);
 
@@ -190,7 +194,7 @@ public class Pozycje_REST_IT {
 
     @Test
     public void szukanieZaawansowaneWszystkieParametry() {
-        String url = "http://localhost:8080/remanent/rest/pozycje/szukaj/zaawansowany";
+        String url = HostAndPortResolver.determineHostAndPort(port) + "/remanent/rest/pozycje/szukaj/zaawansowany";
         String opcje = "?towar=zaawansowane&uzytkownik=zaawansowany&cenaNetto=2&radioCenaNetto=3&cenaBrutto=2&radioCenaBrutto=2&ilosc=9&radioIlosc=3";
         HttpHeaders headers = new HttpHeaders();
         TestRestTemplate restTemplate = new TestRestTemplate();
@@ -208,7 +212,7 @@ public class Pozycje_REST_IT {
 
     @Test
     public void szukanieZaawansowaneWszystkieParametryBrakWynikow() {
-        String url = "http://localhost:8080/remanent/rest/pozycje/szukaj/zaawansowany";
+        String url = HostAndPortResolver.determineHostAndPort(port) + "/remanent/rest/pozycje/szukaj/zaawansowany";
         String opcje = "?towar=zaawansowane&uzytkownik=zaawansowany&cenaNetto=2&radioCenaNetto=3&cenaBrutto=2&radioCenaBrutto=2&ilosc=9&radioIlosc=1";
         HttpHeaders headers = new HttpHeaders();
         TestRestTemplate restTemplate = new TestRestTemplate();
@@ -223,7 +227,7 @@ public class Pozycje_REST_IT {
 
     @Test
     public void szukanieZaawansowaneWszystkieLiczby() {
-        String url = "http://localhost:8080/remanent/rest/pozycje/szukaj/zaawansowany";
+        String url = HostAndPortResolver.determineHostAndPort(port) + "/remanent/rest/pozycje/szukaj/zaawansowany";
         String opcje = "?towar=zaawansowane&uzytkownik=zaawansowany&cenaNetto=300&radioCenaNetto=2&cenaBrutto=410&radioCenaBrutto=3&ilosc=5&radioIlosc=2";
         HttpHeaders headers = new HttpHeaders();
         TestRestTemplate restTemplate = new TestRestTemplate();

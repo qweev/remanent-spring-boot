@@ -3,10 +3,12 @@ package aniela.remanent.IT_REST_Raport;
 import aniela.FireFoxConfiguration;
 import aniela.remanent.Application;
 import aniela.remanent.pozycje.bazaDanych.PozycjaBazy;
+import aniela.remanent.util.HostAndPortResolver;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
 import org.springframework.test.context.ContextConfiguration;
@@ -18,14 +20,17 @@ import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {FireFoxConfiguration.class})
-@SpringBootTest(classes = Application.class)
+@SpringBootTest(classes = Application.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class Raport_Netto_REST_IT {
+
+    @LocalServerPort
+    int port;
 
     @Test
     public void poprawneLogowanie(){
         String login = "admin";
         String haslo = "admin";
-        String urlLogowanie = "http://localhost:8080/remanent/rest/raport/zaloguj/"+login+"/"+haslo;
+        String urlLogowanie = HostAndPortResolver.determineHostAndPort(port) + "/remanent/rest/raport/zaloguj/" + login + "/" + haslo;
 
         ResponseEntity<String> response = restRequest(urlLogowanie,null, HttpMethod.GET, MediaType.TEXT_PLAIN, String.class);
 
@@ -38,7 +43,7 @@ public class Raport_Netto_REST_IT {
     public void zlyUzytkownikPrzyLogowaniu() {
         String login = "zlyadmin";
         String haslo = "admin";
-        String urlLogowanie = "http://localhost:8080/remanent/rest/raport/zaloguj/"+login+"/"+haslo;
+        String urlLogowanie = HostAndPortResolver.determineHostAndPort(port) + "/remanent/rest/raport/zaloguj/" + login + "/" + haslo;
 
         ResponseEntity<String> response = restRequest(urlLogowanie,null, HttpMethod.GET, MediaType.TEXT_PLAIN, String.class);
 
@@ -50,7 +55,7 @@ public class Raport_Netto_REST_IT {
     public void zleHAsloPrzyLogowaniu() {
         String login = "admin";
         String haslo = "zlehaslo";
-        String urlLogowanie = "http://localhost:8080/remanent/rest/raport/zaloguj/"+login+"/"+haslo;
+        String urlLogowanie = HostAndPortResolver.determineHostAndPort(port) + "/remanent/rest/raport/zaloguj/" + login + "/" + haslo;
 
         ResponseEntity<String> response = restRequest(urlLogowanie,null, HttpMethod.GET, MediaType.TEXT_PLAIN, String.class);
 
@@ -61,7 +66,7 @@ public class Raport_Netto_REST_IT {
 
     @Test
     public void generujStatystyki() {
-        String urlStatysyka = "http://localhost:8080/remanent/rest/raport/statystyki";
+        String urlStatysyka = HostAndPortResolver.determineHostAndPort(port) + "/remanent/rest/raport/statystyki";
 
         ResponseEntity<String> response = restRequest(urlStatysyka,null, HttpMethod.GET, MediaType.TEXT_PLAIN, String.class);
 
@@ -72,7 +77,7 @@ public class Raport_Netto_REST_IT {
 
     @Test
     public void pobierzZeroweCeny() {
-        String urlZeroweCeny = "http://localhost:8080/remanent/rest/raport/zeroweCeny";
+        String urlZeroweCeny = HostAndPortResolver.determineHostAndPort(port) + "/remanent/rest/raport/zeroweCeny";
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<String> entity = new HttpEntity<String>(null, headers);
         TestRestTemplate restTemplate = new TestRestTemplate();
@@ -90,7 +95,7 @@ public class Raport_Netto_REST_IT {
 
     @Test
     public void utworzPlikRemanent(){
-        String urlPlikRemanent = "http://localhost:8080/remanent/rest/raport/excel/remanent";
+        String urlPlikRemanent = HostAndPortResolver.determineHostAndPort(port) + "/remanent/rest/raport/excel/netto/remanent";
 
         ResponseEntity<String> response = restRequest(urlPlikRemanent,null, HttpMethod.GET, MediaType.TEXT_PLAIN, String.class);
 
@@ -101,7 +106,7 @@ public class Raport_Netto_REST_IT {
 
     @Test
     public void utworzPlikRemanentBrutto(){
-        String urlPlikRemanent = "http://localhost:8080/remanent/rest/raport/excel/brutto/remanent";
+        String urlPlikRemanent = HostAndPortResolver.determineHostAndPort(port) + "/remanent/rest/raport/excel/brutto/remanent";
 
         ResponseEntity<String> response = restRequest(urlPlikRemanent,null, HttpMethod.GET, MediaType.TEXT_PLAIN, String.class);
 
