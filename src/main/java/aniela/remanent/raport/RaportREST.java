@@ -106,7 +106,7 @@ public class RaportREST {
 
 	}
 
-	@GetMapping("/remanent/rest/raportNetto/zaloguj/{user}/{pass}")
+    @GetMapping("/remanent/rest/raport/zaloguj/{user}/{pass}")
 	public ResponseEntity sprawdzLoginHaslo(@PathVariable("user") String user, @PathVariable("pass") String pass) {
 		logger.info("pobrany login : " + user);
 		logger.info("pobrany pass : " + pass);
