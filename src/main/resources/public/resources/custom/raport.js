@@ -214,7 +214,7 @@ $(document).ready(function(){
 		
     $.ajax({
     	type: 'GET',
-        url: '/remanent/rest/raport/excel/netto/'+sciezka,
+        url: '/remanent/rest/raport/excel/'+sciezka,
         success: function (response) {
         	console.log("sciezka json");
         	console.log("sciezka response "+response);
