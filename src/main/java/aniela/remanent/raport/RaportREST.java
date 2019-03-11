@@ -33,7 +33,7 @@ public class RaportREST {
 	@Autowired
 	RaportBrutto raportBrutto;
 
-	@GetMapping("/remanent/rest/raportNetto/excel/brutto/{sciezka}")
+	@GetMapping("/remanent/rest/raport/excel/brutto/{sciezka}")
 	public ResponseEntity utworzPlikRemanentBrutto(@PathVariable("sciezka") String sciezka) {
 		logger.info("pobrana sciezka : " + sciezka);
 
@@ -54,7 +54,7 @@ public class RaportREST {
 	}
 
 
-	@GetMapping(path = "/remanent/rest/raportNetto/excel/{sciezka}")
+	@GetMapping(path = "/remanent/rest/raport/excel/{sciezka}")
 	public ResponseEntity utworzPlikRemanent(@PathVariable("sciezka") String sciezka) {
 		logger.info("pobrana sciezka : " + sciezka);
 
@@ -76,7 +76,7 @@ public class RaportREST {
 	}
 
 
-	@GetMapping("/remanent/rest/raportNetto/statystyki")
+	@GetMapping("/remanent/rest/raport/statystyki")
 	public ResponseEntity generujStatystyki() {
 
 		String statystyka = bazaRaport.generujStatystyki();
@@ -90,7 +90,7 @@ public class RaportREST {
 	}
 
 
-	@GetMapping(path = "/remanent/rest/raportNetto/zeroweCeny"
+	@GetMapping(path = "/remanent/rest/raport/zeroweCeny"
 			,produces= MediaType.APPLICATION_JSON_UTF8_VALUE
 	)
 	public ResponseEntity zeroweCeny() {
@@ -106,7 +106,7 @@ public class RaportREST {
 
 	}
 
-	@GetMapping("/remanent/rest/raportNetto/zaloguj/{user}/{pass}")
+	@GetMapping("/remanent/rest/raport/zaloguj/{user}/{pass}")
 	public ResponseEntity sprawdzLoginHaslo(@PathVariable("user") String user, @PathVariable("pass") String pass) {
 		logger.info("pobrany login : " + user);
 		logger.info("pobrany pass : " + pass);
