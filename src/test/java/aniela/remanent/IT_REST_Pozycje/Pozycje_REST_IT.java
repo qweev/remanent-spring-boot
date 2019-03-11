@@ -4,17 +4,8 @@ package aniela.remanent.IT_REST_Pozycje;
 import aniela.FireFoxConfiguration;
 import aniela.remanent.Application;
 import aniela.remanent.pozycje.bazaDanych.PozycjaBazy;
-
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -24,9 +15,6 @@ import org.springframework.http.*;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URI;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -40,7 +28,7 @@ public class Pozycje_REST_IT {
     @Test
     public void dodajPozycje() throws JSONException {
         String jsonPozycja = pozycjaJSON(null, "towar restowy","30.2","40.4","restowy","szt." ,"40.9");
-        String urlDodajPozycje = "http://localhost:8080/remanent/rest/pozycje/dodaj";
+        String urlDodajPozycje = "http://localhost:8081/remanent/rest/pozycje/dodaj";
         ResponseEntity<String>  response = restRequest(urlDodajPozycje, jsonPozycja,
                 HttpMethod.POST, MediaType.APPLICATION_JSON_UTF8, String.class);
 
@@ -195,7 +183,7 @@ public class Pozycje_REST_IT {
         ResponseEntity<String> response = restRequest(url, null, HttpMethod.GET, MediaType.TEXT_PLAIN, String.class);
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
-        assertEquals("9", response.getBody().toString());
+        assertEquals("9", response.getBody());
 
     }
 

@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="pl-PL">
 <head>
-  <title>Remanent Raporty</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="resources\css\bootstrap.min.css">  
-  <script src="resources\jq\jquery.min.js"></script>
-  <script src="resources\js\bootstrap.min.js"></script>
-  
-      <script src="resources\custom\block.js"></script>
-      <script src="resources\custom\wspolneFunkcje.js"></script>
-      <script src="resources\custom\raport.js"></script>
+    <title>Remanent Raporty</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="resources\css\bootstrap.min.css" rel="stylesheet">
+    <script src="resources\jq\jquery.min.js"></script>
+    <script src="resources\js\bootstrap.min.js"></script>
 
- <style>
+    <script src="resources\custom\block.js"></script>
+    <script src="resources\custom\wspolneFunkcje.js"></script>
+    <script src="resources\custom\raport.js"></script>
+
+    <style>
 .czerwonyText {
 color: red;
 }
 
 
-</style>
+
+
+    </style>
 </head>
 
 
@@ -26,380 +28,394 @@ color: red;
 
 <body>
 
-	<div id="divLogowanie" class="row">
-	
-		<div class="col-sm-2">
-		</div>
-		
-		
-      	<div class="col-sm-6">
-		<p></p><hr></hr>
-		<h2>Logowanie</h2>
-		<br></br>
-		
+<div class="row" id="divLogowanie">
 
-		   	<div class="col-sm-4">
-				<label for="user">Użytkownik:</label>
-				<input type="text" class="form-control" id="user" placeholder="- tu wpisz użytkownika -">
-			</div>
-			
-		
-		   	<div class="col-sm-4 form-group">
-				<label for="pass">Hasło:</label>
-				<input type="password" class="form-control" id="pass" placeholder="- tu wpisz hasło -">
-			</div>
-
-		</div>
-		
-		<div class="col-sm-4">
-		</div>
-		
-		
-		<!-- Modal LOGIN data-toggle="modal" data-target="#szukajDialog" -->
-		<div id="modalLogowanieDialog" class="modal fade" role="dialog">
-		  <div class="modal-dialog">
-		
-		<!-- Modal content-->
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		        <h4 class="modal-title">Logowanie</h4>
-		      </div>
-		      <div class="modal-body">
-		        <p id="modalLogowanie"></p>
-		      </div>
-		      <div class="modal-footer">
-		        <button id="zamknijDialog" type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
-		      </div>
-		    </div>
-		
-		  </div>
-		</div>
-		
-		
-		
-	</div>
+    <div class="col-sm-2">
+    </div>
 
 
-	<div class="row" id="divZalogujPrzycisk">
-	
-		<div class="col-sm-2">
-		</div>
-		
-		
-      	<div class="col-sm-6">
-		
-			<button id="zaloguj" type="button" class="btn btn-info" >
-			<b>&nbsp;Zaloguj&nbsp;&nbsp;</b><span class="glyphicon glyphicon-lock"></span></button>	
+    <div class="col-sm-6">
+        <p></p>
+        <hr></hr>
+        <h2>Logowanie</h2>
+        <br></br>
 
 
-		</div>
-		
-		<div class="col-sm-4">
-		</div>
-		
-	</div>
+        <div class="col-sm-4">
+            <label for="user">Użytkownik:</label>
+            <input class="form-control" id="user" placeholder="- tu wpisz użytkownika -" type="text">
+        </div>
 
 
+        <div class="col-sm-4 form-group">
+            <label for="pass">Hasło:</label>
+            <input class="form-control" id="pass" placeholder="- tu wpisz hasło -" type="password">
+        </div>
+
+    </div>
+
+    <div class="col-sm-4">
+    </div>
+
+
+    <!-- Modal LOGIN data-toggle="modal" data-target="#szukajDialog" -->
+    <div class="modal fade" id="modalLogowanieDialog" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal" type="button">&times;</button>
+                    <h4 class="modal-title">Logowanie</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="modalLogowanie"></p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal" id="zamknijDialog" type="button">Zamknij
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+<div class="row" id="divZalogujPrzycisk">
+
+    <div class="col-sm-2">
+    </div>
+
+
+    <div class="col-sm-6">
+
+        <button class="btn btn-info" id="zaloguj" type="button">
+            <b>&nbsp;Zaloguj&nbsp;&nbsp;</b><span class="glyphicon glyphicon-lock"></span></button>
+
+
+    </div>
+
+    <div class="col-sm-4">
+    </div>
+
+</div>
 
 
 <p></p>
-	<div id="divStatystyki" class="row text-center collapse">
-		<div class="col-sm-2">
-		</div>
-	
-      	<div class="col-sm-6">
-		<p></p><hr></hr>
-		<h2>RAPORT</h2>
-		<p></p>
-		<table class="table table-striped ">
-		    <thead >
-		      <tr>
-			    <th class="text-center">Ilość pozycji</th>
-			    <th class="text-center">Suma Netto</th>
-		        <th class="text-center">Suma Brutto</th>
-		        <th class="text-center">Ilość stron</th>
-		      </tr>
-		    </thead>
-		    <tbody id="tabelkaStatystyki">
-		    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-		    </tbody>
-		  </table>
+<div class="row text-center collapse" id="divStatystyki">
+    <div class="col-sm-2">
+    </div>
 
-		</div>
-		
-		<div class="col-sm-4">
-		</div>
-		
-		
-<!-- Modal Statystyki  -->
-		<div id="modalStatystykiDialog" class="modal fade" role="dialog">
-		  <div class="modal-dialog">
-		
-		<!-- Modal content-->
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		        <h4 class="modal-title">Statystyki</h4>
-		      </div>
-		      <div class="modal-body">
-		        <p id="modalStatystyki"></p>
-		      </div>
-		      <div class="modal-footer">
-		        <button id="zamknijDialog" type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
-		      </div>
-		    </div>
-		
-		  </div>
-		</div>
-		
-	</div>
-	
-	
-	
-	<div class="row collapse" id="divGenerujRaport">
-		<div class="col-sm-2">
-		</div>
-		
-		<div class="col-sm-6">
-		
-		<p></p>
-			<button id="generujStatystyki" type="button" class="btn btn-info" >
-			<span class="glyphicon glyphicon-file"></span>
-			<b>&nbsp;Generuj statystyki&nbsp;&nbsp;</b><span class="glyphicon glyphicon-file"></span></button>	
-		<p></p>			
-		</div>
-		
-		<div class="col-sm-4">
-		</div>
-		
-	</div>
-		
-	
-	
-	<p></p>
-	<div id="divZeroweCeny" class="row text-center collapse">
-		<div class="col-sm-2">
-					
-		</div>
+    <div class="col-sm-6">
+        <p></p>
+        <hr></hr>
+        <h2>RAPORT</h2>
+        <p></p>
+        <table class="table table-striped ">
+            <thead>
+            <tr>
+                <th class="text-center">Ilość pozycji</th>
+                <th class="text-center">Suma Netto</th>
+                <th class="text-center">Suma Brutto</th>
+                <th class="text-center">Ilość stron</th>
+            </tr>
+            </thead>
+            <tbody id="tabelkaStatystyki">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
 
-      	<div class="col-sm-6">
-		<p></p><hr></hr>
-		<h2>Pozycje bez cen</h2>
-		<p></p>
-			<div class="row">
-				<div class="col-sm-4" style="margin-right:-70px;margin-bottom:20px;margin-top:5px">Filtruj tabelkę po:</div>
-				<div class="col-sm-2"><input class="form-control" id="szukajTabelkaZeroweCeny" type="text" placeholder="Szukaj..."></div>	
-			</div>
-		<table class="table table-striped ">
-		    <thead >
-		      <tr>
-	    <th class="text-center">Numer</th>
-	    <th class="text-center">Nazwa towaru</th>
-        <th class="text-center">Cena Brutto</th>
-        <th class="text-center">Cena Netto</th>
-		<th class="text-center">Jednostka</th>
-		<th class="text-center">Ilość</th>
-		<th class="text-center">Użytkownik</th>
-		      </tr>
-		    </thead>
-		    <tbody id="tabelkaZeroweCeny">
-		     <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-		    </tbody>
-		  </table>
+    </div>
 
-		</div>
-		
-		<div class="col-sm-4">
-		</div>
-		
-		<!-- Modal Zerowe Ceny  -->
-		<div id="modalZeroweCenyDialog" class="modal fade" role="dialog">
-		  <div class="modal-dialog">
-		
-		<!-- Modal content-->
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		        <h4 class="modal-title">Zerowe Ceny</h4>
-		      </div>
-		      <div class="modal-body">
-		        <p id="modalZeroweCeny"></p>
-		      </div>
-		      <div class="modal-footer">
-		        <button id="zamknijDialog" type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
-		      </div>
-		    </div>
-		
-		  </div>
-		</div>
-		
-	</div>
-	
-	
-	
-	<div class="row collapse" id="divGenerujZeroweCeny">
-		<div class="col-sm-2">
-		</div>
-		
-		<div class="col-sm-6">
-		
-		<p></p>
-			<button id="generujZeroweCeny" type="button" class="btn btn-info" >
-			<span class="glyphicon glyphicon-file"></span>
-			<b>&nbsp;Pobierz pozycje bez cen&nbsp;&nbsp;</b><span class="glyphicon glyphicon-file"></span></button>	
-		<p></p>			
-		</div>
-		
-		<div class="col-sm-4">
-		</div>
-		
-	</div>
-	
-		
-	<div class="row collapse" id="divInputSciezka">
-		<div class="col-sm-2">
-		</div>
-		
-		<div class="col-sm-6">
-		<p></p>
-	<hr>
-	<br>
-	<br>
-		 	<div class="col-sm-8">
-				<label for="sciezka">Podaj nazwe do zapisu remanentu na dysku C:</label>
-				<input type="text" class="form-control" id="sciezka" placeholder="- np. remanent -" value="remanent">
-			</div>
-
-		<p></p>
-		</div>
-		
-		<div class="col-sm-2">
-		</div>
-		
-	</div>
+    <div class="col-sm-4">
+    </div>
 
 
+    <!-- Modal Statystyki  -->
+    <div class="modal fade" id="modalStatystykiDialog" role="dialog">
+        <div class="modal-dialog">
 
-	<div class="row collapse" id="divPrzysiskRemanent">
-		<div class="col-sm-2">
-		</div>
-		
-		<div class="col-sm-6">
-		<p></p>
-			<br>
-			<button style="margin-left:15px" id="generujRemanent" type="button" class="btn btn-info" >
-			<span class="glyphicon glyphicon-file"></span>
-			
-			<b>&nbsp;Utwórz plik remanent&nbsp;&nbsp;</b><span class="glyphicon glyphicon-file"></span></button>
-		
-		
-		</div>
-		
-		<div class="col-sm-4">
-		</div>
-		
-		
-		
-		<!-- Modal excel-->
-		<div id="modalExcelDialog" class="modal fade" role="dialog">
-		  <div class="modal-dialog">
-		
-		<!-- Modal content-->
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		        <h4 class="modal-title">Zapis pliku</h4>
-		      </div>
-		      <div class="modal-body">
-		        <p id="modalExcel"></p>
-		      </div>
-		      <div class="modal-footer">
-		        <button id="zamknijDialog" type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
-		      </div>
-		    </div>
-		
-		  </div>
-		</div>
-		
-		
-		
-		
-	</div>
-	<br>
-	<br>
-	<br>
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal" type="button">&times;</button>
+                    <h4 class="modal-title">Statystyki</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="modalStatystyki"></p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal" id="zamknijDialog" type="button">Zamknij
+                    </button>
+                </div>
+            </div>
 
-	<div class="row collapse" id="divInputSciezkaBrutto">
-		<div class="col-sm-2">
-		</div>
-		
-		<div class="col-sm-6">
-		<p></p>
-	<hr>
-	<br>
-	<br>
-		 	<div class="col-sm-8">
-				<label for="sciezkaBrutto">Podaj nazwe do zapisu remanentu brutto na dysku C:</label>
-				<input type="text" class="form-control" id="sciezkaBrutto" placeholder="- np. remanentBrutto -" value="remanentBrutto">
-			</div>
+        </div>
+    </div>
 
-		<p></p>
-		</div>
-		
-		<div class="col-sm-2">
-		</div>
-		
-	</div>
-	
-	<div class="row collapse" id="divPrzysiskRemanentBrutto">
-		<div class="col-sm-2">
-		</div>
-		
-		<div class="col-sm-6">
-		<p></p>
-			<br>
-			<button style="margin-left:15px" id="generujRemanentBrutto" type="button" class="btn btn-info" >
-			<span class="glyphicon glyphicon-file"></span>
-			
-			<b>&nbsp;Utwórz plik remanent brutto&nbsp;&nbsp;</b><span class="glyphicon glyphicon-file"></span></button>
-		
-		
-		</div>
-		
-		<div class="col-sm-4">
-		</div>
-		
-		
-		
-		<!-- Modal excel-->
-		<div id="modalExcelDialogBrutto" class="modal fade" role="dialog">
-		  <div class="modal-dialog">
-		
-		<!-- Modal content-->
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		        <h4 class="modal-title">Zapis pliku</h4>
-		      </div>
-		      <div class="modal-body">
-		        <p id="modalExcelBrutto"></p>
-		      </div>
-		      <div class="modal-footer">
-		        <button id="zamknijDialogBrutto" type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
-		      </div>
-		    </div>
-		
-		  </div>
-		</div>
-		
-		
-		
-		
-	</div>
-	<br>
-	<br>
-	<br>
-	
+</div>
+
+
+<div class="row collapse" id="divGenerujRaport">
+    <div class="col-sm-2">
+    </div>
+
+    <div class="col-sm-6">
+
+        <p></p>
+        <button class="btn btn-info" id="generujStatystyki" type="button">
+            <span class="glyphicon glyphicon-file"></span>
+            <b>&nbsp;Generuj statystyki&nbsp;&nbsp;</b><span class="glyphicon glyphicon-file"></span></button>
+        <p></p>
+    </div>
+
+    <div class="col-sm-4">
+    </div>
+
+</div>
+
+
+<p></p>
+<div class="row text-center collapse" id="divZeroweCeny">
+    <div class="col-sm-2">
+
+    </div>
+
+    <div class="col-sm-6">
+        <p></p>
+        <hr></hr>
+        <h2>Pozycje bez cen</h2>
+        <p></p>
+        <div class="row">
+            <div class="col-sm-4" style="margin-right:-70px;margin-bottom:20px;margin-top:5px">Filtruj tabelkę po:</div>
+            <div class="col-sm-2"><input class="form-control" id="szukajTabelkaZeroweCeny" placeholder="Szukaj..."
+                                         type="text"></div>
+        </div>
+        <table class="table table-striped ">
+            <thead>
+            <tr>
+                <th class="text-center">Numer</th>
+                <th class="text-center">Nazwa towaru</th>
+                <th class="text-center">Cena Brutto</th>
+                <th class="text-center">Cena Netto</th>
+                <th class="text-center">Jednostka</th>
+                <th class="text-center">Ilość</th>
+                <th class="text-center">Użytkownik</th>
+            </tr>
+            </thead>
+            <tbody id="tabelkaZeroweCeny">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <div class="col-sm-4">
+    </div>
+
+    <!-- Modal Zerowe Ceny  -->
+    <div class="modal fade" id="modalZeroweCenyDialog" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal" type="button">&times;</button>
+                    <h4 class="modal-title">Zerowe Ceny</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="modalZeroweCeny"></p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal" id="zamknijDialog" type="button">Zamknij
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row collapse" id="divGenerujZeroweCeny">
+    <div class="col-sm-2">
+    </div>
+
+    <div class="col-sm-6">
+
+        <p></p>
+        <button class="btn btn-info" id="generujZeroweCeny" type="button">
+            <span class="glyphicon glyphicon-file"></span>
+            <b>&nbsp;Pobierz pozycje bez cen&nbsp;&nbsp;</b><span class="glyphicon glyphicon-file"></span></button>
+        <p></p>
+    </div>
+
+    <div class="col-sm-4">
+    </div>
+
+</div>
+
+
+<div class="row collapse" id="divInputSciezka">
+    <div class="col-sm-2">
+    </div>
+
+    <div class="col-sm-6">
+        <p></p>
+        <hr>
+        <br>
+        <br>
+        <div class="col-sm-8">
+            <label for="sciezka">Podaj nazwe do zapisu remanentu na dysku C:</label>
+            <input class="form-control" id="sciezka" placeholder="- np. remanent -" type="text" value="remanent">
+        </div>
+
+        <p></p>
+    </div>
+
+    <div class="col-sm-2">
+    </div>
+
+</div>
+
+
+<div class="row collapse" id="divPrzysiskRemanent">
+    <div class="col-sm-2">
+    </div>
+
+    <div class="col-sm-6">
+        <p></p>
+        <br>
+        <button class="btn btn-info" id="generujRemanent" style="margin-left:15px" type="button">
+            <span class="glyphicon glyphicon-file"></span>
+
+            <b>&nbsp;Utwórz plik remanent netto &nbsp;&nbsp;</b><span class="glyphicon glyphicon-file"></span></button>
+
+
+    </div>
+
+    <div class="col-sm-4">
+    </div>
+
+
+    <!-- Modal excel-->
+    <div class="modal fade" id="modalExcelDialog" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal" type="button">&times;</button>
+                    <h4 class="modal-title">Zapis pliku</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="modalExcel"></p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal" id="zamknijDialog" type="button">Zamknij
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+<br>
+<br>
+<br>
+
+<div class="row collapse" id="divInputSciezkaBrutto">
+    <div class="col-sm-2">
+    </div>
+
+    <div class="col-sm-6">
+        <p></p>
+        <hr>
+        <br>
+        <br>
+        <div class="col-sm-8">
+            <label for="sciezkaBrutto">Podaj nazwe do zapisu remanentu brutto na dysku C:</label>
+            <input class="form-control" id="sciezkaBrutto" placeholder="- np. remanentBrutto -" type="text"
+                   value="remanentBrutto">
+        </div>
+
+        <p></p>
+    </div>
+
+    <div class="col-sm-2">
+    </div>
+
+</div>
+
+<div class="row collapse" id="divPrzysiskRemanentBrutto">
+    <div class="col-sm-2">
+    </div>
+
+    <div class="col-sm-6">
+        <p></p>
+        <br>
+        <button class="btn btn-info" id="generujRemanentBrutto" style="margin-left:15px" type="button">
+            <span class="glyphicon glyphicon-file"></span>
+
+            <b>&nbsp;Utwórz plik remanent brutto&nbsp;&nbsp;</b><span class="glyphicon glyphicon-file"></span></button>
+
+
+    </div>
+
+    <div class="col-sm-4">
+    </div>
+
+
+    <!-- Modal excel-->
+    <div class="modal fade" id="modalExcelDialogBrutto" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal" type="button">&times;</button>
+                    <h4 class="modal-title">Zapis pliku</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="modalExcelBrutto"></p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-default" data-dismiss="modal" id="zamknijDialogBrutto" type="button">
+                        Zamknij
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+<br>
+<br>
+<br>
+
 </body>
 </html>
