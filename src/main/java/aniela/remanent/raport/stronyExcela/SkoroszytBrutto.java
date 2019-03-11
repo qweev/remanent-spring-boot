@@ -1,14 +1,14 @@
 package aniela.remanent.raport.stronyExcela;
 
-import java.util.Calendar;
-
+import aniela.remanent.position.abstraction.PositionInterface;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import aniela.remanent.raport.raportBrutto.PozycjaDoRaportuBrutto;
+
+import java.util.Calendar;
 
 
 public class SkoroszytBrutto {
@@ -126,7 +126,7 @@ public class SkoroszytBrutto {
 	}
 
 
-	public void utworzPierwszyWierszTabeli(int numerWiersza, int numerPozycji, PozycjaDoRaportuBrutto pozycja) {
+	public void utworzPierwszyWierszTabeli(int numerWiersza, int numerPozycji, PositionInterface pozycja) {
 		CellStyle stylDoPrawej = ramkaGoraLewaPrawa;
 		CellStyle stylSrodkuj = ramkaGoraLewaPrawaWysrodkowanyTekst;
 		CellStyle stylWaluta = walutaRamkaGoraLewaPrawaTekstDoPrawej;
@@ -134,7 +134,7 @@ public class SkoroszytBrutto {
 	}
 
 
-	private void wpiszPozycjeDoWiersza(int numerWiersza, int numerPozycji, PozycjaDoRaportuBrutto pozycja, CellStyle doPrawej, CellStyle srodkuj, CellStyle waluta ) {
+	private void wpiszPozycjeDoWiersza(int numerWiersza, int numerPozycji, PositionInterface pozycja, CellStyle doPrawej, CellStyle srodkuj, CellStyle waluta) {
 		Row row = arkusz.createRow(numerWiersza);	
 		row.setHeightInPoints(wysokoscWiersza);
 		Cell cell;
@@ -171,7 +171,7 @@ public class SkoroszytBrutto {
 	}
 
 
-	public void utworzWierszTabeli(int numerWiersza, int numerPozycji, PozycjaDoRaportuBrutto pozycja) {
+	public void utworzWierszTabeli(int numerWiersza, int numerPozycji, PositionInterface pozycja) {
 		CellStyle stylDoPrawej = ramkaLewaPrawa;
 		CellStyle stylSrodkuj = ramkaLewaPrawaWysrodkowanyTekst;
 		CellStyle stylWaluta = walutaRamkaLewaPrawaTekstDoPrawej;
@@ -179,7 +179,7 @@ public class SkoroszytBrutto {
 	}
 
 
-	public void utworzOstatniWierszTabeli(int numerWiersza, int numerPozycji, PozycjaDoRaportuBrutto pozycja) {
+	public void utworzOstatniWierszTabeli(int numerWiersza, int numerPozycji, PositionInterface pozycja) {
 		CellStyle stylDoPrawej = ramkaDolLewaPrawa;
 		CellStyle stylSrodkuj = ramkaDolLewaPrawaWysrodkowanyTekst;
 		CellStyle stylWaluta = walutaRamkaDolLewaPrawaTekstDoPrawej;
@@ -197,7 +197,7 @@ public class SkoroszytBrutto {
 		Cell cell = row.createCell(sumaStrony);
 		cell.setCellStyle(ramkaDookola);
 //	    cell.setCellType(XSSFCell.CELL_TYPE_FORMULA);
-	    cell.setCellValue("X");;
+		cell.setCellValue("X");
 //	    System.out.println(formula);
 //	    sumyStron.add("F"+(numerWiersza+1));
 	}

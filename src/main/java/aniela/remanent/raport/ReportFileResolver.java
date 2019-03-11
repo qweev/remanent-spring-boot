@@ -1,12 +1,12 @@
 package aniela.remanent.raport;
 
+import java.io.File;
+
 public final class ReportFileResolver {
 
     private ReportFileResolver() {
 
     }
-
-    private static String OS = System.getProperty("os.name").toLowerCase();
 
     public static String resolveFilePathForExcel(String fileName) {
         String commonFileNameWithExtension = fileName + ".xlsx";
@@ -19,10 +19,8 @@ public final class ReportFileResolver {
     }
 
     private static String resolveFullFileName(String commonFileNameWithExtnesion) {
-        return OS.startsWith("win") ? "C:\\" + commonFileNameWithExtnesion : commonFileNameWithExtnesion;
+        String userHome = System.getProperty("user.home");
+        return new StringBuilder().append(userHome).append(File.separator).append(commonFileNameWithExtnesion).toString();
     }
-
-
-
 
 }

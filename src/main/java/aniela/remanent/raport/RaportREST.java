@@ -33,6 +33,7 @@ public class RaportREST {
 	@Autowired
 	RaportBrutto raportBrutto;
 
+
 	@GetMapping("/remanent/rest/raport/excel/brutto/{sciezka}")
 	public ResponseEntity utworzPlikRemanentBrutto(@PathVariable("sciezka") String sciezka) {
 		logger.info("pobrana sciezka : " + sciezka);
@@ -52,6 +53,7 @@ public class RaportREST {
 		}
 
 	}
+
 
 
 	@GetMapping(path = "/remanent/rest/raport/excel/{sciezka}")
@@ -74,6 +76,7 @@ public class RaportREST {
 		}
 
 	}
+
 
 
 	@GetMapping("/remanent/rest/raport/statystyki")
@@ -105,6 +108,7 @@ public class RaportREST {
 		}
 
 	}
+
 
 	@GetMapping("/remanent/rest/raport/zaloguj/{user}/{pass}")
 	public ResponseEntity sprawdzLoginHaslo(@PathVariable("user") String user, @PathVariable("pass") String pass) {

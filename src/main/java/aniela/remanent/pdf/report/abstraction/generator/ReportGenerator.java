@@ -1,6 +1,6 @@
 package aniela.remanent.pdf.report.abstraction.generator;
 
-import aniela.remanent.raport.raportDoDruku.PozycjaDoRaportuNetto;
+import aniela.remanent.position.abstraction.PositionInterface;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -11,13 +11,13 @@ public final class ReportGenerator {
 
     private static final int POSITIONS_MAX_PER_PAGE = 54;
     private int pagesToGenerate = 0;
-    private Queue<PozycjaDoRaportuNetto> postions;
+    private Queue<PositionInterface> postions;
 
     public ReportGenerator() {
         postions = new LinkedList<>();
     }
 
-    public List<ReportPage> generatePages(List<PozycjaDoRaportuNetto> postionsList) {
+    public List<ReportPage> generatePages(List<PositionInterface> postionsList) {
         postions.clear();
         this.postions.addAll(postionsList);
         pagesToGenerate = postions.size() / POSITIONS_MAX_PER_PAGE + 1;
@@ -25,7 +25,7 @@ public final class ReportGenerator {
         for (int pageNumber = 1; pageNumber <= pagesToGenerate; pageNumber++) {
             ReportPage reportPage = new ReportPage(pageNumber);
             for (int positionNumber = 1; positionNumber <= POSITIONS_MAX_PER_PAGE; positionNumber++) {
-                PozycjaDoRaportuNetto position = postions.peek();
+                PositionInterface position = postions.peek();
                 if (position != null) {
                     reportPage.addPosition(postions.poll());
                 }

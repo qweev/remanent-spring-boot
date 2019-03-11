@@ -1,15 +1,14 @@
 package aniela.remanent.pdf.report.api;
 
-import aniela.remanent.raport.raportDoDruku.PozycjaDoRaportuNetto;
+import aniela.remanent.position.abstraction.PositionInterface;
 
 import java.util.List;
 
 public interface ReportPdfApi {
 
-    List<PozycjaDoRaportuNetto> getPostionsNetto();
+    List<PositionInterface> getPostions();
 
-    //TODO use interface in future to get generic positions
-    String generateReport(List<PozycjaDoRaportuNetto> positions, String filePath) throws Exception;
+    String generateReport(List<PositionInterface> positions, String filePath) throws Exception;
 
 
 }
