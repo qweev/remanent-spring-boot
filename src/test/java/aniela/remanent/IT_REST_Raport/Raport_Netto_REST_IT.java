@@ -95,7 +95,7 @@ public class Raport_Netto_REST_IT {
 
     @Test
     public void utworzPlikRemanentNetto() {
-        String urlPlikRemanent = HostAndPortResolver.determineHostAndPort(port) + "/remanent/rest/raport/excel/netto/remanent";
+        String urlPlikRemanent = HostAndPortResolver.determineHostAndPort(port) + "/remanent/rest/raport/excel/remanent";
 
         ResponseEntity<String> response = restRequest(urlPlikRemanent,null, HttpMethod.GET, MediaType.TEXT_PLAIN, String.class);
 
