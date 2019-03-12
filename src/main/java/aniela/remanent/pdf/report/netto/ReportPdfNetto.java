@@ -15,12 +15,11 @@ public class ReportPdfNetto extends ReportPdf {
     @Autowired
     public ReportPdfNetto(BazaDAO bazaRaport) {
         super(ReportType.NETTO);
-        this.bazaRaport = bazaRaport;
     }
 
 
     @Override
     public List<PositionInterface> getPostions() {
-        return bazaRaport.przygotujPozycjeDoRaportuNetto();
+        return null;
     }
 }

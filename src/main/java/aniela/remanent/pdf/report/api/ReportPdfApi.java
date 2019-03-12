@@ -6,9 +6,10 @@ import java.util.List;
 
 public interface ReportPdfApi {
 
+    @Deprecated
     List<PositionInterface> getPostions();
 
-    String generateReport(List<PositionInterface> positions, String filePath) throws Exception;
+    String generateReport(List<PositionInterface> positions, String filePath, int numberOfPositions) throws Exception;
 
 
 }

@@ -77,7 +77,7 @@ public class ReportPdfTest {
         Mockito.when(bazaDAO.przygotujPozycjeDoRaportuNetto())
                 .thenReturn(pozycjeReportFactory.generateListOfPozycjaDoRaportuNettoContentSame(NUMBER_OF_POSITIONS_TO_GENERATE));
         Mockito.when(bazaDAO.obliczIloscPozycji()).thenReturn(NUMBER_OF_POSITIONS_TO_GENERATE);
-        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportNettoPath);
+        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportNettoPath, NUMBER_OF_POSITIONS_TO_GENERATE);
         LOGGER.info(String.format("Report written to %s ", reportNettoPath));
     }
 
@@ -86,7 +86,7 @@ public class ReportPdfTest {
         Mockito.when(bazaDAO.przygotujPozycjeDoRaportuNetto())
                 .thenReturn(pozycjeReportFactory.generateListOfPozycjaDoRaportuNettoContentSame(NUMBER_OF_POSITIONS_TO_GENERATE_10_K));
         Mockito.when(bazaDAO.obliczIloscPozycji()).thenReturn(NUMBER_OF_POSITIONS_TO_GENERATE_10_K);
-        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportNettoPath10000);
+        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportNettoPath10000, NUMBER_OF_POSITIONS_TO_GENERATE_10_K);
         LOGGER.info(String.format("Report written to %s ", reportNettoPath10000));
     }
 
@@ -96,7 +96,7 @@ public class ReportPdfTest {
         Mockito.when(bazaDAO.przygotujPozycjeDoRaportuNetto())
                 .thenReturn(pozycjeReportFactory.generateListOfPozycjaDoRaportuNettoContentRandom(NUMBER_OF_POSITIONS_TO_GENERATE_20));
         Mockito.when(bazaDAO.obliczIloscPozycji()).thenReturn(NUMBER_OF_POSITIONS_TO_GENERATE_20);
-        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportNettoPathRandom);
+        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportNettoPathRandom, NUMBER_OF_POSITIONS_TO_GENERATE_20);
         LOGGER.info(String.format("Report written to %s ", reportNettoPathRandom));
     }
 
@@ -105,7 +105,7 @@ public class ReportPdfTest {
         Mockito.when(bazaDAO.przygotujPozycjeDoRaportuNetto())
                 .thenReturn(pozycjeReportFactory.generateListOfPozycjaDoRaportuNettoContentMixed(NUMBER_OF_POSITIONS_TO_GENERATE_20));
         Mockito.when(bazaDAO.obliczIloscPozycji()).thenReturn(NUMBER_OF_POSITIONS_TO_GENERATE_20);
-        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportNettoPathRandomMixed);
+        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportNettoPathRandomMixed, NUMBER_OF_POSITIONS_TO_GENERATE_20);
         LOGGER.info(String.format("Report written to %s ", reportNettoPathRandomMixed));
     }
 
@@ -114,7 +114,7 @@ public class ReportPdfTest {
         Mockito.when(bazaDAO.przygotujPozycjeDoRaportuNetto())
                 .thenReturn(pozycjeReportFactory.generateListOfPozycjaDoRaportuNettoContentMixed(NUMBER_OF_POSITIONS_TO_GENERATE_0));
         Mockito.when(bazaDAO.obliczIloscPozycji()).thenReturn(NUMBER_OF_POSITIONS_TO_GENERATE_0);
-        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportNettoPathEmpty);
+        reportPdfNettoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportNettoPathEmpty, NUMBER_OF_POSITIONS_TO_GENERATE_0);
         LOGGER.info(String.format("Report written to %s ", reportNettoPathEmpty));
     }
 
@@ -125,7 +125,7 @@ public class ReportPdfTest {
         Mockito.when(bazaDAO.przygotujPozycjeDoRaportuNetto())
                 .thenReturn(pozycjeReportFactory.generateListOfPozycjaDoRaportuNettoContentSame(NUMBER_OF_POSITIONS_TO_GENERATE));
         Mockito.when(bazaDAO.obliczIloscPozycji()).thenReturn(NUMBER_OF_POSITIONS_TO_GENERATE);
-        reportPdfBruttoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportBruttoPath);
+        reportPdfBruttoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportBruttoPath, NUMBER_OF_POSITIONS_TO_GENERATE);
         LOGGER.info(String.format("Report written to %s ", reportBruttoPath));
     }
 
@@ -134,7 +134,7 @@ public class ReportPdfTest {
         Mockito.when(bazaDAO.przygotujPozycjeDoRaportuNetto())
                 .thenReturn(pozycjeReportFactory.generateListOfPozycjaDoRaportuNettoContentSame(NUMBER_OF_POSITIONS_TO_GENERATE_10_K));
         Mockito.when(bazaDAO.obliczIloscPozycji()).thenReturn(NUMBER_OF_POSITIONS_TO_GENERATE_10_K);
-        reportPdfBruttoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportBruttoPath10000);
+        reportPdfBruttoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportBruttoPath10000, NUMBER_OF_POSITIONS_TO_GENERATE_10_K);
         LOGGER.info(String.format("Report written to %s ", reportBruttoPath10000));
     }
 
@@ -144,7 +144,7 @@ public class ReportPdfTest {
         Mockito.when(bazaDAO.przygotujPozycjeDoRaportuNetto())
                 .thenReturn(pozycjeReportFactory.generateListOfPozycjaDoRaportuNettoContentRandom(NUMBER_OF_POSITIONS_TO_GENERATE_20));
         Mockito.when(bazaDAO.obliczIloscPozycji()).thenReturn(NUMBER_OF_POSITIONS_TO_GENERATE_20);
-        reportPdfBruttoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportBruttoPathRandom);
+        reportPdfBruttoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportBruttoPathRandom, NUMBER_OF_POSITIONS_TO_GENERATE_20);
         LOGGER.info(String.format("Report written to %s ", reportBruttoPathRandom));
     }
 
@@ -153,7 +153,7 @@ public class ReportPdfTest {
         Mockito.when(bazaDAO.przygotujPozycjeDoRaportuNetto())
                 .thenReturn(pozycjeReportFactory.generateListOfPozycjaDoRaportuNettoContentMixed(NUMBER_OF_POSITIONS_TO_GENERATE_20));
         Mockito.when(bazaDAO.obliczIloscPozycji()).thenReturn(NUMBER_OF_POSITIONS_TO_GENERATE_20);
-        reportPdfBruttoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportBruttoPathRandomMixed);
+        reportPdfBruttoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportBruttoPathRandomMixed, NUMBER_OF_POSITIONS_TO_GENERATE_20);
         LOGGER.info(String.format("Report written to %s ", reportBruttoPathRandomMixed));
     }
 
@@ -162,7 +162,7 @@ public class ReportPdfTest {
         Mockito.when(bazaDAO.przygotujPozycjeDoRaportuNetto())
                 .thenReturn(pozycjeReportFactory.generateListOfPozycjaDoRaportuNettoContentMixed(NUMBER_OF_POSITIONS_TO_GENERATE_0));
         Mockito.when(bazaDAO.obliczIloscPozycji()).thenReturn(NUMBER_OF_POSITIONS_TO_GENERATE_0);
-        reportPdfBruttoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportBruttoPathEmpty);
+        reportPdfBruttoTestedObj.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), reportBruttoPathEmpty, NUMBER_OF_POSITIONS_TO_GENERATE_0);
         LOGGER.info(String.format("Report written to %s ", reportBruttoPathEmpty));
     }
 

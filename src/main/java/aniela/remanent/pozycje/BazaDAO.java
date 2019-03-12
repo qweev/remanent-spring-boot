@@ -227,7 +227,8 @@ public class BazaDAO {
             LOGGER.info("Exception in HIBERNATE " + e);
             e.printStackTrace();
         } finally {
-            sesja.close();
+            if (sesja.isOpen())
+                sesja.close();
         }
         LOGGER.info("Zwrocona ilosc pozycji : " + iloscPozycji);
         return (int) iloscPozycji;
@@ -257,7 +258,8 @@ public class BazaDAO {
             System.err.println("Failed to create sessionFactory object." + ex);
             throw new ExceptionInInitializerError(ex);
         } finally {
-            sesja.close();
+            if (sesja.isOpen())
+                sesja.close();
         }
         LOGGER.info("Ilosc pozycji w liscie " + pozycjeRaportu.size());
         return pozycjeRaportu;
@@ -268,6 +270,7 @@ public class BazaDAO {
         List<PositionInterface> pozycjeRaportu = new ArrayList<>();
         List<PozycjaBazy> pozycjeBazy = new ArrayList<>();
         Session sesja = entityManager.unwrap(Session.class);
+
 
         try {
             pozycjeBazy.addAll(sesja.createQuery("FROM PozycjaBazy ORDER BY nazwa_towaru ASC").list());
@@ -288,6 +291,7 @@ public class BazaDAO {
             System.err.println("Failed to create sessionFactory object." + ex);
             throw new ExceptionInInitializerError(ex);
         } finally {
+
             sesja.close();
         }
         LOGGER.info("ilosc pozycji w liscie " + pozycjeRaportu.size());

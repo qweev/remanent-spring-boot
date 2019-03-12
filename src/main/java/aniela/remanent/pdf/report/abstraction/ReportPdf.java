@@ -5,7 +5,6 @@ import aniela.remanent.pdf.report.abstraction.generator.ReportPage;
 import aniela.remanent.pdf.report.api.ReportPdfApi;
 import aniela.remanent.pdf.summary.SummaryGenerator;
 import aniela.remanent.position.abstraction.PositionInterface;
-import aniela.remanent.pozycje.BazaDAO;
 import aniela.remanent.type.ReportType;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.BaseFont;
@@ -40,13 +39,15 @@ public abstract class ReportPdf implements ReportPdfApi {
     private final static Logger LOG = Logger.getLogger(ReportPdf.class);
     private final Font FONT_HEADER;
     private final Font FONT_VALUE;
-    protected BazaDAO bazaRaport;
+    // protected BazaDAO bazaRaport;
     private Document document;
     private ReportGenerator reportGenerator;
     private SummaryGenerator summaryGenerator;
     private Queue<ReportPage> reportPages;
     private List<ReportPage> reportPagesForSummary;
     private final ReportType reportType;
+
+    private FileOutputStream fileOutputStream;
 
 
     public ReportPdf(ReportType reportType) {
@@ -65,21 +66,28 @@ public abstract class ReportPdf implements ReportPdfApi {
     }
 
     @Override
-    public String generateReport(List<PositionInterface> positions, String filePath) {
-        runReportGenerator();
+    public String generateReport(List<PositionInterface> positions, String filePath, int numberOfPositions) {
+        runReportGenerator(positions);
         try {
             removeExistingReport(filePath);
             initializeReportPdf(filePath);
             generateHeader();
             generateFirstPage();
             generateInternalPages();
-            generateEnding();
+            generateEnding(numberOfPositions);
             generateSummary();
-            closeDocument();
+
         } catch (DocumentException | IOException e) {
-            LOG.warn("Cannot create PDF report: ", e);
+            LOG.info("Cannot create PDF report: ", e);
             return "Report cannot be created as PDF: ";
+        } finally {
+            try {
+                closeDocument();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
+
         return "OK";
     }
 
@@ -90,14 +98,15 @@ public abstract class ReportPdf implements ReportPdfApi {
         }
     }
 
-    private void runReportGenerator() {
+    private void runReportGenerator(List<PositionInterface> positions) {
         reportPages.clear();
-        reportPages.addAll(reportGenerator.generatePages(bazaRaport.przygotujPozycjeDoRaportuNetto()));
+        reportPages.addAll(reportGenerator.generatePages(positions));
     }
 
     private void initializeReportPdf(String fullFilePath) throws FileNotFoundException, DocumentException {
         document = new Document();
-        PdfWriter pdfWriter = PdfWriter.getInstance(document, new FileOutputStream(fullFilePath));
+        fileOutputStream = new FileOutputStream(fullFilePath);
+        PdfWriter pdfWriter = PdfWriter.getInstance(document, fileOutputStream);
         PageNumerator pageNumerator = new PageNumerator(reportGenerator);
         pdfWriter.setPageEvent(pageNumerator);
         document.open();
@@ -129,8 +138,8 @@ public abstract class ReportPdf implements ReportPdfApi {
         }
     }
 
-    private void generateEnding() throws DocumentException {
-        Paragraph paragraph = new Paragraph(String.format("Spis ukończono na pozycji nr %d ", bazaRaport.obliczIloscPozycji()), FONT_VALUE);
+    private void generateEnding(int numberOfPositions) throws DocumentException {
+        Paragraph paragraph = new Paragraph(String.format("Spis ukończono na pozycji nr %d ", numberOfPositions), FONT_VALUE);
         paragraph.setAlignment(Element.ALIGN_CENTER);
         addEmptyLine(paragraph, NUMBER_OF_HEADER_ROWS_AND_EMPTY_LINES);
         document.add(paragraph);
@@ -144,8 +153,9 @@ public abstract class ReportPdf implements ReportPdfApi {
         document.add(tableSumamry);
     }
 
-    private void closeDocument() {
+    private void closeDocument() throws IOException {
         document.close();
+        fileOutputStream.close();
     }
 
     private void addEmptyLine(Paragraph paragraph, int number) {

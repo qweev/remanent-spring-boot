@@ -17,12 +17,12 @@ public class ReportPdfBrutto extends ReportPdf {
     @Autowired
     public ReportPdfBrutto(BazaDAO bazaRaport) {
         super(ReportType.BRUTTO);
-        this.bazaRaport = bazaRaport;
+        // this.bazaRaport = bazaRaport;
     }
 
 
     @Override
     public List<PositionInterface> getPostions() {
-        return bazaRaport.przygotujPozycjeDoRaportuBrutto();
+        return null;
     }
 }
