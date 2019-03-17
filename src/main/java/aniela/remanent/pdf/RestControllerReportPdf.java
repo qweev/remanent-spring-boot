@@ -2,8 +2,10 @@ package aniela.remanent.pdf;
 
 import aniela.remanent.pdf.report.brutto.ReportPdfBrutto;
 import aniela.remanent.pdf.report.netto.ReportPdfNetto;
+import aniela.remanent.position.abstraction.PositionInterface;
 import aniela.remanent.pozycje.BazaDAO;
 import aniela.remanent.raport.ReportFileResolver;
+import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -31,7 +33,9 @@ public class RestControllerReportPdf {
     public ResponseEntity utworzPlikRemanentBrutto(@PathVariable("sciezka") String sciezka) {
         String fullSciezka = ReportFileResolver.resolveFilePathForPdf(sciezka);
         try {
-            reportPdfBrutto.generateReport(bazaDAO.przygotujPozycjeDoRaportuBrutto(), fullSciezka, bazaDAO.obliczIloscPozycji());
+
+            List<PositionInterface> positions = bazaDAO.przygotujPozycjeDoRaportuBrutto();
+            reportPdfBrutto.generateReport(positions, fullSciezka, positions.size());
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(String.format("Report generation has thrown error %s", e.getMessage()));
         }
@@ -42,10 +46,15 @@ public class RestControllerReportPdf {
     public ResponseEntity utworzPlikRemanentNetto(@PathVariable("sciezka") String sciezka) {
         String fullSciezka = ReportFileResolver.resolveFilePathForPdf(sciezka);
         try {
-            reportPdfNetto.generateReport(bazaDAO.przygotujPozycjeDoRaportuNetto(), fullSciezka, bazaDAO.obliczIloscPozycji());
+
+            List<PositionInterface> positions = bazaDAO.przygotujPozycjeDoRaportuNetto();
+
+            reportPdfNetto.generateReport(positions, fullSciezka, positions.size());
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(String.format("Report generation has thrown error %s", e.getMessage()));
         }
         return ResponseEntity.status(HttpStatus.OK).body("OK");
     }
+
+
 }

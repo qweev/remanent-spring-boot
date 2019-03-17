@@ -5,13 +5,12 @@ import aniela.remanent.pdf.report.brutto.ReportPdfBrutto;
 import aniela.remanent.pdf.report.netto.ReportPdfNetto;
 import aniela.remanent.pozycje.BazaDAO;
 import aniela.remanent.raport.ReportFileResolver;
+import java.io.File;
 import org.apache.log4j.Logger;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
-import java.io.File;
 
 public class ReportPdfTest {
 
@@ -66,8 +65,8 @@ public class ReportPdfTest {
     public void setupBeforeEach() {
         pozycjeReportFactory = new PozycjeReportFactory();
         bazaDAO = Mockito.mock(BazaDAO.class);
-        reportPdfNettoTestedObj = new ReportPdfNetto(bazaDAO);
-        reportPdfBruttoTestedObj = new ReportPdfBrutto(bazaDAO);
+        reportPdfNettoTestedObj = new ReportPdfNetto();
+        reportPdfBruttoTestedObj = new ReportPdfBrutto();
     }
 
     //netto tests
