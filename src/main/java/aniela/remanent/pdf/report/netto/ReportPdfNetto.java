@@ -2,25 +2,21 @@ package aniela.remanent.pdf.report.netto;
 
 import aniela.remanent.pdf.report.abstraction.ReportPdf;
 import aniela.remanent.position.abstraction.PositionInterface;
-import aniela.remanent.pozycje.BazaDAO;
 import aniela.remanent.type.ReportType;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
+import org.springframework.stereotype.Service;
 
 @Service
 public class ReportPdfNetto extends ReportPdf {
 
-    @Autowired
-    public ReportPdfNetto(BazaDAO bazaRaport) {
+
+    public ReportPdfNetto() {
         super(ReportType.NETTO);
-        this.bazaRaport = bazaRaport;
     }
 
 
     @Override
     public List<PositionInterface> getPostions() {
-        return bazaRaport.przygotujPozycjeDoRaportuNetto();
+        return null;
     }
 }
