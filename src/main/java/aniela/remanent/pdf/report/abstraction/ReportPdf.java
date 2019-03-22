@@ -1,8 +1,9 @@
 package aniela.remanent.pdf.report.abstraction;
 
-import aniela.remanent.pdf.report.abstraction.generator.ReportGenerator;
-import aniela.remanent.pdf.report.abstraction.generator.ReportPage;
+import aniela.remanent.pdf.report.generator.ReportGenerator;
 import aniela.remanent.pdf.report.api.ReportPdfApi;
+import aniela.remanent.pdf.report.generator.ReportPage;
+import aniela.remanent.pdf.report.page.PageNumerator;
 import aniela.remanent.pdf.summary.SummaryGenerator;
 import aniela.remanent.position.abstraction.Position;
 import aniela.remanent.type.ReportType;
@@ -39,7 +40,6 @@ public abstract class ReportPdf implements ReportPdfApi {
     private final static Logger LOG = Logger.getLogger(ReportPdf.class);
     private final Font FONT_HEADER;
     private final Font FONT_VALUE;
-    // protected BazaDAO bazaRaport;
     private Document document;
     private ReportGenerator reportGenerator;
     private SummaryGenerator summaryGenerator;

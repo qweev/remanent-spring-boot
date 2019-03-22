@@ -1,4 +1,4 @@
-package aniela.remanent.pdf.report.abstraction.generator;
+package aniela.remanent.pdf.report.generator;
 
 import aniela.remanent.position.abstraction.Position;
 

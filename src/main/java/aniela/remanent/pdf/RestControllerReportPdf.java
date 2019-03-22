@@ -18,17 +18,14 @@ import java.util.List;
 @RestController
 public class RestControllerReportPdf {
 
-    final static Logger LOG = Logger.getLogger(RestControllerReportPdf.class);
+    @Autowired
+    private BazaDAO bazaDAO;
 
     @Autowired
-    BazaDAO bazaDAO;
-
-
-    @Autowired
-    ReportPdfBrutto reportPdfBrutto;
+    private ReportPdfBrutto reportPdfBrutto;
 
     @Autowired
-    ReportPdfNetto reportPdfNetto;
+    private ReportPdfNetto reportPdfNetto;
 
     @GetMapping("/remanent/rest/raport/pdf/brutto/{nazwaPliku}")
     public ResponseEntity utworzPlikRemanentBrutto(@PathVariable("sciezka") String nazwaPliku) {

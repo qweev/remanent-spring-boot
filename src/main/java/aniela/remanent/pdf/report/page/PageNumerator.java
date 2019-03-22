@@ -1,6 +1,6 @@
-package aniela.remanent.pdf.report.abstraction;
+package aniela.remanent.pdf.report.page;
 
-import aniela.remanent.pdf.report.abstraction.generator.ReportGenerator;
+import aniela.remanent.pdf.report.generator.ReportGenerator;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Phrase;

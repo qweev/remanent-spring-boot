@@ -1,6 +1,8 @@
 package aniela.remanent.raport;
 
 
+import aniela.remanent.pdf.report.brutto.ReportPdfBrutto;
+import aniela.remanent.pdf.report.netto.ReportPdfNetto;
 import aniela.remanent.pozycje.BazaDAO;
 import aniela.remanent.pozycje.bazaDanych.PozycjaBazy;
 import aniela.remanent.raport.raportBrutto.RaportBrutto;
@@ -21,69 +23,60 @@ import java.util.List;
 public class RaportREST {
 	final static Logger logger = Logger.getLogger(RaportREST.class);
 
+	private final static String STATUS_OK ="OK";
+
 	@Autowired
 	BazaDAO bazaRaport;
 
 	@Autowired
 	RaportNetto raportNetto;
 
-	//TODO
-	//czym sie rozni raportNetto brutto od bazy DAO?
-
 	@Autowired
 	RaportBrutto raportBrutto;
+
+	@Autowired
+	ReportPdfNetto reportPdfNetto;
+
+	@Autowired
+	ReportPdfBrutto reportPdfBrutto;
 
 
 	@GetMapping("/remanent/rest/raport/excel/brutto/{sciezka}")
 	public ResponseEntity utworzPlikRemanentBrutto(@PathVariable("sciezka") String sciezka) {
 		logger.info("pobrana sciezka : " + sciezka);
-
 		String fullSciezka = ReportFileResolver.resolveFilePathForExcel(sciezka);
-
 		String status = raportBrutto.generujRaport(fullSciezka);
-		if (status.equalsIgnoreCase("OK")){
-			String statusDoWyslania = "plik zapisany w lokacji C:\\"+sciezka+".xlsx";
+		if (status.equalsIgnoreCase(STATUS_OK)){
 			logger.info("raportNetto zrobiony");
-			return ResponseEntity.status(HttpStatus.OK).body(statusDoWyslania);
+			return ResponseEntity.status(HttpStatus.OK).body(generateMessageOKStatus(fullSciezka));
 		}
 		else{
 			String statusDoWyslania = "plik NIE zapisany";
 			logger.info("raportNetto NIE zrobiony");
 			return ResponseEntity.status(HttpStatus.GONE).body(statusDoWyslania);
 		}
-
 	}
-
 
 
 	@GetMapping(path = "/remanent/rest/raport/excel/{sciezka}")
 	public ResponseEntity utworzPlikRemanent(@PathVariable("sciezka") String sciezka) {
 		logger.info("pobrana sciezka : " + sciezka);
-
 		String fullSciezka = ReportFileResolver.resolveFilePathForExcel(sciezka);
-
 		String status = raportNetto.generujRaport(fullSciezka);
-
-		if (status.equalsIgnoreCase("OK")){
-			String statusDoWyslania = "plik zapisany w lokacji C:\\"+sciezka+".xlsx";
+		if (status.equalsIgnoreCase(STATUS_OK)){
 			logger.info("raportNetto zrobiony");
-			return ResponseEntity.status(HttpStatus.OK).body(statusDoWyslania);
+			return ResponseEntity.status(HttpStatus.OK).body(generateMessageOKStatus(fullSciezka));
 		}else
 		{
 			String statusDoWyslania = "plik NIE zapisany";
 			logger.info("raportNetto NIE zrobiony");
 			return ResponseEntity.status(HttpStatus.GONE).body(statusDoWyslania);
 		}
-
 	}
-
-
 
 	@GetMapping("/remanent/rest/raport/statystyki")
 	public ResponseEntity generujStatystyki() {
-
 		String statystyka = bazaRaport.generujStatystyki();
-
 		if (statystyka == null){
 			return ResponseEntity.status(HttpStatus.GONE).body(statystyka);
 		}
@@ -124,5 +117,11 @@ public class RaportREST {
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("NOK");
 		}
 	}
+
+
+	private String generateMessageOKStatus(String path){
+		return  new StringBuilder().append("plik zapisany w lokacji: ").append(path).toString();
+	}
+
 
 }
