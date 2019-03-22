@@ -2,7 +2,7 @@ package aniela.remanent.pdf.report.brutto;
 
 
 import aniela.remanent.pdf.report.abstraction.ReportPdf;
-import aniela.remanent.position.abstraction.PositionInterface;
+import aniela.remanent.position.abstraction.Position;
 import aniela.remanent.type.ReportType;
 import java.util.List;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ public class ReportPdfBrutto extends ReportPdf {
 
 
     @Override
-    public List<PositionInterface> getPostions() {
+    public List<Position> getPostions() {
         return null;
     }
 }

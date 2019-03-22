@@ -4,7 +4,7 @@ import aniela.remanent.pdf.report.abstraction.generator.ReportGenerator;
 import aniela.remanent.pdf.report.abstraction.generator.ReportPage;
 import aniela.remanent.pdf.report.api.ReportPdfApi;
 import aniela.remanent.pdf.summary.SummaryGenerator;
-import aniela.remanent.position.abstraction.PositionInterface;
+import aniela.remanent.position.abstraction.Position;
 import aniela.remanent.type.ReportType;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.BaseFont;
@@ -66,7 +66,7 @@ public abstract class ReportPdf implements ReportPdfApi {
     }
 
     @Override
-    public String generateReport(List<PositionInterface> positions, String filePath, int numberOfPositions) {
+    public String generateReport(List<Position> positions, String filePath, int numberOfPositions) {
         runReportGenerator(positions);
         try {
             removeExistingReport(filePath);
@@ -98,7 +98,7 @@ public abstract class ReportPdf implements ReportPdfApi {
         }
     }
 
-    private void runReportGenerator(List<PositionInterface> positions) {
+    private void runReportGenerator(List<Position> positions) {
         reportPages.clear();
         reportPages.addAll(reportGenerator.generatePages(positions));
     }

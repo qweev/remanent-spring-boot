@@ -1,15 +1,15 @@
 package aniela.remanent.pdf.report.api;
 
-import aniela.remanent.position.abstraction.PositionInterface;
+import aniela.remanent.position.abstraction.Position;
 
 import java.util.List;
 
 public interface ReportPdfApi {
 
     @Deprecated
-    List<PositionInterface> getPostions();
+    List<Position> getPostions();
 
-    String generateReport(List<PositionInterface> positions, String filePath, int numberOfPositions) throws Exception;
+    String generateReport(List<Position> positions, String filePath, int numberOfPositions) throws Exception;
 
 
 }

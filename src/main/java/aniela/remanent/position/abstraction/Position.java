@@ -2,7 +2,7 @@ package aniela.remanent.position.abstraction;
 
 import aniela.remanent.type.ReportType;
 
-public interface PositionInterface {
+public interface Position {
 
     int getPozyzjaWRaporcie();
 
@@ -29,7 +29,7 @@ public interface PositionInterface {
     void setIlosc(double ilosc);
 
 
-    default double getPrice(PositionInterface position, ReportType reportType) {
+    default double getPrice(Position position, ReportType reportType) {
         double price = 0;
         switch (reportType) {
             case NETTO:

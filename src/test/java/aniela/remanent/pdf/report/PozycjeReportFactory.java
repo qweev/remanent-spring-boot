@@ -1,6 +1,6 @@
 package aniela.remanent.pdf.report;
 
-import aniela.remanent.position.abstraction.PositionInterface;
+import aniela.remanent.position.abstraction.Position;
 import aniela.remanent.position.netto.PozycjaDoRaportuNetto;
 
 import java.math.BigDecimal;
@@ -29,24 +29,24 @@ public final class PozycjeReportFactory {
         positionNames = getPositions();
     }
 
-    public List<PositionInterface> generateListOfPozycjaDoRaportuNettoContentSame(int amountToCreate) {
-        List<PositionInterface> positions = new ArrayList<>(amountToCreate);
+    public List<Position> generateListOfPozycjaDoRaportuNettoContentSame(int amountToCreate) {
+        List<Position> positions = new ArrayList<>(amountToCreate);
         getNumberOfPositionsAsIntStream(amountToCreate).forEach(value -> {
             positions.add(createPozycjaDoRaportu(value));
         });
         return positions;
     }
 
-    public List<PositionInterface> generateListOfPozycjaDoRaportuNettoContentRandom(int amountToCreate) {
-        List<PositionInterface> positions = new ArrayList<>(amountToCreate);
+    public List<Position> generateListOfPozycjaDoRaportuNettoContentRandom(int amountToCreate) {
+        List<Position> positions = new ArrayList<>(amountToCreate);
         getNumberOfPositionsAsIntStream(amountToCreate).forEach(value -> {
             positions.add(createPozycjaDoRaportuRandom(value));
         });
         return positions;
     }
 
-    public List<PositionInterface> generateListOfPozycjaDoRaportuNettoContentMixed(int amountToCreate) {
-        List<PositionInterface> positions = new ArrayList<>(amountToCreate);
+    public List<Position> generateListOfPozycjaDoRaportuNettoContentMixed(int amountToCreate) {
+        List<Position> positions = new ArrayList<>(amountToCreate);
         getNumberOfPositionsAsIntStream(amountToCreate).forEach(value -> {
             if(value%2 == 0)
                 positions.add(createPozycjaDoRaportuRandom(value));

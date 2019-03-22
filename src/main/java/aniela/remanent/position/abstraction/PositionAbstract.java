@@ -3,7 +3,7 @@ package aniela.remanent.position.abstraction;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public abstract class PositionAbstract implements PositionInterface {
+public abstract class PositionAbstract implements Position {
     
     protected int pozyzjaWRaporcie;
     protected String nazwaTowaru;

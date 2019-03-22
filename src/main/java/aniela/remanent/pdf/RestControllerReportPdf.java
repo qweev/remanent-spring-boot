@@ -2,7 +2,7 @@ package aniela.remanent.pdf;
 
 import aniela.remanent.pdf.report.brutto.ReportPdfBrutto;
 import aniela.remanent.pdf.report.netto.ReportPdfNetto;
-import aniela.remanent.position.abstraction.PositionInterface;
+import aniela.remanent.position.abstraction.Position;
 import aniela.remanent.pozycje.BazaDAO;
 import aniela.remanent.raport.ReportFileResolver;
 import org.apache.log4j.Logger;
@@ -34,7 +34,7 @@ public class RestControllerReportPdf {
     public ResponseEntity utworzPlikRemanentBrutto(@PathVariable("sciezka") String nazwaPliku) {
         String pathAfterResolve = ReportFileResolver.resolveFilePathForPdf(nazwaPliku);
         try {
-            List<PositionInterface> positions = bazaDAO.przygotujPozycjeDoRaportuBrutto();
+            List<Position> positions = bazaDAO.przygotujPozycjeDoRaportuBrutto();
             reportPdfBrutto.generateReport(positions, pathAfterResolve, positions.size());
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(String.format("Report generation has thrown error %s", e.getMessage()));
@@ -46,7 +46,7 @@ public class RestControllerReportPdf {
     public ResponseEntity utworzPlikRemanentNetto(@PathVariable("nazwaPliku") String nazwaPliku) {
         String pathAfterResolve = ReportFileResolver.resolveFilePathForPdf(nazwaPliku);
         try {
-            List<PositionInterface> positions = bazaDAO.przygotujPozycjeDoRaportuNetto();
+            List<Position> positions = bazaDAO.przygotujPozycjeDoRaportuNetto();
             reportPdfNetto.generateReport(positions, pathAfterResolve, positions.size());
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(String.format("Report generation has thrown error %s", e.getMessage()));

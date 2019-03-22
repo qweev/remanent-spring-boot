@@ -1,6 +1,6 @@
 package aniela.remanent.raport.raportDoDruku;
 
-import aniela.remanent.position.abstraction.PositionInterface;
+import aniela.remanent.position.abstraction.Position;
 import aniela.remanent.pozycje.BazaDAO;
 import aniela.remanent.raport.stronyExcela.Skoroszyt;
 import org.apache.log4j.Logger;
@@ -19,7 +19,7 @@ public class RaportNetto {
     private static double iloscPozycjiOstatniaStrona;
     private double iloscPozycji;
     private double iloscStron;
-    private List<PositionInterface> pozycje;
+    private List<Position> pozycje;
 
     private BazaDAO baza;
     public int numerWiersza = 0; // 0 = pierwszy wiersz

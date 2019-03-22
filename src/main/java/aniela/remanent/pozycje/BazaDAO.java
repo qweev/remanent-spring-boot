@@ -1,6 +1,6 @@
 package aniela.remanent.pozycje;
 
-import aniela.remanent.position.abstraction.PositionInterface;
+import aniela.remanent.position.abstraction.Position;
 import aniela.remanent.position.brutto.PozycjaDoRaportuBrutto;
 import aniela.remanent.position.netto.PozycjaDoRaportuNetto;
 import aniela.remanent.pozycje.bazaDanych.PozycjaBazy;
@@ -235,8 +235,8 @@ public class BazaDAO {
     }
 
 
-    public List<PositionInterface> przygotujPozycjeDoRaportuNetto() {
-        List<PositionInterface> pozycjeRaportu = new ArrayList<>();
+    public List<Position> przygotujPozycjeDoRaportuNetto() {
+        List<Position> pozycjeRaportu = new ArrayList<>();
         Session sesja = entityManager.unwrap(Session.class);
 
         try {
@@ -266,8 +266,8 @@ public class BazaDAO {
     }
 
 
-    public List<PositionInterface> przygotujPozycjeDoRaportuBrutto() {
-        List<PositionInterface> pozycjeRaportu = new ArrayList<>();
+    public List<Position> przygotujPozycjeDoRaportuBrutto() {
+        List<Position> pozycjeRaportu = new ArrayList<>();
         List<PozycjaBazy> pozycjeBazy = new ArrayList<>();
         Session sesja = entityManager.unwrap(Session.class);
 
