@@ -14,8 +14,6 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
-	// TODO
-	// nie mam gdzie tego beana wcisnac w inne miejsce ?
 	@Bean
 	XSSFWorkbook getXSSFWorkbook(){
 		return new XSSFWorkbook();

@@ -15,7 +15,7 @@ public class PageNumerator  extends PdfPageEventHelper {
     private final static Logger LOG = Logger.getLogger(PageNumerator.class);
     private ReportGenerator reportGenerator;
 
-    PageNumerator(ReportGenerator reportGenerator) {
+    public PageNumerator(ReportGenerator reportGenerator) {
         this.reportGenerator = reportGenerator;
     }
 
