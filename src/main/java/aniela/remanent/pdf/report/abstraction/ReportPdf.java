@@ -26,6 +26,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.function.Predicate;
 
 public abstract class ReportPdf implements ReportPdfApi {
 
@@ -197,8 +198,12 @@ public abstract class ReportPdf implements ReportPdfApi {
         tableHeaders.add(getPdfCellHeader("Nazwa towaru"));
         tableHeaders.add(getPdfCellHeader("j. m."));
         tableHeaders.add(getPdfCellHeader("Ilość"));
-        tableHeaders.add(getPdfCellHeader(cellPriceHeaderValue()));
-        tableHeaders.add(getPdfCellHeader(cellSumHeaderValue()));
+        tableHeaders.add(getPdfCellHeader(cellPriceHeaderValue(ReportType.NETTO)));
+        if(isNetto()) {
+            tableHeaders.add(getPdfCellHeader(cellSumHeaderValue(ReportType.NETTO)));
+        }else{
+            tableHeaders.add(getPdfCellHeader(cellPriceHeaderValue(ReportType.BRUTTO)));
+        }
 
         tableHeaders.forEach(pdfPCell -> {
             table.addCell(pdfPCell);
@@ -213,8 +218,13 @@ public abstract class ReportPdf implements ReportPdfApi {
             table.addCell(getPdfCellNazwaTowaru(element.getNazwaTowaru()));
             table.addCell(getPdfCell(element.getJednostka()));
             table.addCell(getPdfCell(AmountFormatter.formatAmount(element.getIlosc())));
-            table.addCell(getPdfCell(element.getPrice(element, reportType) + SPACE_STRING + POLISH_CURRENCY));
-            table.addCell(getPdfCell(element.getSuma() + SPACE_STRING + POLISH_CURRENCY));
+            table.addCell(getPdfCell(element.getPrice(element, ReportType.NETTO) + SPACE_STRING + POLISH_CURRENCY));
+            if(isNetto()){
+                table.addCell(getPdfCell(element.getSuma() + SPACE_STRING + POLISH_CURRENCY));
+            }
+            else {
+                table.addCell(getPdfCell(element.getPrice(element, ReportType.BRUTTO) + SPACE_STRING + POLISH_CURRENCY));
+            }
         });
         addEmptyCell(table, NUMBER_OF_EMPTY_CELLS_FOR_PAGE_SUM);
         table.addCell(getPdfCell(reportPage.getSumOfPositions() + " " + POLISH_CURRENCY));
@@ -264,7 +274,7 @@ public abstract class ReportPdf implements ReportPdfApi {
         }
     }
 
-    private String cellPriceHeaderValue() {
+    private String cellPriceHeaderValue(ReportType reportType) {
         String returnValue = null;
         switch (reportType) {
             case NETTO:
@@ -277,7 +287,7 @@ public abstract class ReportPdf implements ReportPdfApi {
         return returnValue;
     }
 
-    private String cellSumHeaderValue() {
+    private String cellSumHeaderValue(ReportType reportType) {
         String returnValue = null;
         switch (reportType) {
             case NETTO:
@@ -288,6 +298,10 @@ public abstract class ReportPdf implements ReportPdfApi {
                 break;
         }
         return returnValue;
+    }
+
+    boolean isNetto(){
+        return this.reportType.equals(ReportType.NETTO);
     }
 
 
