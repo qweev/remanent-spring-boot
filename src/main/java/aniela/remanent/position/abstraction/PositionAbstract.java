@@ -62,8 +62,8 @@ public abstract class PositionAbstract implements Position {
         this.cenaBrutto = cenaBrutto;
     }
 
-    public void setSuma(double cenaNetto, double ilosc) {
-        BigDecimal suma = new BigDecimal(cenaNetto * ilosc);
+    public void setSuma(double cena, double ilosc) {
+        BigDecimal suma = new BigDecimal(cena * ilosc);
         suma = suma.setScale(2, RoundingMode.HALF_UP);
         double sn = suma.doubleValue();
         this.suma = sn;

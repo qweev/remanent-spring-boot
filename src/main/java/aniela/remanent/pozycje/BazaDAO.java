@@ -240,7 +240,7 @@ public class BazaDAO {
         Session sesja = entityManager.unwrap(Session.class);
 
         try {
-            List<PozycjaBazy> pozycjeBazy = sesja.createQuery("FROM PozycjaBazy").list();
+            List<PozycjaBazy> pozycjeBazy = sesja.createQuery("FROM PozycjaBazy ORDER BY id ASC").list();
 
             //TODO froeach
             for (PozycjaBazy pozycjaBazy : pozycjeBazy) {
@@ -273,7 +273,7 @@ public class BazaDAO {
 
 
         try {
-            pozycjeBazy.addAll(sesja.createQuery("FROM PozycjaBazy ORDER BY nazwa_towaru ASC").list());
+            pozycjeBazy.addAll(sesja.createQuery("FROM PozycjaBazy ORDER BY id ASC").list());
             //TODO froeach
             for (PozycjaBazy pozycjaBazy : pozycjeBazy) {
                 PozycjaDoRaportuBrutto pozycjaRaport = new PozycjaDoRaportuBrutto();

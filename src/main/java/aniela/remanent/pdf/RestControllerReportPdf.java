@@ -28,7 +28,7 @@ public class RestControllerReportPdf {
     private ReportPdfNetto reportPdfNetto;
 
     @GetMapping("/remanent/rest/raport/pdf/brutto/{nazwaPliku}")
-    public ResponseEntity utworzPlikRemanentBrutto(@PathVariable("sciezka") String nazwaPliku) {
+    public ResponseEntity utworzPlikRemanentBrutto(@PathVariable("nazwaPliku") String nazwaPliku) {
         String pathAfterResolve = ReportFileResolver.resolveFilePathForPdf(nazwaPliku);
         try {
             List<Position> positions = bazaDAO.przygotujPozycjeDoRaportuBrutto();

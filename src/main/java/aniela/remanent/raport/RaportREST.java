@@ -45,9 +45,10 @@ public class RaportREST {
     @GetMapping("/remanent/rest/raport/excel/brutto/{sciezka}")
     public ResponseEntity utworzPlikRemanentBrutto(@PathVariable("sciezka") String sciezka) {
         logger.info("pobrana sciezka : " + sciezka);
-        String fullSciezka = ReportFileResolver.resolveFilePathForExcel(sciezka);
+        //String fullSciezka = ReportFileResolver.resolveFilePathForExcel(sciezka);
         //stary excel brutto
         //String status = raportBrutto.generujRaport(fullSciezka);
+        String fullSciezka = ReportFileResolver.resolveFilePathForPdf(sciezka);
         List<Position> positions = bazaRaport.przygotujPozycjeDoRaportuBrutto();
         String status = reportPdfBrutto.generateReport(positions, fullSciezka, positions.size());
 
@@ -66,11 +67,12 @@ public class RaportREST {
     @GetMapping(path = "/remanent/rest/raport/excel/{sciezka}")
     public ResponseEntity utworzPlikRemanent(@PathVariable("sciezka") String sciezka) {
         logger.info("pobrana sciezka : " + sciezka);
-        String fullSciezka = ReportFileResolver.resolveFilePathForExcel(sciezka);
+        //String fullSciezka = ReportFileResolver.resolveFilePathForExcel(sciezka);
         //stary excel netto
         //String status = raportNetto.generujRaport(fullSciezka);
+        String fullSciezka = ReportFileResolver.resolveFilePathForPdf(sciezka);
         List<Position> positions = bazaRaport.przygotujPozycjeDoRaportuNetto();
-        String status = reportPdfBrutto.generateReport(positions, fullSciezka, positions.size());
+        String status = reportPdfNetto.generateReport(positions, fullSciezka, positions.size());
         if (status.equalsIgnoreCase(STATUS_OK)) {
             logger.info("raportNetto zrobiony");
             return ResponseEntity.status(HttpStatus.OK).body(generateMessageOKStatus(fullSciezka));
