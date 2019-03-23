@@ -36,7 +36,7 @@ public interface Position {
                 price = position.getCenaNetto();
                 break;
             case BRUTTO:
-                //price = position.getCenaBrutto();
+                price = position.getCenaBrutto();
                 break;
         }
         return price;

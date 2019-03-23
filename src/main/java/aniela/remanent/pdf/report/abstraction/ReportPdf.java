@@ -227,7 +227,9 @@ public abstract class ReportPdf implements ReportPdfApi {
             }
         });
         addEmptyCell(table, NUMBER_OF_EMPTY_CELLS_FOR_PAGE_SUM);
-        table.addCell(getPdfCell(reportPage.getSumOfPositions() + " " + POLISH_CURRENCY));
+        if(isNetto()) {
+            table.addCell(getPdfCell(reportPage.getSumOfPositions() + " " + POLISH_CURRENCY));
+        }
     }
 
     private PdfPTable getPageTableForSummary() throws DocumentException {
