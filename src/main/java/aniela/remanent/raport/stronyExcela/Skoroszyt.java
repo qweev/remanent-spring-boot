@@ -1,6 +1,6 @@
 package aniela.remanent.raport.stronyExcela;
 
-import aniela.remanent.position.abstraction.PositionInterface;
+import aniela.remanent.position.abstraction.Position;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Row;
@@ -132,7 +132,7 @@ public class Skoroszyt {
 	}
 
 
-    public void utworzPierwszyWierszTabeli(int numerWiersza, int numerPozycji, PositionInterface pozycja) {
+    public void utworzPierwszyWierszTabeli(int numerWiersza, int numerPozycji, Position pozycja) {
 		CellStyle stylDoPrawej = ramkaGoraLewaPrawa;
 		CellStyle stylSrodkuj = ramkaGoraLewaPrawaWysrodkowanyTekst;
 		CellStyle stylWaluta = walutaRamkaGoraLewaPrawaTekstDoPrawej;
@@ -140,7 +140,7 @@ public class Skoroszyt {
 	}
 
 
-    private void wpiszPozycjeDoWiersza(int numerWiersza, int numerPozycji, PositionInterface pozycja, CellStyle doPrawej, CellStyle srodkuj, CellStyle waluta) {
+    private void wpiszPozycjeDoWiersza(int numerWiersza, int numerPozycji, Position pozycja, CellStyle doPrawej, CellStyle srodkuj, CellStyle waluta) {
 		Row row = arkusz.createRow(numerWiersza);	
 		row.setHeightInPoints(wysokoscWiersza);
 		Cell cell;
@@ -177,7 +177,7 @@ public class Skoroszyt {
 	}
 
 
-    public void utworzWierszTabeli(int numerWiersza, int numerPozycji, PositionInterface pozycja) {
+    public void utworzWierszTabeli(int numerWiersza, int numerPozycji, Position pozycja) {
 		CellStyle stylDoPrawej = ramkaLewaPrawa;
 		CellStyle stylSrodkuj = ramkaLewaPrawaWysrodkowanyTekst;
 		CellStyle stylWaluta = walutaRamkaLewaPrawaTekstDoPrawej;
@@ -185,7 +185,7 @@ public class Skoroszyt {
 	}
 
 
-    public void utworzOstatniWierszTabeli(int numerWiersza, int numerPozycji, PositionInterface pozycja) {
+    public void utworzOstatniWierszTabeli(int numerWiersza, int numerPozycji, Position pozycja) {
 		CellStyle stylDoPrawej = ramkaDolLewaPrawa;
 		CellStyle stylSrodkuj = ramkaDolLewaPrawaWysrodkowanyTekst;
 		CellStyle stylWaluta = walutaRamkaDolLewaPrawaTekstDoPrawej;

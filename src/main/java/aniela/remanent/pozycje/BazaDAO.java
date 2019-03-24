@@ -1,6 +1,6 @@
 package aniela.remanent.pozycje;
 
-import aniela.remanent.position.abstraction.PositionInterface;
+import aniela.remanent.position.abstraction.Position;
 import aniela.remanent.position.brutto.PozycjaDoRaportuBrutto;
 import aniela.remanent.position.netto.PozycjaDoRaportuNetto;
 import aniela.remanent.pozycje.bazaDanych.PozycjaBazy;
@@ -235,12 +235,12 @@ public class BazaDAO {
     }
 
 
-    public List<PositionInterface> przygotujPozycjeDoRaportuNetto() {
-        List<PositionInterface> pozycjeRaportu = new ArrayList<>();
+    public List<Position> przygotujPozycjeDoRaportuNetto() {
+        List<Position> pozycjeRaportu = new ArrayList<>();
         Session sesja = entityManager.unwrap(Session.class);
 
         try {
-            List<PozycjaBazy> pozycjeBazy = sesja.createQuery("FROM PozycjaBazy").list();
+            List<PozycjaBazy> pozycjeBazy = sesja.createQuery("FROM PozycjaBazy ORDER BY id ASC").list();
 
             //TODO froeach
             for (PozycjaBazy pozycjaBazy : pozycjeBazy) {
@@ -266,14 +266,14 @@ public class BazaDAO {
     }
 
 
-    public List<PositionInterface> przygotujPozycjeDoRaportuBrutto() {
-        List<PositionInterface> pozycjeRaportu = new ArrayList<>();
+    public List<Position> przygotujPozycjeDoRaportuBrutto() {
+        List<Position> pozycjeRaportu = new ArrayList<>();
         List<PozycjaBazy> pozycjeBazy = new ArrayList<>();
         Session sesja = entityManager.unwrap(Session.class);
 
 
         try {
-            pozycjeBazy.addAll(sesja.createQuery("FROM PozycjaBazy ORDER BY nazwa_towaru ASC").list());
+            pozycjeBazy.addAll(sesja.createQuery("FROM PozycjaBazy ORDER BY id ASC").list());
             //TODO froeach
             for (PozycjaBazy pozycjaBazy : pozycjeBazy) {
                 PozycjaDoRaportuBrutto pozycjaRaport = new PozycjaDoRaportuBrutto();

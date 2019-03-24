@@ -1,10 +1,11 @@
 package aniela.remanent.pdf.report.abstraction;
 
-import aniela.remanent.pdf.report.abstraction.generator.ReportGenerator;
-import aniela.remanent.pdf.report.abstraction.generator.ReportPage;
+import aniela.remanent.pdf.report.generator.ReportGenerator;
 import aniela.remanent.pdf.report.api.ReportPdfApi;
+import aniela.remanent.pdf.report.generator.ReportPage;
+import aniela.remanent.pdf.report.page.PageNumerator;
 import aniela.remanent.pdf.summary.SummaryGenerator;
-import aniela.remanent.position.abstraction.PositionInterface;
+import aniela.remanent.position.abstraction.Position;
 import aniela.remanent.type.ReportType;
 import com.itextpdf.text.*;
 import com.itextpdf.text.pdf.BaseFont;
@@ -25,6 +26,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.function.Predicate;
 
 public abstract class ReportPdf implements ReportPdfApi {
 
@@ -39,7 +41,6 @@ public abstract class ReportPdf implements ReportPdfApi {
     private final static Logger LOG = Logger.getLogger(ReportPdf.class);
     private final Font FONT_HEADER;
     private final Font FONT_VALUE;
-    // protected BazaDAO bazaRaport;
     private Document document;
     private ReportGenerator reportGenerator;
     private SummaryGenerator summaryGenerator;
@@ -66,7 +67,7 @@ public abstract class ReportPdf implements ReportPdfApi {
     }
 
     @Override
-    public String generateReport(List<PositionInterface> positions, String filePath, int numberOfPositions) {
+    public String generateReport(List<Position> positions, String filePath, int numberOfPositions) {
         runReportGenerator(positions);
         try {
             removeExistingReport(filePath);
@@ -98,7 +99,7 @@ public abstract class ReportPdf implements ReportPdfApi {
         }
     }
 
-    private void runReportGenerator(List<PositionInterface> positions) {
+    private void runReportGenerator(List<Position> positions) {
         reportPages.clear();
         reportPages.addAll(reportGenerator.generatePages(positions));
     }
@@ -197,8 +198,12 @@ public abstract class ReportPdf implements ReportPdfApi {
         tableHeaders.add(getPdfCellHeader("Nazwa towaru"));
         tableHeaders.add(getPdfCellHeader("j. m."));
         tableHeaders.add(getPdfCellHeader("Ilość"));
-        tableHeaders.add(getPdfCellHeader(cellPriceHeaderValue()));
-        tableHeaders.add(getPdfCellHeader(cellSumHeaderValue()));
+        tableHeaders.add(getPdfCellHeader(cellPriceHeaderValue(ReportType.NETTO)));
+        if(isNetto()) {
+            tableHeaders.add(getPdfCellHeader(cellSumHeaderValue(ReportType.NETTO)));
+        }else{
+            tableHeaders.add(getPdfCellHeader(cellPriceHeaderValue(ReportType.BRUTTO)));
+        }
 
         tableHeaders.forEach(pdfPCell -> {
             table.addCell(pdfPCell);
@@ -213,11 +218,18 @@ public abstract class ReportPdf implements ReportPdfApi {
             table.addCell(getPdfCellNazwaTowaru(element.getNazwaTowaru()));
             table.addCell(getPdfCell(element.getJednostka()));
             table.addCell(getPdfCell(AmountFormatter.formatAmount(element.getIlosc())));
-            table.addCell(getPdfCell(element.getPrice(element, reportType) + SPACE_STRING + POLISH_CURRENCY));
-            table.addCell(getPdfCell(element.getSuma() + SPACE_STRING + POLISH_CURRENCY));
+            table.addCell(getPdfCell(element.getPrice(element, ReportType.NETTO) + SPACE_STRING + POLISH_CURRENCY));
+            if(isNetto()){
+                table.addCell(getPdfCell(element.getSuma() + SPACE_STRING + POLISH_CURRENCY));
+            }
+            else {
+                table.addCell(getPdfCell(element.getPrice(element, ReportType.BRUTTO) + SPACE_STRING + POLISH_CURRENCY));
+            }
         });
         addEmptyCell(table, NUMBER_OF_EMPTY_CELLS_FOR_PAGE_SUM);
-        table.addCell(getPdfCell(reportPage.getSumOfPositions() + " " + POLISH_CURRENCY));
+        if(isNetto()) {
+            table.addCell(getPdfCell(reportPage.getSumOfPositions() + " " + POLISH_CURRENCY));
+        }
     }
 
     private PdfPTable getPageTableForSummary() throws DocumentException {
@@ -264,7 +276,7 @@ public abstract class ReportPdf implements ReportPdfApi {
         }
     }
 
-    private String cellPriceHeaderValue() {
+    private String cellPriceHeaderValue(ReportType reportType) {
         String returnValue = null;
         switch (reportType) {
             case NETTO:
@@ -277,7 +289,7 @@ public abstract class ReportPdf implements ReportPdfApi {
         return returnValue;
     }
 
-    private String cellSumHeaderValue() {
+    private String cellSumHeaderValue(ReportType reportType) {
         String returnValue = null;
         switch (reportType) {
             case NETTO:
@@ -288,6 +300,10 @@ public abstract class ReportPdf implements ReportPdfApi {
                 break;
         }
         return returnValue;
+    }
+
+    boolean isNetto(){
+        return this.reportType.equals(ReportType.NETTO);
     }
 
 

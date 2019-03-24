@@ -1,6 +1,6 @@
 package aniela.remanent.pdf.summary;
 
-import aniela.remanent.pdf.report.abstraction.generator.ReportPage;
+import aniela.remanent.pdf.report.generator.ReportPage;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

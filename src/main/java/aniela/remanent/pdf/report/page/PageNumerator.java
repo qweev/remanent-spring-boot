@@ -1,6 +1,6 @@
-package aniela.remanent.pdf.report.abstraction;
+package aniela.remanent.pdf.report.page;
 
-import aniela.remanent.pdf.report.abstraction.generator.ReportGenerator;
+import aniela.remanent.pdf.report.generator.ReportGenerator;
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Phrase;
@@ -15,7 +15,7 @@ public class PageNumerator  extends PdfPageEventHelper {
     private final static Logger LOG = Logger.getLogger(PageNumerator.class);
     private ReportGenerator reportGenerator;
 
-    PageNumerator(ReportGenerator reportGenerator) {
+    public PageNumerator(ReportGenerator reportGenerator) {
         this.reportGenerator = reportGenerator;
     }
 

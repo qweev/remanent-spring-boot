@@ -3,7 +3,7 @@ package aniela.remanent.position.abstraction;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public abstract class PositionAbstract implements PositionInterface {
+public abstract class PositionAbstract implements Position {
     
     protected int pozyzjaWRaporcie;
     protected String nazwaTowaru;
@@ -62,8 +62,8 @@ public abstract class PositionAbstract implements PositionInterface {
         this.cenaBrutto = cenaBrutto;
     }
 
-    public void setSuma(double cenaNetto, double ilosc) {
-        BigDecimal suma = new BigDecimal(cenaNetto * ilosc);
+    public void setSuma(double cena, double ilosc) {
+        BigDecimal suma = new BigDecimal(cena * ilosc);
         suma = suma.setScale(2, RoundingMode.HALF_UP);
         double sn = suma.doubleValue();
         this.suma = sn;
