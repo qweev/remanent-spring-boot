@@ -5,18 +5,17 @@ import aniela.remanent.position.brutto.PozycjaDoRaportuBrutto;
 import aniela.remanent.position.netto.PozycjaDoRaportuNetto;
 import aniela.remanent.pozycje.bazaDanych.PozycjaBazy;
 import aniela.remanent.pozycje.helperyZapytanDoBazy.expression.evaluator.ExpressionEvaluator;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaQuery;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaQuery;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Transactional
 @Repository
@@ -273,7 +272,7 @@ public class BazaDAO {
 
 
         try {
-            pozycjeBazy.addAll(sesja.createQuery("FROM PozycjaBazy ORDER BY id ASC").list());
+            pozycjeBazy.addAll(sesja.createQuery("FROM PozycjaBazy ORDER BY nazwa_towaru ASC").list());
             //TODO froeach
             for (PozycjaBazy pozycjaBazy : pozycjeBazy) {
                 PozycjaDoRaportuBrutto pozycjaRaport = new PozycjaDoRaportuBrutto();
