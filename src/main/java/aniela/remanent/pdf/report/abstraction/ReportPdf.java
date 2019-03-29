@@ -2,6 +2,7 @@ package aniela.remanent.pdf.report.abstraction;
 
 import aniela.remanent.pdf.report.api.ReportPdfApi;
 import aniela.remanent.pdf.report.formatter.AmountFormatter;
+import aniela.remanent.pdf.report.formatter.PriceFormatter;
 import aniela.remanent.pdf.report.generator.ReportGenerator;
 import aniela.remanent.pdf.report.generator.ReportPage;
 import aniela.remanent.pdf.report.page.PageNumerator;
@@ -174,13 +175,20 @@ public abstract class ReportPdf implements ReportPdfApi {
         return pdfCell;
     }
 
-    private PdfPCell getPdfCell(String value) {
+    private PdfPCell getPdfCellDefault(String value) {
         PdfPCell pdfCell = new PdfPCell(new Phrase(value, FONT_VALUE));
         pdfCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         return pdfCell;
     }
 
-    private PdfPCell getPdfCellNazwaTowaru(String value) {
+    private PdfPCell getPdfCellForValueOrSum(String value) {
+        PdfPCell pdfCell = new PdfPCell(new Phrase(value, FONT_VALUE));
+        pdfCell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+        return pdfCell;
+    }
+
+
+    private PdfPCell getPdfCellPositionNane(String value) {
         PdfPCell pdfCell = new PdfPCell(new Phrase(value, FONT_VALUE));
         pdfCell.setHorizontalAlignment(Element.ALIGN_LEFT);
         return pdfCell;
@@ -217,21 +225,28 @@ public abstract class ReportPdf implements ReportPdfApi {
 
     private void fillPageWithPositions(PdfPTable table, ReportPage reportPage) {
         reportPage.positions.forEach(element -> {
-            table.addCell(getPdfCell(String.valueOf(element.getPozyzjaWRaporcie())));
-            table.addCell(getPdfCellNazwaTowaru(element.getNazwaTowaru()));
-            table.addCell(getPdfCell(element.getJednostka()));
-            table.addCell(getPdfCell(AmountFormatter.formatAmount(element.getIlosc())));
-            table.addCell(getPdfCell(element.getPrice(element, ReportType.NETTO) + SPACE_STRING + POLISH_CURRENCY));
+            table.addCell(getPdfCellDefault(String.valueOf(element.getPozyzjaWRaporcie())));
+            table.addCell(getPdfCellPositionNane(element.getNazwaTowaru()));
+            table.addCell(getPdfCellDefault(element.getJednostka()));
+            table.addCell(getPdfCellDefault(AmountFormatter.formatAmount(element.getIlosc())));
+            table.addCell(
+                getPdfCellForValueOrSum(
+                    PriceFormatter.formatPrice(element.getPrice(element, ReportType.NETTO)) + SPACE_STRING
+                        + POLISH_CURRENCY));
             if(isNetto()){
-                table.addCell(getPdfCell(element.getSuma() + SPACE_STRING + POLISH_CURRENCY));
+                table.addCell(getPdfCellForValueOrSum(
+                    PriceFormatter.formatPrice(element.getSuma()) + SPACE_STRING + POLISH_CURRENCY));
             }
             else {
-                table.addCell(getPdfCell(element.getPrice(element, ReportType.BRUTTO) + SPACE_STRING + POLISH_CURRENCY));
+                table.addCell(
+                    getPdfCellForValueOrSum(
+                        PriceFormatter.formatPrice(element.getPrice(element, ReportType.BRUTTO)) + SPACE_STRING
+                            + POLISH_CURRENCY));
             }
         });
         addEmptyCell(table, NUMBER_OF_EMPTY_CELLS_FOR_PAGE_SUM);
         if(isNetto()) {
-            table.addCell(getPdfCell(reportPage.getSumOfPositions() + " " + POLISH_CURRENCY));
+            table.addCell(getPdfCellDefault(reportPage.getSumOfPositions() + " " + POLISH_CURRENCY));
         }
     }
 
@@ -249,11 +264,11 @@ public abstract class ReportPdf implements ReportPdfApi {
 
     private void fillTableWithReportPageNumberAndSum(PdfPTable table, List<ReportPage> reportPages, double totalSum) {
         reportPages.forEach(reportPage -> {
-            table.addCell(getPdfCell(String.valueOf(reportPage.pageNumber)));
-            table.addCell(getPdfCell(reportPage.getSumOfPositions() + SPACE_STRING + POLISH_CURRENCY));
+            table.addCell(getPdfCellDefault(String.valueOf(reportPage.pageNumber)));
+            table.addCell(getPdfCellDefault(reportPage.getSumOfPositions() + SPACE_STRING + POLISH_CURRENCY));
         });
         table.addCell(getEmptyPdfCell());
-        table.addCell(getPdfCell(totalSum + SPACE_STRING + POLISH_CURRENCY));
+        table.addCell(getPdfCellDefault(totalSum + SPACE_STRING + POLISH_CURRENCY));
     }
 
     private void addEmptyCell(PdfPTable table, int numberOfEmptyCells) {
