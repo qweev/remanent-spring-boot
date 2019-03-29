@@ -1,23 +1,26 @@
 package aniela.remanent.pdf.report.abstraction;
 
-import aniela.remanent.pdf.report.generator.ReportGenerator;
 import aniela.remanent.pdf.report.api.ReportPdfApi;
+import aniela.remanent.pdf.report.formatter.AmountFormatter;
+import aniela.remanent.pdf.report.generator.ReportGenerator;
 import aniela.remanent.pdf.report.generator.ReportPage;
 import aniela.remanent.pdf.report.page.PageNumerator;
 import aniela.remanent.pdf.summary.SummaryGenerator;
 import aniela.remanent.position.abstraction.Position;
 import aniela.remanent.type.ReportType;
-import com.itextpdf.text.*;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import org.apache.log4j.Logger;
-
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -26,7 +29,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-import java.util.function.Predicate;
+import org.apache.log4j.Logger;
 
 public abstract class ReportPdf implements ReportPdfApi {
 
@@ -259,22 +262,6 @@ public abstract class ReportPdf implements ReportPdfApi {
         }
     }
 
-    private final static class AmountFormatter {
-
-        private AmountFormatter() {
-        }
-
-        static String formatAmount(double amount) {
-            BigDecimal bigDecimal = new BigDecimal(amount);
-            int intValue = bigDecimal.intValue();
-            BigDecimal delimiter = bigDecimal.subtract(new BigDecimal(intValue));
-            if (delimiter.equals(BigDecimal.valueOf(0))) {
-                return String.valueOf(intValue);
-            } else {
-                return String.valueOf(amount);
-            }
-        }
-    }
 
     private String cellPriceHeaderValue(ReportType reportType) {
         String returnValue = null;
