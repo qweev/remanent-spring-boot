@@ -246,7 +246,7 @@ public abstract class ReportPdf implements ReportPdfApi {
         });
         addEmptyCell(table, NUMBER_OF_EMPTY_CELLS_FOR_PAGE_SUM);
         if(isNetto()) {
-            table.addCell(getPdfCellDefault(reportPage.getSumOfPositions() + " " + POLISH_CURRENCY));
+            table.addCell(getPdfCellForValueOrSum(PriceFormatter.formatPrice(reportPage.getSumOfPositions()) + " " + POLISH_CURRENCY));
         }
     }
 
