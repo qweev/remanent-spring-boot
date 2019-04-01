@@ -1,23 +1,27 @@
 package aniela.remanent.pdf.report.abstraction;
 
-import aniela.remanent.pdf.report.generator.ReportGenerator;
 import aniela.remanent.pdf.report.api.ReportPdfApi;
+import aniela.remanent.pdf.report.formatter.AmountFormatter;
+import aniela.remanent.pdf.report.formatter.PriceFormatter;
+import aniela.remanent.pdf.report.generator.ReportGenerator;
 import aniela.remanent.pdf.report.generator.ReportPage;
 import aniela.remanent.pdf.report.page.PageNumerator;
 import aniela.remanent.pdf.summary.SummaryGenerator;
 import aniela.remanent.position.abstraction.Position;
 import aniela.remanent.type.ReportType;
-import com.itextpdf.text.*;
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.Phrase;
 import com.itextpdf.text.pdf.BaseFont;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
-import org.apache.log4j.Logger;
-
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -26,7 +30,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-import java.util.function.Predicate;
+import org.apache.log4j.Logger;
 
 public abstract class ReportPdf implements ReportPdfApi {
 
@@ -171,13 +175,20 @@ public abstract class ReportPdf implements ReportPdfApi {
         return pdfCell;
     }
 
-    private PdfPCell getPdfCell(String value) {
+    private PdfPCell getPdfCellDefault(String value) {
         PdfPCell pdfCell = new PdfPCell(new Phrase(value, FONT_VALUE));
         pdfCell.setHorizontalAlignment(Element.ALIGN_CENTER);
         return pdfCell;
     }
 
-    private PdfPCell getPdfCellNazwaTowaru(String value) {
+    private PdfPCell getPdfCellForValueOrSum(String value) {
+        PdfPCell pdfCell = new PdfPCell(new Phrase(value, FONT_VALUE));
+        pdfCell.setHorizontalAlignment(Element.ALIGN_RIGHT);
+        return pdfCell;
+    }
+
+
+    private PdfPCell getPdfCellPositionNane(String value) {
         PdfPCell pdfCell = new PdfPCell(new Phrase(value, FONT_VALUE));
         pdfCell.setHorizontalAlignment(Element.ALIGN_LEFT);
         return pdfCell;
@@ -214,21 +225,28 @@ public abstract class ReportPdf implements ReportPdfApi {
 
     private void fillPageWithPositions(PdfPTable table, ReportPage reportPage) {
         reportPage.positions.forEach(element -> {
-            table.addCell(getPdfCell(String.valueOf(element.getPozyzjaWRaporcie())));
-            table.addCell(getPdfCellNazwaTowaru(element.getNazwaTowaru()));
-            table.addCell(getPdfCell(element.getJednostka()));
-            table.addCell(getPdfCell(AmountFormatter.formatAmount(element.getIlosc())));
-            table.addCell(getPdfCell(element.getPrice(element, ReportType.NETTO) + SPACE_STRING + POLISH_CURRENCY));
+            table.addCell(getPdfCellDefault(String.valueOf(element.getPozyzjaWRaporcie())));
+            table.addCell(getPdfCellPositionNane(element.getNazwaTowaru()));
+            table.addCell(getPdfCellDefault(element.getJednostka()));
+            table.addCell(getPdfCellDefault(AmountFormatter.formatAmount(element.getIlosc())));
+            table.addCell(
+                getPdfCellForValueOrSum(
+                    PriceFormatter.formatPrice(element.getPrice(element, ReportType.NETTO)) + SPACE_STRING
+                        + POLISH_CURRENCY));
             if(isNetto()){
-                table.addCell(getPdfCell(element.getSuma() + SPACE_STRING + POLISH_CURRENCY));
+                table.addCell(getPdfCellForValueOrSum(
+                    PriceFormatter.formatPrice(element.getSuma()) + SPACE_STRING + POLISH_CURRENCY));
             }
             else {
-                table.addCell(getPdfCell(element.getPrice(element, ReportType.BRUTTO) + SPACE_STRING + POLISH_CURRENCY));
+                table.addCell(
+                    getPdfCellForValueOrSum(
+                        PriceFormatter.formatPrice(element.getPrice(element, ReportType.BRUTTO)) + SPACE_STRING
+                            + POLISH_CURRENCY));
             }
         });
         addEmptyCell(table, NUMBER_OF_EMPTY_CELLS_FOR_PAGE_SUM);
         if(isNetto()) {
-            table.addCell(getPdfCell(reportPage.getSumOfPositions() + " " + POLISH_CURRENCY));
+            table.addCell(getPdfCellForValueOrSum(PriceFormatter.formatPrice(reportPage.getSumOfPositions()) + " " + POLISH_CURRENCY));
         }
     }
 
@@ -246,11 +264,11 @@ public abstract class ReportPdf implements ReportPdfApi {
 
     private void fillTableWithReportPageNumberAndSum(PdfPTable table, List<ReportPage> reportPages, double totalSum) {
         reportPages.forEach(reportPage -> {
-            table.addCell(getPdfCell(String.valueOf(reportPage.pageNumber)));
-            table.addCell(getPdfCell(reportPage.getSumOfPositions() + SPACE_STRING + POLISH_CURRENCY));
+            table.addCell(getPdfCellDefault(String.valueOf(reportPage.pageNumber)));
+            table.addCell(getPdfCellForValueOrSum(PriceFormatter.formatPrice(reportPage.getSumOfPositions()) + SPACE_STRING + POLISH_CURRENCY));
         });
         table.addCell(getEmptyPdfCell());
-        table.addCell(getPdfCell(totalSum + SPACE_STRING + POLISH_CURRENCY));
+        table.addCell(getPdfCellForValueOrSum(PriceFormatter.formatPrice(totalSum) + SPACE_STRING + POLISH_CURRENCY));
     }
 
     private void addEmptyCell(PdfPTable table, int numberOfEmptyCells) {
@@ -259,22 +277,6 @@ public abstract class ReportPdf implements ReportPdfApi {
         }
     }
 
-    private final static class AmountFormatter {
-
-        private AmountFormatter() {
-        }
-
-        static String formatAmount(double amount) {
-            BigDecimal bigDecimal = new BigDecimal(amount);
-            int intValue = bigDecimal.intValue();
-            BigDecimal delimiter = bigDecimal.subtract(new BigDecimal(intValue));
-            if (delimiter.equals(BigDecimal.valueOf(0))) {
-                return String.valueOf(intValue);
-            } else {
-                return String.valueOf(amount);
-            }
-        }
-    }
 
     private String cellPriceHeaderValue(ReportType reportType) {
         String returnValue = null;
