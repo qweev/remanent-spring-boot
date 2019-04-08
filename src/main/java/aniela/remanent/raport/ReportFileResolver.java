@@ -5,20 +5,19 @@ import java.time.LocalDateTime;
 
 public final class ReportFileResolver {
 
-    private final static int year = LocalDateTime.now().getYear() - 1;
-
+    private final static int YEAR = LocalDateTime.now().getYear() - 1;
 
     private ReportFileResolver() {
 
     }
 
     public static String resolveFilePathForExcel(String fileName) {
-        String commonFileNameWithExtension = fileName + Integer.valueOf(year).toString()+ ".xlsx";
+        String commonFileNameWithExtension = fileName + Integer.valueOf(YEAR).toString() + ".xlsx";
         return resolveFullFileName(commonFileNameWithExtension);
     }
 
     public static String resolveFilePathForPdf(String fileName) {
-        String commonFileNameWithExtension = fileName + Integer.valueOf(year).toString()+ ".pdf";
+        String commonFileNameWithExtension = fileName + Integer.valueOf(YEAR).toString() + ".pdf";
         return resolveFullFileName(commonFileNameWithExtension);
     }
 
