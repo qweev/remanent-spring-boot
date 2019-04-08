@@ -46,6 +46,7 @@ public class BackdoorController {
             List<Position> positions = bazaDao.przygotujPozycjeDoRaportuBrutto();
             reportPdfBrutto.generateReport(positions, pathAfterResolve, positions.size());
         } catch (Exception e) {
+            LOGGER.warn("Raport PDF brutto NIE zrobiony", e);
             return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(String.format("Report generation has thrown error %s", e.getMessage()));
         }
         return ResponseEntity.status(HttpStatus.OK).body("OK");
@@ -58,6 +59,7 @@ public class BackdoorController {
             List<Position> positions = bazaDao.przygotujPozycjeDoRaportuNetto();
             reportPdfNetto.generateReport(positions, pathAfterResolve, positions.size());
         } catch (Exception e) {
+            LOGGER.warn("Raport PDF netto NIE zrobiony", e);
             return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(String.format("Report generation has thrown error %s", e.getMessage()));
         }
         return ResponseEntity.status(HttpStatus.OK).body("OK");
@@ -69,11 +71,11 @@ public class BackdoorController {
         String fullSciezka = ReportFileResolver.resolveFilePathForExcel(sciezka);
         String status = raportBrutto.generujRaport(fullSciezka);
         if (status.equalsIgnoreCase(STATUS_OK)) {
-            LOGGER.info("raportNetto zrobiony");
+            LOGGER.info("Raport Excel brutto zrobiony");
             return ResponseEntity.status(HttpStatus.OK).body(MessageFactory.generateMessageOKStatus(fullSciezka));
         } else {
             String statusDoWyslania = "plik NIE zapisany";
-            LOGGER.info("raportNetto NIE zrobiony");
+            LOGGER.info("Raport Excel brutto NIE zrobiony");
             return ResponseEntity.status(HttpStatus.GONE).body(statusDoWyslania);
         }
     }
@@ -85,11 +87,11 @@ public class BackdoorController {
         String fullSciezka = ReportFileResolver.resolveFilePathForExcel(sciezka);
         String status = raportNetto.generujRaport(fullSciezka);
         if (status.equalsIgnoreCase(STATUS_OK)) {
-            LOGGER.info("raportNetto zrobiony");
+            LOGGER.info("Raport Excel netto zrobiony");
             return ResponseEntity.status(HttpStatus.OK).body(MessageFactory.generateMessageOKStatus(fullSciezka));
         } else {
             String statusDoWyslania = "plik NIE zapisany";
-            LOGGER.info("raportNetto NIE zrobiony");
+            LOGGER.info("Raport Excel netto NIE zrobiony");
             return ResponseEntity.status(HttpStatus.GONE).body(statusDoWyslania);
         }
     }
