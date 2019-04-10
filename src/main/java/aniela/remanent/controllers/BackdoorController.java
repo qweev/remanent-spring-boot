@@ -49,7 +49,7 @@ public class BackdoorController {
             LOGGER.warn("Raport PDF brutto NIE zrobiony", e);
             return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(String.format("Report generation has thrown error %s", e.getMessage()));
         }
-        return ResponseEntity.status(HttpStatus.OK).body("OK");
+        return ResponseEntity.status(HttpStatus.OK).body(pathAfterResolve);
     }
 
     @GetMapping("/remanent/rest/raport/backdoor/pdf/netto/{nazwaPliku}")
@@ -62,7 +62,7 @@ public class BackdoorController {
             LOGGER.warn("Raport PDF netto NIE zrobiony", e);
             return ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).body(String.format("Report generation has thrown error %s", e.getMessage()));
         }
-        return ResponseEntity.status(HttpStatus.OK).body("OK");
+        return ResponseEntity.status(HttpStatus.OK).body(pathAfterResolve);
     }
 
     @GetMapping("/remanent/rest/raport/backdoor/excel/brutto/{sciezka}")
