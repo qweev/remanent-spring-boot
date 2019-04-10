@@ -1,17 +1,15 @@
-package aniela.remanent;
+package aniela.remanent.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Map;
-
 @RestController
-public class Testowy {
+public class Heartbeat {
 
-    @RequestMapping("/a")
+    @RequestMapping("/heartbeat")
     public String welcome() {
 
-        return "welcome";
+        return "OK";
     }
 
 }
