@@ -12,8 +12,11 @@ heartbeat
 http://localhost:8080/heartbeat
 
 Reports
+
 http://localhost:8080/remanent/rest/raport/backdoor/pdf/brutto/{nazwaPliku}
+
 http://localhost:8080/remanent/rest/raport/backdoor/pdf/netto//{nazwaPliku}
 
 http://localhost:8080/remanent/rest/raport/backdoor/excel/brutto/{sciezka}
+
 http://localhost:8080/remanent/rest/raport/backdoor/excel/netto{sciezka}
