@@ -1,4 +1,4 @@
-package aniela.remanent.raport.backdoor;
+package aniela.remanent.controllers;
 
 import aniela.remanent.pdf.report.brutto.ReportPdfBrutto;
 import aniela.remanent.pdf.report.netto.ReportPdfNetto;
@@ -39,7 +39,7 @@ public class BackdoorController {
     @Autowired
     private ReportPdfNetto reportPdfNetto;
 
-    @GetMapping("/remanent/rest/backdoor/raport/pdf/brutto/{nazwaPliku}")
+    @GetMapping("/remanent/rest/raport/backdoor/pdf/brutto/{nazwaPliku}")
     public ResponseEntity createPdfGross(@PathVariable("nazwaPliku") String nazwaPliku) {
         String pathAfterResolve = ReportFileResolver.resolveFilePathForPdf(nazwaPliku);
         try {
@@ -81,7 +81,7 @@ public class BackdoorController {
     }
 
 
-    @GetMapping(path = "/remanent/rest/raport/backdoor/excel/netto{sciezka}")
+    @GetMapping(path = "/remanent/rest/raport/backdoor/excel/netto/{sciezka}")
     public ResponseEntity createExcelNet(@PathVariable("sciezka") String sciezka) {
         LOGGER.info("pobrana sciezka : " + sciezka);
         String fullSciezka = ReportFileResolver.resolveFilePathForExcel(sciezka);
