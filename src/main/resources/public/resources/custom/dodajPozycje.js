@@ -206,6 +206,8 @@ $(document).ready(function(){
 		}
 		
     	else {
+			$("#cenaB").removeClass("czerwony");
+			$("#cenaN").removeClass("czerwony");
     		$(this).wyslijDodajJSON();
     	}
 	});
