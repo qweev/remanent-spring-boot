@@ -5,6 +5,8 @@ import aniela.remanent.position.brutto.PozycjaDoRaportuBrutto;
 import aniela.remanent.position.netto.PozycjaDoRaportuNetto;
 import aniela.remanent.pozycje.bazaDanych.PozycjaBazy;
 import aniela.remanent.pozycje.helperyZapytanDoBazy.expression.evaluator.ExpressionEvaluator;
+
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -41,13 +43,17 @@ public class BazaDAO {
             pozycje = sesja.createQuery("FROM PozycjaBazy AS P WHERE P.id = :numerPozycji ")
                     .setParameter("numerPozycji",numerPozycji).list();
 
+
             pozycjaBazyIn = pozycje.get(0);
             System.out.println("ilosc z weba == " + ilosc);
+            System.out.println("ilosc z bazy == " + pozycjaBazyIn.getIlosc());
             double zmianaIlosci = pozycjaBazyIn.getIlosc() + ilosc;
-            System.out.println("zmianaKoncowa == "+zmianaIlosci);
+
+            double zmianaIlosciRound = Math.round(zmianaIlosci*100)/100.0d; // do dwoch miejsc po przecinku
+            System.out.println("zmianaKoncowa == " + zmianaIlosciRound);
 
             int wynik = sesja.createQuery(hqlUpdatePozycja).
-                      setParameter("ilosc", zmianaIlosci).setParameter("numerPozycji", numerPozycji).executeUpdate();
+                      setParameter("ilosc", zmianaIlosciRound).setParameter("numerPozycji", numerPozycji).executeUpdate();
             System.out.println(wynik);
 
             pozycje = sesja.createQuery("FROM PozycjaBazy AS P WHERE P.id = :numerPozycji ")

@@ -275,6 +275,7 @@ $(document).ready(function(){
             	$("#modalZapisDialog").html("Pozycja numer: "+ response.id +" zmieniona w bazie o "+ iloscDoDodania);
             	$("#zapisDialog").modal("show");
 				$(this).aktualizujHistoriePoZmienIlosc(response);
+				console.log("z bazy ilosc po zmianie to :" + response.ilosc)
 				setTimeout(function () {$('#zamknijDialogZapisz').focus();}, 500);	
             
         },

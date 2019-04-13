@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -26,8 +28,11 @@ public class PozycjeREST {
 
         PozycjaBazy pozycja = baza.dodajIloscDoPozycjiDoBazy(numerPozycji, ilosc );
 
-        pozycja.setIlosc(pozycja.getIlosc()+ilosc);
-        System.out.println("do weba idzie : " + pozycja.getIlosc());
+        double iloscRound = Math.round((pozycja.getIlosc()+ilosc)*100)/100.0d; // do dwoch miejsc po przecinku dla weba
+        
+        pozycja.setIlosc(iloscRound);
+
+        System.out.println("do weba idzie : " + pozycja.getIlosc() );
         return ResponseEntity.status(HttpStatus.OK).body(pozycja);
 
     }
