@@ -20,3 +20,7 @@ http://localhost:8080/remanent/rest/raport/backdoor/pdf/netto//{nazwaPliku}
 http://localhost:8080/remanent/rest/raport/backdoor/excel/brutto/{sciezka}
 
 http://localhost:8080/remanent/rest/raport/backdoor/excel/netto{sciezka}
+
+
+###
+Generation of report against 16k positions takes about 10 seconds

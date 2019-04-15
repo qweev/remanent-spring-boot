@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="3.2" jmeter="3.3 r1808647">
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.1.1 r1855137">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
@@ -37,13 +37,13 @@
               <collectionProp name="Arguments.arguments">
                 <elementProp name="" elementType="HTTPArgument">
                   <boolProp name="HTTPArgument.always_encode">false</boolProp>
-                  <stringProp name="Argument.value">{&#xd;
-&quot;cenaNetto&quot;:&quot;1.54&quot;,&#xd;
-&quot;cenaBrutto&quot;:&quot;2.1&quot;,&#xd;
-&quot;nazwaTowaru&quot;:&quot;Cod&quot;,&#xd;
-&quot;jednostka&quot;:&quot;szt.&quot;,&#xd;
-&quot;ilosc&quot;:&quot;2&quot;,&#xd;
-&quot;uzytkownik&quot;:&quot;1&quot;&#xd;
+                  <stringProp name="Argument.value">{	&#xd;
+&quot;cena_brutto&quot;:	4,&#xd;
+&quot;cena_netto&quot;:1,&#xd;
+&quot;ilosc&quot;:11,&#xd;
+&quot;jednostka&quot;:&quot;mb.&quot;,&#xd;
+&quot;nazwa_towaru&quot;:&quot;AsaS&quot;,&#xd;
+&quot;uzytkownik&quot;:&quot;sAS&quot;&#xd;
 }</stringProp>
                   <stringProp name="Argument.metadata">=</stringProp>
                 </elementProp>
@@ -55,9 +55,9 @@
             <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
             <stringProp name="HTTPSampler.path">/remanent/rest/pozycje/dodaj</stringProp>
             <stringProp name="HTTPSampler.method">POST</stringProp>
-            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
-            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
-            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
             <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
             <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
             <stringProp name="HTTPSampler.connect_timeout"></stringProp>
@@ -68,6 +68,10 @@
               <collectionProp name="HeaderManager.headers">
                 <elementProp name="" elementType="Header">
                   <stringProp name="Header.name">Content-type</stringProp>
+                  <stringProp name="Header.value">application/json</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Accept</stringProp>
                   <stringProp name="Header.value">application/json</stringProp>
                 </elementProp>
               </collectionProp>
@@ -187,9 +191,5 @@
         </hashTree>
       </hashTree>
     </hashTree>
-    <WorkBench guiclass="WorkBenchGui" testclass="WorkBench" testname="WorkBench" enabled="true">
-      <boolProp name="WorkBench.save">true</boolProp>
-    </WorkBench>
-    <hashTree/>
   </hashTree>
 </jmeterTestPlan>
