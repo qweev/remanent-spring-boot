@@ -1,0 +1,1 @@
+mvn clean install -P it -e -X > log.log
