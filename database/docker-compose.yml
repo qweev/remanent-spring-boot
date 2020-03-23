@@ -2,13 +2,15 @@ version: '3.6'
 
 services:
   db:
-    image: mysql:5.7
-    #@volumes:
-    #  - db_data:/var/lib/mysql
+    image: mysql:latest
+    volumes:
+      - ./db-volume:/var/lib/mysql
     restart: always
+    ports:
+      - 3306:3306
     environment:
-      MYSQL_ROOT_PASSWORD: admin
-      MYSQL_DATABASE: sklep
+      MYSQL_ROOT_PASSWORD: rootpw
+      MYSQL_DATABASE: cabin
       MYSQL_USER: sklep
       MYSQL_PASSWORD: sklep
 
@@ -16,3 +18,5 @@ services:
     image: adminer
     ports:
       - 8087:8080
+
+  # mysql -h 127.0.0.1 -u root -P 3306 -p mysql         rootpw

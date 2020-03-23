@@ -1,7 +1,7 @@
 # remanent-spring-boot
 
-### endpoints
-
+## Endpoints
+```
 startup page
 http://localhost:8080/
 
@@ -20,7 +20,16 @@ http://localhost:8080/remanent/rest/raport/backdoor/pdf/netto//{nazwaPliku}
 http://localhost:8080/remanent/rest/raport/backdoor/excel/brutto/{sciezka}
 
 http://localhost:8080/remanent/rest/raport/backdoor/excel/netto{sciezka}
+```
+
+## Tools
+```
+MySQL Adminer
+http://localhost:8087
+```
 
 
-###
+## Performance
+```
 Generation of report against 16k positions takes about 10 seconds
+```
