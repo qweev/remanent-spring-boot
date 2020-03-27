@@ -2,21 +2,24 @@ version: '3.6'
 
 services:
   db:
-    image: mysql:latest
-    volumes:
-      - ./db-volume:/var/lib/mysql
-    restart: always
+    image: mysql:8.0.16
     ports:
       - 3306:3306
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+    #  - ./db-volume:/var/lib/mysql
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: rootpw
-      MYSQL_DATABASE: cabin
+      #MYSQL_DATABASE: cabin
       MYSQL_USER: sklep
       MYSQL_PASSWORD: sklep
 
-  my-sql-adminer:
-    image: adminer
-    ports:
-      - 8087:8080
-
+  #my-sql-adminer:
+  #  image: adminer
+  #  ports:
+  #    - 8087:8080
+  #  depends_on:
+  #    - db
+  # root/rootpw
   # mysql -h 127.0.0.1 -u root -P 3306 -p mysql         rootpw
