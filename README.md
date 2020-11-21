@@ -33,3 +33,11 @@ http://localhost:8087
 ```
 Generation of report against 16k positions takes about 10 seconds
 ```
+
+## Maven actions
+```
+mvn clean install
+mvn clean install versions:display-dependency-updates versions:display-plugin-updates
+mvn clean install -P it
+mvn clean install -P it -e -X > log.log
+```
