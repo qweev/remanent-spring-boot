@@ -197,7 +197,15 @@ $(document).ready(function(){
 		var cenaBLiczba = $(this).konwertujDoLiczby($("#cenaB").val().trim());
 		var cenaNLiczba = $(this).konwertujDoLiczby($("#cenaN").val().trim());
 		
-	//console.log("ceny " +cenaBLiczba + "   " + cenaNLiczba);	
+	console.log("ceny " +cenaBLiczba + "   " + cenaNLiczba);
+		if ( (cenaBLiczba == 0) && (cenaNLiczba >= 0)  ) {
+		        console.log("www true");
+		        $("#cenaB").removeClass("czerwony");
+        		$("#cenaN").removeClass("czerwony");
+            	$(this).wyslijDodajJSON();
+            return 0;
+		}
+
 		if ( ( cenaBLiczba <= cenaNLiczba ) ){
 			$("#cenaB").addClass("czerwony");
 			$("#cenaN").addClass("czerwony");
@@ -210,6 +218,8 @@ $(document).ready(function(){
 			$("#cenaN").removeClass("czerwony");
     		$(this).wyslijDodajJSON();
     	}
+
+
 	});
 
 	$("#zamknijDialog").click(function(){
