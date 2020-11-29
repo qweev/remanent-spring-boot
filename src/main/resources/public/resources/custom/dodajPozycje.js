@@ -410,22 +410,22 @@ $(document).ready(function(){
 	 			"<td>"+$("#jednostka").text()+"</td>"+
 	 			"<td>"+$("#ilosc").val().trim()+"</td>"+
 				"<td>"+
-				
-				
-				"<input type="+"text" + " "+ "id="+"zmienilosc"+
-				" style=" + "width:30px;color:DodgerBlue;padding:1px;border-radius:4px;padding-left:5px;margin-top:-2px;font:bold" +" >" +
-				
-				
-				"</td>"+
-				"<td id="+"ilosctd"+"           >"+
-				
-				"<button id="+"zmienIloscBaza"+" type="+"button"+
-				" style=" + "width:60px;color:DodgerBlue;background-color:LightGray;padding:1px;border-radius:4px"+
-				" <span></span>"+
-				"<b>&nbsp;Dodaj&nbsp;</b><span" +"></span></button>"
-		
-				
-				+"</td></tr>"
+
+
+                             				"<input type="+"text" + " "+ "id="+"zmienilosc"+
+                             				" style=" + "width:30px;color:DodgerBlue;padding:1px;border-radius:4px;padding-left:5px;margin-top:-2px;font:bold" +" >" +
+
+
+                             				"</td>"+
+                             				"<td id="+"ilosctd"+"           >"+
+
+                             				"<button id="+"zmienIloscBaza"+" type="+"button"+
+                             				" style=" + "width:60px;color:DodgerBlue;background-color:LightGray;padding:1px;border-radius:4px"+
+                             				" <span></span>"+
+                             				"<b>&nbsp;Dodaj&nbsp;</b><span" +"></span></button>"
+
+
+                             				+"</td></tr>"
 				
 					
 				

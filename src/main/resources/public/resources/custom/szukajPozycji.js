@@ -1,4 +1,22 @@
 $(document).ready(function(){
+
+	// tabelka szukaj - dodaj ilosc
+	$(document).on("focus","#zmieniloscPoSzukaj", function() {
+		$(this).addClass( "historiaPozycja" );
+	});
+	$(document).on("focusout","#zmieniloscPoSzukaj", function() {
+		$(this).removeClass( "historiaPozycja" );
+	});
+
+	$(document).on("focus","#tabelkaSzukaj tr", function() {
+		$(this).addClass( "historiaPozycja" );
+
+	});
+	$(document).on("focusout","#tabelkaSzukaj tr", function() {
+		$(this).removeClass( "historiaPozycja" );
+	});
+
+
 	wyczyscZaawansowaneNaRefresh();
 	function wyczyscZaawansowaneNaRefresh(){
 		console.log("czyscimy zaawansowane");
@@ -429,7 +447,27 @@ $(document).ready(function(){
 	 			"<td>"+pozycja.cena_netto+"</td>"+
 	 			"<td>"+pozycja.jednostka+"</td>"+
 	 			"<td>"+pozycja.ilosc+"</td>"+
-	 			"<td>"+pozycja.uzytkownik+"</td></tr>"
+	 			"<td>"+pozycja.uzytkownik+"</td>"+
+
+	 			"<td>"+
+
+
+                				"<input type="+"text" + " "+ "id="+"zmieniloscPoSzukaj"+
+                				" style=" + "width:30px;color:DodgerBlue;padding:1px;border-radius:4px;padding-left:5px;margin-top:-2px;font:bold" +" >" +
+
+
+                				"</td>"+
+                				"<td id="+"ilosctdPoSzukaj"+"           >"+
+
+                				"<button id="+"zmienIloscBazaPoSzukaj"+" type="+"button"+
+                				" style=" + "width:60px;color:DodgerBlue;background-color:LightGray;padding:1px;border-radius:4px"+
+                				" <span></span>"+
+                				"<b>&nbsp;Dodaj&nbsp;</b><span" +"></span></button>"
+
+
+                				+"</td></tr>"
+
+
 	 		);
     }
 	
@@ -464,6 +502,174 @@ $(document).ready(function(){
 	$('#zamknijDialogSzukaj').click(function(){
 		$("#szukajPozycji").focus();
 	});
-    
+
+
+      $.fn.aktualizujHistoriePoZmienIloscPoSzukaj = function(pozycja){
+    		console.log("aktualizuj historie wpisow po szukaj: " +pozycja);
+    		var nrPozycji = pozycja.id;
+
+    		var nowyRow =
+    	 		"<td>"+pozycja.id+"</td>"+
+    	 		"<td>"+pozycja.nazwa_towaru+"</td>"+
+    	 		"<td>"+pozycja.cena_brutto+"</td>"+
+    	 		"<td>"+pozycja.cena_netto+"</td>"+
+    	 		"<td>"+pozycja.jednostka+"</td>"+
+    			"<td>"+pozycja.ilosc +"</td>"+
+    			"<td>"+pozycja.uzytkownik +"</td>"+
+
+    			"<td>"+
+
+    				"<input type="+"text" + " "+ "id="+"zmieniloscPoSzukaj"+
+    				" style=" + "width:30px;color:DodgerBlue;padding:1px;border-radius:4px;padding-left:5px;margin-top:-2px;font:bold" +" >" +
+
+    				"</td>"+
+    				"<td id="+"ilosctdPoSzukaj"+"           >"+
+
+    				"<button id="+"zmienIloscBazaPoSzukaj"+" type="+"button"+
+    				" style=" + "width:60px;color:DodgerBlue;background-color:LightGray;padding:1px;border-radius:4px"+
+    				" <span></span>"+
+    				"<b>&nbsp;Dodaj&nbsp;</b><span" +"></span></button>"
+
+
+    				+"</td></tr>"
+
+
+    		console.log(" nowy row "+ nowyRow);
+    		$("#tabelkaSzukaj td").filter(function() {
+    			return $(this).text() == nrPozycji;
+    			}).parent('tr').html(nowyRow);
+
+    	}
+
+
+   $.fn.aktualizujHistoriePoZmienIlosc = function(pozycja){
+		console.log("aktualizuj historie wpisow po dodaj: " +pozycja);
+		var nrPozycji = pozycja.id;
+		var d = new Date();
+		var h = d.getHours();
+		var m = d.getMinutes();
+		if (m < 10) { m = "0"+m;}
+
+		var nowyRow = "<td>"+h+" : "+m+"</td>"+
+	 		"<td>"+pozycja.id+"</td>"+
+	 		"<td>"+pozycja.nazwa_towaru+"</td>"+
+	 		"<td>"+pozycja.cena_brutto+"</td>"+
+	 		"<td>"+pozycja.cena_netto+"</td>"+
+	 		"<td>"+pozycja.jednostka+"</td>"+
+			"<td>"+pozycja.ilosc +"</td>"+
+
+			"<td>"+
+
+				"<input type="+"text" + " "+ "id="+"zmienilosc"+
+				" style=" + "width:30px;color:DodgerBlue;padding:1px;border-radius:4px;padding-left:5px;margin-top:-2px;font:bold" +" >" +
+
+				"</td>"+
+				"<td id="+"ilosctd"+"           >"+
+
+				"<button id="+"zmienIloscBaza"+" type="+"button"+
+				" style=" + "width:60px;color:DodgerBlue;background-color:LightGray;padding:1px;border-radius:4px"+
+				" <span></span>"+
+				"<b>&nbsp;Dodaj&nbsp;</b><span" +"></span></button>"
+
+
+				+"</td></tr>"
+
+
+		console.log(" nowy row "+ nowyRow);
+		$("#tabelka td").filter(function() {
+			return $(this).text() == nrPozycji;
+			}).parent('tr').html(nowyRow);
+
+	}
+
+
+	var nowaIosc = "";
+	var pozycjaNr = "";
+	$(document).on("focus","#ilosctdPoSzukaj", function() { // czyli KLIK na kolumne z przyciskiem DODAJ zmiana ilosci historii
+		//$(this).css("background-color":"orange");
+		nowaIosc = $(this).prev().children().val();
+		console.log("!!!!! nowa " + nowaIosc)
+		pozycjaNr = $(this).prev().prev().prev().prev().prev().prev().prev().prev().text(); // pobranie pozycji z tabelki
+		console.log("!!! pozycjaNr " + pozycjaNr)
+
+	});
+
+	$(document).on( "click", "#zmienIloscBazaPoSzukaj", function(){ // przycisk dodaj ilosc
+		$("#modalSzukajDialog").removeClass("czerwonyText");
+    	$("#modalSzukajDialog").html("");
+
+			var nowaIloscPowalidacji = $(this).walidujLiczbe(nowaIosc);
+			console.log("yyyyyyy" + nowaIloscPowalidacji);
+			console.log("yyyyyyy pozycjaNr " + pozycjaNr);
+
+			if ( isNaN(nowaIloscPowalidacji) || nowaIloscPowalidacji == 0 ){
+				$("#modalSzukajDialog").addClass("czerwonyText");
+            	$("#modalSzukajDialog").html("To nie jest liczba dodatnia !");
+            	$("#szukajDialog").modal("show");
+				setTimeout(function () {$('#zamknijDialogSzukaj').focus();}, 500);
+			}
+			else{
+			//  rest na update ilosci dla numeru pozycji
+			$(this).wyslijZmienIloscPozycjiJSONnaSzukaj(pozycjaNr, nowaIloscPowalidacji )
+			}
+			$("#tabelkaSzukaj tr").removeClass( "historiaPozycja" );
+
+	});
+
+  // json dodaj ilosc do pozycji na szukaj
+   $.fn.wyslijZmienIloscPozycjiJSONnaSzukaj = function(pozycja, iloscDoDodania) {
+
+    	$.blockUI({
+    		css: {
+                border: 'none',
+                padding: '15px',
+                backgroundColor: '#000',
+                '-webkit-border-radius': '10px',
+                '-moz-border-radius': '10px',
+                opacity: .5,
+                color: '#fff'
+            }
+    			});
+		//var delta = "{"+ pozycja + "," + iloscDoDodania + "}";
+    	$("#modalSzukajDialog").removeClass("czerwonyText");
+    	$("#modalSzukajDialog").html("");
+
+    $.ajax({
+    	type: 'POST',
+    	contentType: "application/json",
+    	dataType: 'json',
+    	//data: delta,
+//    	data: '{"cenaNetto":"59","cenaBrutto":"34","nazwaTowaru":"aaa","jednostka":"m33b","ilosc":"12","uzytkownik":"2"}',
+        url: '/remanent/rest/pozycje/dodajIloscDoPozycji/'+pozycja+'/'+iloscDoDodania,
+        success: function (response) {
+        	console.log("OK odebrany JSON z: /remanent/rest/pozycje/dodajIloscDoPozycji");
+			console.log("odebrana pozycja po dodaj ilosc: " + response);
+			$("#tabelka tr").removeClass( "historiaPozycja" );
+                $("#modalSzukajDialog").addClass("zielonyText");
+            	$("#modalSzukajDialog").html("Pozycja numer: "+ response.id +" zmieniona w bazie o "+ iloscDoDodania);
+            	$("#szukajDialog").modal("show");
+				$(this).aktualizujHistoriePoZmienIloscPoSzukaj(response);
+				$(this).aktualizujHistoriePoZmienIlosc(response);
+
+				console.log("z bazy ilosc po zmianie to :" + response.ilosc)
+				setTimeout(function () {$('#zamknijDialogZapisz').focus();}, 500);
+        },
+        error: function (jqXHR, exception) {
+        	console.log("a jednak");
+        	console.log("e: "+exception);
+            $(this).removeClass( "historiaPozycja" );
+            var msg = $(this).getErrorMessage(jqXHR, exception);
+            $("#modalSzukajDialog").addClass("czerwonyText");
+			$("#modalSzukajDialog").html(msg);
+			$('#szukajDialog').modal("show");
+			setTimeout(function () {$('#zamknijDialogSzukaj').focus();}, 1000);
+        	},
+    	});
+    }
+
+
+
+
+
 });
 $(document).ajaxStop($.unblockUI); 
