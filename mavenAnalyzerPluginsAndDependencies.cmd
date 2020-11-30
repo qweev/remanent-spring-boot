@@ -1,1 +1,0 @@
-mvn clean install versions:display-dependency-updates versions:display-plugin-updates

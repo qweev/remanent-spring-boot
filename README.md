@@ -1,7 +1,7 @@
 # remanent-spring-boot
 
-### endpoints
-
+## Endpoints
+```
 startup page
 http://localhost:8080/
 
@@ -20,7 +20,29 @@ http://localhost:8080/remanent/rest/raport/backdoor/pdf/netto//{nazwaPliku}
 http://localhost:8080/remanent/rest/raport/backdoor/excel/brutto/{sciezka}
 
 http://localhost:8080/remanent/rest/raport/backdoor/excel/netto{sciezka}
+```
+
+## Tools
+```
+MySQL Adminer
+http://localhost:8087
+```
 
 
-###
+## Performance
+```
 Generation of report against 16k positions takes about 10 seconds
+```
+
+## Maven actions
+```
+mvn clean install
+mvn clean install versions:display-dependency-updates versions:display-plugin-updates
+
+Before running it/e2e make sure MySQL DB instance is up & running
+In /src/main/resources/application.properties update login & password to database
+
+mvn clean install -P it
+mvn clean install -P it -e -X > log.log
+mvn clean install -P e2e
+```
