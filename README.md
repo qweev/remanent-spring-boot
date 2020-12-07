@@ -46,3 +46,20 @@ mvn clean install -P it
 mvn clean install -P it -e -X > log.log
 mvn clean install -P e2e
 ```
+
+## Requirements
+```
+JDK/JRE 8/10 only
+
+```
+
+## Linux 
+### Development
+```
+In docker compose comment section with volumes. During maven build database will be populated on the fly
+Copy ./database/init/sql.sql to root level as SQL for Windows and Linux differ much. Why? IHNI
+In pom file change login & pass for database in properties
+In /src/main/resources/application.properties change login and password
+
+
+```
