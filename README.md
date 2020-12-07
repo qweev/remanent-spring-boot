@@ -63,3 +63,8 @@ In /src/main/resources/application.properties change login and password
 
 
 ```
+
+## Debugging
+```
+java - jar JAR.jar -Dcom.sun.management.jmxremote.port=3333 -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false
+```
