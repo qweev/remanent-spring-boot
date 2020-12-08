@@ -7,6 +7,7 @@ http://localhost:8080/
 
 reports
 http://localhost:8080/raporty.html
+admin/admin
 
 heartbeat
 http://localhost:8080/heartbeat
@@ -15,7 +16,7 @@ Reports
 
 http://localhost:8080/remanent/rest/raport/backdoor/pdf/brutto/{nazwaPliku}
 
-http://localhost:8080/remanent/rest/raport/backdoor/pdf/netto//{nazwaPliku}
+http://localhost:8080/remanent/rest/raport/backdoor/pdf/netto/{nazwaPliku}
 
 http://localhost:8080/remanent/rest/raport/backdoor/excel/brutto/{sciezka}
 
@@ -26,19 +27,23 @@ http://localhost:8080/remanent/rest/raport/backdoor/excel/netto{sciezka}
 ```
 MySQL Adminer
 http://localhost:8087
+root/root
 ```
 
 
 ## Performance
 ```
-Generation of report against 16k positions takes about 10 seconds
+Generation of report against 16k positions takes about 10 seconds.
 ```
 
 ## Maven actions
 ```
 mvn clean install
 mvn clean install versions:display-dependency-updates versions:display-plugin-updates
+```
 
+### Intergartion and E2E tests
+```
 Before running it/e2e make sure MySQL DB instance is up & running
 In /src/main/resources/application.properties update login & password to database
 
@@ -50,7 +55,6 @@ mvn clean install -P e2e
 ## Requirements
 ```
 JDK/JRE 8/10 only
-
 ```
 
 ## Linux 
@@ -60,8 +64,6 @@ In docker compose comment section with volumes. During maven build database will
 Copy ./database/init/sql.sql to root level as SQL for Windows and Linux differ much. Why? IHNI
 In pom file change login & pass for database in properties
 In /src/main/resources/application.properties change login and password
-
-
 ```
 
 ## Debugging
