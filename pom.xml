@@ -22,6 +22,8 @@
 		<java.version>1.8</java.version>
 		<db.mysql.server.name>localhost</db.mysql.server.name>
 		<db.mysql.server.port>3306</db.mysql.server.port>
+		<db.mysql.server.user>admin</db.mysql.server.user>
+		<db.mysql.server.password>admin</db.mysql.server.password>
 	</properties>
 
 <profiles>
@@ -48,8 +50,8 @@
 						<driver>org.gjt.mm.mysql.Driver</driver>
 						<url>jdbc:mysql://${db.mysql.server.name}:${db.mysql.server.port}</url>
 						<!-- The value of settingsKey should be a server id in ~/.m2/settings.xml -->
-						<username>admin</username>
-						<password>admin</password>
+						<username>${db.mysql.server.user}</username>
+						<password>${db.mysql.server.password}</password>
 					</configuration>
 					<executions>
 						<!--  It creates integration test data before running the tests -->
@@ -142,8 +144,8 @@
 						<driver>org.gjt.mm.mysql.Driver</driver>
 						<url>jdbc:mysql://${db.mysql.server.name}:${db.mysql.server.port}</url>
 						<!-- The value of settingsKey should be a server id in ~/.m2/settings.xml -->
-						<username>admin</username>
-						<password>admin</password>
+						<username>${db.mysql.server.user}</username>
+						<password>${db.mysql.server.password}</password>
 					</configuration>
 					<executions>
 						<!--  It creates integration test data before running the tests -->
@@ -188,7 +190,7 @@
 					<!--  -->
 					<configuration>
 						<includes>
-							<include>**/IT**/**IT**.java</include>
+							<include>**/**Intergation.java</include>
 						</includes>
 					</configuration>
 					<executions>
