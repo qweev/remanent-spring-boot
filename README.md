@@ -44,7 +44,13 @@ mvn clean install versions:display-dependency-updates versions:display-plugin-up
 
 ### Intergartion and E2E tests
 ```
-Before running it/e2e make sure MySQL DB instance is up & running
+Before running it/e2e make sure MySQL DB instance is up & running.
+Moreover - application itself must be also up & running.
+
+IT tests are being run as typical JUnit execution
+
+E2E tests are being run as Spring context
+For E2E tests:
 In /src/main/resources/application.properties update login & password to database
 
 mvn clean install -P it
