@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 @Configuration
 public class FireFoxConfiguration {
 
-    private String geckoDriverPathWindows = "src\\File.pathSeparator\\geckodriver.exe";
+    private String geckoDriverPathWindows = "src\\test\\resources\\geckodriver.exe";
     private String geckoDriverPathLinux = "src/test/resources/geckodriver";
     private FirefoxDriver driverPozycje;
 
