@@ -55,11 +55,6 @@ public class DodajTowarTab_IT {
     @Autowired
     private PoleJednostka poleJednostka;
 
-//    @After
-//    public void cleanUpTest(){
-//        driver.navigate().refresh();
-//    }
-
     @Before
     public void setUp(){
         driver.get("http://localhost:8080/index.html");
@@ -83,16 +78,17 @@ public class DodajTowarTab_IT {
         assertEquals(true, dialogModal.pobierzText().contains("Niepoprawny"));
     }
 
+    @Test
+    public void dodajTowarZerowaCenaBruttoWpis(){
+        uzupelnijPolaZeroBrutto();
 
+        przyciskZapisDoBazy.kliknijPrzycisk();
+
+        assertEquals(true, jestWpisWTabelceHistoriiWpisow());
+        assertEquals("0", pobierzCeneBruttoZDodanejPozycji());
+    }
 
     private void uzupelnijPola() {
-//        PoleNazwaTowaru poleNazwaTowaru = new PoleNazwaTowaru(driver);
-//        PoleUzytkownik poleUzytkownik = new PoleUzytkownik(driver);
-//        PoleCenaBrutto poleCenaBrutto = new PoleCenaBrutto(driver);
-//        PoleCenaNetto poleCenaNetto = new PoleCenaNetto(driver);
-//        PoleIlosc poleIlosc = new PoleIlosc(driver);
-//        PoleJednostka poleJednostka = new PoleJednostka(driver);
-
         poleNazwaTowaru.wpiszNazweTowaru("towar");
         poleUzytkownik.wpiszUzytkownika("aa");
         poleCenaBrutto.wpiszCeneBrutto("3,51");
@@ -101,13 +97,21 @@ public class DodajTowarTab_IT {
         poleJednostka.wybierz("op.");
     }
 
+    private void uzupelnijPolaZeroBrutto() {
+        poleNazwaTowaru.wpiszNazweTowaru("towar");
+        poleUzytkownik.wpiszUzytkownika("aa");
+        poleCenaBrutto.wpiszCeneBrutto("0");
+        poleCenaNetto.wpiszCeneNetto("2.45");
+        poleIlosc.wpiszIlosc("3");
+        poleJednostka.wybierz("op.");
+    }
 
     private boolean jestWpisWTabelceHistoriiWpisow() {
         WebDriverWait czekajNaTabelke = new WebDriverWait(driver, 120, 1000);
         return czekajNaTabelke.until(widocznaPozycjaWTabelce());
     }
 
-    private static ExpectedCondition<Boolean> widocznaPozycjaWTabelce() {
+    private ExpectedCondition<Boolean> widocznaPozycjaWTabelce() {
         return new ExpectedCondition<Boolean>() {
 
             @Override
@@ -123,17 +127,23 @@ public class DodajTowarTab_IT {
     }
 
 
-    private static List<WebElement> zbierzKomorkiPozycjiZTabelki(WebDriver driver){
+    private List<WebElement> zbierzKomorkiPozycjiZTabelki(WebDriver driver){
         List<WebElement> komorki = new ArrayList<WebElement>();
         int pierwszaKomorkaPozycjiWTabelce = 2;
         int ostatniaKomorkaPozycjiWTabelce = 8;
 
         for(int komorka=pierwszaKomorkaPozycjiWTabelce; komorka < ostatniaKomorkaPozycjiWTabelce; komorka++){
             komorki.add(driver.findElement(By.xpath("//tbody[@id='tabelka']/tr/td["+komorka+"]")));
+
         }
 
         return komorki;
     }
 
+
+    private String pobierzCeneBruttoZDodanejPozycji(){
+        List<WebElement> komorki = zbierzKomorkiPozycjiZTabelki(driver);
+        return komorki.get(2).getText(); // cena brutto
+    }
 
 }
