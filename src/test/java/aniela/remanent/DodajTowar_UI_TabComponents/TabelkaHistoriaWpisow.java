@@ -1,5 +1,6 @@
 package aniela.remanent.DodajTowar_UI_TabComponents;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -25,18 +27,7 @@ public class TabelkaHistoriaWpisow {
     }
 
 
-    // TO DO
-    // zamien na straemy
     public long liczbaWidocznychWierszy(){
-//		int liczba = 0;
-//		for (WebElement wiersz: wiersze){
-//				String attr= wiersz.getAttribute("style");
-//				if ( attr.equals("") | attr == null){
-//					liczba++;
-//				}
-//		}
-//
-//		return liczba;
 
         return wiersze.stream()
                 .filter(x -> x.getAttribute("style").equalsIgnoreCase("") || x.getAttribute("style").isEmpty() )
@@ -44,17 +35,24 @@ public class TabelkaHistoriaWpisow {
 
     }
 
-    public int liczbaWierszy(){
-        return wiersze.size();
-    }
-
-
 
     public void stworzSztucznaHistorie5Wpisow() {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         String sztucznaHistoria = "document.getElementById('tabelka').innerHTML = '<tr><td>filtr test</td><td>a</td><td>a</td><td>a</td><td>a</td><td>a</td><td>a</td></tr><tr><td>b</td><td>b</td><td>b</td><td>b</td><td>b</td><td>b</td><td>b</td></tr><tr><td>c</td><td>c</td><td>c</td><td>c</td><td>c</td><td>c</td><td>c</td></tr><tr><td>filtr test</td><td>a</td><td>a</td><td>a</td><td>a</td><td>a</td><td>a</td></tr><tr><td>d</td><td>d</td><td>d</td><td>d</td><td>d</td><td>d</td><td>d</td></tr>'";
         js.executeScript(sztucznaHistoria);
 
+    }
+
+    public List<WebElement> zbierzKomorkiPozycjiZWierszaTabelki(int numerWiersza){
+        List<WebElement> komorki = new ArrayList<WebElement>();
+        int pierwszaKomorkaPozycjiWTabelce = 2;
+        int ostatniaKomorkaPozycjiWTabelce = 8;
+
+        for(int komorka=pierwszaKomorkaPozycjiWTabelce; komorka < ostatniaKomorkaPozycjiWTabelce; komorka++){
+            komorki.add(driver.findElement(By.xpath("//tbody[@id='tabelka']/tr["+numerWiersza+"]/td["+komorka+"]")));
+        }
+
+        return komorki;
     }
 
 }
