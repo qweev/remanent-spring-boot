@@ -17,6 +17,10 @@ public class ModalZmienDialog {
     @FindBy(id="modalZmienDialog")
     private static WebElement dialog;
 
+    @FindBy(id="zamknijDialogZmien")
+    private static WebElement zamknijDialogZmien;
+
+
     @Autowired
     public ModalZmienDialog(WebDriver driver){
         this.driver = driver;
@@ -35,4 +39,7 @@ public class ModalZmienDialog {
         return dialog;
     }
 
+    public void zamknij() {
+        zamknijDialogZmien.click();
+    }
 }

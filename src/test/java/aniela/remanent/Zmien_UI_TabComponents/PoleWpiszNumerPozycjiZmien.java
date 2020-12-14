@@ -51,4 +51,8 @@ public class PoleWpiszNumerPozycjiZmien {
         przyciskPobierz.click();
     }
 
+    public boolean jestWidoczne(){
+        return poleWpiszNumerPozycji.isDisplayed();
+    }
+
 }

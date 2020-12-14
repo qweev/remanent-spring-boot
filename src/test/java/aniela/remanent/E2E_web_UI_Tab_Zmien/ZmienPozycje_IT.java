@@ -51,13 +51,6 @@ public class ZmienPozycje_IT {
         tabZmien.kliknijTab();
     }
 
-//    @After
-//    public void cleanUpTest(){
-//        driver.navigate().refresh();
-//    }
-
-
-
     @Test
     public void zmianaNazwyTowaruOrazIlosciWPozycji(){
         String nazwaTowaruDoZmiany  = "nowa nazwa";
