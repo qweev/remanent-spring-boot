@@ -14,6 +14,9 @@ public class ModalSzukajDialog {
     @FindBy(id = "modalSzukajDialog")
     private WebElement modalSzukajDialog;
 
+    @FindBy(id = "zamknijDialogSzukaj")
+    private WebElement przyciskZamknijDialogSzukaj;
+
     @Autowired
     public ModalSzukajDialog(WebDriver driver){
         this.driver = driver;
@@ -22,6 +25,14 @@ public class ModalSzukajDialog {
 
     public String pobierzText(){
         return this.modalSzukajDialog.getText();
+    }
+
+    public void zamknijDialog(){
+        przyciskZamknijDialogSzukaj.click();
+    }
+
+    public WebElement getPrzyciskZamknijDialogSzukaj(){
+        return przyciskZamknijDialogSzukaj;
     }
 
 }

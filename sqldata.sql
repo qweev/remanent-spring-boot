@@ -577,4 +577,8 @@ values (null,'raport towar',30.0,20,11,'raport','szt.');
 commit;
 
 
+insert into sklep.pozycje(`id`,`nazwa_towaru` ,`cena_brutto` ,`cena_netto` ,`ilosc` ,`uzytkownik` ,`jednostka`)
+values (null,'raport szukaj dodaj',30.0,20,11,'szukajDodaj','szt.');
+commit;
+
 
