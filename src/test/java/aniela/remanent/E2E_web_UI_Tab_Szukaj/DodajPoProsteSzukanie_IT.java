@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {FireFoxConfiguration.class})
@@ -57,8 +58,6 @@ public class DodajPoProsteSzukanie_IT {
 
 
 
-
-
     @Autowired
     private ZapisDoBazyPrzycisk przyciskZapisDoBazy;
     @Autowired
@@ -85,6 +84,9 @@ public class DodajPoProsteSzukanie_IT {
     private TabelkaHistoriaWpisow tabelkaHistoriaWpisow;
     @Autowired
     private DodajTab dodajTab;
+    @Autowired
+    private PrzyciskZmien przyciskZmien;
+
 
     @Before
     public void setUp(){
@@ -144,6 +146,8 @@ public class DodajPoProsteSzukanie_IT {
         Integer wynik = Integer.valueOf(iloscPobranaPrzed)+Integer.valueOf(dodajIlosc);
         assertEquals(iloscPobranaPo, wynik.toString());
 
+        assertTrue(przyciskZmien.jestWidoczny());
+        assertTrue(dodajWHistoriPrzycisk.jestWidoczny());
     }
 
 

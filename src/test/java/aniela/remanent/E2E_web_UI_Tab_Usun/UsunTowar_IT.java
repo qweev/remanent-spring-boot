@@ -2,6 +2,8 @@ package aniela.remanent.E2E_web_UI_Tab_Usun;
 
 import aniela.FireFoxConfiguration;
 import aniela.remanent.Application;
+import aniela.remanent.DodajTowar_UI_TabComponents.DodajWHistoriPrzycisk;
+import aniela.remanent.DodajTowar_UI_TabComponents.PrzyciskZmien;
 import aniela.remanent.UsunTowar_UI_TabComponents.*;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -22,6 +24,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {FireFoxConfiguration.class})
@@ -45,18 +48,16 @@ public class UsunTowar_IT {
     private TabelkaUsun tabelkaUsun;
     @Autowired
     private PrzyciskUsunZBazy przyciskUsunZBazy;
+    @Autowired
+    private PrzyciskZmien przyciskZmien;
+    @Autowired
+    private DodajWHistoriPrzycisk dodajWHistoriPrzycisk;
 
     @Before
     public void setUp(){
         driver.get("http://localhost:8080/index.html");
         tabUsun.kliknijTab();
     }
-
-//    @After
-//    public void cleanUpTest(){
-//        driver.navigate().refresh();
-//    }
-
 
 
     @Test
@@ -95,13 +96,15 @@ public class UsunTowar_IT {
         przyciskPobierzDoUsun.kliknijPrzycisk();
         czekajNaPozycjeIPrzyciskUsunZBazy();
 
-
-
         przyciskUsunZBazy.kliknijPrzycisk();
         czekajNaModalDialog();
 
         assertEquals(false, modalUsunDialog.pobierzStyl().contains(stylCzerwony));
         assertEquals(true, modalUsunDialog.pobierzText().contains("Pozycja o numerze: ".concat(numerPozycji)));
+
+
+        assertTrue(przyciskZmien.jestWidoczny());
+        assertTrue(dodajWHistoriPrzycisk.jestWidoczny());
     }
 
     private void czekajNaPozycjeIPrzyciskUsunZBazy() {

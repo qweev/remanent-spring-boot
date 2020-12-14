@@ -1,5 +1,4 @@
-package aniela.remanent.SzukajTowarProste_UI_TabComponents;
-
+package aniela.remanent.DodajTowar_UI_TabComponents;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,25 +7,29 @@ import org.openqa.selenium.support.PageFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
-public class PrzyciskDodajTabelka {
+public class PrzyciskZmien {
 
     private WebDriver driver;
-    @FindBy(id="zmienIloscBazaPoSzukaj")
-    private WebElement zmienIloscBazaPoSzukaj;
+
+    @FindBy(id="zmienDodajPrzycisk")
+    private WebElement przyciskZmien;
+
 
     @Autowired
-    public PrzyciskDodajTabelka(WebDriver driver){
+    public PrzyciskZmien(WebDriver driver){
         this.driver = driver;
         PageFactory.initElements(this.driver, this);
     }
 
-    public void kliknijDodaj(){
-        zmienIloscBazaPoSzukaj.click();
+    public void kliknijZmien(){
+        przyciskZmien.click();
     }
 
     public boolean jestWidoczny(){
-        return zmienIloscBazaPoSzukaj.isDisplayed();
+        return przyciskZmien.isDisplayed();
     }
+
 
 }

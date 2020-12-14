@@ -25,4 +25,7 @@ public class DodajWHistoriPrzycisk {
         dodajPrzycisk.click();
     }
 
+    public boolean jestWidoczny(){
+        return dodajPrzycisk.isDisplayed();
+    }
 }
