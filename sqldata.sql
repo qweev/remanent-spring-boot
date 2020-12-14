@@ -578,7 +578,9 @@ commit;
 
 
 insert into sklep.pozycje(`id`,`nazwa_towaru` ,`cena_brutto` ,`cena_netto` ,`ilosc` ,`uzytkownik` ,`jednostka`)
-values (null,'raport szukaj dodaj',30.0,20,11,'szukajDodaj','szt.');
+values (null,'szukaj dodaj',30.0,20,11,'szukajDodaj','szt.');
 commit;
-
+insert into sklep.pozycje(`id`,`nazwa_towaru` ,`cena_brutto` ,`cena_netto` ,`ilosc` ,`uzytkownik` ,`jednostka`)
+values (null,'towar po zmianie w szukaj',30.0,20,11,'abc','szt.');
+commit;
 
