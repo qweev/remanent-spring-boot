@@ -2,11 +2,10 @@ package aniela.remanent.E2E_web_UI_Tab_Usun;
 
 import aniela.FireFoxConfiguration;
 import aniela.remanent.Application;
-import aniela.remanent.DodajTowar_UI_TabComponents.DodajWHistoriPrzycisk;
+import aniela.remanent.DodajTowar_UI_TabComponents.DodajTab;
+import aniela.remanent.DodajTowar_UI_TabComponents.DodajWHistoriPrzycisk_2;
 import aniela.remanent.DodajTowar_UI_TabComponents.PrzyciskZmien;
 import aniela.remanent.UsunTowar_UI_TabComponents.*;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,12 +15,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-
-import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -51,7 +47,9 @@ public class UsunTowar_IT {
     @Autowired
     private PrzyciskZmien przyciskZmien;
     @Autowired
-    private DodajWHistoriPrzycisk dodajWHistoriPrzycisk;
+    private DodajWHistoriPrzycisk_2 dodajWHistoriPrzycisk2;
+    @Autowired
+    private DodajTab dodajTab;
 
     @Before
     public void setUp(){
@@ -101,10 +99,6 @@ public class UsunTowar_IT {
 
         assertEquals(false, modalUsunDialog.pobierzStyl().contains(stylCzerwony));
         assertEquals(true, modalUsunDialog.pobierzText().contains("Pozycja o numerze: ".concat(numerPozycji)));
-
-
-        assertTrue(przyciskZmien.jestWidoczny());
-        assertTrue(dodajWHistoriPrzycisk.jestWidoczny());
     }
 
     private void czekajNaPozycjeIPrzyciskUsunZBazy() {
@@ -115,13 +109,9 @@ public class UsunTowar_IT {
         czekaj.until(ExpectedConditions.elementToBeClickable(przyciskUsunZBazy.pobierzWebElement()));
     }
 
-
-    private boolean zlyWpis() {
-        return polePobierzPozycjeDoUsun.pobierzStyl().contains(stylCzerwony);
-    }
-
     private void czekajNaModalDialog() {
         WebDriverWait czekajModal = new WebDriverWait(driver, 20, 2000);
         czekajModal.until(ExpectedConditions.visibilityOf(modalUsunDialog.pobierzWebElement()));
     }
+
 }

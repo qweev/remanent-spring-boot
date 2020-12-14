@@ -76,7 +76,7 @@ public class ProsteSzukanie_IT {
     @Test
     public void szukaniePoUzytkowniku(){
         String nazwaDoSzukania = "szukaj";
-        int liczbaWierszy = 4;
+        int liczbaWierszy = 5;
 
         poleSzukajPoUzytkowniku.kliknij();
         poleSzukajPozycji.wpiszTekst(nazwaDoSzukania);

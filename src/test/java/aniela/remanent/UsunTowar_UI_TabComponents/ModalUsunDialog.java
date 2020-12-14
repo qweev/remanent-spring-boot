@@ -15,6 +15,10 @@ public class ModalUsunDialog {
     @FindBy(id="modalUsunDialog")
     private WebElement dialog;
 
+    @FindBy(id="zamknijDialogUsun")
+    private WebElement przyciskZamknij;
+
+
     @Autowired
     public ModalUsunDialog(WebDriver driver){
         this.driver = driver;
@@ -31,5 +35,9 @@ public class ModalUsunDialog {
 
     public String pobierzStyl(){
         return dialog.getAttribute("class");
+    }
+
+    public void zamknij() {
+        przyciskZamknij.click();
     }
 }

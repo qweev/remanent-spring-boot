@@ -7,7 +7,6 @@ import aniela.remanent.DodajTowar_UI_TabComponents.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.*;
@@ -17,10 +16,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 
@@ -56,7 +53,7 @@ public class DodajTowarTabTabelkaHistoria_IT {
     @Autowired
     private PoleJednostka poleJednostka;
     @Autowired
-    private DodajWHistoriPrzycisk dodajWHistoriPrzycisk;
+    private DodajWHistoriPrzycisk_2 dodajWHistoriPrzycisk2;
     @Autowired
     private PoleDodajWHistori poleDodajWHistori;
     @Autowired
@@ -85,7 +82,7 @@ public class DodajTowarTabTabelkaHistoria_IT {
         String iloscPobranaPrzed = komorkiPrzed.get(5).getText(); // kolumna ilosc
 
         poleDodajWHistori.wpiszIlosc(iloscDodaj);
-        dodajWHistoriPrzycisk.kliknijDodaj();
+        dodajWHistoriPrzycisk2.kliknijDodaj();
         waitForJavaScriptToFinish(3);
         List<WebElement> komorkiPo = tabelkaHistoriaWpisow.zbierzKomorkiPozycjiZWierszaTabelki(2); //drugi wiersz
         String iloscPobranaPo = komorkiPo.get(5).getText(); // kolumna ilosc

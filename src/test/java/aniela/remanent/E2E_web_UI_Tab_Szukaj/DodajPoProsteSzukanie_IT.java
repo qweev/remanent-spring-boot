@@ -21,7 +21,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -139,7 +138,6 @@ public class DodajPoProsteSzukanie_IT {
         assertEquals(ilosc, "43");
 
         dodajTab.kliknijTab();
-
         List<WebElement> komorkiPo = tabelkaHistoriaWpisow.zbierzKomorkiPozycjiZWierszaTabelki(1); //pierwszy wiersz
         String iloscPobranaPo = komorkiPo.get(5).getText(); // kolumna ilosc
 
