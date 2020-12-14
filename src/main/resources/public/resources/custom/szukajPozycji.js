@@ -366,7 +366,7 @@ $(document).ready(function(){
             console.log("rozmiar tablicy dlugosc : "+response.length);
             console.log("OK odebrany JSON z: /remanent/rest/pozycje/szukaj/zaawansowany+opcje");
             $(this).czyscTabeleSzukania();
-            $("#tabelkaSzukaj").html("<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>");
+            $("#tabelkaSzukaj").html("<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>");
 
             $(this).pobiezWynikiSzukania(response);
         },
@@ -410,7 +410,7 @@ $(document).ready(function(){
             console.log("rozmiar tablicy dlugosc : "+response.length);
             console.log("OK odebrany JSON z: /remanent/rest/pozycje/szukaj/");
             $(this).czyscTabeleSzukania();
-            $("#tabelkaSzukaj").html("<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>");
+            $("#tabelkaSzukaj").html("<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>");
 
             $(this).pobiezWynikiSzukania(response);
         },
