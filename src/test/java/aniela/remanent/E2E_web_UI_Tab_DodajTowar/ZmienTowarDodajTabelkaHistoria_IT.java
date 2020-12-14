@@ -85,7 +85,7 @@ public class ZmienTowarDodajTabelkaHistoria_IT {
     }
 
     @Test
-    public void zmienTowarNaDodaj() {
+    public void zmienTowarNaTabDodaj() {
         przyciskZmien.kliknijZmien();
 
         assertTrue(poleWpiszNumerPozycjiZmien.jestWidoczne());
@@ -97,9 +97,15 @@ public class ZmienTowarDodajTabelkaHistoria_IT {
         List<WebElement> komorki = tabelkaHistoriaWpisow.zbierzKomorkiPozycjiZWierszaTabelki(1);
         String nazwaTowaruPoZmianie = komorki.get(1).getText();
         String iloscPoZmianie = komorki.get(5).getText();
+        String cenaBrutto = komorki.get(2).getText();
+        String cenaNetto = komorki.get(3).getText();
+        String jednostka = komorki.get(4).getText();
 
         assertEquals(nazwaTowaruPoZmianie, "Zmieniony po dodaj");
         assertEquals(iloscPoZmianie, "100");
+        assertEquals(cenaBrutto,"32");
+        assertEquals(cenaNetto,"22");
+        assertEquals(jednostka,"op.");
         assertTrue(dodajWHistoriPrzycisk.jestWidoczny());
         assertTrue(przyciskZmien.jestWidoczny());
     }
@@ -108,8 +114,8 @@ public class ZmienTowarDodajTabelkaHistoria_IT {
     private void uzupelnijPola1() {
         poleNazwaTowaru.wpiszNazweTowaru("towar zmien na dodaj");
         poleUzytkownik.wpiszUzytkownika("zmienuser");
-        poleCenaBrutto.wpiszCeneBrutto("32,51");
-        poleCenaNetto.wpiszCeneNetto("22.45");
+        poleCenaBrutto.wpiszCeneBrutto("32");
+        poleCenaNetto.wpiszCeneNetto("22");
         poleIlosc.wpiszIlosc("32");
         poleJednostka.wybierz("op.");
     }
