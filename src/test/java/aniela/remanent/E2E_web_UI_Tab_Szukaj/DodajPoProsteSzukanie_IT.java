@@ -114,7 +114,7 @@ public class DodajPoProsteSzukanie_IT {
 
     @Test
     public void dodajTowarZmienIloscPoSzukajISprawdzHistorieNaDodaj(){
-        String nazwaDoSzukania = "towar po zmianie w szukaj";
+        String nazwaDoSzukania = "nowy towar po zmianie w szukaj";
         String dodajIlosc = "10";
 
         dodajTab.kliknijTab();
@@ -164,7 +164,7 @@ public class DodajPoProsteSzukanie_IT {
 
     private void uzupelnijPola() {
 
-        poleNazwaTowaru.wpiszNazweTowaru("towar po zmianie w szukaj");
+        poleNazwaTowaru.wpiszNazweTowaru("nowy towar po zmianie w szukaj");
         poleUzytkownik.wpiszUzytkownika("aa");
         poleCenaBrutto.wpiszCeneBrutto("3,51");
         poleCenaNetto.wpiszCeneNetto("2.45");
