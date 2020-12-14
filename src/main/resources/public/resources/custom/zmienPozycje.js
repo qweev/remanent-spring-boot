@@ -297,7 +297,20 @@ $(document).ready(function(){
             				"<b>&nbsp;Dodaj&nbsp;</b><span" +"></span></button>"
 
 
-            				+"</td></tr>"
+            				+"</td>"+
+
+            				                             				"</td>"+
+                                                                                                     				"<td id=''>"+
+
+                                                                                                     				"<button id="+"zmienDodajPrzycisk"+" type="+"button"+
+                                                                                                     				" style=" + "width:60px;color:DodgerBlue;background-color:LightGray;padding:1px;border-radius:4px"+
+                                                                                                     				" <span></span>"+
+                                                                                                     				"<b>&nbsp;Zmień&nbsp;</b><span" +"></span></button>"
+
+
+                                                                                                     				+"</td>"+
+                                                         				"</tr>"
+
 			
 		console.log("akt his nowy row "+ nowyRow);
 		$("#tabelka td").filter(function() {

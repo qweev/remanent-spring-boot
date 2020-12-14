@@ -1,6 +1,5 @@
 $(document).ready(function(){
-	
-	
+
 	// filtr na tabelke historii
 	 $("#szukajDodajTabelka").on("keyup", function() {
 		var value = $(this).val().toLowerCase();
@@ -60,7 +59,16 @@ $(document).ready(function(){
 			}
 	
 	});
-	
+
+
+	$(document).on( "click", "#zmienDodajPrzycisk", function(){ // przycisk zmien
+            $("a")[1].click(); // kliknij tab Zmien
+            var id = $(this).closest('tr').children('td:eq(1)').text().trim(); //pobierz ID pozycji z wiersza tabelki
+            $("#wpiszNumerPozycji").val(id);
+            $("#pobierzPozycjePoNumerzePrzycisk").click();
+    });
+
+
 	var numerPozycjiBazyDoHistori = 0;
 	
 	//walidacja pol
@@ -303,6 +311,7 @@ $(document).ready(function(){
     }
    
    $.fn.aktualizujHistoriePoZmienIlosc = function(pozycja){
+   console.log("wwwwwwwwwww")
 		console.log("aktualizuj historie wpisow po dodaj: " +pozycja); 
 		var nrPozycji = pozycja.id;
 		var d = new Date();
@@ -320,22 +329,35 @@ $(document).ready(function(){
 			
 			"<td>"+
 				
-				"<input type="+"text" + " "+ "id="+"zmienilosc"+
-				" style=" + "width:30px;color:DodgerBlue;padding:1px;border-radius:4px;padding-left:5px;margin-top:-2px;font:bold" +" >" +
-				
-				"</td>"+
-				"<td id="+"ilosctd"+"           >"+
-				
-				"<button id="+"zmienIloscBaza"+" type="+"button"+
-				" style=" + "width:60px;color:DodgerBlue;background-color:LightGray;padding:1px;border-radius:4px"+
-				" <span></span>"+
-				"<b>&nbsp;Dodaj&nbsp;</b><span" +"></span></button>"
-		
-				
-				+"</td></tr>"
+                        				"<input type="+"text" + " "+ "id="+"zmienilosc"+
+                             				" style=" + "width:30px;color:DodgerBlue;padding:1px;border-radius:4px;padding-left:5px;margin-top:-2px;font:bold" +" >" +
+
+
+                             				"</td>"+
+                             				"<td id="+"ilosctd"+"           >"+
+
+                             				"<button id="+"zmienIloscBaza"+" type="+"button"+
+                             				" style=" + "width:60px;color:DodgerBlue;background-color:LightGray;padding:1px;border-radius:4px"+
+                             				" <span></span>"+
+                             				"<b>&nbsp;Dodaj&nbsp;</b><span" +"></span></button>"
+
+
+                             				+"</td>" +
+
+                             				"</td>"+
+                                                                         				"<td id=''>"+
+
+                                                                         				"<button id="+"zmienDodajPrzycisk"+" type="+"button"+
+                                                                         				" style=" + "width:60px;color:DodgerBlue;background-color:LightGray;padding:1px;border-radius:4px"+
+                                                                         				" <span></span>"+
+                                                                         				"<b>&nbsp;Zmień&nbsp;</b><span" +"></span></button>"
+
+
+                                                                         				+"</td>"+
+                             				"</tr>"
 			
-			
-		console.log(" nowy row "+ nowyRow);
+			console.log("wwwwwwwwwww")
+		console.log(" nowy row 111"+ nowyRow);
 		$("#tabelka td").filter(function() {
 			return $(this).text() == nrPozycji;
 			}).parent('tr').html(nowyRow);
@@ -425,7 +447,19 @@ $(document).ready(function(){
                              				"<b>&nbsp;Dodaj&nbsp;</b><span" +"></span></button>"
 
 
-                             				+"</td></tr>"
+                             				+"</td>" +
+
+                             				"</td>"+
+                                                                         				"<td id=''>"+
+
+                                                                         				"<button id="+"zmienDodajPrzycisk"+" type="+"button"+
+                                                                         				" style=" + "width:60px;color:DodgerBlue;background-color:LightGray;padding:1px;border-radius:4px"+
+                                                                         				" <span></span>"+
+                                                                         				"<b>&nbsp;Zmień&nbsp;</b><span" +"></span></button>"
+
+
+                                                                         				+"</td>"+
+                             				"</tr>"
 				
 					
 				
@@ -460,5 +494,9 @@ $(document).ready(function(){
 		$("#towar").focus();
 	
 	});
+
+
+
+
 });
 $(document).ajaxStop($.unblockUI); 

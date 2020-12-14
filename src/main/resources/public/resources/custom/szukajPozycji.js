@@ -465,7 +465,18 @@ $(document).ready(function(){
                 				"<b>&nbsp;Dodaj&nbsp;</b><span" +"></span></button>"
 
 
-                				+"</td></tr>"
+                				+"</td>"+
+                				    								                             				+"</td>"+
+                                                                                                                                             				"<td id=''>"+
+
+                                                                                                                                             				"<button id="+"zmienSzukajPrzycisk"+" type="+"button"+
+                                                                                                                                             				" style=" + "width:60px;color:DodgerBlue;background-color:LightGray;padding:1px;border-radius:4px"+
+                                                                                                                                             				" <span></span>"+
+                                                                                                                                             				"<b>&nbsp;Zmień&nbsp;</b><span" +"></span></button>"
+
+
+                                                                                                                                             				+"</td>"+
+                                                                                                 				"</tr>"
 
 
 	 		);
@@ -531,7 +542,18 @@ $(document).ready(function(){
     				"<b>&nbsp;Dodaj&nbsp;</b><span" +"></span></button>"
 
 
-    				+"</td></tr>"
+    				+"</td>"+
+    								                             				+"</td>"+
+                                                                                                             				"<td id=''>"+
+
+                                                                                                             				"<button id="+"zmienSzukajPrzycisk"+" type="+"button"+
+                                                                                                             				" style=" + "width:60px;color:DodgerBlue;background-color:LightGray;padding:1px;border-radius:4px"+
+                                                                                                             				" <span></span>"+
+                                                                                                             				"<b>&nbsp;Zmień&nbsp;</b><span" +"></span></button>"
+
+
+                                                                                                             				+"</td>"+
+                                                                 				"</tr>"
 
 
     		console.log(" nowy row "+ nowyRow);
@@ -542,7 +564,7 @@ $(document).ready(function(){
     	}
 
 
-   $.fn.aktualizujHistoriePoZmienIlosc = function(pozycja){
+   $.fn.aktualizujHistoriePoZmienIloscPoSzukajNaDodaj = function(pozycja){
 		console.log("aktualizuj historie wpisow po dodaj: " +pozycja);
 		var nrPozycji = pozycja.id;
 		var d = new Date();
@@ -572,7 +594,18 @@ $(document).ready(function(){
 				"<b>&nbsp;Dodaj&nbsp;</b><span" +"></span></button>"
 
 
-				+"</td></tr>"
+				+"</td>"+
+				                             				"</td>"+
+                                                                                         				"<td id=''>"+
+
+                                                                                         				"<button id="+"zmienDodajPrzycisk"+" type="+"button"+
+                                                                                         				" style=" + "width:60px;color:DodgerBlue;background-color:LightGray;padding:1px;border-radius:4px"+
+                                                                                         				" <span></span>"+
+                                                                                         				"<b>&nbsp;Zmień&nbsp;</b><span" +"></span></button>"
+
+
+                                                                                         				+"</td>"+
+                                             				"</tr>"
 
 
 		console.log(" nowy row "+ nowyRow);
@@ -649,7 +682,7 @@ $(document).ready(function(){
             	$("#modalSzukajDialog").html("Pozycja numer: "+ response.id +" zmieniona w bazie o "+ iloscDoDodania);
             	$("#szukajDialog").modal("show");
 				$(this).aktualizujHistoriePoZmienIloscPoSzukaj(response);
-				$(this).aktualizujHistoriePoZmienIlosc(response);
+				$(this).aktualizujHistoriePoZmienIloscPoSzukajNaDodaj(response);
 
 				console.log("z bazy ilosc po zmianie to :" + response.ilosc)
 				setTimeout(function () {$('#zamknijDialogZapisz').focus();}, 500);
@@ -667,7 +700,12 @@ $(document).ready(function(){
     	});
     }
 
-
+	$(document).on( "click", "#zmienSzukajPrzycisk", function(){ // przycisk zmien
+            $("a")[1].click(); // kliknij tab Zmien
+            var id = $(this).closest('tr').children('td:eq(0)').text().trim(); //pobierz ID pozycji z wiersza tabelki
+            $("#wpiszNumerPozycji").val(id);
+            $("#pobierzPozycjePoNumerzePrzycisk").click();
+    });
 
 
 
