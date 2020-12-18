@@ -580,3 +580,22 @@ commit;
 insert into sklep.pozycje(`id`,`nazwa_towaru` ,`cena_brutto` ,`cena_netto` ,`ilosc` ,`uzytkownik` ,`jednostka`)
 values (null,'szukaj dodaj',30.0,20,11,'szukajDodaj','szt.');
 commit;
+
+
+insert into sklep.pozycje(`id`,`nazwa_towaru` ,`cena_brutto` ,`cena_netto` ,`ilosc` ,`uzytkownik` ,`jednostka`)
+values (null,'sortuj 2',20.2,20,2,'sortuj','szt.');
+commit;
+
+insert into sklep.pozycje(`id`,`nazwa_towaru` ,`cena_brutto` ,`cena_netto` ,`ilosc` ,`uzytkownik` ,`jednostka`)
+values (null,'sortuj 1',10.1,20,1,'sortuj','szt.');
+commit;
+
+insert into sklep.pozycje(`id`,`nazwa_towaru` ,`cena_brutto` ,`cena_netto` ,`ilosc` ,`uzytkownik` ,`jednostka`)
+values (null,'sortuj 4',40.4,40,4,'sortuj','szt.');
+commit;
+
+
+insert into sklep.pozycje(`id`,`nazwa_towaru` ,`cena_brutto` ,`cena_netto` ,`ilosc` ,`uzytkownik` ,`jednostka`)
+values (null,'sortuj 3',30.3,30,3,'sortuj','szt.');
+commit;
+

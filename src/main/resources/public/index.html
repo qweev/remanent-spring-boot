@@ -17,6 +17,8 @@
   <script src="resources\custom\szukajPozycji.js"></script>
   <script src="resources\custom\zmienPozycje.js"></script>
   <script src="resources\custom\usunPozycje.js"></script>
+	<script src="resources\custom\sortTable.js"></script>
+	<script src="resources\custom\sorting.js"></script>
 
 
 <script>
@@ -383,16 +385,16 @@ color: red;
 				<div class="col-sm-2"><input class="form-control" id="szukajSzukajTabelka" type="text" placeholder="Szukaj..."></div>
 			</div>
 		
-			<table class="table table-striped ">
+			<table id="szukajTabelka" class="table table-striped ">
     <thead >
       <tr>
-	    <th class="text-center">Numer</th>
-	    <th class="text-center">Nazwa towaru</th>
-        <th class="text-center">Cena Brutto</th>
-        <th class="text-center">Cena Netto</th>
-		<th class="text-center">Jednostki</th>
-		<th class="text-center">Ilość</th>
-		<th class="text-center">Użytkownik</th>
+	    <th id="numerKolumnaWSzukaj" class="text-center">Numer</th>
+	    <th id="nazwaTowaruKolumnaWSzukaj" class="text-center">Nazwa towaru</th>
+        <th id="cenaBruttoKolumnaWSzukaj" class="text-center">Cena Brutto</th>
+        <th id="cenaNettoKolumnaWSzukaj" class="text-center">Cena Netto</th>
+		<th id="jednostkaKolumnaWSzukaj" class="text-center">Jednostki</th>
+		<th id="iloscKolumnaWSzukaj" class="text-center">Ilość</th>
+		<th id="uzytkownikKolumnaWSzukaj" class="text-center">Użytkownik</th>
 		<th class="text-center">Dodaj</th>
 		  <th class="text-center"></th>
 		  <th class="text-center"></th>
