@@ -4,8 +4,6 @@ import aniela.remanent.position.abstraction.PositionAbstract;
 
 public class PozycjaDoRaportuNetto extends PositionAbstract {
 
-
-
     public PozycjaDoRaportuNetto() {
     }
 
@@ -16,6 +14,4 @@ public class PozycjaDoRaportuNetto extends PositionAbstract {
                 nazwaTowaru + ", jednostka:" + jednostka +
                 ", ilosc:" + ilosc + ", pozyzjaWRaporcie:" + pozyzjaWRaporcie + "}";
     }
-
-
 }

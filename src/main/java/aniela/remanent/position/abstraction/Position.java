@@ -1,6 +1,6 @@
 package aniela.remanent.position.abstraction;
 
-import aniela.remanent.type.ReportType;
+import aniela.remanent.report.type.ReportType;
 
 public interface Position {
 

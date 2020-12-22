@@ -1,7 +1,6 @@
 package aniela.remanent.pozycje.bazaDanych;
 
 import javax.persistence.*;
-import java.io.Serializable;
 
 // uzyj LOMBOK adnotacji
 
