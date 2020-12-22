@@ -5,19 +5,18 @@ import aniela.remanent.position.brutto.PozycjaDoRaportuBrutto;
 import aniela.remanent.position.netto.PozycjaDoRaportuNetto;
 import aniela.remanent.pozycje.bazaDanych.PozycjaBazy;
 import aniela.remanent.pozycje.helperyZapytanDoBazy.expression.evaluator.ExpressionEvaluator;
-
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaQuery;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaQuery;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Transactional
 @Repository
@@ -154,17 +153,10 @@ public class BazaDAO {
 
     public PozycjaBazy pobierzPozycjeDoZmien(int numer) {
         PozycjaBazy pozycja = null;
-//        Transaction tranzakcja = null;
         Session sesja = entityManager.unwrap(Session.class);
-
         try {
-//            tranzakcja = sesja.beginTransaction();
             pozycja = sesja.get(PozycjaBazy.class, numer);
-
             LOGGER.info("Znaleziono pozycje do zmien: " + pozycja);
-
-//            tranzakcja.commit();
-
         } catch (HibernateException e) {
             LOGGER.info("Exception in Hibernate " + e);
         } finally {
@@ -174,58 +166,42 @@ public class BazaDAO {
 
     }
 
-
     public int zmienPozycjeWBazie(PozycjaBazy pozycja) {
-//        PozycjaBazy pozycjaZwrotna = null;
-//        Transaction tranzakcja = null;
         Session sesja = entityManager.unwrap(Session.class);
 
         LOGGER.info("Pozycja do zmiany: " + pozycja);
-
         try {
-//            tranzakcja = sesja.beginTransaction();
             sesja.update(pozycja);
-//            tranzakcja.commit();
 
         } catch (HibernateException e) {
             LOGGER.info("Exception in Hibernate " + e);
-
         } finally {
             sesja.close();
         }
         LOGGER.info("Zmieniono pozycje na: " + pozycja);
         return pozycja.getId();
-
     }
 
 
     public int usunPozycjeZBazy(int numerDoUsunieciaZBazy) {
-//        Transaction tranzakcja = null;
         Session sesja = entityManager.unwrap(Session.class);
         int numer = 0;
-
         try {
-//            tranzakcja = sesja.beginTransaction();
             PozycjaBazy pozycja = sesja.get(PozycjaBazy.class, numerDoUsunieciaZBazy);
             sesja.delete(pozycja);
-//            tranzakcja.commit();
             numer = numerDoUsunieciaZBazy;
         } catch (HibernateException e) {
             LOGGER.info("Exception in Hibernate " + e);
-//            if (tranzakcja != null) tranzakcja.rollback();
         } finally {
             sesja.close();
         }
         LOGGER.info("NumerPozycji usunietej z bazy : " + numer);
-
         return numer;
     }
-
 
     public int obliczIloscPozycji() {
         Session sesja = entityManager.unwrap(Session.class);
         long iloscPozycji = 0;
-
         try {
             iloscPozycji = (long) sesja.createQuery("SELECT count(*) FROM PozycjaBazy").list().get(0);
         } catch (HibernateException e) {
@@ -243,11 +219,8 @@ public class BazaDAO {
     public List<Position> przygotujPozycjeDoRaportuNetto() {
         List<Position> pozycjeRaportu = new ArrayList<>();
         Session sesja = entityManager.unwrap(Session.class);
-
         try {
             List<PozycjaBazy> pozycjeBazy = sesja.createQuery("FROM PozycjaBazy ORDER BY id ASC").list();
-
-            //TODO froeach
             for (PozycjaBazy pozycjaBazy : pozycjeBazy) {
                 PozycjaDoRaportuNetto pozycjaRaport = new PozycjaDoRaportuNetto();
                 pozycjaRaport.setCenaNetto(pozycjaBazy.getCena_netto());
@@ -275,11 +248,8 @@ public class BazaDAO {
         List<Position> pozycjeRaportu = new ArrayList<>();
         List<PozycjaBazy> pozycjeBazy = new ArrayList<>();
         Session sesja = entityManager.unwrap(Session.class);
-
-
         try {
             pozycjeBazy.addAll(sesja.createQuery("FROM PozycjaBazy ORDER BY nazwa_towaru ASC").list());
-            //TODO froeach
             for (PozycjaBazy pozycjaBazy : pozycjeBazy) {
                 PozycjaDoRaportuBrutto pozycjaRaport = new PozycjaDoRaportuBrutto();
                 pozycjaRaport.setCenaNetto(pozycjaBazy.getCena_netto());
@@ -310,7 +280,6 @@ public class BazaDAO {
         double sumaNetto = 0;
         double sumaBrutto = 0;
         double iloscPozycji = 0;
-
         try {
             iloscPozycji = (long) sesja.createQuery("SELECT count(*) FROM PozycjaBazy").list().get(0);
             sumaNetto = (double) sesja.createQuery("SELECT sum(P.cena_netto*P.ilosc) FROM PozycjaBazy as P").list().get(0);
@@ -349,7 +318,6 @@ public class BazaDAO {
         return pozycje;
     }
 
-
     private String utworzHQLDoPobraniaNumeruPozycjiH(PozycjaBazy pozycja) {
         String hql = "SELECT" + SPACE + pozycja.getId() + SPACE + "FROM PozycjaBazy" + SPACE + "WHERE" + SPACE +
                 "nazwa_towaru =" + SPACE + "'" + pozycja.getNazwa_towaru() + "'" + SPACE + "AND" + SPACE +
@@ -362,5 +330,27 @@ public class BazaDAO {
         return hql;
     }
 
-
+    public int merge(List<Integer> ids) {
+        List<PozycjaBazy> positions = new ArrayList<>();
+        for (int id : ids) {
+            positions.add(this.pobierzPozycjeDoZmien(id));
+        }
+        PozycjaBazy positionToUpdate = this.pobierzPozycjeDoZmien(ids.get(0));
+        double amount = positionToUpdate.getIlosc();
+        for (int pointer = 1; pointer < ids.size(); pointer++) {
+            PozycjaBazy candidateToMerge = this.pobierzPozycjeDoZmien(ids.get(pointer));
+            //TODO czy dodajemy ten check czy na palke mergujemy
+            if (candidateToMerge.getCena_netto() == positionToUpdate.getCena_netto() &&
+                    candidateToMerge.getCena_brutto() == positionToUpdate.getCena_brutto()
+            ) {
+                amount = amount + candidateToMerge.getIlosc();
+            }
+        }
+        for (int pointer = 1; pointer < ids.size(); pointer++) {
+            this.usunPozycjeZBazy(ids.get(pointer));
+        }
+        positionToUpdate.setIlosc(amount);
+        this.zmienPozycjeWBazie(positionToUpdate);
+        return ids.get(0);
+    }
 }
