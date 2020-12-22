@@ -11,23 +11,18 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
 public class Pozycje {
     private final static Logger LOG = Logger.getLogger(Pozycje.class);
 
     @Autowired
-    private BazaRepository BazaAccess;
-
-    //@Autowired
-    //private BazaDAO baza;
+    private BazaRepository bazaRepository;
 
     @PostMapping(path = "/remanent/rest/pozycje/dodajIloscDoPozycji/{numerPozycji}/{ilosc}",
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public ResponseEntity dodajIloscDoPozycji(@PathVariable("numerPozycji") int numerPozycji,
-                                              @PathVariable("ilosc") double ilosc) {
+    public ResponseEntity dodajIloscDoPozycji(@PathVariable("numerPozycji") int numerPozycji, @PathVariable("ilosc") double ilosc) {
         LOG.info("dodawanie ilosci do pozycji");
-        PozycjaBazy pozycja = BazaAccess.dodajIloscDoPozycjiDoBazy(numerPozycji, ilosc);
+        PozycjaBazy pozycja = bazaRepository.dodajIloscDoPozycjiDoBazy(numerPozycji, ilosc);
         double iloscRound = Math.round((pozycja.getIlosc() + ilosc) * 100) / 100.0d; // do dwoch miejsc po przecinku dla weba
         pozycja.setIlosc(iloscRound);
         System.out.println("do weba idzie : " + pozycja.getIlosc());
@@ -38,17 +33,16 @@ public class Pozycje {
             consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity dodajPozycje(@RequestBody PozycjaBazy pozycja) {
         LOG.info("dodawanie pozycji");
-        Integer numerPozycji = BazaAccess.dodajPozycjeDoBazy(pozycja);
+        Integer numerPozycji = bazaRepository.dodajPozycjeDoBazy(pozycja);
         LOG.info("zwrocony numer dodanej pozycji: " + numerPozycji);
         return ResponseEntity.status(HttpStatus.OK).body(numerPozycji.toString());
     }
-
 
     @PostMapping(path = "/remanent/rest/pozycje/zmien/wyslijDoZmiany",
             consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity zmienPozycje(@RequestBody PozycjaBazy pozycja) {
         LOG.info("zmiana pozycji");
-        Integer numerPozycji = BazaAccess.zmienPozycjeWBazie(pozycja);
+        Integer numerPozycji = bazaRepository.zmienPozycjeWBazie(pozycja);
         LOG.info("zwrocony numer dodanej pozycji: " + numerPozycji);
         return ResponseEntity.status(HttpStatus.OK).body(numerPozycji.toString());
     }
@@ -57,7 +51,7 @@ public class Pozycje {
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity pobierzPozycjeDoZmiany(@PathVariable("numer") int numer) {
         LOG.info("pobrany numer pozycji do zmiany : " + numer);
-        PozycjaBazy pozycjaDoZmien = BazaAccess.pobierzPozycjeDoZmien(numer);
+        PozycjaBazy pozycjaDoZmien = bazaRepository.pobierzPozycjeDoZmien(numer);
         if (pozycjaDoZmien == null) {
             LOG.info("zwrocono pobrany numer pozycji do zmiany : NULL ");
             return ResponseEntity.status(HttpStatus.GONE).build();
@@ -66,7 +60,6 @@ public class Pozycje {
         return ResponseEntity.status(HttpStatus.OK).body(pozycjaDoZmien);
     }
 
-
     @GetMapping(path = "/remanent/rest/pozycje/szukaj/{pobranaNazwa}/{radioValue}",
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity szukajPozycji(@PathVariable("pobranaNazwa") String pobranaNazwa,
@@ -74,7 +67,7 @@ public class Pozycje {
     ) {
         LOG.info("szukaj nazwy : " + pobranaNazwa);
         LOG.info("szukaj wybor: " + radioValue);
-        List<PozycjaBazy> wynikiSzukaniaBaza = BazaAccess.listaZnalezionychPozycjiWBazie(pobranaNazwa, radioValue);
+        List<PozycjaBazy> wynikiSzukaniaBaza = bazaRepository.listaZnalezionychPozycjiWBazie(pobranaNazwa, radioValue);
         LOG.info("wyszukano pozycji: " + wynikiSzukaniaBaza.size());
         return ResponseEntity.status(HttpStatus.OK).body(wynikiSzukaniaBaza);
     }
@@ -84,7 +77,7 @@ public class Pozycje {
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity pobierzPozycjeDoUsuniecia(@PathVariable("numerDoUsuniecia") int numerDoUsuniecia) {
         LOG.info("pobrany numer pozycji do usuniecia : " + numerDoUsuniecia);
-        PozycjaBazy pozycjaDoUsuniecia = BazaAccess.pobierzPozycjeDoZmien(numerDoUsuniecia);
+        PozycjaBazy pozycjaDoUsuniecia = bazaRepository.pobierzPozycjeDoZmien(numerDoUsuniecia);
         if (pozycjaDoUsuniecia == null) {
             LOG.info("zwrocono pobrany numer pozycji do zmiany : NULL ");
             return ResponseEntity.status(HttpStatus.GONE).build();
@@ -96,11 +89,10 @@ public class Pozycje {
     @GetMapping(path = "/remanent/rest/pozycje/usun/{numerDoUsunieciaZBazy}")
     public ResponseEntity usunPozycje(@PathVariable("numerDoUsunieciaZBazy") int numerDoUsunieciaZBazy) {
         LOG.info("pobrany numer pozycji do usuniecia : " + numerDoUsunieciaZBazy);
-        Integer numer = BazaAccess.usunPozycjeZBazy(numerDoUsunieciaZBazy);
+        Integer numer = bazaRepository.usunPozycjeZBazy(numerDoUsunieciaZBazy);
         LOG.info("zwrocono numer usunietej pozycji : " + numer);
         return ResponseEntity.status(HttpStatus.OK).body(numer.toString());
     }
-
 
     @GetMapping(path = "/remanent/rest/pozycje/szukaj/zaawansowany",
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
@@ -115,7 +107,7 @@ public class Pozycje {
     ) {
         System.out.print("REST PARAMS zaawas szukanie ++++!!!!! + =" + towar + " " + uzytkownik + " " + cenaNetto + " " + radioNetto + " " + cenaBrutto + " " + radioBrutto + " " + ilosc + " " + radioIlosc);
         LOG.info("zaawansowane szukanie: " + towar + " " + uzytkownik + " " + cenaNetto + " " + radioNetto + " " + cenaBrutto + " " + radioBrutto + " " + ilosc + " " + radioIlosc);
-        List<PozycjaBazy> result = BazaAccess.advancedSearch(towar, uzytkownik, cenaNetto, radioNetto, cenaBrutto, radioBrutto, ilosc, radioIlosc);
+        List<PozycjaBazy> result = bazaRepository.advancedSearch(towar, uzytkownik, cenaNetto, radioNetto, cenaBrutto, radioBrutto, ilosc, radioIlosc);
         if (result.size() == 0) {
             LOG.info("szukanie zaawansowane nic nie znalazlo");
             return ResponseEntity.status(HttpStatus.GONE).build();
@@ -130,9 +122,7 @@ public class Pozycje {
             LOG.info("Merging cannot be done due to insufficient  number of IDS: " + ids + " " + ids.size());
             return ResponseEntity.status(HttpStatus.OK).body("Merging cannot be executed: " + ids);
         }
-        int masterIndex = this.BazaAccess.merge(ids);
+        int masterIndex = this.bazaRepository.merge(ids);
         return ResponseEntity.status(HttpStatus.OK).body("Merged positions to: " + masterIndex);
     }
-
-
 }
