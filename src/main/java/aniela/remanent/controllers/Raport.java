@@ -85,7 +85,7 @@ public class Raport {
         }
     }
 
-
+    //TODO WAZNE
     @GetMapping(path = "/remanent/rest/raport/zeroweCeny", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity zeroweCeny() {
 
