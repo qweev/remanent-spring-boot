@@ -47,7 +47,6 @@ public class Raport {
         String fullSciezka = ReportFileResolver.resolveFilePathForPdf(sciezka);
         List<Position> positions = bazaRepository.przygotujPozycjeDoRaportuBrutto();
         String status = reportPdfBrutto.generateReport(positions, fullSciezka, positions.size());
-
         if (status.equalsIgnoreCase(STATUS_OK)) {
             logger.info("raportNetto zrobiony");
             return ResponseEntity.status(HttpStatus.OK).body(MessageFactory.generateMessageOKStatus(fullSciezka));
@@ -56,7 +55,6 @@ public class Raport {
             logger.info("raportNetto NIE zrobiony");
             return ResponseEntity.status(HttpStatus.GONE).body(statusDoWyslania);
         }
-
     }
 
     @GetMapping(path = "/remanent/rest/raport/excel/{sciezka}")
@@ -85,20 +83,17 @@ public class Raport {
         }
     }
 
-    //TODO WAZNE
     @GetMapping(path = "/remanent/rest/raport/zeroweCeny", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity zeroweCeny() {
 
         List<PozycjaBazy> pozycje = bazaRepository.pobierzZeroweCeny();
-        logger.info("raportNetto zerowe ceny ilosc  : " + pozycje.size());
+        logger.info("Raport netto zerowe ceny ilosc  : " + pozycje.size());
         if ((pozycje.size() == 0) || (pozycje == null)) {
-            return ResponseEntity.status(HttpStatus.GONE).body("brak pozycji");
+            return ResponseEntity.status(HttpStatus.GONE).body("{brak pozycji}");
         } else {
             return ResponseEntity.status(HttpStatus.OK).body(pozycje);
         }
-
     }
-
 
     @GetMapping("/remanent/rest/raport/zaloguj/{user}/{pass}")
     public ResponseEntity sprawdzLoginHaslo(@PathVariable("user") String user, @PathVariable("pass") String pass) {
