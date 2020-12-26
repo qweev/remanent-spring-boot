@@ -139,7 +139,7 @@ public class BazaDAO {
                 pozycje = sesja.createQuery(hqlSzukajTowar).setParameter("pobranaNazwa", pobranaNazwa).list();
             } else {
                 pozycje = sesja.createQuery(hqlSzukajTowarPoUserze).setParameter("pobranaNazwa", pobranaNazwa).list();
-                pozycje = pozycje.stream().limit(50).collect(Collectors.toList());
+                pozycje = pozycje.stream().skip(Math.max(0, pozycje.size() - 100)).collect(Collectors.toList());
             }
         } catch (HibernateException e) {
             LOGGER.info("exception in HIBERNATE " + e);
