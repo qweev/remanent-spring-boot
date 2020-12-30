@@ -1,0 +1,46 @@
+.czerwony {
+border: 1px solid red;
+}
+.czerwonyText {
+color: red;
+}
+.zielonyText{
+color: green;
+}
+.center{
+ margin: auto;
+ width: 30%;
+}
+
+.uzytkownik{
+margin-left: 5px;
+width: 120px;
+padding-left: 10px;
+padding-right: 5px;
+padding-top: 2px;
+padding-bottom: 2px;
+border-radius: 4px;
+}
+
+.uzytkownik:focus{
+margin-left: 5px;
+width: 120px;
+padding-left: 10px;
+padding-right: 5px;
+padding-top: 2px;
+padding-bottom: 2px;
+box-shadow: 0 1px 8px 0 rgb(180, 205, 255);
+border-radius: 4px;
+border: 1px solid DodgerBlue;
+}
+
+.historiaPozycja{
+box-shadow: 0 4px 8px 0 rgb(180, 205, 255);
+border-radius: 8px;
+border: 3px solid DodgerBlue;
+}
+
+.historiaPozycjaCzerwony{
+border: 3px solid red;
+color: red;
+}

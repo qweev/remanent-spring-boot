@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <title>Remanent Sklep Aniela</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="resources\css\bootstrap.min.css" rel="stylesheet">
+    <link href="resources\custom\merge.css" rel="stylesheet">
+    <script src="resources\jq\jquery.min.js"></script>
+    <script src="resources\js\bootstrap.min.js"></script>
+    <script src="resources\custom\block.js"></script>
+    <script src="resources\custom\wspolneFunkcje.js"></script>
+    <script src="resources\custom\szukajPozycjiMerge.js"></script>
+    <script src="resources\custom\sortTable.js"></script>
+    <script src="resources\custom\sorting.js"></script>
+    <script>
+$( "#tabelka tr:odd" ).css( "background-color", "green" );
+
+
+
+    </script>
+    <script>
+$( "#tabelka tr:even" ).css( "background-color", "blue" );
+
+
+
+    </script>
+</head>
+
+<body id="main_body">
+<div class="container">
+
+    <!-- zaawansowane szukanie-->
+    <div style="margin-left: 30px">
+        <div id="zaawansowane">
+            <div class="checkbox row">
+                <div class="checkbox row">
+                    <div class="col-sm-2">
+                        <label style="margin-top:5px;margin-left:30px;"><input id="zaaNazwaTowaru"
+                                                                               style="margin-right:30px;"
+                                                                               type="checkbox" value="">nazwa
+                            towaru</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <input class="form-control" id="zaaNazwaTowaruPole" placeholder=" -- wpisz -- "
+                               style="margin-left:-40px;"
+                               type="text">
+                    </div>
+                </div>
+
+                <div class="checkbox row">
+                    <div class="col-sm-2">
+                        <label style="margin-top:5px;margin-left:30px;"><input id="zaaUzytkownik"
+                                                                               style="margin-right:30px;"
+                                                                               type="checkbox"
+                                                                               value="">użytkownik</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <input class="form-control" id="zaaUzytkownikPole" placeholder=" -- wpisz -- "
+                               style="margin-left:-40px;"
+                               type="text">
+                    </div>
+                </div>
+
+                <div class="checkbox row">
+                    <div class="col-sm-2">
+                        <label style="margin-top:5px;margin-left:30px;"><input id="zaaCenaNetto" type="checkbox"
+                                                                               value="">cena netto</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <input class="form-control" id="zaaCenaNettoPole" placeholder=" -- wpisz -- "
+                               style="margin-left:-40px;"
+                               type="text">
+                    </div>
+                    <div style="margin-top:5px;">
+                        <label class="radio-inline" style="margin-left:-40px;"><input checked="checked"
+                                                                                      id="zaaCenaNettoRadio1"
+                                                                                      name="szukajCenaNettoRadio"
+                                                                                      type="radio"
+                                                                                      value="1">=</label>
+                        <label class="radio-inline"><input name="szukajCenaNettoRadio" type="radio"
+                                                           value="2">></label>
+                        <label class="radio-inline"><input name="szukajCenaNettoRadio" type="radio"
+                                                           value="3"><</label>
+                    </div>
+                </div>
+
+                <div class="checkbox row">
+                    <div class="col-sm-2">
+                        <label style="margin-top:5px;margin-left:30px;"><input id="zaaCenaBrutto"
+                                                                               style="margin-right:30px;"
+                                                                               type="checkbox" value="">cena
+                            brutto</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <input class="form-control" id="zaaCenaBruttoPole" placeholder=" -- wpisz -- "
+                               style="margin-left:-40px;"
+                               type="text">
+                    </div>
+                    <div style="margin-top:5px;">
+                        <label class="radio-inline" style="margin-left:-40px;"><input checked="checked"
+                                                                                      id="zaaCenaBruttoRadio1"
+                                                                                      name="szukajCenaBruttoRadio"
+                                                                                      type="radio"
+                                                                                      value="1">=</label>
+                        <label class="radio-inline"><input name="szukajCenaBruttoRadio" type="radio"
+                                                           value="2">></label>
+                        <label class="radio-inline"><input name="szukajCenaBruttoRadio" type="radio"
+                                                           value="3"><</label>
+                    </div>
+                </div>
+
+                <div class="checkbox row">
+                    <div class="col-sm-2">
+                        <label style="margin-top:5px;margin-left:30px;"><input id="zaaIlosc"
+                                                                               style="margin-right:30px;"
+                                                                               type="checkbox"
+                                                                               value="">ilość</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <input class="form-control" id="zaaIloscPole" placeholder=" -- wpisz -- "
+                               style="margin-left:-40px;"
+                               type="text">
+                    </div>
+                    <div style="margin-top:5px;">
+                        <label class="radio-inline" style="margin-left:-40px;"><input checked="checked"
+                                                                                      id="zaaIloscRadio1"
+                                                                                      name="szukajIloscRadio"
+                                                                                      type="radio"
+                                                                                      value="1">=</label>
+                        <label class="radio-inline"><input name="szukajIloscRadio" type="radio" value="2">></label>
+                        <label class="radio-inline"><input name="szukajIloscRadio" type="radio" value="3"><</label>
+                    </div>
+                </div>
+
+            </div>
+            <button class="btn btn-info" id="zaaSzukajPrzycisk" style="margin-left:10px;" type="button"><span><b>Szukaj&nbsp;</b></span>
+                <i class="glyphicon glyphicon-search"></i></button>
+
+        </div>
+    </div>
+
+
+    <div class="row text-center" id="wynikiSzukania">
+        <div class="col-sm-10">
+            <p></p>
+            <hr></hr>
+            <label for="wynikiSzukania">Wyniki szukania</label>
+            <p class="czerwonyText" id="brakWynikow"></p>
+
+            <div class="class=">
+                <div class="col-sm-4" style="margin-right:-110px;margin-bottom:20px;margin-top:5px">Filtruj tabelkę
+                    po:
+                </div>
+                <div class="col-sm-2">
+                    <input class="form-control" id="szukajSzukajTabelka" placeholder="Szukaj..." type="text">
+                </div>
+                <div class="col-sm-2">
+                    <button class="btn btn-info" id="mergujPrzycisk" style="margin-left:10px;" type="button"><span><b>Merguj&nbsp;</b></span>
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+        <table class="table table-striped " id="szukajTabelka">
+            <thead>
+            <tr>
+                <th class="text-center" id="numerKolumnaWSzukaj">Numer</th>
+                <th class="text-center" id="nazwaTowaruKolumnaWSzukaj">Nazwa towaru</th>
+                <th class="text-center" id="cenaBruttoKolumnaWSzukaj">Cena Brutto</th>
+                <th class="text-center" id="cenaNettoKolumnaWSzukaj">Cena Netto</th>
+                <th class="text-center" id="jednostkaKolumnaWSzukaj">Jednostki</th>
+                <th class="text-center" id="iloscKolumnaWSzukaj">Ilość</th>
+                <th class="text-center" id="uzytkownikKolumnaWSzukaj">Użytkownik</th>
+                <th class="text-center">Dodaj</th>
+                <th class="text-center"></th>
+                <th class="text-center"></th>
+            </tr>
+            </thead>
+            <tbody id="tabelkaSzukaj">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+</div>
+
+</body>
+</html>
