@@ -257,40 +257,46 @@ $(document).ready(function(){
 	
 	}
 
+    //Merge
 	$.fn.mergujDziadu = function() {
-            console.log("Merguj dxziadu");
-
-            var message = "IDS";
-	        $("#szukajTabelka input[type=checkbox]:checked)").each(function(){
-	             var row = $(this).closest("tr")[0];
-                                 message += row.cells[6].innerHTML;
-                                 message += "   " + row.cells[2].innerHTML;
-                                 message += "   " + row.cells[3].innerHTML;
-                                 message += "\n";
-
-	        });
-
-    		//var opcje = $(this).zbierzZaaOpcje();
-    		//if ( opcje == "NOK" ) {
-    		//    $("#modalSzukajDialog").addClass("czerwonyText");
-    		//	$("#modalSzukajDialog").html("walidajca zaawansowane szukanie");
-    		//	$("#szukajDialog").modal("show");
-    		//	setTimeout(function () {$('#zamknijDialogSzukaj').focus();}, 300);
-    		//}
-    		//else {
-    		//	$(this).wyslijZaaSzukanieJSON(opcje);
-    		//	console.log("wyslijZaawansowaneSzukanieJSON");
-    		//}
-
+            var message = "ids=";
+            var grid = document.getElementById("szukajTabelka");
+            var checkBoxes = grid.getElementsByTagName("input");
+            for (var i = 0; i < checkBoxes.length; i++) {
+                        if (checkBoxes[i].checked) {
+                            var row = checkBoxes[i].parentNode.parentNode;
+                            console.log("Checkbox value: "+checkBoxes[i].value);
+                            message = message + checkBoxes[i].value +",";
+                            var pointer = checkBoxes.length-1;
+                        }
+            }
+            var urlToBeSent = message.slice(0, -1);
+            console.log(urlToBeSent);
+            $.blockUI({
+                		css: {
+                            border: 'none',
+                            padding: '15px',
+                            backgroundColor: '#000',
+                            '-webkit-border-radius': '10px',
+                            '-moz-border-radius': '10px',
+                            opacity: .5,
+                            color: '#fff'
+                        }
+            });
+            $.ajax({
+                	type: 'POST',
+                    url: '/remanent/rest/pozycje/merge?'+urlToBeSent,
+                    success: function (response) {
+                        console.log("Merge wykonano");
+                        var options = $(this).zbierzZaaOpcje();
+                        $(this).wyslijZaaSzukanieJSON(options);
+                    },
+                    error: function (jqXHR, exception) {
+                        var msg = $(this).getErrorMessage(jqXHR, exception);;
+            			setTimeout(function () {$('#zamknijDialogSzukaj').focus();}, 1000);
+                    	},
+                	});
     	}
-
-
-
-
-
-
-
-
 
 	
 	$.fn.czyWszystkieCheckboxyPuste = function() {
@@ -496,7 +502,7 @@ $(document).ready(function(){
 	 			"<td>"+pozycja.uzytkownik+"</td>"+
 
 	 			"<td>"+
-                    "<input type="+"checkbox" + " "+ "id="+"checkbox"+pozycja.id+ "value="+pozycja.id+""+
+                    "<input type="+"checkbox" + " "+ " id="+pozycja.id+ " value="+pozycja.id+""+
                 	" >" +
                 "</td>"+
 

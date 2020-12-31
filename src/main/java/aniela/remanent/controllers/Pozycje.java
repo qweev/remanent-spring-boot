@@ -115,12 +115,12 @@ public class Pozycje {
             return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 
-    // http://localhost:8080/api/foos?id=1,2,3
+    // http://localhost:8080/remanent/rest/pozycje/merge?id=1,2,3
     @PostMapping(path = "/remanent/rest/pozycje/merge")
     public ResponseEntity mergePositions(@RequestParam List<Integer> ids) {
         if (ids != null && ids.size() < 2) {
             LOG.info("Merging cannot be done due to insufficient  number of IDS: " + ids + " " + ids.size());
-            return ResponseEntity.status(HttpStatus.OK).body("Merging cannot be executed: " + ids);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Merging cannot be executed: " + ids);
         }
         int masterIndex = this.bazaRepository.merge(ids);
         return ResponseEntity.status(HttpStatus.OK).body("Merged positions to: " + masterIndex);
