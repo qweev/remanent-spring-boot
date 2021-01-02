@@ -116,6 +116,14 @@ public class Pozycje {
     }
 
     // http://localhost:8080/remanent/rest/pozycje/merge?id=1,2,3
+    @GetMapping(path = "/remanent/rest/pozycje/merge")
+    public ResponseEntity getMergePositions() {
+
+        // int masterIndex = this.bazaRepository
+        return ResponseEntity.status(HttpStatus.OK).body("Merged positions to: ");
+    }
+
+    // http://localhost:8080/remanent/rest/pozycje/merge?id=1,2,3
     @PostMapping(path = "/remanent/rest/pozycje/merge")
     public ResponseEntity mergePositions(@RequestParam List<Integer> ids) {
         if (ids != null && ids.size() < 2) {

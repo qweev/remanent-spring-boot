@@ -138,16 +138,12 @@ public class BazaService {
         return pozycja.getId();
     }
 
-
     public int usunPozycjeZBazy(Session sesja, int numerDoUsunieciaZBazy) {
         //Session sesja = entityManager.unwrap(Session.class);
         int numer = 0;
-
         PozycjaBazy pozycja = sesja.get(PozycjaBazy.class, numerDoUsunieciaZBazy);
         sesja.delete(pozycja);
         numer = numerDoUsunieciaZBazy;
-
-
         LOGGER.info("NumerPozycji usunietej z bazy : " + numer);
         return numer;
     }
@@ -159,10 +155,8 @@ public class BazaService {
         return (int) iloscPozycji;
     }
 
-
     public List<Position> przygotujPozycjeDoRaportuNetto(Session sesja) {
         List<Position> pozycjeRaportu = new ArrayList<>();
-
         List<PozycjaBazy> pozycjeBazy = sesja.createQuery("FROM PozycjaBazy ORDER BY id ASC").list();
         for (PozycjaBazy pozycjaBazy : pozycjeBazy) {
             PozycjaDoRaportuNetto pozycjaRaport = new PozycjaDoRaportuNetto();
@@ -174,16 +168,18 @@ public class BazaService {
             pozycjaRaport.setSuma(pozycjaBazy.getCena_netto(), pozycjaBazy.getIlosc());
             pozycjeRaportu.add(pozycjaRaport);
         }
-
         LOGGER.info("Ilosc pozycji w liscie " + pozycjeRaportu.size());
         return pozycjeRaportu;
     }
 
+    public List<PozycjaBazy> getAllPozycjeBazy(Session sesja) {
+        List<PozycjaBazy> pozycjeBazy = sesja.createQuery("FROM PozycjaBazy ORDER BY id ASC").list();
+        return pozycjeBazy;
+    }
 
     public List<Position> przygotujPozycjeDoRaportuBrutto(Session sesja) {
         List<Position> pozycjeRaportu = new ArrayList<>();
         List<PozycjaBazy> pozycjeBazy = new ArrayList<>();
-
         pozycjeBazy.addAll(sesja.createQuery("FROM PozycjaBazy ORDER BY nazwa_towaru ASC").list());
         for (PozycjaBazy pozycjaBazy : pozycjeBazy) {
             PozycjaDoRaportuBrutto pozycjaRaport = new PozycjaDoRaportuBrutto();
@@ -196,7 +192,6 @@ public class BazaService {
             pozycjaRaport.setSuma(pozycjaBazy.getCena_brutto(), pozycjaBazy.getIlosc());
             pozycjeRaportu.add(pozycjaRaport);
         }
-
         LOGGER.info("ilosc pozycji w liscie " + pozycjeRaportu.size());
         return pozycjeRaportu;
     }
@@ -207,12 +202,9 @@ public class BazaService {
         double sumaNetto = 0;
         double sumaBrutto = 0;
         double iloscPozycji = 0;
-
         iloscPozycji = (long) sesja.createQuery("SELECT count(*) FROM PozycjaBazy").list().get(0);
         sumaNetto = (double) sesja.createQuery("SELECT sum(P.cena_netto*P.ilosc) FROM PozycjaBazy as P").list().get(0);
         sumaBrutto = (double) sesja.createQuery("SELECT sum(P.cena_brutto*P.ilosc) FROM PozycjaBazy as P").list().get(0);
-
-
         iloscStron = Math.ceil((iloscPozycji / iloscPozycjiNaStronie));
         htmlStatystyka = "<tr><td>" + (int) iloscPozycji + "</td><td>" + sumaNetto + "</td><td>" + sumaBrutto + "</td><td>" + (int) iloscStron + "</td></tr>";
         LOGGER.info("generujStatystyki: " + htmlStatystyka);
@@ -223,7 +215,6 @@ public class BazaService {
     //TODO marcin
     public List<PozycjaBazy> pobierzZeroweCeny(Session sesja) {
         List<PozycjaBazy> pozycje = new ArrayList<>();
-
         pozycje.addAll(sesja.createQuery("FROM PozycjaBazy AS P WHERE P.cena_netto = 0 OR P.cena_brutto = 0 OR P.ilosc = 0").list());
         LOGGER.info("Ilosc pozycji z pustymi cenami w liscie " + pozycje.size());
         return pozycje;

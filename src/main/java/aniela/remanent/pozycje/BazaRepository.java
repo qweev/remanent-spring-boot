@@ -2,6 +2,8 @@ package aniela.remanent.pozycje;
 
 import aniela.remanent.position.abstraction.Position;
 import aniela.remanent.pozycje.bazaDanych.PozycjaBazy;
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -11,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Transactional
@@ -134,7 +138,31 @@ public class BazaRepository {
         } finally {
             return result;
         }
+    }
 
+    public List<PozycjaBazy> getDuplicates() {
+        Multimap<Integer, PozycjaBazy> multimap = ArrayListMultimap.create();
+        List<PozycjaBazy> allItemsFromDB = new ArrayList<>();
+        List<PozycjaBazy> duplicateItems = new ArrayList<>();
+        try (Session sesja = entityManager.unwrap(Session.class)) {
+            allItemsFromDB.addAll(bazaService.getAllPozycjeBazy(sesja));
+        } catch (HibernateException e) {
+            LOGGER.info("exception in HIBERNATE " + e);
+            e.printStackTrace();
+        } finally {
+
+        }
+        allItemsFromDB.forEach(pozycjaBazy -> {
+            multimap.put(pozycjaBazy.getHashCen(), pozycjaBazy);
+        });
+
+        for (int key : multimap.keySet()) {
+            Collection<PozycjaBazy> itemsPerKey = multimap.get(key);
+            if (itemsPerKey.size() > 1) {
+                duplicateItems.addAll(itemsPerKey);
+            }
+        }
+        return duplicateItems;
     }
 
     public List<Position> przygotujPozycjeDoRaportuBrutto() {
