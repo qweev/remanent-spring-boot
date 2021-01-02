@@ -116,11 +116,10 @@ public class Pozycje {
     }
 
     // http://localhost:8080/remanent/rest/pozycje/merge?id=1,2,3
-    @GetMapping(path = "/remanent/rest/pozycje/merge")
+    @GetMapping(path = "/remanent/rest/pozycje/merge", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity getMergePositions() {
-
-        // int masterIndex = this.bazaRepository
-        return ResponseEntity.status(HttpStatus.OK).body("Merged positions to: ");
+        List<PozycjaBazy> duplicates = bazaRepository.getDuplicates();
+        return ResponseEntity.status(HttpStatus.OK).body(duplicates);
     }
 
     // http://localhost:8080/remanent/rest/pozycje/merge?id=1,2,3
