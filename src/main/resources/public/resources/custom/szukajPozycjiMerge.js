@@ -17,8 +17,8 @@ $(document).ready(function(){
 	});
 
 	
-	$("#zaaSzukajPrzycisk").click(function(){
-			$(this).szukajDplikatow();
+	$("#PobierzDuplikaty").click(function(){
+			$(this).szukajDuplikatow();
 	});
 
 
@@ -32,14 +32,26 @@ $(document).ready(function(){
 	//FUNKCJE
 
 	//JSON zaawansowane szukanie
-	$.fn.szukajDplikatow = function() {
+	$.fn.szukajDuplikatow = function() {
+
+                    $.blockUI({
+                        css: {
+                              border: 'none',
+                              padding: '15px',
+                              backgroundColor: '#000',
+                              '-webkit-border-radius': '10px',
+                                                '-moz-border-radius': '10px',
+                                                opacity: .5,
+                                                color: '#fff'
+                        }
+                    });
 
                     $.ajax({
                         	type: 'get',
                             url: '/remanent/rest/pozycje/merge',
                             success: function (response) {
                                 console.log("Pobrano duplikaty");
-                                pobiezWynikiSzukania(response);
+                                $(this).wyswietlWynikiSzukaniaDuplikatow(response);
 
                             },
                             error: function (jqXHR, exception) {
@@ -78,11 +90,30 @@ $(document).ready(function(){
             });
             $.ajax({
                 	type: 'POST',
-                    url: '/remanent/rest/pozycje/merge?'+urlToBeSent,
+                    url: '/remanent/rest/pozycje/merge?'+urlToBeSent, //ids=1,2,3
                     success: function (response) {
                         console.log("Merge wykonano");
-                        var options = $(this).zbierzZaaOpcje();
-                        $(this).wyslijZaaSzukanieJSON(options);
+
+                        var newIds = urlToBeSent.replace('ids=','');
+                        var idsArray = newIds.split(',');
+
+                        var arrayLength = idsArray.length;
+                        for (var i = 0; i < arrayLength; i++) {
+                            console.log(idsArray[i]);
+
+                            $("#szukajTabelka td").filter(
+                                                        function() {
+                                                    			    return $(this).text() == String(idsArray[i]);
+                                                    			   }
+                                                    ).parent('tr').html("");
+
+                            //Do something
+                        }
+
+
+
+
+
                     },
                     error: function (jqXHR, exception) {
                         var msg = $(this).getErrorMessage(jqXHR, exception);;
@@ -91,8 +122,8 @@ $(document).ready(function(){
                 	});
     	}
 
-// JSON	do szukania zaawansowanego
-    $.fn.pobiezWynikiSzukania = function(response) {
+
+    $.fn.wyswietlWynikiSzukaniaDuplikatow = function(response) {
     	if (response.length == 0){
     			$("#modalSzukajDialog").addClass("czerwonyText");
     			$("#modalSzukajDialog").html("Nie ma takiej pozycji w bazie");
@@ -103,12 +134,12 @@ $(document).ready(function(){
     	
     	else {
 		    	for (i = 0; i < response.length ; i++) {
-		    			$(this).wyswietlPozycjeSzukania(response[i]);
+		    			$(this).wyswietlPozycjeDuplikatow(response[i]);
 		    	}
     	}
     }
     
-    $.fn.wyswietlPozycjeSzukania = function(pozycja) {
+    $.fn.wyswietlPozycjeDuplikatow = function(pozycja) {
 	 	$("#tabelkaSzukaj tr:first").before("<tr><td>"+pozycja.id+"</td>"+
 	 			"<td>"+pozycja.nazwa_towaru+"</td>"+
 	 			"<td>"+pozycja.cena_brutto+"</td>"+
