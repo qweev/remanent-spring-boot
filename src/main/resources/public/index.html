@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html lang="pl-PL">
 <head>
-  <title>Remanent Sklep Aniela</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="resources\css\bootstrap.min.css">  
-  <script src="resources\jq\jquery.min.js"></script>
-  <script src="resources\js\bootstrap.min.js"></script>
-  
-   <script src="resources\custom\block.js"></script>
+    <title>Remanent Sklep Aniela</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="resources\css\bootstrap.min.css" rel="stylesheet">
+    <script src="resources\jq\jquery.min.js"></script>
+    <script src="resources\js\bootstrap.min.js"></script>
 
-	<script src="resources\custom\podpowiadacz.js"></script>
-	<script src="resources\custom\slownikDodajTowar.js"></script>
-  <script src="resources\custom\wspolneFunkcje.js"></script>
-  <script src="resources\custom\dodajPozycje.js"></script>
-  <script src="resources\custom\szukajPozycji.js"></script>
-  <script src="resources\custom\zmienPozycje.js"></script>
-  <script src="resources\custom\usunPozycje.js"></script>
-	<script src="resources\custom\sortTable.js"></script>
-	<script src="resources\custom\sorting.js"></script>
+    <script src="resources\custom\block.js"></script>
+    <script src="resources\custom\podpowiadacz.js"></script>
+    <script src="resources\custom\slownikDodajTowar.js"></script>
+    <script src="resources\custom\wspolneFunkcje.js"></script>
+    <script src="resources\custom\dodajPozycje.js"></script>
+    <script src="resources\custom\szukajPozycji.js"></script>
+    <script src="resources\custom\zmienPozycje.js"></script>
+    <script src="resources\custom\usunPozycje.js"></script>
+    <script src="resources\custom\sortTable.js"></script>
+    <script src="resources\custom\sorting.js"></script>
 
 
-<script>
+    <script>
 $( "#tabelka tr:odd" ).css( "background-color", "green" );
-</script>
 
-<script>
+
+    </script>
+
+    <script>
 $( "#tabelka tr:even" ).css( "background-color", "blue" );
-</script>
-  
- <style>
+
+
+    </script>
+
+    <style>
 .czerwony {
 border: 1px solid red;
 }
@@ -77,525 +80,618 @@ border: 3px solid red;
 color: red;
 }
 
-</style>
+
+
+    </style>
 </head>
 <body id="main_body">
 
 <div class="container">
-<p></p>
-  <ul class=" nav nav-pills nav nav-tabs   ">
-    <li class="active"><a data-toggle="tab" href="#dodaj">Dodaj towar</a></li>
-    <li><a data-toggle="tab" href="#zmien">Zmień</a></li>
-    <li><a data-toggle="tab" href="#szukaj">Szukaj</a></li>
-    <li><a data-toggle="tab" href="#usun">Usuń</a></li>
-	<span style="margin-left:5px;">
-		<input id="podpowiadaczCheckbox" type="checkbox" value="" checked style="margin-right:3px;margin-top:10px" >
+    <p></p>
+    <ul class=" nav nav-pills nav nav-tabs   ">
+        <li class="active"><a data-toggle="tab" href="#dodaj">Dodaj towar</a></li>
+        <li><a data-toggle="tab" href="#zmien">Zmień</a></li>
+        <li><a data-toggle="tab" href="#szukaj">Szukaj</a></li>
+        <li><a data-toggle="tab" href="#usun">Usuń</a></li>
+        <span style="margin-left:5px;">
+		<input checked id="podpowiadaczCheckbox" style="margin-right:3px;margin-top:10px" type="checkbox" value="">
 		<span id="podpowiadaczText">podpowiadacz aktywny </span></input>
 	</span>
-	<span  >	
-			<label ><span  class="glyphicon glyphicon-user "></span> Użytkownik:</label>
-			<input type="text"  id="uzytkownik" placeholder="  - np. 2 -" class="uzytkownik">
+        <span>
+			<label><span class="glyphicon glyphicon-user "></span> Użytkownik:</label>
+			<input class="uzytkownik" id="uzytkownik" placeholder="  - np. 2 -" type="text">
 	</span>
-  </ul>
-  
+    </ul>
 
 
+    <div class="tab-content">
 
-  <div class="tab-content">
-	
-	<!-- ZAKLADKA DODAJ -->
-    <div id="dodaj" class="tab-pane fade in active">
-      <p></p>
-	  <div class="row">
-	   <div class="col-sm-8 form-group">
-			<label for="towar">Nazwa towaru:</label>			
-			
-			<input type="text" class="form-control" id="towar" placeholder="- tu wpisz nazwę towaru, max 50 znaków -">
-			<select class="form-control" multiple style="height:170px"  id="podpowiadaczLista">
-      </select>
-			
-			<p ><b id="slownikWynik"></b></p>
-		</div>
-		<!--
-		<div class="col-sm-2 form-group" >	
-			<label for="uzytkownik"><span class="glyphicon glyphicon-user "></span> Użytkownik:</label>
-			<input type="text" class="form-control" id="uzytkownik" placeholder="- np. 2 -">
-		</div>
-		-->
-		</div>
-		<div class="row">
-		<div class="col-sm-2 form-group" >
-			<label for="cenaB">Cena Brutto:</label>
-			<input type="text" class="form-control" id="cenaB" placeholder="- np. 3,4 -">
-		</div>
-		<div class="col-sm-2 form-group">
-			<label for="cenaN">Cena Netto:</label>
-			<input type="text" class="form-control" id="cenaN" placeholder="- np. 3.4 -">
-		</div>
-		<div class="col-sm-2 form-group" id="comboJednostka">
-			<label for="jednostka">Jednostka:</label>
-			<!-- 
-			<input type="text" class="form-control" id="jednostka" placeholder="- np. mb  -"  data-toggle="dropdown"><span class="caret"></span>
-			 -->
-			 
-			 <!-- 
-			<button id="jednostka" style="color: #808080;width:120px" class="form-control btn btn-default" type="button" data-toggle="dropdown">&#8208;&nbsp;wybierz&nbsp;&#8208;&nbsp;&nbsp;<span class="caret"></span>
-			</button>
-			-->
-		
-			<button id="jednostka" style="color: #808080;width:120px" class="form-control btn btn-default" type="button" data-toggle="dropdown">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;szt.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span>
-			</button>
-		
-		    <ul id="jednostkaLista" class="dropdown-menu">
-		      <li><a id="op" href="#">op.</a></li>
-		      <li><a id="kpl" href="#">kpl.</a></li>
-		      <li><a id="mb" href="#">mb.</a></li>
-			   <li><a id="par" href="#">par</a></li>
-			   <li><a id="szt" href="#">szt.</a></li>
-		    </ul>
-		    
-		</div>
-		<div class="col-sm-2 form-group">
-			<label for="ilosc">Ilość:</label>
-			<input type="text" class="form-control" id="ilosc" placeholder="- np. 5 -">
-		</div>
-		</div>
-		
-		
-		<div class="row">
-		<div class="col-sm-4">
-		<p></p>
-			<button id="zapiszDoBazy" type="button" class="btn btn-info" >
-			<span class="glyphicon glyphicon-file"></span>
-			<b>&nbsp;Zapisz pozycję do remanentu&nbsp;&nbsp;</b><span class="glyphicon glyphicon-file"></span></button>	
-		<p></p>			
-		</div>
-		
-		
-		<!-- Modal DODAJ data-toggle="modal" data-target="#zapisDialog" -->
-		<div id="zapisDialog" class="modal fade" role="dialog">
-		  <div class="modal-dialog">
-		
-		<!-- Modal content-->
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		        <h4 class="modal-title">Zapis do bazy</h4>
-		      </div>
-		      <div class="modal-body">
-		        <p id="modalZapisDialog">aaaaaaa</p>
-		      </div>
-		      <div class="modal-footer">
-		        <button id="zamknijDialogZapisz" type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
-		      </div>
-		    </div>
-		
-		  </div>
-		</div>
-		
-		</div>
-	
+        <!-- ZAKLADKA DODAJ -->
+        <div class="tab-pane fade in active" id="dodaj">
+            <p></p>
+            <div class="row">
+                <div class="col-sm-8 form-group">
+                    <label for="towar">Nazwa towaru:</label>
 
-		
-		
-	<div id="historia" class="row text-center" style="width:100%">
-      	<div class="col-sm-10">
-		<p></p><hr></hr>
-		
-			<div >
-			<label for="historia" >Historia wpisów</label>
-			</div>
-			
-			<div class="class=">
-				<div class="col-sm-4" style="margin-right:-110px;margin-bottom:20px;margin-top:5px">Filtruj tabelkę po:</div>
-				<div class="col-sm-2"><input class="form-control" id="szukajDodajTabelka" type="text" placeholder="Szukaj..."></div>
-			</div>
-			<!--  -->
-			<table  class="table table-striped">
-    <thead >
-      <tr>
-	    <th class="text-center">Godzina</th>
-	    <th class="text-center">Nr pozycji</th>
-        <th class="text-center">Nazwa towaru</th>
-        <th class="text-center">Cena Brutto</th>
-        <th class="text-center">Cena Netto</th>
-		<th class="text-center">Jednostki</th>
-		<th class="text-center">Ilość</th>
-		<th class="text-center">Dodaj</th>
-		  <th class="text-center"></th>
-		  <th class="text-center"></th>
-      </tr>
-    </thead>
-    <tbody id="tabelka">
-    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    </tbody>
-  </table>
+                    <input class="form-control" id="towar" placeholder="- tu wpisz nazwę towaru, max 50 znaków -"
+                           type="text">
+                    <select class="form-control" id="podpowiadaczLista" multiple style="height:170px">
+                    </select>
 
-		</div>
-		</div>
+                    <p><b id="slownikWynik"></b></p>
+                </div>
+                <!--
+                <div class="col-sm-2 form-group" >
+                    <label for="uzytkownik"><span class="glyphicon glyphicon-user "></span> Użytkownik:</label>
+                    <input type="text" class="form-control" id="uzytkownik" placeholder="- np. 2 -">
+                </div>
+                -->
+            </div>
+            <div class="row">
+                <div class="col-sm-2 form-group">
+                    <label for="cenaB">Cena Brutto:</label>
+                    <input class="form-control" id="cenaB" placeholder="- np. 3,4 -" type="text">
+                </div>
+                <div class="col-sm-2 form-group">
+                    <label for="cenaN">Cena Netto:</label>
+                    <input class="form-control" id="cenaN" placeholder="- np. 3.4 -" type="text">
+                </div>
+                <div class="col-sm-2 form-group" id="comboJednostka">
+                    <label for="jednostka">Jednostka:</label>
+                    <!--
+                    <input type="text" class="form-control" id="jednostka" placeholder="- np. mb  -"  data-toggle="dropdown"><span class="caret"></span>
+                     -->
+
+                    <!--
+                   <button id="jednostka" style="color: #808080;width:120px" class="form-control btn btn-default" type="button" data-toggle="dropdown">&#8208;&nbsp;wybierz&nbsp;&#8208;&nbsp;&nbsp;<span class="caret"></span>
+                   </button>
+                   -->
+
+                    <button class="form-control btn btn-default" data-toggle="dropdown" id="jednostka"
+                            style="color: #808080;width:120px" type="button">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;szt.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span
+                            class="caret"></span>
+                    </button>
+
+                    <ul class="dropdown-menu" id="jednostkaLista">
+                        <li><a href="#" id="op">op.</a></li>
+                        <li><a href="#" id="kpl">kpl.</a></li>
+                        <li><a href="#" id="mb">mb.</a></li>
+                        <li><a href="#" id="par">par</a></li>
+                        <li><a href="#" id="szt">szt.</a></li>
+                    </ul>
+
+                </div>
+                <div class="col-sm-2 form-group">
+                    <label for="ilosc">Ilość:</label>
+                    <input class="form-control" id="ilosc" placeholder="- np. 5 -" type="text">
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-4">
+                    <p></p>
+                    <button class="btn btn-info" id="zapiszDoBazy" type="button">
+                        <span class="glyphicon glyphicon-file"></span>
+                        <b>&nbsp;Zapisz pozycję do remanentu&nbsp;&nbsp;</b><span
+                            class="glyphicon glyphicon-file"></span></button>
+                    <p></p>
+                </div>
+
+
+                <!-- Modal DODAJ data-toggle="modal" data-target="#zapisDialog" -->
+                <div class="modal fade" id="zapisDialog" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="close" data-dismiss="modal" type="button">&times;</button>
+                                <h4 class="modal-title">Zapis do bazy</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p id="modalZapisDialog">aaaaaaa</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-default" data-dismiss="modal" id="zamknijDialogZapisz"
+                                        type="button">Zamknij
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row text-center" id="historia" style="width:100%">
+                <div class="col-sm-10">
+                    <p></p>
+                    <hr></hr>
+
+                    <div>
+                        <label for="historia">Historia wpisów</label>
+                    </div>
+
+                    <div class="class=">
+                        <div class="col-sm-4" style="margin-right:-110px;margin-bottom:20px;margin-top:5px">Filtruj
+                            tabelkę po:
+                        </div>
+                        <div class="col-sm-2"><input class="form-control" id="szukajDodajTabelka"
+                                                     placeholder="Szukaj..."
+                                                     type="text"></div>
+                    </div>
+                    <!--  -->
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th class="text-center">Godzina</th>
+                            <th class="text-center">Nr pozycji</th>
+                            <th class="text-center">Nazwa towaru</th>
+                            <th class="text-center">Cena Brutto</th>
+                            <th class="text-center">Cena Netto</th>
+                            <th class="text-center">Jednostki</th>
+                            <th class="text-center">Ilość</th>
+                            <th class="text-center">Dodaj</th>
+                            <th class="text-center"></th>
+                            <th class="text-center"></th>
+                        </tr>
+                        </thead>
+                        <tbody id="tabelka">
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ZAKLADKA SZUKAJ  " -->
+        <div class="tab-pane fade" id="szukaj">
+
+            <p></p>
+
+            <div>
+                <p></p>
+                <div class="col-sm-2">
+                    <p><b>Szukaj po:</b></p>
+                    <div class="radio">
+                        <label><input checked="checked" name="radioButton" type="radio" value="nazwa">nazwie
+                            towaru</label>
+                    </div>
+                    <div class="radio">
+                        <label><input name="radioButton" type="radio" value="uzytkownik">użytkowniku</label>
+                    </div>
+                    <div class="radio disabled">
+                    </div>
+                </div>
+
+                <p></p>
+
+                <p><b>Wpisz nazwę towaru lub użytkownika:</b></p>
+                <div class="input-group col-sm-4">
+
+                    <input class="form-control" id="szukajPozycji" placeholder=" -- wpisz nazwę -- " type="text">
+                    <div class="input-group-btn">
+                        <button class="btn btn-info" id="szukajPozycjiPrzycisk">
+                            <span><b>Szukaj&nbsp;</b></span>
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- Modal SZUKAJ data-toggle="modal" data-target="#szukajDialog" -->
+            <div class="modal fade" id="szukajDialog" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" data-dismiss="modal" type="button">&times;</button>
+                            <h4 class="modal-title">Szukanie wyników</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p id="modalSzukajDialog"></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-default" data-dismiss="modal" id="zamknijDialogSzukaj" type="button">
+                                Zamknij
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- zaawansowane szukanie-->
+            <hr></hr>
+
+            <div style="margin-left: 30px">
+                <div class="checkbox row">
+                    <button class="btn" data-target="#zaawansowane" data-toggle="collapse"
+                            id="przyciskSzukanieZaawansowane"
+                            type="button"><b>Pokaż | Ukryj - zaawansowane&nbsp;szukanie&nbsp;</b><span
+                            class="glyphicon glyphicon-search"></span></button>
+                </div>
+
+                <div class="collapse" id="zaawansowane">
+                    <div class="checkbox row">
+                        <div class="checkbox row">
+                            <div class="col-sm-2">
+                                <label style="margin-top:5px;margin-left:30px;"><input id="zaaNazwaTowaru"
+                                                                                       style="margin-right:30px;"
+                                                                                       type="checkbox" value="">nazwa
+                                    towaru</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <input class="form-control" id="zaaNazwaTowaruPole" placeholder=" -- wpisz -- "
+                                       style="margin-left:-40px;" type="text">
+                            </div>
+                        </div>
+
+                        <div class="checkbox row">
+                            <div class="col-sm-2">
+                                <label style="margin-top:5px;margin-left:30px;"><input id="zaaUzytkownik"
+                                                                                       style="margin-right:30px;"
+                                                                                       type="checkbox" value="">użytkownik</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <input class="form-control" id="zaaUzytkownikPole" placeholder=" -- wpisz -- "
+                                       style="margin-left:-40px;" type="text">
+                            </div>
+                        </div>
+
+                        <div class="checkbox row">
+                            <div class="col-sm-2">
+                                <label style="margin-top:5px;margin-left:30px;"><input id="zaaCenaNetto" type="checkbox"
+                                                                                       value="">cena netto</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <input class="form-control" id="zaaCenaNettoPole" placeholder=" -- wpisz -- "
+                                       style="margin-left:-40px;"
+                                       type="text">
+                            </div>
+                            <div style="margin-top:5px;">
+                                <label class="radio-inline" style="margin-left:-40px;"><input checked="checked"
+                                                                                              id="zaaCenaNettoRadio1"
+                                                                                              name="szukajCenaNettoRadio"
+                                                                                              type="radio"
+                                                                                              value="1">=</label>
+                                <label class="radio-inline"><input name="szukajCenaNettoRadio" type="radio" value="2">></label>
+                                <label class="radio-inline"><input name="szukajCenaNettoRadio" type="radio" value="3"><</label>
+                            </div>
+                        </div>
+
+                        <div class="checkbox row">
+                            <div class="col-sm-2">
+                                <label style="margin-top:5px;margin-left:30px;"><input id="zaaCenaBrutto"
+                                                                                       style="margin-right:30px;"
+                                                                                       type="checkbox" value="">cena
+                                    brutto</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <input class="form-control" id="zaaCenaBruttoPole" placeholder=" -- wpisz -- "
+                                       style="margin-left:-40px;" type="text">
+                            </div>
+                            <div style="margin-top:5px;">
+                                <label class="radio-inline" style="margin-left:-40px;"><input checked="checked"
+                                                                                              id="zaaCenaBruttoRadio1"
+                                                                                              name="szukajCenaBruttoRadio"
+                                                                                              type="radio"
+                                                                                              value="1">=</label>
+                                <label class="radio-inline"><input name="szukajCenaBruttoRadio" type="radio" value="2">></label>
+                                <label class="radio-inline"><input name="szukajCenaBruttoRadio" type="radio" value="3"><</label>
+                            </div>
+                        </div>
+
+                        <div class="checkbox row">
+                            <div class="col-sm-2">
+                                <label style="margin-top:5px;margin-left:30px;"><input id="zaaIlosc"
+                                                                                       style="margin-right:30px;"
+                                                                                       type="checkbox"
+                                                                                       value="">ilość</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <input class="form-control" id="zaaIloscPole" placeholder=" -- wpisz -- "
+                                       style="margin-left:-40px;"
+                                       type="text">
+                            </div>
+                            <div style="margin-top:5px;">
+                                <label class="radio-inline" style="margin-left:-40px;"><input checked="checked"
+                                                                                              id="zaaIloscRadio1"
+                                                                                              name="szukajIloscRadio"
+                                                                                              type="radio"
+                                                                                              value="1">=</label>
+                                <label class="radio-inline"><input name="szukajIloscRadio" type="radio"
+                                                                   value="2">></label>
+                                <label class="radio-inline"><input name="szukajIloscRadio" type="radio"
+                                                                   value="3"><</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <button class="btn btn-info" id="zaaSzukajPrzycisk" style="margin-left:10px;" type="button">
+                        <span><b>Szukaj&nbsp;</b></span>
+                        <i class="glyphicon glyphicon-search"></i></button>
+
+                </div>
+            </div>
+
+
+            <div class="row text-center" id="wynikiSzukania">
+                <div class="col-sm-10">
+                    <p></p>
+                    <hr></hr>
+                    <label for="wynikiSzukania">Wyniki szukania</label>
+                    <p class="czerwonyText" id="brakWynikow"></p>
+
+                    <div class="class=">
+                        <div class="col-sm-4" style="margin-right:-110px;margin-bottom:20px;margin-top:5px">Filtruj
+                            tabelkę po:
+                        </div>
+                        <div class="col-sm-2"><input class="form-control" id="szukajSzukajTabelka"
+                                                     placeholder="Szukaj..."
+                                                     type="text"></div>
+                    </div>
+
+                    <table class="table table-striped " id="szukajTabelka">
+                        <thead>
+                        <tr>
+                            <th class="text-center" id="numerKolumnaWSzukaj">Numer</th>
+                            <th class="text-center" id="nazwaTowaruKolumnaWSzukaj">Nazwa towaru</th>
+                            <th class="text-center" id="cenaBruttoKolumnaWSzukaj">Cena Brutto</th>
+                            <th class="text-center" id="cenaNettoKolumnaWSzukaj">Cena Netto</th>
+                            <th class="text-center" id="jednostkaKolumnaWSzukaj">Jednostki</th>
+                            <th class="text-center" id="iloscKolumnaWSzukaj">Ilość</th>
+                            <th class="text-center" id="uzytkownikKolumnaWSzukaj">Użytkownik</th>
+                            <th class="text-center">Dodaj</th>
+                            <th class="text-center"></th>
+                            <th class="text-center"></th>
+                        </tr>
+                        </thead>
+                        <tbody id="tabelkaSzukaj">
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ZAKLADKA ZMIEN -->
+        <div class="tab-pane fade" id="zmien">
+            <p></p>
+            <p><b>Pobierz pozycję numer:</b></p>
+            <div class="input-group col-sm-4" id="divZmienWidoczne">
+
+                <input class="form-control" id="wpiszNumerPozycji" placeholder="Wpisz numer pozycji" type="text">
+                <div class="input-group-btn">
+                    <button class="btn btn-info" id="pobierzPozycjePoNumerzePrzycisk">
+                        <span><b>Pobierz&nbsp;</b></span>
+                        <i class="glyphicon glyphicon-download-alt"></i>
+                    </button>
+                </div>
+            </div>
+
+
+            <!-- Modal ZMIEN data-toggle="modal" data-target="#zmienDialog" -->
+            <div class="modal fade" id="zmienDialog" role="dialog">
+                <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" data-dismiss="modal" type="button">&times;</button>
+                            <h4 class="modal-title">Zapis zmian do bazy</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p id="modalZmienDialog"></p>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-default" data-dismiss="modal" id="zamknijDialogZmien" type="button">
+                                Zamknij
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div>
+                <p></p>
+                <hr></hr>
+                <h4 id="testHide">Pozycja do zmiany</h4>
+                <p></p>
+                <hr></hr>
+            </div>
+
+            <div class="collapse" id="brakPozycjiDiv">
+                <p class="czerwonyText" id="brakPozycji"><b></b></p>
+            </div>
+
+
+            <div class="collapse" id="ukryte">
+
+                <div class="row">
+                    <div class="col-sm-6 form-group">
+                        <label for="zmienTowar">Nazwa towaru:</label>
+                        <input class="form-control" id="zmienTowar" type="text">
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <label for="zmienUzytkownik"><span class="glyphicon glyphicon-user "></span> Użytkownik:</label>
+                        <input class="form-control" id="zmienUzytkownik" type="text">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2 form-group">
+                        <label for="zmienCenaB">Cena Brutto:</label>
+                        <input class="form-control" id="zmienCenaB" type="text">
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <label for="zmienCenaN">Cena Netto:</label>
+                        <input class="form-control" id="zmienCenaN" type="text">
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <label for="zmienJednostka">Jednostka:</label>
+                        <!--   <input type="text" class="form-control" id="zmienJednostka"> -->
+
+                        <button class="form-control btn btn-default" data-toggle="dropdown"
+                                id="zmienJednostka" style="color: #808080;width:120px" type="button">&#8208;&nbsp;wybierz&nbsp;&#8208;&nbsp;&nbsp;<span
+                                class="caret"></span>
+                        </button>
+
+                        <ul class="dropdown-menu" id="zmienJednostkaLista">
+                            <li><a href="#" id="opZmien">op.</a></li>
+                            <li><a href="#" id="kplZmien">kpl.</a></li>
+                            <li><a href="#" id="mbZmien">mb.</a></li>
+                            <li><a href="#" id="parZmien">par</a></li>
+                            <li><a href="#" id="sztZmien">szt.</a></li>
+                        </ul>
+
+
+                    </div>
+                    <div class="col-sm-2 form-group">
+                        <label for="zmienIlosc">Ilość:</label>
+                        <input class="form-control" id="zmienIlosc" type="text">
+                    </div>
+                </div>
+
+                <div class="col-sm-4">
+                    <p></p>
+                    <button class="btn btn-info" data-target="#zmienDialog" data-toggle="modal" id="zapiszZmianyDoBazy"
+                            type="button">
+                        <span class="glyphicon glyphicon-file"></span>
+                        <b>Zmień pozycję remanentu </b><span class="glyphicon glyphicon-file"></span></button>
+                    <p></p>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ZAKLADKA USUN input-group , input-group-btn -->
+
+        <div class="tab-pane fade" id="usun">
+
+
+            <div>
+                <p></p>
+                <p><b>Numer pozycji do usunięcia:</b></p>
+
+                <div class="input-group col-sm-4">
+                    <input class="form-control" id="wpiszNumerPozycjiDoUsuniecia" placeholder="Wpisz numer pozycji"
+                           type="text">
+                    <div class="input-group-btn">
+                        <button class="btn btn-info" id="pobierzDoUsunPrzycisk" type="button">
+                            <b>Pobierz</b> &nbsp; <i class="glyphicon glyphicon-download-alt"></i>
+                        </button>
+                    </div>
+                </div>
+
+
+                <!-- Modal USUN data-toggle="modal" data-target="#usunDialog" -->
+                <div class="modal fade" id="usunDialog" role="dialog">
+                    <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button class="close" data-dismiss="modal" type="button">&times;</button>
+                                <h4 class="modal-title">Usuwanie pozycji z bazy</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p id="modalUsunDialog"></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-default" data-dismiss="modal" id="zamknijDialogUsun"
+                                        type="button">Zamknij
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="row text-center" id="pobranaPozycjaDoUsuniecia">
+
+                <div class="col-sm-10">
+                    <p></p>
+                    <hr></hr>
+
+                    <div class="center">
+                        <p><b>Pozycja do usunięcia</b></p>
+                        <p class="czerwonyText" id="brakPozycjiDoUsuniecia"></p>
+                    </div>
+                    <table class="table table-striped ">
+                        <thead>
+                        <tr>
+                            <th class="text-center">Numer</th>
+                            <th class="text-center">Nazwa towaru</th>
+                            <th class="text-center">Cena Brutto</th>
+                            <th class="text-center">Cena Netto</th>
+                            <th class="text-center">Jednostki</th>
+                            <th class="text-center">Ilość</th>
+                            <th class="text-center">Użytkownik</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tabelkaUsun">
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="center collapse" id="divPrzyciskUsun">
+                        <div class="col-sm-2">
+                            <button class="btn btn-danger" data-target="#usunDialog" data-toggle="modal" id="usunZBazy"
+                                    type="button">
+                                <span class="glyphicon glyphicon-file"></span>
+                                <b>&nbsp;Usuń pozycję z bazy&nbsp;</b>&nbsp;<span
+                                    class="glyphicon glyphicon-file"></span></button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
-
-	
-	<!-- ZAKLADKA SZUKAJ  " -->
-    <div id="szukaj" class="tab-pane fade">
-    
-      <p></p>
-     	
-     <div>		
-     <p></p>
-  		<div class="col-sm-2">
-     	<p><b>Szukaj po:</b></p>
-     		<div class="radio">
-      		<label><input type="radio" name="radioButton" checked="checked" value="nazwa">nazwie towaru</label>
-   			 </div>
-   			 <div class="radio">
-    		  <label><input type="radio" name="radioButton" value="uzytkownik">użytkowniku</label>
-    		</div>
-   			 <div class="radio disabled">
-   			 </div>
-		 </div>
-		 
-		<p></p> 
-		
-		<p><b>Wpisz nazwę towaru lub użytkownika:</b></p>	
-		<div class="input-group col-sm-4">
- 
-				<input id="szukajPozycji" type="text" class="form-control" placeholder=" -- wpisz nazwę -- ">
-				<div  class="input-group-btn">
-				<button id="szukajPozycjiPrzycisk" class="btn btn-info"  >
-				<span><b>Szukaj&nbsp;</b></span>
-				<i class="glyphicon glyphicon-search"></i>
-				</button>
-				</div>
-		</div>
-		
-	</div>	    
-		
-		
-
-		
-		
-		<!-- Modal SZUKAJ data-toggle="modal" data-target="#szukajDialog" -->
-		<div id="szukajDialog" class="modal fade" role="dialog">
-		  <div class="modal-dialog">
-		
-		<!-- Modal content-->
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		        <h4 class="modal-title">Szukanie wyników</h4>
-		      </div>
-		      <div class="modal-body">
-		        <p id="modalSzukajDialog"></p>
-		      </div>
-		      <div class="modal-footer">
-		        <button id="zamknijDialogSzukaj" type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
-		      </div>
-		    </div>
-		
-		  </div>
-		</div>
-	
-	<!-- zaawansowane szukanie-->
-	<hr></hr>
-	
-	<div style="margin-left: 30px">
-		<div class="checkbox row">
-				<button id="przyciskSzukanieZaawansowane" type="button" class="btn" data-toggle="collapse" data-target="#zaawansowane"><b>Pokaż | Ukryj - zaawansowane&nbsp;szukanie&nbsp;</b><span class="glyphicon glyphicon-search"></span></button>
-		</div>
-		
-		<div id="zaawansowane" class="collapse">
-		<div class="checkbox row">
-			<div class="checkbox row">
-				<div class="col-sm-2">
-					<label style="margin-top:5px;margin-left:30px;"><input id="zaaNazwaTowaru" style="margin-right:30px;" type="checkbox" value="">nazwa towaru</label>
-				</div>
-				<div class="col-sm-2">  
-					<input id="zaaNazwaTowaruPole" type="text" class="form-control" style="margin-left:-40px;" placeholder=" -- wpisz -- ">
-				</div>
-			</div>
-			
-			<div class="checkbox row">
-				<div class="col-sm-2">
-					<label style="margin-top:5px;margin-left:30px;"><input id="zaaUzytkownik" style="margin-right:30px;" type="checkbox" value="">użytkownik</label>
-				</div>
-				<div class="col-sm-2">  
-					<input id="zaaUzytkownikPole" type="text" class="form-control" style="margin-left:-40px;" placeholder=" -- wpisz -- ">
-				</div>
-			</div>
-			
-			<div class="checkbox row">
-				<div class="col-sm-2">
-					<label style="margin-top:5px;margin-left:30px;"><input id="zaaCenaNetto"  type="checkbox" value="">cena netto</label>
-				</div>
-				<div class="col-sm-2">  
-					<input id="zaaCenaNettoPole" type="text" class="form-control" style="margin-left:-40px;" placeholder=" -- wpisz -- ">
-				</div>
-				<div style="margin-top:5px;">
-						<label class="radio-inline" style="margin-left:-40px;"><input type="radio" id="zaaCenaNettoRadio1" value="1" name="szukajCenaNettoRadio" checked="checked">=</label>
-						<label class="radio-inline"><input type="radio" name="szukajCenaNettoRadio" value="2">></label>
-						<label class="radio-inline"><input type="radio" name="szukajCenaNettoRadio" value="3"><</label> 
-				</div>
-			</div>
-			
-			<div class="checkbox row">
-				<div class="col-sm-2">
-					<label style="margin-top:5px;margin-left:30px;"><input id="zaaCenaBrutto" style="margin-right:30px;" type="checkbox" value="">cena brutto</label>
-				</div>
-				<div class="col-sm-2">  
-					<input id="zaaCenaBruttoPole" type="text" class="form-control" style="margin-left:-40px;" placeholder=" -- wpisz -- ">
-				</div>
-				<div style="margin-top:5px;">
-						<label class="radio-inline" style="margin-left:-40px;"><input type="radio" id="zaaCenaBruttoRadio1" name="szukajCenaBruttoRadio" value="1" checked="checked">=</label>
-						<label class="radio-inline"><input type="radio" name="szukajCenaBruttoRadio" value="2">></label>
-						<label class="radio-inline"><input type="radio" name="szukajCenaBruttoRadio" value="3"><</label> 
-				</div>
-			</div>
-		
-			<div class="checkbox row">
-				<div class="col-sm-2">
-					<label style="margin-top:5px;margin-left:30px;"><input id="zaaIlosc" style="margin-right:30px;" type="checkbox" value="">ilość</label>
-				</div>
-				<div class="col-sm-2">  
-					<input id="zaaIloscPole" type="text" class="form-control" style="margin-left:-40px;" placeholder=" -- wpisz -- ">
-				</div>
-				<div style="margin-top:5px;">
-						<label class="radio-inline" style="margin-left:-40px;"><input type="radio" id="zaaIloscRadio1" value="1" name="szukajIloscRadio" checked="checked">=</label>
-						<label class="radio-inline"><input type="radio" name="szukajIloscRadio" value="2">></label>
-						<label class="radio-inline"><input type="radio" name="szukajIloscRadio" value="3"><</label> 
-				</div>
-			</div>
-		
-		</div>
-		<button type="button" id="zaaSzukajPrzycisk" class="btn btn-info" style="margin-left:10px;"><span><b>Szukaj&nbsp;</b></span>
-				<i class="glyphicon glyphicon-search"></i></button>
-		
-		</div>
-	</div>
-		
-		
-	<div id="wynikiSzukania" class="row text-center">
-      	<div class="col-sm-10">
-		<p></p><hr></hr>
-			<label for="wynikiSzukania">Wyniki szukania</label>
-		<p id="brakWynikow" class="czerwonyText"></p>	
-		
-			<div class="class=">
-				<div class="col-sm-4" style="margin-right:-110px;margin-bottom:20px;margin-top:5px">Filtruj tabelkę po:</div>
-				<div class="col-sm-2"><input class="form-control" id="szukajSzukajTabelka" type="text" placeholder="Szukaj..."></div>
-			</div>
-		
-			<table id="szukajTabelka" class="table table-striped ">
-    <thead >
-      <tr>
-	    <th id="numerKolumnaWSzukaj" class="text-center">Numer</th>
-	    <th id="nazwaTowaruKolumnaWSzukaj" class="text-center">Nazwa towaru</th>
-        <th id="cenaBruttoKolumnaWSzukaj" class="text-center">Cena Brutto</th>
-        <th id="cenaNettoKolumnaWSzukaj" class="text-center">Cena Netto</th>
-		<th id="jednostkaKolumnaWSzukaj" class="text-center">Jednostki</th>
-		<th id="iloscKolumnaWSzukaj" class="text-center">Ilość</th>
-		<th id="uzytkownikKolumnaWSzukaj" class="text-center">Użytkownik</th>
-		<th class="text-center">Dodaj</th>
-		  <th class="text-center"></th>
-		  <th class="text-center"></th>
-      </tr>
-    </thead>
-    <tbody id="tabelkaSzukaj">
-    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    </tbody>
-  </table>
-
-		</div>
-		</div>
-	
-    </div>
-    
-    <!-- ZAKLADKA ZMIEN -->
-    <div id="zmien" class="tab-pane fade">
-      <p></p>
-     			<p><b>Pobierz pozycję numer:</b></p>
-			<div class="input-group col-sm-4" id="divZmienWidoczne">
-
-				<input id="wpiszNumerPozycji" type="text" class="form-control" placeholder="Wpisz numer pozycji">
-				<div  class="input-group-btn">
-				<button id="pobierzPozycjePoNumerzePrzycisk" class="btn btn-info" >
-				<span><b>Pobierz&nbsp;</b></span>
-				<i class="glyphicon glyphicon-download-alt"></i>
-				</button>
-				</div>
-			</div>
-			
-					
-		<!-- Modal ZMIEN data-toggle="modal" data-target="#zmienDialog" -->
-		<div id="zmienDialog" class="modal fade" role="dialog">
-		  <div class="modal-dialog">
-		
-		<!-- Modal content-->
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		        <h4 class="modal-title">Zapis zmian do bazy</h4>
-		      </div>
-		      <div class="modal-body">
-		        <p id="modalZmienDialog"></p>
-		      </div>
-		      <div class="modal-footer">
-		        <button id="zamknijDialogZmien" type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
-		      </div>
-		    </div>
-		
-		  </div>
-		</div>
-    
-    
-    <div>
-    <p></p><hr></hr>
-      <h4 id="testHide">Pozycja do zmiany</h4>
-      <p></p><hr></hr>
-    </div>
-    
-    <div id="brakPozycjiDiv" class="collapse">
-    <p id="brakPozycji" class="czerwonyText"><b></b></p>
-    </div>
-    
-    
-    <div id="ukryte" class="collapse">
-      
-	  <div class="row">
-	   <div class="col-sm-6 form-group">
-			<label for="zmienTowar">Nazwa towaru:</label>
-			<input type="text" class="form-control" id="zmienTowar">
-		</div>
-		<div class="col-sm-2 form-group" >	
-			<label for="zmienUzytkownik"><span class="glyphicon glyphicon-user "></span> Użytkownik:</label>
-			<input type="text" class="form-control" id="zmienUzytkownik">
-		</div>
-		</div>
-		<div class="row">
-		<div class="col-sm-2 form-group" >
-			<label for="zmienCenaB">Cena Brutto:</label>
-			<input type="text" class="form-control" id="zmienCenaB">
-		</div>
-		<div class="col-sm-2 form-group">
-			<label for="zmienCenaN">Cena Netto:</label>
-			<input type="text" class="form-control" id="zmienCenaN">
-		</div>
-		<div class="col-sm-2 form-group">
-			<label for="zmienJednostka">Jednostka:</label>
-			<!--   <input type="text" class="form-control" id="zmienJednostka"> -->
-		     
-		    <button id="zmienJednostka" style="color: #808080;width:120px" class="form-control btn btn-default" type="button" data-toggle="dropdown">&#8208;&nbsp;wybierz&nbsp;&#8208;&nbsp;&nbsp;<span class="caret"></span>
-			</button>
-		
-		    <ul id="zmienJednostkaLista" class="dropdown-menu">
-		      <li><a id="opZmien" href="#">op.</a></li>
-		      <li><a id="kplZmien" href="#">kpl.</a></li>
-		      <li><a id="mbZmien" href="#">mb.</a></li>
-			  <li><a id="parZmien" href="#">par</a></li>
-			  <li><a id="sztZmien" href="#">szt.</a></li>
-		    </ul>
-		    
-		    
-		</div>
-		<div class="col-sm-2 form-group">
-			<label for="zmienIlosc">Ilość:</label>
-			<input type="text" class="form-control" id="zmienIlosc">
-		</div>
-		</div>
-		
-		<div class="col-sm-4">
-			<p></p>
-			<button id="zapiszZmianyDoBazy" type="button" class="btn btn-info" data-toggle="modal" data-target="#zmienDialog">
-			<span class="glyphicon glyphicon-file"></span>
-			<b>Zmień pozycję remanentu </b><span class="glyphicon glyphicon-file"></span></button>	
-		<p></p>			
-		</div>
-		
-    </div>
-    
-    </div>
-    
-    
-    <!-- ZAKLADKA USUN input-group , input-group-btn -->
-    
-    <div id="usun" class="tab-pane fade">
-    
-    
-    <div >
-    <p></p>
-    <p><b>Numer pozycji do usunięcia:</b></p>
-   
-	   <div class="input-group col-sm-4">
-			<input id="wpiszNumerPozycjiDoUsuniecia" type="text" class="form-control" placeholder="Wpisz numer pozycji">
-			<div class="input-group-btn">
-				<button id="pobierzDoUsunPrzycisk" type="button" class="btn btn-info" >
-				<b>Pobierz</b> &nbsp;  <i class="glyphicon glyphicon-download-alt"></i>
-				</button>
-			</div>
-		</div>
-		
-			
-	
-    	<!-- Modal USUN data-toggle="modal" data-target="#usunDialog" -->
-		<div id="usunDialog" class="modal fade" role="dialog">
-		  <div class="modal-dialog">
-		
-		<!-- Modal content-->
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		        <h4 class="modal-title">Usuwanie pozycji z bazy</h4>
-		      </div>
-		      <div class="modal-body">
-		        <p id="modalUsunDialog"></p>
-		      </div>
-		      <div class="modal-footer">
-		        <button id="zamknijDialogUsun" type="button" class="btn btn-default" data-dismiss="modal">Zamknij</button>
-		      </div>
-		    </div>
-		
-		  </div>
-		</div>
-    </div>
-    
-    <div id="pobranaPozycjaDoUsuniecia" class="row text-center">
-    
-      	<div class="col-sm-10">
-		<p></p><hr></hr>
-		
-		<div class="center">
-		<p><b>Pozycja do usunięcia</b></p>
-		<p id="brakPozycjiDoUsuniecia" class="czerwonyText"></p>	
-		</div>
-			<table class="table table-striped ">
-    <thead >
-      <tr>
-	    <th class="text-center">Numer</th>
-	    <th class="text-center">Nazwa towaru</th>
-        <th class="text-center">Cena Brutto</th>
-        <th class="text-center">Cena Netto</th>
-		<th class="text-center">Jednostki</th>
-		<th class="text-center">Ilość</th>
-		<th class="text-center">Użytkownik</th>
-      </tr>
-    </thead>
-    <tbody id="tabelkaUsun">
-    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-    </tbody>
-  </table>
-
-	        <div id="divPrzyciskUsun" class="center collapse">
-			    <div class="col-sm-2" >	
-				<button id="usunZBazy" type="button" class="btn btn-danger" data-toggle="modal" data-target="#usunDialog">
-				<span class="glyphicon glyphicon-file"></span>
-				<b>&nbsp;Usuń pozycję z bazy&nbsp;</b>&nbsp;<span class="glyphicon glyphicon-file"></span></button>	
-				</div>	
-	      	</div>
-
-		</div>
-    	</div>
-	</div>
-  </div>
 </div>
 
 </body>

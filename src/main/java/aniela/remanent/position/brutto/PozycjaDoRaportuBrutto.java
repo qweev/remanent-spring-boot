@@ -1,6 +1,5 @@
 package aniela.remanent.position.brutto;
 
-
 import aniela.remanent.position.abstraction.PositionAbstract;
 
 public class PozycjaDoRaportuBrutto extends PositionAbstract {
@@ -15,6 +14,4 @@ public class PozycjaDoRaportuBrutto extends PositionAbstract {
                 nazwaTowaru + ", jednostka:" + jednostka +
                 ", ilosc:" + ilosc + ", pozyzjaWRaporcie:" + pozyzjaWRaporcie + "}";
     }
-
-
 }

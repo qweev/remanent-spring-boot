@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<head>
+    <title>Remanent Sklep Aniela</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="resources\css\bootstrap.min.css" rel="stylesheet">
+    <link href="resources\custom\merge.css" rel="stylesheet">
+    <script src="resources\jq\jquery.min.js"></script>
+    <script src="resources\js\bootstrap.min.js"></script>
+    <script src="resources\custom\block.js"></script>
+    <script src="resources\custom\wspolneFunkcje.js"></script>
+    <script src="resources\custom\szukajPozycjiMerge.js"></script>
+    <script src="resources\custom\sortTable.js"></script>
+    <script src="resources\custom\sorting.js"></script>
+    <script>
+$( "#tabelka tr:odd" ).css( "background-color", "green" );
+    </script>
+    <script>
+$( "#tabelka tr:even" ).css( "background-color", "blue" );
+
+
+
+    </script>
+</head>
+
+<body id="main_body">
+
+<div align="right" style="position:sticky; top:0;">
+    <button class="btn btn-info" id="PobierzDuplikaty" style="margin-left:10px;" type="button"><span><b>PobierzDuplikaty&nbsp;</b></span>
+        <i class="glyphicon glyphicon-search"></i></button>
+    <button id="mergujPrzycisk" style="position:sticky; top:0;" type="button"><span><b>Merguj&nbsp;</b></span>
+    </button>
+</div>
+
+
+<div class="container">
+    <div class="row text-center" id="wynikiSzukania">
+        <div class="col-sm-10">
+            <p></p>
+            <hr></hr>
+            <label for="wynikiSzukania">Wyniki szukania</label>
+            <p class="czerwonyText" id="brakWynikow"></p>
+
+            <div class="class=">
+                <div class="col-sm-4" style="margin-right:-110px;margin-bottom:20px;margin-top:5px">Filtruj tabelkę
+                    po:
+                </div>
+                <div class="col-sm-2">
+                    <input class="form-control" id="szukajSzukajTabelka" placeholder="Szukaj..." type="text">
+                </div>
+                <div class="col-sm-2">
+
+                </div>
+
+            </div>
+
+        </div>
+        <table class="table table-striped " id="szukajTabelka">
+            <thead>
+            <tr>
+                <th class="text-center" id="numerKolumnaWSzukaj">Numer</th>
+                <th class="text-center" id="nazwaTowaruKolumnaWSzukaj">Nazwa towaru</th>
+                <th class="text-center" id="cenaBruttoKolumnaWSzukaj">Cena Brutto</th>
+                <th class="text-center" id="cenaNettoKolumnaWSzukaj">Cena Netto</th>
+                <th class="text-center" id="jednostkaKolumnaWSzukaj">Jednostki</th>
+                <th class="text-center" id="iloscKolumnaWSzukaj">Ilość</th>
+                <th class="text-center" id="uzytkownikKolumnaWSzukaj">Użytkownik</th>
+                <th class="text-center">Dodaj</th>
+                <th class="text-center"></th>
+                <th class="text-center"></th>
+            </tr>
+            </thead>
+            <tbody id="tabelkaSzukaj">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+</div>
+
+</body>
+</html>

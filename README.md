@@ -9,6 +9,9 @@ reports
 http://localhost:8080/raporty.html
 admin/admin
 
+merge
+http://localhost:8080/merge.html
+
 heartbeat
 http://localhost:8080/heartbeat
 

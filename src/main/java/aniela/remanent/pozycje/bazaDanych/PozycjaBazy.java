@@ -1,7 +1,7 @@
 package aniela.remanent.pozycje.bazaDanych;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.Objects;
 
 // uzyj LOMBOK adnotacji
 
@@ -89,4 +89,9 @@ public class PozycjaBazy  {
 	public void setUzytkownik(String uzytkownik) {
 		this.uzytkownik = uzytkownik;
 	}
+
+	public int getHashCen() {
+		return Objects.hash(this.cena_brutto, this.cena_netto);
+	}
+
 }

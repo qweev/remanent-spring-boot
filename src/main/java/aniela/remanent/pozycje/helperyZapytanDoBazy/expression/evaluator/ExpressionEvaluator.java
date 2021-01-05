@@ -68,7 +68,6 @@ public class ExpressionEvaluator {
     }
 
     public CriteriaQuery<PozycjaBazy> evaluate() {
-
         Predicate[] predicatesAsArray = new Predicate[predicates.size()];
         predicatesAsArray = predicates.toArray(predicatesAsArray);
         criteriaQuery.where(criteriaBuilder.and(predicatesAsArray));

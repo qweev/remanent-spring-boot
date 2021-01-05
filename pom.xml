@@ -297,6 +297,12 @@
 			<version>5.5.13</version>
 		</dependency>
 
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>29.0-jre</version>
+		</dependency>
+
 
 		<!-- test stuff -->
 		<dependency>
