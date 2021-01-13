@@ -101,6 +101,7 @@ public abstract class ReportPdf implements ReportPdfApi {
 
     private void runReportGenerator(List<Position> positions) {
         reportPages.clear();
+        reportPagesForSummary.clear();
         reportPages.addAll(reportGenerator.generatePages(positions));
     }
 
