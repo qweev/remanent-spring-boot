@@ -6,10 +6,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,6 +50,9 @@ public class TabelkaHistoriaWpisow {
         List<WebElement> komorki = new ArrayList<WebElement>();
         int pierwszaKomorkaPozycjiWTabelce = 2;
         int ostatniaKomorkaPozycjiWTabelce = 8;
+
+        new WebDriverWait(driver, Duration.ofSeconds(5)).pollingEvery(Duration.ofSeconds(1))
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//tbody[@id='tabelka']/tr["+numerWiersza+"]")));
 
         for(int komorka=pierwszaKomorkaPozycjiWTabelce; komorka < ostatniaKomorkaPozycjiWTabelce; komorka++){
             komorki.add(driver.findElement(By.xpath("//tbody[@id='tabelka']/tr["+numerWiersza+"]/td["+komorka+"]")));

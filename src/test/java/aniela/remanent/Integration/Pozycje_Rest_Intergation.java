@@ -14,7 +14,7 @@ import java.util.List;
 import static aniela.remanent.Integration.IntegrationConfig.PORT;
 import static org.junit.Assert.assertEquals;
 
-public class Pozycje_Rest_intergation {
+public class Pozycje_Rest_Intergation {
 
     @Test
     public void dodajPozycje() throws JSONException {

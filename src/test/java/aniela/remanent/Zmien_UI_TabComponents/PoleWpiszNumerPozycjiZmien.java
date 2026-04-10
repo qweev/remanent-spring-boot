@@ -1,14 +1,19 @@
 package aniela.remanent.Zmien_UI_TabComponents;
 
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+
+import java.time.Duration;
 
 @Service
 public class PoleWpiszNumerPozycjiZmien {
@@ -29,6 +34,8 @@ public class PoleWpiszNumerPozycjiZmien {
     }
 
     public void wpiszNumerPozycji(String numer){
+        new WebDriverWait(driver, Duration.ofSeconds(5)).pollingEvery(Duration.ofSeconds(1))
+                        .until(ExpectedConditions.visibilityOf(poleWpiszNumerPozycji));
         poleWpiszNumerPozycji.click();
         poleWpiszNumerPozycji.sendKeys(numer);
     }
@@ -52,6 +59,8 @@ public class PoleWpiszNumerPozycjiZmien {
     }
 
     public boolean jestWidoczne(){
+        new WebDriverWait(driver, Duration.ofSeconds(5)).pollingEvery(Duration.ofSeconds(1))
+                .until(ExpectedConditions.visibilityOf(poleWpiszNumerPozycji));
         return poleWpiszNumerPozycji.isDisplayed();
     }
 

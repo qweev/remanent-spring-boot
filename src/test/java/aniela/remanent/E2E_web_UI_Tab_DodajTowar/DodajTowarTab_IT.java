@@ -17,6 +17,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.junit.*;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -107,7 +108,8 @@ public class DodajTowarTab_IT {
     }
 
     private boolean jestWpisWTabelceHistoriiWpisow() {
-        WebDriverWait czekajNaTabelke = new WebDriverWait(driver, 120, 1000);
+        WebDriverWait czekajNaTabelke = new WebDriverWait(driver, Duration.ofSeconds(120));
+        czekajNaTabelke.pollingEvery(Duration.ofSeconds(1));
         return czekajNaTabelke.until(widocznaPozycjaWTabelce());
     }
 

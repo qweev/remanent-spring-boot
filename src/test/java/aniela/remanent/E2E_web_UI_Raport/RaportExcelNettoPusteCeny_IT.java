@@ -23,6 +23,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.time.Duration;
+
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -104,12 +106,14 @@ public class RaportExcelNettoPusteCeny_IT {
 
     private void czekajNaZnikniecieBlockUI(){
         WebElement blockUI = driver.findElement(By.className("blockUI"));
-        WebDriverWait czekaj = new WebDriverWait(driver, 20, 2000);
+        WebDriverWait czekaj = new WebDriverWait(driver, Duration.ofSeconds(20));
+        czekaj.pollingEvery(Duration.ofSeconds(2));
         czekaj.until(ExpectedConditions.stalenessOf(blockUI));
     }
 
     private void czekajNaModalDialog(){
-        WebDriverWait czekaj = new WebDriverWait(driver, 20, 2000);
+        WebDriverWait czekaj = new WebDriverWait(driver, Duration.ofSeconds(20));
+        czekaj.pollingEvery(Duration.ofSeconds(2));
         czekaj.until(ExpectedConditions.visibilityOf(modalExcel.pobierzWebElement()));
     }
 

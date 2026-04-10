@@ -24,6 +24,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.time.Duration;
+
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -118,7 +120,8 @@ public class Logowanie_IT {
 
     private boolean czyUdaneLogowanie() {
         WebElement blockUI = driver.findElement(By.className("blockUI"));
-        WebDriverWait czekaj = new WebDriverWait(driver, 20, 2000);
+        WebDriverWait czekaj = new WebDriverWait(driver, Duration.ofSeconds(20));
+        czekaj.pollingEvery(Duration.ofSeconds(2));
         czekaj.until(ExpectedConditions.stalenessOf(blockUI));
         czekaj.until(ExpectedConditions.invisibilityOfElementLocated(przyciskZaloguj.pobierzPoBy()));
         return true;
@@ -126,13 +129,15 @@ public class Logowanie_IT {
 
     private boolean czyNieudaneLogowanie() {
         WebElement blockUI = driver.findElement(By.className("blockUI"));
-        WebDriverWait czekaj = new WebDriverWait(driver, 20, 2000);
+        WebDriverWait czekaj = new WebDriverWait(driver, Duration.ofSeconds(20));
+        czekaj.pollingEvery(Duration.ofSeconds(2));
         czekaj.until(ExpectedConditions.stalenessOf(blockUI));
         czekaj.until(ExpectedConditions.visibilityOf(modalLogowanie.pobierzPoWebelement()));
         return true;
     }
     private boolean czyNieudaneLogowanieBezDanych() {
-        WebDriverWait czekaj = new WebDriverWait(driver, 20, 2000);
+        WebDriverWait czekaj = new WebDriverWait(driver, Duration.ofSeconds(20));
+        czekaj.pollingEvery(Duration.ofSeconds(2));
         czekaj.until(ExpectedConditions.visibilityOf(modalLogowanie.pobierzPoWebelement()));
         return true;
     }

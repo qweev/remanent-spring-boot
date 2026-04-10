@@ -21,6 +21,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -150,15 +151,18 @@ public class DodajPoProsteSzukanie_IT {
 
 
     private void zamknijModalDialogPoDodaniu() {
-        FluentWait wait =  new FluentWait(driver).withTimeout(5, TimeUnit.SECONDS).pollingEvery(1, TimeUnit.SECONDS);
+        FluentWait<WebDriver> wait =  new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(5))
+                .pollingEvery(Duration.ofSeconds(1));
         wait.until(ExpectedConditions.elementToBeClickable(modalSzukajDialog.getPrzyciskZamknijDialogSzukaj()));
         modalSzukajDialog.zamknijDialog();
-
+        wait.until(ExpectedConditions.invisibilityOf(modalSzukajDialog.getPrzyciskZamknijDialogSzukaj()));
     }
 
     private void czekajNaWynikiWTabelce() {
         WebElement blockUI = driver.findElement(By.className("blockUI"));
-        WebDriverWait czekaj = new WebDriverWait(driver, 20, 2000);
+        WebDriverWait czekaj = new WebDriverWait(driver, Duration.ofSeconds(20));
+        czekaj.pollingEvery(Duration.ofSeconds(2));
         czekaj.until(ExpectedConditions.stalenessOf(blockUI));
         czekaj.until(ExpectedConditions.elementToBeClickable(przyciskSzukajPozycji.pobierzWebElement()));
     }
@@ -178,8 +182,8 @@ public class DodajPoProsteSzukanie_IT {
         try {
             TimeUnit.MILLISECONDS.sleep(500);
             Wait<WebDriver> wait = new FluentWait<>(driver)
-                    .withTimeout(timeoutInSeconds, TimeUnit.SECONDS)
-                    .pollingEvery(500, TimeUnit.MILLISECONDS)
+                    .withTimeout(Duration.ofSeconds(timeoutInSeconds))
+                    .pollingEvery(Duration.ofMillis(500))
                     .withMessage("###### Wait for page to be ready failed, trying to finish test execution anyway");
 
             wait.until(ExpectedConditions.jsReturnsValue("return (document.readyState == 'complete' && jQuery.active == 0)"));

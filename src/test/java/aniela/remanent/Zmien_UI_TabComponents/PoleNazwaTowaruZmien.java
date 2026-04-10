@@ -25,7 +25,7 @@ public class PoleNazwaTowaruZmien {
     }
 
     public void wpiszNazweTowaru(String nazwa){
-//		nazwaTowaru.click();
+        nazwaTowaru.clear();
         nazwaTowaru.sendKeys(nazwa);
     }
 

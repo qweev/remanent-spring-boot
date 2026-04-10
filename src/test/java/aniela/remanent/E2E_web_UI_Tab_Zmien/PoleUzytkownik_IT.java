@@ -21,6 +21,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.time.Duration;
+
 import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -71,7 +73,8 @@ public class PoleUzytkownik_IT {
         poleWpiszNumerPozycjiZmien.wpiszNumerPozycji(numerPozycji);
         poleWpiszNumerPozycjiZmien.kliknijPrzycisk();
         WebElement blockUI = driver.findElement(By.className("blockUI"));
-        WebDriverWait czekajNaPobranie = new WebDriverWait(driver, 20, 2000);
+        WebDriverWait czekajNaPobranie = new WebDriverWait(driver, Duration.ofSeconds(20));
+        czekajNaPobranie.pollingEvery(Duration.ofSeconds(2));
         czekajNaPobranie.until(ExpectedConditions.stalenessOf(blockUI));
         czekajNaPobranie.until(ExpectedConditions.elementToBeClickable(poleUzytkownikZmien.pobierzPoWebElement()));
     }

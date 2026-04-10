@@ -19,6 +19,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.time.Duration;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -103,14 +105,16 @@ public class UsunTowar_IT {
 
     private void czekajNaPozycjeIPrzyciskUsunZBazy() {
         WebElement blockUI = driver.findElement(By.className("blockUI"));
-        WebDriverWait czekaj = new WebDriverWait(driver, 20, 500);
+        WebDriverWait czekaj = new WebDriverWait(driver, Duration.ofSeconds(20));
+        czekaj.pollingEvery(Duration.ofMillis(500));
         czekaj.until(ExpectedConditions.stalenessOf(blockUI));
         czekaj.until(ExpectedConditions.visibilityOf(tabelkaUsun.pobierzWebElement()));
         czekaj.until(ExpectedConditions.elementToBeClickable(przyciskUsunZBazy.pobierzWebElement()));
     }
 
     private void czekajNaModalDialog() {
-        WebDriverWait czekajModal = new WebDriverWait(driver, 20, 2000);
+        WebDriverWait czekajModal = new WebDriverWait(driver, Duration.ofSeconds(20));
+        czekajModal.pollingEvery(Duration.ofSeconds(2));
         czekajModal.until(ExpectedConditions.visibilityOf(modalUsunDialog.pobierzWebElement()));
     }
 

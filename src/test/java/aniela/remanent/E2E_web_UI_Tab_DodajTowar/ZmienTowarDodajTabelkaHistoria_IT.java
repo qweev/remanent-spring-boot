@@ -8,16 +8,19 @@ import aniela.remanent.Zmien_UI_TabComponents.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -125,8 +128,8 @@ public class ZmienTowarDodajTabelkaHistoria_IT {
         try {
             TimeUnit.MILLISECONDS.sleep(500);
             Wait<WebDriver> wait = new FluentWait<>(driver)
-                    .withTimeout(timeoutInSeconds, TimeUnit.SECONDS)
-                    .pollingEvery(500, TimeUnit.MILLISECONDS)
+                    .withTimeout(Duration.ofSeconds(timeoutInSeconds))
+                    .pollingEvery(Duration.ofMillis(500))
                     .withMessage("###### Wait for page to be ready failed, trying to finish test execution anyway");
 
             wait.until(ExpectedConditions.jsReturnsValue("return (document.readyState == 'complete' && jQuery.active == 0)"));
@@ -136,7 +139,9 @@ public class ZmienTowarDodajTabelkaHistoria_IT {
     }
 
     private void zmienPolaPozycji(String nazwaTowaruDoZmiany, String iloscDoZmiany) {
-        FluentWait wait = new FluentWait(driver).withTimeout(10, TimeUnit.SECONDS).pollingEvery(1, TimeUnit.SECONDS);
+        FluentWait<WebDriver> wait = new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(10))
+                .pollingEvery(Duration.ofSeconds(1));
         wait.until(ExpectedConditions.visibilityOf(poleIloscZmien.pobierzPoWebElement()));
         poleIloscZmien.wyczysc();
         poleNazwaTowaruZmien.wyczysc();

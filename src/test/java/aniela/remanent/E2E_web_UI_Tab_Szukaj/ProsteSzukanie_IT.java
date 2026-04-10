@@ -4,21 +4,19 @@ package aniela.remanent.E2E_web_UI_Tab_Szukaj;
 import aniela.FireFoxConfiguration;
 import aniela.remanent.Application;
 import aniela.remanent.SzukajTowarProste_UI_TabComponents.*;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.time.Duration;
 
 import static org.junit.Assert.assertEquals;
 
@@ -31,14 +29,10 @@ public class ProsteSzukanie_IT {
     @Autowired
     private  WebDriver driver;
 
-    private String stylCzerwony = "czerwony";
-
     @Autowired
     private SzukajTab szukajTab;
     @Autowired
     private PoleSzukajPoUzytkowniku poleSzukajPoUzytkowniku;
-    @Autowired
-    private PoleSzukajPoNazwie poleSzukajPoNazwie;
     @Autowired
     private PoleSzukajPozycji poleSzukajPozycji;
     @Autowired
@@ -52,14 +46,8 @@ public class ProsteSzukanie_IT {
     public void setUp(){
         driver.get("http://localhost:8080/index.html");
         szukajTab.kliknijTab();
+        czekajAzZakladkaSzukajBedzieAktywna();
     }
-
-//    @After
-//    public void cleanUpTest(){
-//        driver.navigate().refresh();
-//    }
-
-
 
     @Test
     public void szukaniePoNazwie(){
@@ -79,6 +67,7 @@ public class ProsteSzukanie_IT {
         int liczbaWierszy = 5;
 
         poleSzukajPoUzytkowniku.kliknij();
+        czekajAzZakladkaSzukajBedzieAktywna();
         poleSzukajPozycji.wpiszTekst(nazwaDoSzukania);
         przyciskSzukajPozycji.kliknijSzukaj();
         czekajNaWynikiWTabelce();
@@ -89,7 +78,6 @@ public class ProsteSzukanie_IT {
     @Test
     public void filtrujWynikiSzukania(){
         int liczbaWierszyPoFiltrowaniu = 2;
-//        poleFiltr = new PoleFiltr(driver);
 
         tabelkaWynikiSzukaj.stworzSztuczneWynikiSzukania();
         poleFiltrSzukaj.wpiszDoFiltra("filtr");
@@ -99,11 +87,17 @@ public class ProsteSzukanie_IT {
 
 
     private void czekajNaWynikiWTabelce() {
-        WebElement blockUI = driver.findElement(By.className("blockUI"));
-        WebDriverWait czekaj = new WebDriverWait(driver, 20, 2000);
-        czekaj.until(ExpectedConditions.stalenessOf(blockUI));
+        WebDriverWait czekaj = new WebDriverWait(driver, Duration.ofSeconds(20));
+        czekaj.pollingEvery(Duration.ofSeconds(2));
+        czekaj.until(ExpectedConditions.invisibilityOfElementLocated(By.className("blockUI")));
         czekaj.until(ExpectedConditions.elementToBeClickable(przyciskSzukajPozycji.pobierzWebElement()));
     }
 
-
+    private void czekajAzZakladkaSzukajBedzieAktywna() {
+        WebDriverWait czekaj = new WebDriverWait(driver, Duration.ofSeconds(20));
+        czekaj.pollingEvery(Duration.ofSeconds(2));
+        czekaj.until(ExpectedConditions.attributeContains(By.id("szukaj"), "class", "active"));
+        czekaj.until(ExpectedConditions.invisibilityOfElementLocated(By.className("blockUI")));
+        czekaj.until(ExpectedConditions.visibilityOfElementLocated(By.id("szukajPozycji")));
+    }
 }

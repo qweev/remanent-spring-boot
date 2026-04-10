@@ -63,7 +63,7 @@ mvn clean install -P e2e
 
 ## Requirements
 ```
-JDK/JRE 8/10 only
+JDK/JRE 11 only
 ```
 
 ## Linux 

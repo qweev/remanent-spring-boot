@@ -16,6 +16,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 
+import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -124,8 +125,8 @@ public class DodajTowarTabTabelkaHistoria_IT {
         try {
             TimeUnit.MILLISECONDS.sleep(500);
             Wait<WebDriver> wait = new FluentWait<>(driver)
-                    .withTimeout(timeoutInSeconds, TimeUnit.SECONDS)
-                    .pollingEvery(500, TimeUnit.MILLISECONDS)
+                    .withTimeout(Duration.ofSeconds(timeoutInSeconds))
+                    .pollingEvery(Duration.ofMillis(500))
                     .withMessage("###### Wait for page to be ready failed, trying to finish test execution anyway");
 
             wait.until(ExpectedConditions.jsReturnsValue("return (document.readyState == 'complete' && jQuery.active == 0)"));
