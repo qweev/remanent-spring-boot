@@ -34,10 +34,10 @@ $( "#tabelka tr:even" ).css( "background-color", "blue" );
 
     <style>
 .czerwony {
-border: 1px solid red;
+border: 1px solid #FA8072;
 }
 .czerwonyText {
-color: red;
+color: #FA8072;
 }
 .zielonyText{
 color: green;
@@ -64,22 +64,137 @@ padding-left: 10px;
 padding-right: 5px;
 padding-top: 2px;
 padding-bottom: 2px;
-box-shadow: 0 1px 8px 0 rgb(180, 205, 255);
+box-shadow: 0 1px 8px 0 lightblue;
 border-radius: 4px;
 border: 1px solid DodgerBlue;
 }
 
 .historiaPozycja{
-box-shadow: 0 4px 8px 0 rgb(180, 205, 255);
+box-shadow: 0 4px 8px 0 lightblue;
 border-radius: 8px;
 border: 3px solid DodgerBlue;
 }
 
 .historiaPozycjaCzerwony{
-border: 3px solid red;
-color: red;
+border: 3px solid #FA8072;
+color: #FA8072;
 }
 
+body.dark-mode {
+background-color: #343434;
+color: #343434;
+}
+
+body.dark-mode .nav,
+body.dark-mode .tab-content,
+body.dark-mode .modal-content,
+body.dark-mode .table {
+background-color: #343434;
+color: whitesmoke;
+}
+
+body.dark-mode .dropdown-menu {
+background-color: grey !important;
+<!--color: #F8F8FF !important;-->
+}
+
+body.dark-mode .table.table-striped > thead > tr > th {
+background-color: #343434 !important;
+}
+body.dark-mode .table.table-striped > thead > tr > th:hover{
+background-color: #DCDCDC !important;
+}
+
+body.dark-mode .form-control,
+body.dark-mode .uzytkownik,
+body.dark-mode .btn-default {
+background-color: #343434;
+color: whitesmoke;
+}
+
+
+body.dark-mode .table-striped > tbody > tr:nth-of-type(odd) {
+background-color: grey;
+}
+
+body.dark-mode .glyphicon {
+color: whitesmoke;
+}
+
+
+body.dark-mode button {
+color: black;
+}
+
+body.dark-mode .form-control.btn.btn-default {
+color: grey !important;
+}
+
+#themeSwitchWrap.form-check.form-switch {
+display: inline-flex;
+align-items: center;
+margin-left: 8px;
+margin-bottom: 0;
+padding-left: 0;
+}
+
+
+.theme-side-icon {
+transition: opacity 0.2s ease, transform 0.2s ease;
+opacity: 0.55;
+}
+
+.theme-side-icon.is-active {
+opacity: 1;
+transform: scale(1.08);
+}
+
+.theme-moon {
+color: black;
+margin-right: 6px;
+}
+
+.theme-sun {
+color: darkorange;
+margin-left: 6px;
+}
+
+#dark-light.form-check-input {
+-webkit-appearance: none;
+appearance: none;
+position: relative;
+width: 46px;
+height: 24px;
+margin: 0;
+border-radius: 12px;
+border: 1px solid silver;
+background: #343434;
+cursor: pointer;
+outline: none;
+transition: background-color 0.25s ease, border-color 0.25s ease;
+}
+
+#dark-light.form-check-input::before {
+content: "";
+position: absolute;
+top: 1px;
+left: 1px;
+width: 20px;
+height: 20px;
+border-radius: 50%;
+background: AliceBlue;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.22);
+transition: transform 0.25s ease;
+}
+
+#dark-light.form-check-input:checked {
+background: steelblue;
+border-color: steelblue;
+}
+
+#dark-light.form-check-input:checked::before {
+transform: translateX(22px);
+}
 
 
     </style>
@@ -94,12 +209,17 @@ color: red;
         <li><a data-toggle="tab" href="#szukaj">Szukaj</a></li>
         <li><a data-toggle="tab" href="#usun">Usuń</a></li>
         <span style="margin-left:5px;">
-		<input checked id="podpowiadaczCheckbox" style="margin-right:3px;margin-top:10px" type="checkbox" value="">
-		<span id="podpowiadaczText">podpowiadacz aktywny </span></input>
+		<input id="podpowiadaczCheckbox" style="margin-right:3px;margin-top:10px" type="checkbox" value="">
+		<span id="podpowiadaczText">podpowiadacz </span></input>
 	</span>
         <span>
 			<label><span class="glyphicon glyphicon-user "></span> Użytkownik:</label>
-			<input class="uzytkownik" id="uzytkownik" placeholder="  - np. 2 -" type="text">
+			<input class="uzytkownik" id="uzytkownik" placeholder="  - np. abc -" type="text">
+            <span class="form-check form-switch" id="themeSwitchWrap">
+                <span class="glyphicon glyphicon-adjust theme-side-icon theme-moon" id="themeMoonIcon"></span>
+                <input class="form-check-input" type="checkbox" role="switch" id="dark-light" aria-label="Przelacz tryb ciemny i jasny">
+                <span class="glyphicon glyphicon-certificate theme-side-icon theme-sun" id="themeSunIcon"></span>
+            </span>
 	</span>
     </ul>
 
@@ -144,7 +264,6 @@ color: red;
 
                     <!--
                    <button id="jednostka" style="color: #808080;width:120px" class="form-control btn btn-default" type="button" data-toggle="dropdown">&#8208;&nbsp;wybierz&nbsp;&#8208;&nbsp;&nbsp;<span class="caret"></span>
-                   </button>
                    -->
 
                     <button class="form-control btn btn-default" data-toggle="dropdown" id="jednostka"
@@ -153,11 +272,11 @@ color: red;
                     </button>
 
                     <ul class="dropdown-menu" id="jednostkaLista">
-                        <li><a href="#" id="op">op.</a></li>
                         <li><a href="#" id="kpl">kpl.</a></li>
-                        <li><a href="#" id="mb">mb.</a></li>
-                        <li><a href="#" id="par">par</a></li>
                         <li><a href="#" id="szt">szt.</a></li>
+                        <li><a href="#" id="mb">mb.</a></li>
+                        <li><a href="#" id="op">op.</a></li>
+                        <li><a href="#" id="par">par</a></li>
                     </ul>
 
                 </div>
@@ -693,6 +812,34 @@ color: red;
         </div>
     </div>
 </div>
+
+<script>
+$(function () {
+    var themeStorageKey = "remanent-theme";
+    var $themeSwitch = $("#dark-light");
+
+    function setTheme(theme) {
+        var isDark = theme === "dark";
+
+        $("#main_body").toggleClass("dark-mode", isDark);
+        $themeSwitch.prop("checked", !isDark);
+
+        $("#themeMoonIcon").toggleClass("is-active", !isDark);
+        $("#themeSunIcon").toggleClass("is-active", isDark);
+
+        $themeSwitch.attr("title", isDark ? "Przelacz na jasny motyw" : "Przelacz na ciemny motyw");
+    }
+
+    var savedTheme = localStorage.getItem(themeStorageKey) || "light";
+    setTheme(savedTheme);
+
+    $themeSwitch.on("change", function () {
+        var nextTheme = this.checked ? "light" : "dark";
+        setTheme(nextTheme);
+        localStorage.setItem(themeStorageKey, nextTheme);
+    });
+});
+</script>
 
 </body>
 </html>

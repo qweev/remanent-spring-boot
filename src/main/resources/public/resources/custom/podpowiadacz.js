@@ -60,13 +60,13 @@ $(document).ready(function(){
 	$("#podpowiadaczCheckbox").click(function(){
 		if($("#podpowiadaczCheckbox").is(":checked") == false){
 		//console.log("OFF");
-		$("#podpowiadaczText").html("podpowiadacz nieaktywny");
+//		$("#podpowiadaczText").html("podpowiadacz nieaktywny");
 			globalnaListaSlow = [];
 			uniqueItems = [];
 		}
 		if($("#podpowiadaczCheckbox").is(":checked") == true){
 		//console.log("ON");
-		$("#podpowiadaczText").html("podpowiadacz aktywny");
+//		$("#podpowiadaczText").html("podpowiadacz aktywny");
 
 		
 		    	$.blockUI({ 

@@ -73,7 +73,7 @@
             }
 
 			if ( wynik.length > 20) {	
-				$("#slownikWynik").css("color","red").text(wynik);
+				$("#slownikWynik").css("color","#FA8072").text(wynik);
 			}
 			else {
 				$("#slownikWynik").css("color","").text("");
