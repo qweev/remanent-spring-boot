@@ -85,3 +85,8 @@ java - jar JAR.jar -Dcom.sun.management.jmxremote.port=3333 -Dcom.sun.management
 ```
 SELECT count(*) FROM `pozycje`
 ```
+
+### in case of issues with DB connection, try running app with:
+```
+c:\java8\bin\java.exe -jar remanent-0.0.1-SNAPSHOT.jar --spring.datasource.url="jdbc:mysql://localhost:3306/sklep?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC"
+```
